@@ -1,0 +1,11 @@
+version: '2'
+services:
+    cmexodus-postgresql:
+        image: postgres:9.6.5
+        # volumes:
+        #     - ~/volumes/jhipster/CMExodus/postgresql/:/var/lib/postgresql/data/
+        environment:
+            - POSTGRES_USER=CMExodus
+            - POSTGRES_PASSWORD=
+        ports:
+            - 5432:5432
