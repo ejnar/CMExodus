@@ -7,6 +7,15 @@
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
                 "main": "Entities",
+                "cmTopicCm": "Cm Topic",
+                "cmSubTopicCm": "Cm Sub Topic",
+                "cmPortalCm": "Cm Portal",
+                "cmPageAuthorityCm": "Cm Page Authority",
+                "cmPageCm": "Cm Page",
+                "cmModuleCm": "Cm Module",
+                "cmItemCm": "Cm Item",
+                "cmTextCm": "Cm Text",
+                "cmImageCm": "Cm Image",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

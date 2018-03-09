@@ -1,0 +1,24 @@
+
+{
+    "cmExodusApp": {
+        "cmPageAuthority" : {
+            "home": {
+                "title": "Cm Page Authorities",
+                "createLabel": "Create a new Cm Page Authority",
+                "createOrEditLabel": "Create or edit a Cm Page Authority"
+            },
+            "created": "A new Cm Page Authority is created with identifier {{ param }}",
+            "updated": "A Cm Page Authority is updated with identifier {{ param }}",
+            "deleted": "A Cm Page Authority is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Cm Page Authority {{ id }}?"
+            },
+            "detail": {
+                "title": "Cm Page Authority"
+            },
+            "user": "User",
+            "role": "Role",
+            "cmPage": "Cm Page"
+        }
+    }
+}

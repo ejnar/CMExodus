@@ -1,0 +1,27 @@
+
+{
+    "cmExodusApp": {
+        "cmModule" : {
+            "home": {
+                "title": "Cm Modules",
+                "createLabel": "Create a new Cm Module",
+                "createOrEditLabel": "Create or edit a Cm Module"
+            },
+            "created": "A new Cm Module is created with identifier {{ param }}",
+            "updated": "A Cm Module is updated with identifier {{ param }}",
+            "deleted": "A Cm Module is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Cm Module {{ id }}?"
+            },
+            "detail": {
+                "title": "Cm Module"
+            },
+            "sort": "Sort",
+            "type": "Type",
+            "layout": "Layout",
+            "list": "List",
+            "text": "Text",
+            "image": "Image"
+        }
+    }
+}

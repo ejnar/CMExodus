@@ -1,0 +1,54 @@
+
+<div *ngIf="cmPage">
+    <h2><span jhiTranslate="cmExodusApp.cmPage.detail.title">Cm Page</span> {{cmPage.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="cmExodusApp.cmPage.title">Title</span></dt>
+        <dd>
+            <span>{{cmPage.title}}</span>
+        </dd>
+        <dt><span jhiTranslate="cmExodusApp.cmPage.metaTitle">Meta Title</span></dt>
+        <dd>
+            <span>{{cmPage.metaTitle}}</span>
+        </dd>
+        <dt><span jhiTranslate="cmExodusApp.cmPage.metaDescription">Meta Description</span></dt>
+        <dd>
+            <span>{{cmPage.metaDescription}}</span>
+        </dd>
+        <dt><span jhiTranslate="cmExodusApp.cmPage.sort">Sort</span></dt>
+        <dd>
+            <span>{{cmPage.sort}}</span>
+        </dd>
+        <dt><span jhiTranslate="cmExodusApp.cmPage.layout">Layout</span></dt>
+        <dd>
+            <span jhiTranslate="{{'cmExodusApp.PageLayout.' + cmPage.layout}}">{{cmPage.layout}}</span>
+        </dd>
+        <dt><span jhiTranslate="cmExodusApp.cmPage.cmSubTopic">Cm Sub Topic</span></dt>
+        <dd>
+            <div *ngIf="cmPage.cmSubTopicId">
+                <a [routerLink]="['/cm-sub-topic-cm', cmPage.cmSubTopicId]">{{cmPage.cmSubTopicId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="cmExodusApp.cmPage.module">Module</span></dt>
+        <dd>
+            <span *ngFor="let module of cmPage.modules; let last = last">
+                <a [routerLink]="['/cm-module-cm', module?.id ]">{{module.id}}</a>{{last ? '' : ', '}}
+            </span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'cm-page-cm/'+ cmPage.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

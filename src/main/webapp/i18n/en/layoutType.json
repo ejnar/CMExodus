@@ -1,0 +1,14 @@
+{
+    "cmExodusApp": {
+        "LayoutType" : {
+            "null": "",
+            "LEFT": "LEFT",
+            "RIGHT": "RIGHT",
+            "MIDDLE": "MIDDLE",
+            "CENTER": "CENTER",
+            "TOP": "TOP",
+            "BOTTOM": "BOTTOM",
+            "SIDEBYSIDE": "SIDEBYSIDE"
+        }
+    }
+}

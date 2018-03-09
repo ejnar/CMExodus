@@ -1,0 +1,12 @@
+{
+    "cmExodusApp": {
+        "ModuleType" : {
+            "null": "",
+            "TEXT": "TEXT",
+            "IMAGE": "IMAGE",
+            "TEXT_IMAGE": "TEXT_IMAGE",
+            "IMAGE_LIST": "IMAGE_LIST",
+            "PROGRAM_LIST": "PROGRAM_LIST"
+        }
+    }
+}

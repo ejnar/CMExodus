@@ -1,0 +1,68 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "cmModule",
+            "otherEntityName": "cmModule",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "cmItem",
+            "otherEntityName": "cmItem",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "type",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "toolTip",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "sort",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "layout",
+            "fieldType": "LayoutType",
+            "fieldValues": "LEFT,RIGHT,MIDDLE,CENTER,TOP,BOTTOM,SIDEBYSIDE"
+        },
+        {
+            "fieldName": "date",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "publishDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "publish",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20180309131426",
+    "entityTableName": "cm_image",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "angularJSSuffix": "cm"
+}

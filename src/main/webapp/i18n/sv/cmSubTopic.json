@@ -1,0 +1,24 @@
+
+{
+    "cmExodusApp": {
+        "cmSubTopic" : {
+            "home": {
+                "title": "Cm Sub Topics",
+                "createLabel": "Skapa en ny Cm Sub Topic",
+                "createOrEditLabel": "Skapa eller ändra en Cm Sub Topic"
+            },
+            "created": "En ny Cm Sub Topic är skapad med id {{ param }}",
+            "updated": "En Cm Sub Topic är uppdaterad med id  {{ param }}",
+            "deleted": "En Cm Sub Topic är borttagen med id  {{ param }}",
+            "delete": {
+                "question": "Är du säker på att du vill ta bort Cm Sub Topic {{ id }}?"
+            },
+            "detail": {
+                "title": "Cm Sub Topic"
+            },
+            "name": "Name",
+            "cmTopic": "Cm Topic",
+            "page": "Page"
+        }
+    }
+}

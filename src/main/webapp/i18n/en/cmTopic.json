@@ -1,0 +1,23 @@
+
+{
+    "cmExodusApp": {
+        "cmTopic" : {
+            "home": {
+                "title": "Cm Topics",
+                "createLabel": "Create a new Cm Topic",
+                "createOrEditLabel": "Create or edit a Cm Topic"
+            },
+            "created": "A new Cm Topic is created with identifier {{ param }}",
+            "updated": "A Cm Topic is updated with identifier {{ param }}",
+            "deleted": "A Cm Topic is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Cm Topic {{ id }}?"
+            },
+            "detail": {
+                "title": "Cm Topic"
+            },
+            "name": "Name",
+            "subTopic": "Sub Topic"
+        }
+    }
+}

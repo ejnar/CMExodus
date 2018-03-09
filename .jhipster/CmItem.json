@@ -1,0 +1,45 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "cmModule",
+            "otherEntityName": "cmModule",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "text",
+            "otherEntityName": "cmText",
+            "otherEntityRelationshipName": "cmItem"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "image",
+            "otherEntityName": "cmImage",
+            "otherEntityRelationshipName": "cmItem"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "date",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "toolTip",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "layout",
+            "fieldType": "LayoutType",
+            "fieldValues": "LEFT,RIGHT,MIDDLE,CENTER,TOP,BOTTOM,SIDEBYSIDE"
+        }
+    ],
+    "changelogDate": "20180309131424",
+    "entityTableName": "cm_item",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "angularJSSuffix": "cm"
+}

@@ -1,0 +1,66 @@
+
+<div *ngIf="cmImage">
+    <h2><span jhiTranslate="cmExodusApp.cmImage.detail.title">Cm Image</span> {{cmImage.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="cmExodusApp.cmImage.name">Name</span></dt>
+        <dd>
+            <span>{{cmImage.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="cmExodusApp.cmImage.type">Type</span></dt>
+        <dd>
+            <span>{{cmImage.type}}</span>
+        </dd>
+        <dt><span jhiTranslate="cmExodusApp.cmImage.toolTip">Tool Tip</span></dt>
+        <dd>
+            <span>{{cmImage.toolTip}}</span>
+        </dd>
+        <dt><span jhiTranslate="cmExodusApp.cmImage.sort">Sort</span></dt>
+        <dd>
+            <span>{{cmImage.sort}}</span>
+        </dd>
+        <dt><span jhiTranslate="cmExodusApp.cmImage.layout">Layout</span></dt>
+        <dd>
+            <span jhiTranslate="{{'cmExodusApp.LayoutType.' + cmImage.layout}}">{{cmImage.layout}}</span>
+        </dd>
+        <dt><span jhiTranslate="cmExodusApp.cmImage.date">Date</span></dt>
+        <dd>
+            <span>{{cmImage.date | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="cmExodusApp.cmImage.publishDate">Publish Date</span></dt>
+        <dd>
+            <span>{{cmImage.publishDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="cmExodusApp.cmImage.publish">Publish</span></dt>
+        <dd>
+            <span>{{cmImage.publish}}</span>
+        </dd>
+        <dt><span jhiTranslate="cmExodusApp.cmImage.cmModule">Cm Module</span></dt>
+        <dd>
+            <div *ngIf="cmImage.cmModuleId">
+                <a [routerLink]="['/cm-module-cm', cmImage.cmModuleId]">{{cmImage.cmModuleId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="cmExodusApp.cmImage.cmItem">Cm Item</span></dt>
+        <dd>
+            <div *ngIf="cmImage.cmItemId">
+                <a [routerLink]="['/cm-item-cm', cmImage.cmItemId]">{{cmImage.cmItemId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'cm-image-cm/'+ cmImage.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,96 @@
+<div>
+    <h2>
+        <span jhiTranslate="cmExodusApp.cmText.home.title">Cm Texts</span>
+        <button class="btn btn-primary float-right jh-create-entity create-cm-text-cm" [routerLink]="['/', { outlets: { popup: ['cm-text-cm-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="cmExodusApp.cmText.home.createLabel">
+            Create new Cm Text
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="cmTexts">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="textSv"><span jhiTranslate="cmExodusApp.cmText.textSv">Text Sv</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="textEn"><span jhiTranslate="cmExodusApp.cmText.textEn">Text En</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="fontSize"><span jhiTranslate="cmExodusApp.cmText.fontSize">Font Size</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="fontWeight"><span jhiTranslate="cmExodusApp.cmText.fontWeight">Font Weight</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="type"><span jhiTranslate="cmExodusApp.cmText.type">Type</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="sort"><span jhiTranslate="cmExodusApp.cmText.sort">Sort</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="layout"><span jhiTranslate="cmExodusApp.cmText.layout">Layout</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="date"><span jhiTranslate="cmExodusApp.cmText.date">Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="publishDate"><span jhiTranslate="cmExodusApp.cmText.publishDate">Publish Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="publish"><span jhiTranslate="cmExodusApp.cmText.publish">Publish</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="cmModuleId"><span jhiTranslate="cmExodusApp.cmText.cmModule">Cm Module</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="cmItemId"><span jhiTranslate="cmExodusApp.cmText.cmItem">Cm Item</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let cmText of cmTexts ;trackBy: trackId">
+                <td><a [routerLink]="['../cm-text-cm', cmText.id ]">{{cmText.id}}</a></td>
+                <td>{{cmText.textSv}}</td>
+                <td>{{cmText.textEn}}</td>
+                <td>{{cmText.fontSize}}</td>
+                <td>{{cmText.fontWeight}}</td>
+                <td jhiTranslate="{{'cmExodusApp.TextType.' + cmText.type}}">{{cmText.type}}</td>
+                <td>{{cmText.sort}}</td>
+                <td jhiTranslate="{{'cmExodusApp.LayoutType.' + cmText.layout}}">{{cmText.layout}}</td>
+                <td>{{cmText.date | date:'mediumDate'}}</td>
+                <td>{{cmText.publishDate | date:'mediumDate'}}</td>
+                <td>{{cmText.publish}}</td>
+                <td>
+                    <div *ngIf="cmText.cmModuleId">
+                        <a [routerLink]="['../cm-module-cm', cmText.cmModuleId  ]" >{{cmText.cmModuleId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="cmText.cmItemId">
+                        <a [routerLink]="['../cm-item-cm', cmText.cmItemId  ]" >{{cmText.cmItemId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../cm-text-cm', cmText.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'cm-text-cm/'+ cmText.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'cm-text-cm/'+ cmText.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="cmTexts && cmTexts.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

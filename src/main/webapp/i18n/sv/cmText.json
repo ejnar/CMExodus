@@ -1,0 +1,33 @@
+
+{
+    "cmExodusApp": {
+        "cmText" : {
+            "home": {
+                "title": "Cm Texts",
+                "createLabel": "Skapa en ny Cm Text",
+                "createOrEditLabel": "Skapa eller ändra en Cm Text"
+            },
+            "created": "En ny Cm Text är skapad med id {{ param }}",
+            "updated": "En Cm Text är uppdaterad med id  {{ param }}",
+            "deleted": "En Cm Text är borttagen med id  {{ param }}",
+            "delete": {
+                "question": "Är du säker på att du vill ta bort Cm Text {{ id }}?"
+            },
+            "detail": {
+                "title": "Cm Text"
+            },
+            "textSv": "Text Sv",
+            "textEn": "Text En",
+            "fontSize": "Font Size",
+            "fontWeight": "Font Weight",
+            "type": "Type",
+            "sort": "Sort",
+            "layout": "Layout",
+            "date": "Date",
+            "publishDate": "Publish Date",
+            "publish": "Publish",
+            "cmModule": "Cm Module",
+            "cmItem": "Cm Item"
+        }
+    }
+}

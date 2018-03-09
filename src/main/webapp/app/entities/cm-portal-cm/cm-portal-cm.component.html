@@ -1,0 +1,72 @@
+<div>
+    <h2>
+        <span jhiTranslate="cmExodusApp.cmPortal.home.title">Cm Portals</span>
+        <button class="btn btn-primary float-right jh-create-entity create-cm-portal-cm" [routerLink]="['/', { outlets: { popup: ['cm-portal-cm-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="cmExodusApp.cmPortal.home.createLabel">
+            Create new Cm Portal
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="cmPortals">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="cmExodusApp.cmPortal.key">Key</span></th>
+            <th><span jhiTranslate="cmExodusApp.cmPortal.contentPath">Content Path</span></th>
+            <th><span jhiTranslate="cmExodusApp.cmPortal.name">Name</span></th>
+            <th><span jhiTranslate="cmExodusApp.cmPortal.metaName">Meta Name</span></th>
+            <th><span jhiTranslate="cmExodusApp.cmPortal.metaTitle">Meta Title</span></th>
+            <th><span jhiTranslate="cmExodusApp.cmPortal.metaApplicationName">Meta Application Name</span></th>
+            <th><span jhiTranslate="cmExodusApp.cmPortal.metaKeywords">Meta Keywords</span></th>
+            <th><span jhiTranslate="cmExodusApp.cmPortal.metaDescription">Meta Description</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let cmPortal of cmPortals ;trackBy: trackId">
+                <td><a [routerLink]="['../cm-portal-cm', cmPortal.id ]">{{cmPortal.id}}</a></td>
+                <td>{{cmPortal.key}}</td>
+                <td>{{cmPortal.contentPath}}</td>
+                <td>{{cmPortal.name}}</td>
+                <td>{{cmPortal.metaName}}</td>
+                <td>{{cmPortal.metaTitle}}</td>
+                <td>{{cmPortal.metaApplicationName}}</td>
+                <td>{{cmPortal.metaKeywords}}</td>
+                <td>{{cmPortal.metaDescription}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../cm-portal-cm', cmPortal.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'cm-portal-cm/'+ cmPortal.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'cm-portal-cm/'+ cmPortal.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

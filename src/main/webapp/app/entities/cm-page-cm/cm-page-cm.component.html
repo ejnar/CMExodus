@@ -1,0 +1,80 @@
+<div>
+    <h2>
+        <span jhiTranslate="cmExodusApp.cmPage.home.title">Cm Pages</span>
+        <button class="btn btn-primary float-right jh-create-entity create-cm-page-cm" [routerLink]="['/', { outlets: { popup: ['cm-page-cm-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="cmExodusApp.cmPage.home.createLabel">
+            Create new Cm Page
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="cmPages">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="title"><span jhiTranslate="cmExodusApp.cmPage.title">Title</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="metaTitle"><span jhiTranslate="cmExodusApp.cmPage.metaTitle">Meta Title</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="metaDescription"><span jhiTranslate="cmExodusApp.cmPage.metaDescription">Meta Description</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="sort"><span jhiTranslate="cmExodusApp.cmPage.sort">Sort</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="layout"><span jhiTranslate="cmExodusApp.cmPage.layout">Layout</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="cmSubTopicId"><span jhiTranslate="cmExodusApp.cmPage.cmSubTopic">Cm Sub Topic</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let cmPage of cmPages ;trackBy: trackId">
+                <td><a [routerLink]="['../cm-page-cm', cmPage.id ]">{{cmPage.id}}</a></td>
+                <td>{{cmPage.title}}</td>
+                <td>{{cmPage.metaTitle}}</td>
+                <td>{{cmPage.metaDescription}}</td>
+                <td>{{cmPage.sort}}</td>
+                <td jhiTranslate="{{'cmExodusApp.PageLayout.' + cmPage.layout}}">{{cmPage.layout}}</td>
+                <td>
+                    <div *ngIf="cmPage.cmSubTopicId">
+                        <a [routerLink]="['../cm-sub-topic-cm', cmPage.cmSubTopicId  ]" >{{cmPage.cmSubTopicId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../cm-page-cm', cmPage.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'cm-page-cm/'+ cmPage.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'cm-page-cm/'+ cmPage.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="cmPages && cmPages.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

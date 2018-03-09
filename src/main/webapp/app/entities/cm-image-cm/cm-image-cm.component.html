@@ -1,0 +1,92 @@
+<div>
+    <h2>
+        <span jhiTranslate="cmExodusApp.cmImage.home.title">Cm Images</span>
+        <button class="btn btn-primary float-right jh-create-entity create-cm-image-cm" [routerLink]="['/', { outlets: { popup: ['cm-image-cm-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="cmExodusApp.cmImage.home.createLabel">
+            Create new Cm Image
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="cmImages">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="name"><span jhiTranslate="cmExodusApp.cmImage.name">Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="type"><span jhiTranslate="cmExodusApp.cmImage.type">Type</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="toolTip"><span jhiTranslate="cmExodusApp.cmImage.toolTip">Tool Tip</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="sort"><span jhiTranslate="cmExodusApp.cmImage.sort">Sort</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="layout"><span jhiTranslate="cmExodusApp.cmImage.layout">Layout</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="date"><span jhiTranslate="cmExodusApp.cmImage.date">Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="publishDate"><span jhiTranslate="cmExodusApp.cmImage.publishDate">Publish Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="publish"><span jhiTranslate="cmExodusApp.cmImage.publish">Publish</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="cmModuleId"><span jhiTranslate="cmExodusApp.cmImage.cmModule">Cm Module</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="cmItemId"><span jhiTranslate="cmExodusApp.cmImage.cmItem">Cm Item</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let cmImage of cmImages ;trackBy: trackId">
+                <td><a [routerLink]="['../cm-image-cm', cmImage.id ]">{{cmImage.id}}</a></td>
+                <td>{{cmImage.name}}</td>
+                <td>{{cmImage.type}}</td>
+                <td>{{cmImage.toolTip}}</td>
+                <td>{{cmImage.sort}}</td>
+                <td jhiTranslate="{{'cmExodusApp.LayoutType.' + cmImage.layout}}">{{cmImage.layout}}</td>
+                <td>{{cmImage.date | date:'mediumDate'}}</td>
+                <td>{{cmImage.publishDate | date:'mediumDate'}}</td>
+                <td>{{cmImage.publish}}</td>
+                <td>
+                    <div *ngIf="cmImage.cmModuleId">
+                        <a [routerLink]="['../cm-module-cm', cmImage.cmModuleId  ]" >{{cmImage.cmModuleId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="cmImage.cmItemId">
+                        <a [routerLink]="['../cm-item-cm', cmImage.cmItemId  ]" >{{cmImage.cmItemId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../cm-image-cm', cmImage.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'cm-image-cm/'+ cmImage.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'cm-image-cm/'+ cmImage.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="cmImages && cmImages.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

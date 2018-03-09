@@ -1,0 +1,29 @@
+
+{
+    "cmExodusApp": {
+        "cmPage" : {
+            "home": {
+                "title": "Cm Pages",
+                "createLabel": "Skapa en ny Cm Page",
+                "createOrEditLabel": "Skapa eller ändra en Cm Page"
+            },
+            "created": "En ny Cm Page är skapad med id {{ param }}",
+            "updated": "En Cm Page är uppdaterad med id  {{ param }}",
+            "deleted": "En Cm Page är borttagen med id  {{ param }}",
+            "delete": {
+                "question": "Är du säker på att du vill ta bort Cm Page {{ id }}?"
+            },
+            "detail": {
+                "title": "Cm Page"
+            },
+            "title": "Title",
+            "metaTitle": "Meta Title",
+            "metaDescription": "Meta Description",
+            "sort": "Sort",
+            "layout": "Layout",
+            "cmSubTopic": "Cm Sub Topic",
+            "authority": "Authority",
+            "module": "Module"
+        }
+    }
+}

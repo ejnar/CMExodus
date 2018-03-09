@@ -1,0 +1,9 @@
+{
+    "cmExodusApp": {
+        "PageLayout" : {
+            "null": "",
+            "MAIN": "MAIN",
+            "COLUMN": "COLUMN"
+        }
+    }
+}

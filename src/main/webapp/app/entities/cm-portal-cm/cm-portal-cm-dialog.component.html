@@ -1,0 +1,101 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myCmPortalLabel" jhiTranslate="cmExodusApp.cmPortal.home.createOrEditLabel">Create or edit a Cm Portal</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!cmPortal.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="cmPortal.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cmExodusApp.cmPortal.key" for="field_key">Key</label>
+            <input type="text" class="form-control" name="key" id="field_key"
+                [(ngModel)]="cmPortal.key" required/>
+            <div [hidden]="!(editForm.controls.key?.dirty && editForm.controls.key?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.key?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cmExodusApp.cmPortal.contentPath" for="field_contentPath">Content Path</label>
+            <input type="text" class="form-control" name="contentPath" id="field_contentPath"
+                [(ngModel)]="cmPortal.contentPath" required/>
+            <div [hidden]="!(editForm.controls.contentPath?.dirty && editForm.controls.contentPath?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.contentPath?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cmExodusApp.cmPortal.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                [(ngModel)]="cmPortal.name" required/>
+            <div [hidden]="!(editForm.controls.name?.dirty && editForm.controls.name?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.name?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cmExodusApp.cmPortal.metaName" for="field_metaName">Meta Name</label>
+            <input type="text" class="form-control" name="metaName" id="field_metaName"
+                [(ngModel)]="cmPortal.metaName" required/>
+            <div [hidden]="!(editForm.controls.metaName?.dirty && editForm.controls.metaName?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.metaName?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cmExodusApp.cmPortal.metaTitle" for="field_metaTitle">Meta Title</label>
+            <input type="text" class="form-control" name="metaTitle" id="field_metaTitle"
+                [(ngModel)]="cmPortal.metaTitle" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cmExodusApp.cmPortal.metaApplicationName" for="field_metaApplicationName">Meta Application Name</label>
+            <input type="text" class="form-control" name="metaApplicationName" id="field_metaApplicationName"
+                [(ngModel)]="cmPortal.metaApplicationName" required/>
+            <div [hidden]="!(editForm.controls.metaApplicationName?.dirty && editForm.controls.metaApplicationName?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.metaApplicationName?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cmExodusApp.cmPortal.metaKeywords" for="field_metaKeywords">Meta Keywords</label>
+            <input type="text" class="form-control" name="metaKeywords" id="field_metaKeywords"
+                [(ngModel)]="cmPortal.metaKeywords" required/>
+            <div [hidden]="!(editForm.controls.metaKeywords?.dirty && editForm.controls.metaKeywords?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.metaKeywords?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cmExodusApp.cmPortal.metaDescription" for="field_metaDescription">Meta Description</label>
+            <input type="text" class="form-control" name="metaDescription" id="field_metaDescription"
+                [(ngModel)]="cmPortal.metaDescription" />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

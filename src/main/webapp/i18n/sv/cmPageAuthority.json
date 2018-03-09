@@ -1,0 +1,24 @@
+
+{
+    "cmExodusApp": {
+        "cmPageAuthority" : {
+            "home": {
+                "title": "Cm Page Authorities",
+                "createLabel": "Skapa en ny Cm Page Authority",
+                "createOrEditLabel": "Skapa eller ändra en Cm Page Authority"
+            },
+            "created": "En ny Cm Page Authority är skapad med id {{ param }}",
+            "updated": "En Cm Page Authority är uppdaterad med id  {{ param }}",
+            "deleted": "En Cm Page Authority är borttagen med id  {{ param }}",
+            "delete": {
+                "question": "Är du säker på att du vill ta bort Cm Page Authority {{ id }}?"
+            },
+            "detail": {
+                "title": "Cm Page Authority"
+            },
+            "user": "User",
+            "role": "Role",
+            "cmPage": "Cm Page"
+        }
+    }
+}

@@ -1,0 +1,29 @@
+
+{
+    "cmExodusApp": {
+        "cmPortal" : {
+            "home": {
+                "title": "Cm Portals",
+                "createLabel": "Create a new Cm Portal",
+                "createOrEditLabel": "Create or edit a Cm Portal"
+            },
+            "created": "A new Cm Portal is created with identifier {{ param }}",
+            "updated": "A Cm Portal is updated with identifier {{ param }}",
+            "deleted": "A Cm Portal is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Cm Portal {{ id }}?"
+            },
+            "detail": {
+                "title": "Cm Portal"
+            },
+            "key": "Key",
+            "contentPath": "Content Path",
+            "name": "Name",
+            "metaName": "Meta Name",
+            "metaTitle": "Meta Title",
+            "metaApplicationName": "Meta Application Name",
+            "metaKeywords": "Meta Keywords",
+            "metaDescription": "Meta Description"
+        }
+    }
+}

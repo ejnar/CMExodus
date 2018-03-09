@@ -1,0 +1,46 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "list",
+            "otherEntityName": "cmItem",
+            "otherEntityRelationshipName": "cmModule"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "text",
+            "otherEntityName": "cmText",
+            "otherEntityRelationshipName": "cmModule"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "image",
+            "otherEntityName": "cmImage",
+            "otherEntityRelationshipName": "cmModule"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "sort",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "type",
+            "fieldType": "ModuleType",
+            "fieldValues": "TEXT,IMAGE,TEXT_IMAGE,IMAGE_LIST,PROGRAM_LIST"
+        },
+        {
+            "fieldName": "layout",
+            "fieldType": "LayoutType",
+            "fieldValues": "LEFT,RIGHT,MIDDLE,CENTER,TOP,BOTTOM,SIDEBYSIDE"
+        }
+    ],
+    "changelogDate": "20180309131423",
+    "entityTableName": "cm_module",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "angularJSSuffix": "cm"
+}

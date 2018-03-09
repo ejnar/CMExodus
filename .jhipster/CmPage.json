@@ -1,0 +1,58 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "cmSubTopic",
+            "otherEntityName": "cmSubTopic",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "authority",
+            "otherEntityName": "cmPageAuthority",
+            "otherEntityRelationshipName": "cmPage"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "",
+            "relationshipName": "module",
+            "otherEntityName": "cmModule",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "title",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "metaTitle",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "metaDescription",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "sort",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "layout",
+            "fieldType": "PageLayout",
+            "fieldValues": "MAIN,COLUMN"
+        }
+    ],
+    "changelogDate": "20180309131422",
+    "entityTableName": "cm_page",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "angularJSSuffix": "cm"
+}

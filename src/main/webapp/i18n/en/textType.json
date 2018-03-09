@@ -1,0 +1,10 @@
+{
+    "cmExodusApp": {
+        "TextType" : {
+            "null": "",
+            "TITLE": "TITLE",
+            "INGRESS": "INGRESS",
+            "TEXT": "TEXT"
+        }
+    }
+}

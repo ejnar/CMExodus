@@ -1,0 +1,29 @@
+
+{
+    "cmExodusApp": {
+        "cmPortal" : {
+            "home": {
+                "title": "Cm Portals",
+                "createLabel": "Skapa en ny Cm Portal",
+                "createOrEditLabel": "Skapa eller ändra en Cm Portal"
+            },
+            "created": "En ny Cm Portal är skapad med id {{ param }}",
+            "updated": "En Cm Portal är uppdaterad med id  {{ param }}",
+            "deleted": "En Cm Portal är borttagen med id  {{ param }}",
+            "delete": {
+                "question": "Är du säker på att du vill ta bort Cm Portal {{ id }}?"
+            },
+            "detail": {
+                "title": "Cm Portal"
+            },
+            "key": "Key",
+            "contentPath": "Content Path",
+            "name": "Name",
+            "metaName": "Meta Name",
+            "metaTitle": "Meta Title",
+            "metaApplicationName": "Meta Application Name",
+            "metaKeywords": "Meta Keywords",
+            "metaDescription": "Meta Description"
+        }
+    }
+}

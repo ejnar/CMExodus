@@ -1,0 +1,27 @@
+
+{
+    "cmExodusApp": {
+        "cmItem" : {
+            "home": {
+                "title": "Cm Items",
+                "createLabel": "Create a new Cm Item",
+                "createOrEditLabel": "Create or edit a Cm Item"
+            },
+            "created": "A new Cm Item is created with identifier {{ param }}",
+            "updated": "A Cm Item is updated with identifier {{ param }}",
+            "deleted": "A Cm Item is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Cm Item {{ id }}?"
+            },
+            "detail": {
+                "title": "Cm Item"
+            },
+            "date": "Date",
+            "toolTip": "Tool Tip",
+            "layout": "Layout",
+            "cmModule": "Cm Module",
+            "text": "Text",
+            "image": "Image"
+        }
+    }
+}

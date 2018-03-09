@@ -1,0 +1,27 @@
+
+{
+    "cmExodusApp": {
+        "cmModule" : {
+            "home": {
+                "title": "Cm Modules",
+                "createLabel": "Skapa en ny Cm Module",
+                "createOrEditLabel": "Skapa eller ändra en Cm Module"
+            },
+            "created": "En ny Cm Module är skapad med id {{ param }}",
+            "updated": "En Cm Module är uppdaterad med id  {{ param }}",
+            "deleted": "En Cm Module är borttagen med id  {{ param }}",
+            "delete": {
+                "question": "Är du säker på att du vill ta bort Cm Module {{ id }}?"
+            },
+            "detail": {
+                "title": "Cm Module"
+            },
+            "sort": "Sort",
+            "type": "Type",
+            "layout": "Layout",
+            "list": "List",
+            "text": "Text",
+            "image": "Image"
+        }
+    }
+}
