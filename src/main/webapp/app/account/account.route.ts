@@ -9,7 +9,7 @@ import {
     settingsRoute
 } from './';
 
-const ACCOUNT_ROUTES = [
+export const ACCOUNT_ROUTES = [
     activateRoute,
     passwordRoute,
     passwordResetFinishRoute,

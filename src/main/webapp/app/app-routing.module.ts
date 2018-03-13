@@ -1,11 +1,34 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { errorRoute, navbarRoute } from './layouts';
+import { errorRoute, navbarRoute, adminNavbarRoute } from './layouts';
 import { DEBUG_INFO_ENABLED } from './app.constants';
 
+import { homeRoute } from './home';
+import { auditsRoute, logsRoute } from './admin';
+
+import { ADMIN_HOME_ROUTE, cmExodusAdminRoute } from './admin';
+
+// const LAYOUT_ROUTES = [ navbarRoute, ...errorRoute ];
+
 const LAYOUT_ROUTES = [
-    navbarRoute,
-    ...errorRoute
+    { path: '', redirectTo: 'app', pathMatch: 'full' },
+    {
+        path: 'app', children: [
+            navbarRoute,
+            homeRoute,
+            auditsRoute,
+            logsRoute,
+            ...errorRoute
+        ]
+    },
+    {
+        path: 'admin', children: [
+            adminNavbarRoute,
+            ADMIN_HOME_ROUTE,
+            ...errorRoute
+        ]
+    },
+        ...cmExodusAdminRoute
 ];
 
 @NgModule({

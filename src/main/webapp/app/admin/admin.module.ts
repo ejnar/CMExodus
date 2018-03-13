@@ -6,7 +6,7 @@ import { CmExodusSharedModule } from '../shared';
 /* jhipster-needle-add-admin-module-import - JHipster will add admin modules imports here */
 
 import {
-    adminState,
+    // adminState,
     AuditsComponent,
     UserMgmtComponent,
     UserDialogComponent,
@@ -29,13 +29,15 @@ import {
     LogsService,
     UserResolvePagingParams,
     UserResolve,
-    UserModalService
+    UserModalService,
+    CmExodusAdminComponent,
+    cmExodusAdminRoute
 } from './';
 
 @NgModule({
     imports: [
         CmExodusSharedModule,
-        RouterModule.forChild(adminState),
+        RouterModule.forChild(cmExodusAdminRoute),
         /* jhipster-needle-add-admin-module - JHipster will add admin modules here */
     ],
     declarations: [
@@ -53,7 +55,8 @@ import {
         JhiDocsComponent,
         JhiTrackerComponent,
         JhiMetricsMonitoringComponent,
-        JhiMetricsMonitoringModalComponent
+        JhiMetricsMonitoringModalComponent,
+        CmExodusAdminComponent
     ],
     entryComponents: [
         UserMgmtDialogComponent,

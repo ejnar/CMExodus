@@ -1,4 +1,9 @@
 import { Routes } from '@angular/router';
+import { Route } from '@angular/router';
+
+import { errorRoute, adminNavbarRoute } from '.././layouts';
+import { CmExodusAdminComponent } from './admin.component';
+import { UserRouteAccessService } from '../shared';
 
 import {
     auditsRoute,
@@ -12,25 +17,49 @@ import {
     userDialogRoute
 } from './';
 
-import { UserRouteAccessService } from '../shared';
+import { ACCOUNT_ROUTES } from '../account';
+import { ENTITIES_ROUTES } from '../entities';
 
-const ADMIN_ROUTES = [
+export const ADMIN_ROUTES = [
     auditsRoute,
     configurationRoute,
     docsRoute,
     healthRoute,
     logsRoute,
+    metricsRoute,
     trackerRoute,
-    ...userMgmtRoute,
-    metricsRoute
+    ...userMgmtRoute
+];
+
+export const ADMIN_HOME_ROUTE: Route = {
+    path: '',
+    component: CmExodusAdminComponent,
+    data: {
+        authorities: [],
+        pageTitle: 'home.title'
+    }
+};
+
+export const cmExodusAdminRoute: Routes = [
+{
+    path: 'admin',
+    data: { authorities: ['ROLE_ADMIN'], },
+    canActivate: [UserRouteAccessService],
+    children: [
+        adminNavbarRoute,
+        ...ADMIN_ROUTES,
+        ...ACCOUNT_ROUTES,
+        ...ENTITIES_ROUTES,
+        ...errorRoute
+    ]
+},
+    ...userDialogRoute
 ];
 
 export const adminState: Routes = [{
     path: '',
-    data: {
-        authorities: ['ROLE_ADMIN']
-    },
-    canActivate: [UserRouteAccessService],
+    data: { authorities: ['ROLE_ADMIN'], },
+canActivate: [UserRouteAccessService],
     children: ADMIN_ROUTES
 },
     ...userDialogRoute

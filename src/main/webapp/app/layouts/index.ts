@@ -8,3 +8,6 @@ export * from './navbar/active-menu.directive';
 export * from './profiles/page-ribbon.component';
 export * from './profiles/profile.service';
 export * from './profiles/profile-info.model';
+export * from './adminNavbar/adminNavbar.component';
+export * from './adminNavbar/adminNavbar.route';
+// export * from './adminNavbar/active-menu.directive';

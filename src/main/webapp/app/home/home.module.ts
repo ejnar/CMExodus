@@ -3,12 +3,12 @@ import { RouterModule } from '@angular/router';
 
 import { CmExodusSharedModule } from '../shared';
 
-import { HOME_ROUTE, HomeComponent } from './';
+import { homeRoute, HomeComponent } from './';
 
 @NgModule({
     imports: [
         CmExodusSharedModule,
-        RouterModule.forChild([ HOME_ROUTE ])
+        RouterModule.forChild([ homeRoute ])
     ],
     declarations: [
         HomeComponent,

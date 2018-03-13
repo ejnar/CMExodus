@@ -5,6 +5,10 @@ package se.cm.exodus.security;
  */
 public final class AuthoritiesConstants {
 
+    public static final String PUBLISHER = "ROLE_PUBLISHER";
+
+    public static final String EDITOR = "ROLE_EDITOR";
+
     public static final String ADMIN = "ROLE_ADMIN";
 
     public static final String USER = "ROLE_USER";
