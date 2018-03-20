@@ -25,6 +25,10 @@
                 <constraints nullable="false" />
             </column>
 
+            <column name="visable" type="boolean">
+                <constraints nullable="true" />
+            </column>
+
             <column name="cm_topic_id" type="bigint">
                 <constraints nullable="true" />
             </column>

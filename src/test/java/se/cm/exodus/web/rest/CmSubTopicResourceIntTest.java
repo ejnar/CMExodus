@@ -43,6 +43,9 @@ public class CmSubTopicResourceIntTest {
     private static final String DEFAULT_NAME = "AAAAAAAAAA";
     private static final String UPDATED_NAME = "BBBBBBBBBB";
 
+    private static final Boolean DEFAULT_VISABLE = false;
+    private static final Boolean UPDATED_VISABLE = true;
+
     @Autowired
     private CmSubTopicRepository cmSubTopicRepository;
 
@@ -84,7 +87,8 @@ public class CmSubTopicResourceIntTest {
      */
     public static CmSubTopic createEntity(EntityManager em) {
         CmSubTopic cmSubTopic = new CmSubTopic()
-            .name(DEFAULT_NAME);
+            .name(DEFAULT_NAME)
+            .visable(DEFAULT_VISABLE);
         return cmSubTopic;
     }
 
@@ -110,6 +114,7 @@ public class CmSubTopicResourceIntTest {
         assertThat(cmSubTopicList).hasSize(databaseSizeBeforeCreate + 1);
         CmSubTopic testCmSubTopic = cmSubTopicList.get(cmSubTopicList.size() - 1);
         assertThat(testCmSubTopic.getName()).isEqualTo(DEFAULT_NAME);
+        assertThat(testCmSubTopic.isVisable()).isEqualTo(DEFAULT_VISABLE);
     }
 
     @Test
@@ -162,7 +167,8 @@ public class CmSubTopicResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(cmSubTopic.getId().intValue())))
-            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())));
+            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
+            .andExpect(jsonPath("$.[*].visable").value(hasItem(DEFAULT_VISABLE.booleanValue())));
     }
 
     @Test
@@ -176,7 +182,8 @@ public class CmSubTopicResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(cmSubTopic.getId().intValue()))
-            .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()));
+            .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
+            .andExpect(jsonPath("$.visable").value(DEFAULT_VISABLE.booleanValue()));
     }
 
     @Test
@@ -199,7 +206,8 @@ public class CmSubTopicResourceIntTest {
         // Disconnect from session so that the updates on updatedCmSubTopic are not directly saved in db
         em.detach(updatedCmSubTopic);
         updatedCmSubTopic
-            .name(UPDATED_NAME);
+            .name(UPDATED_NAME)
+            .visable(UPDATED_VISABLE);
         CmSubTopicDTO cmSubTopicDTO = cmSubTopicMapper.toDto(updatedCmSubTopic);
 
         restCmSubTopicMockMvc.perform(put("/api/cm-sub-topics")
@@ -212,6 +220,7 @@ public class CmSubTopicResourceIntTest {
         assertThat(cmSubTopicList).hasSize(databaseSizeBeforeUpdate);
         CmSubTopic testCmSubTopic = cmSubTopicList.get(cmSubTopicList.size() - 1);
         assertThat(testCmSubTopic.getName()).isEqualTo(UPDATED_NAME);
+        assertThat(testCmSubTopic.isVisable()).isEqualTo(UPDATED_VISABLE);
     }
 
     @Test

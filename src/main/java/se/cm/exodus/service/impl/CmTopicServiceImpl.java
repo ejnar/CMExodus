@@ -55,7 +55,7 @@ public class CmTopicServiceImpl implements CmTopicService {
     @Transactional(readOnly = true)
     public List<CmTopicDTO> findAll() {
         log.debug("Request to get all CmTopics");
-        return cmTopicRepository.findAll().stream()
+        return cmTopicRepository.findAllIncludeSubTopic().stream()
             .map(cmTopicMapper::toDto)
             .collect(Collectors.toCollection(LinkedList::new));
     }

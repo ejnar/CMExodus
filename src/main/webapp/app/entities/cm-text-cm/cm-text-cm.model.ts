@@ -3,7 +3,8 @@ import { BaseEntity } from './../../shared';
 export const enum TextType {
     'TITLE',
     'INGRESS',
-    'TEXT'
+    'TEXT',
+    'LIST'
 }
 
 export const enum LayoutType {

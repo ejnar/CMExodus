@@ -21,6 +21,10 @@
             "fieldValidateRules": [
                 "required"
             ]
+        },
+        {
+            "fieldName": "visable",
+            "fieldType": "Boolean"
         }
     ],
     "changelogDate": "20180309131419",

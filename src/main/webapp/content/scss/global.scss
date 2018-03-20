@@ -6,6 +6,9 @@ Bootstrap tweaks
 
 body, h1, h2, h3, h4 {
     font-weight: 300;
+    color: #000;
+    // width: 100%;
+    // margin: 0%;
 }
 
 a {
@@ -16,6 +19,7 @@ a {
 a:hover {
     color: #533f03;
     font-weight: bold;
+    text-decoration: none;
 }
 
 /* ==========================================================================
@@ -44,8 +48,8 @@ Generic styles
 /* other generic styles */
 
 .jh-card {
-    padding: 1.5%;
-    margin-top: 20px;
+    // padding: 1.5%;
+    // margin-top: 20px;
     border: none;
 }
 

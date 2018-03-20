@@ -17,6 +17,7 @@
                 "title": "Cm Sub Topic"
             },
             "name": "Name",
+            "visable": "Visable",
             "cmTopic": "Cm Topic",
             "page": "Page"
         }

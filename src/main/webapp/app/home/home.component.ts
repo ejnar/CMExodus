@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { JhiEventManager } from 'ng-jhipster';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { Account, LoginModalService, Principal } from '../shared';
 
@@ -19,11 +20,16 @@ export class HomeComponent implements OnInit {
     constructor(
         private principal: Principal,
         private loginModalService: LoginModalService,
-        private eventManager: JhiEventManager
+        private eventManager: JhiEventManager,
+        private route: ActivatedRoute,
+        private router: Router
     ) {
+        console.log('HomeComponent.constructor');
+        this.route.queryParams.subscribe( (params) => console.log(params));
     }
 
     ngOnInit() {
+        console.log('HomeComponent.ngOnInit');
         this.principal.identity().then((account) => {
             this.account = account;
         });

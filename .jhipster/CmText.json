@@ -37,7 +37,7 @@
         {
             "fieldName": "type",
             "fieldType": "TextType",
-            "fieldValues": "TITLE,INGRESS,TEXT"
+            "fieldValues": "TITLE,INGRESS,TEXT,LIST"
         },
         {
             "fieldName": "sort",

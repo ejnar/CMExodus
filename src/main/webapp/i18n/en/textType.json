@@ -4,7 +4,8 @@
             "null": "",
             "TITLE": "TITLE",
             "INGRESS": "INGRESS",
-            "TEXT": "TEXT"
+            "TEXT": "TEXT",
+            "LIST": "LIST"
         }
     }
 }

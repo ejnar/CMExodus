@@ -1,6 +1,9 @@
 package se.cm.exodus.service.dto;
 
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -10,6 +13,8 @@ import java.util.Objects;
 /**
  * A DTO for the CmTopic entity.
  */
+@Data
+@EqualsAndHashCode (of = {"id"})
 public class CmTopicDTO implements Serializable {
 
     private Long id;
@@ -17,48 +22,6 @@ public class CmTopicDTO implements Serializable {
     @NotNull
     private String name;
 
-    public Long getId() {
-        return id;
-    }
+    private Set<CmSubTopicDTO> subTopics = new HashSet<>();
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-
-        CmTopicDTO cmTopicDTO = (CmTopicDTO) o;
-        if(cmTopicDTO.getId() == null || getId() == null) {
-            return false;
-        }
-        return Objects.equals(getId(), cmTopicDTO.getId());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(getId());
-    }
-
-    @Override
-    public String toString() {
-        return "CmTopicDTO{" +
-            "id=" + getId() +
-            ", name='" + getName() + "'" +
-            "}";
-    }
 }

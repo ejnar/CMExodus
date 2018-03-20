@@ -28,6 +28,9 @@ public class CmSubTopic implements Serializable {
     @Column(name = "name", nullable = false)
     private String name;
 
+    @Column(name = "visable")
+    private Boolean visable;
+
     @ManyToOne
     private CmTopic cmTopic;
 
@@ -55,6 +58,19 @@ public class CmSubTopic implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Boolean isVisable() {
+        return visable;
+    }
+
+    public CmSubTopic visable(Boolean visable) {
+        this.visable = visable;
+        return this;
+    }
+
+    public void setVisable(Boolean visable) {
+        this.visable = visable;
     }
 
     public CmTopic getCmTopic() {
@@ -121,6 +137,7 @@ public class CmSubTopic implements Serializable {
         return "CmSubTopic{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
+            ", visable='" + isVisable() + "'" +
             "}";
     }
 }

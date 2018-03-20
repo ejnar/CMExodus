@@ -30,6 +30,30 @@ Add the `help` flag on any command to see how you can use it. For example, `yarn
 
 The `yarn run` command will list all of the scripts available to run for this project.
 
+### Generate Entity JDL 
+
+If you want to use JHipster UML instead of the import-jdl sub-generator you need to install it by running npm install -g jhipster-uml.
+
+You can then use JDL files to generate entities:
+
+simply create a file with the extension ‘.jh’ or ‘.jdl’,
+declare your entities and relationships or create and download the file with JDL-Studio,
+in your JHipster application’s root folder, run jhipster import-jdl my_file.jdl or jhipster-uml my_file.jdl.
+and Voilà, you are done!
+
+If you work in a team, perhaps you would like to have multiple files instead of one. We added this option so that you don’t manually concatenate all the files into one, you just have to run jhipster import-jdl my_file1.jh my_file2.jh or jhipster-uml my_file1.jh my_file2.jh.
+
+    jhipster import-jdl my_file1.jh my_file2.jh
+
+If you do not want to regenerate your entities, while importing a JDL, you can use the --json-only flag to skip entity creation part and create only the json files in .jhipster folder.
+    
+    jhipster import-jdl ./my-jdl-file.jdl --json-only
+
+By default import-jdl regenerates only entities which have changed, if you want all your entities to be regenerated then pass in the --force flag. Please note that this will overwrite all your local changes to the entity files
+    
+    jhipster import-jdl ./my-jdl-file.jdl --force
+    
+
 ### Service workers
 
 Service workers are commented by default, to enable them please uncomment the following code.

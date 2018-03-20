@@ -2,13 +2,22 @@
 /* ==========================================================================
 Navbar
 ========================================================================== */
-.navbar-version {
-    font-size: 10px;
-    color: #ccc
+.navbar-title {
+    display: block;
+    vertical-align: middle;
+    color: #f2b752;
+    font-size: 4em;
+}
+.navbar-sub {
+    display: block;
+    font-size: 1em;
+    color: #f2b752;
 }
 
+
 .jh-navbar {
-    background-color: #353d47;
+    background-color: #fff;
+    // padding: 1.0em 2em 0em 8em;
     padding: .2em 1em;
     .profile-image {
         margin: -10px 0px;
@@ -32,18 +41,31 @@ Navbar
         font-weight: 400;
     }
     .jh-navbar-toggler {
-        color: #ccc;
-        font-size: 1.5em;
+        color: #222;
+        font-size: 2.0em;
         padding: 10px;
         &:hover {
-            color: #fff;
+            color: #aaa;
         }
     }
+
 }
+
+@media (min-width: 992px) {
+    .jh-navbar-menu{
+        // margin: 6em 4em 0em 1em;
+        margin: 100em;
+        background-color: #eee;
+    }
+}
+
 
 @media screen and (min-width: 768px) {
     .jh-navbar-toggler {
         display: none;
+    }
+    .jh-navbar-menu{
+        margin: 0;
     }
 }
 
@@ -51,11 +73,9 @@ Navbar
     .jh-logo-container {
         width: 100%;
     }
-}
-
-.navbar-title {
-    display: inline-block;
-    vertical-align: middle;
+    .jh-navbar-menu{
+        margin: 0 4em 0 0;
+    }
 }
 
 /* ==========================================================================

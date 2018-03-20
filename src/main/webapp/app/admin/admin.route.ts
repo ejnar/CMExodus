@@ -55,12 +55,3 @@ export const cmExodusAdminRoute: Routes = [
 },
     ...userDialogRoute
 ];
-
-export const adminState: Routes = [{
-    path: '',
-    data: { authorities: ['ROLE_ADMIN'], },
-canActivate: [UserRouteAccessService],
-    children: ADMIN_ROUTES
-},
-    ...userDialogRoute
-];

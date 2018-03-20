@@ -8,10 +8,9 @@ import { auditsRoute, logsRoute } from './admin';
 
 import { ADMIN_HOME_ROUTE, cmExodusAdminRoute } from './admin';
 
-// const LAYOUT_ROUTES = [ navbarRoute, ...errorRoute ];
-
 const LAYOUT_ROUTES = [
     { path: '', redirectTo: 'app', pathMatch: 'full' },
+    // Public main page
     {
         path: 'app', children: [
             navbarRoute,
@@ -21,6 +20,7 @@ const LAYOUT_ROUTES = [
             ...errorRoute
         ]
     },
+    // Admin home page without authorization
     {
         path: 'admin', children: [
             adminNavbarRoute,

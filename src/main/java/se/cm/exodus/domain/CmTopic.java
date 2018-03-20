@@ -28,7 +28,7 @@ public class CmTopic implements Serializable {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "cmTopic")
+    @OneToMany(mappedBy = "cmTopic", fetch=FetchType.LAZY)
     @JsonIgnore
     private Set<CmSubTopic> subTopics = new HashSet<>();
 

@@ -1,6 +1,6 @@
 import { Route } from '@angular/router';
 
-import { NavbarComponent, AdminNavbarComponent } from './layouts';
+// import { NavbarComponent, AdminNavbarComponent } from './layouts';
 
 // export const navbarRoute: Route = {
 //    path: '',

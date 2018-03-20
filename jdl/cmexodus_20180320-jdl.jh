@@ -1,0 +1,119 @@
+
+entity CmTopic {
+	name String required
+}
+entity CmSubTopic{
+	name String required
+    visable Boolean
+}
+relationship OneToMany {
+	CmTopic{subTopic} to CmSubTopic
+}
+entity CmPortal{
+	key String required
+	contentPath String required
+    name String required
+    metaName String required
+    metaTitle String
+    metaApplicationName String required
+    metaKeywords String required
+    metaDescription String
+}
+entity CmPageAuthority{
+	user String required
+    role String required
+}
+entity CmPage{
+	title String required
+    metaTitle String
+    metaDescription String
+    sort Integer
+    layout PageLayout
+}
+entity CmModule{ 
+    sort Integer
+    type ModuleType
+    layout LayoutType
+}
+entity CmItem{
+	date LocalDate
+    toolTip String
+    layout LayoutType
+}
+entity CmText{
+  	textSv String required
+  	textEn String
+    fontSize String
+    fontWeight String
+    type TextType 
+    sort Integer
+    layout LayoutType
+    date LocalDate
+    publishDate LocalDate
+    publish Boolean required
+}
+entity CmImage{
+	name String required
+    type String required
+    toolTip String
+    sort Integer
+    layout LayoutType
+    date LocalDate 
+    publishDate LocalDate
+    publish Boolean required
+}
+enum ModuleType {
+    TEXT, IMAGE, 
+    TEXT_IMAGE, 
+    IMAGE_LIST, 
+    PROGRAM_LIST
+}
+enum LayoutType {
+	LEFT, RIGHT,
+    MIDDLE, CENTER,
+    TOP, BOTTOM,
+    SIDEBYSIDE
+}
+enum TextType {
+	TITLE,
+    INGRESS,
+    TEXT,
+    LIST
+}
+enum PageLayout{
+	MAIN, COLUMN
+}
+relationship OneToMany {
+	CmPage{authority} to CmPageAuthority
+}
+relationship OneToMany {
+	CmSubTopic{page} to CmPage
+}
+relationship ManyToMany {
+	CmPage{module} to CmModule
+}
+relationship OneToMany {
+	CmModule{list} to CmItem
+}
+relationship OneToMany{
+	CmModule{text} to CmText
+}
+relationship OneToMany{
+	CmItem{text} to CmText
+}
+relationship OneToMany{
+	CmModule{image} to CmImage
+}
+relationship OneToMany{
+	CmItem{image} to CmImage
+}
+// Set pagination options
+//paginate JobHistory, Employee with infinite-scroll
+paginate CmPage, CmImage, CmText with pagination
+
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl except CmSubTopic, CmModule, CmPageAuthority
+// Set an angular suffix
+angularSuffix * with cm
