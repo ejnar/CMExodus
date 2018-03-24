@@ -2,6 +2,7 @@ import org.gradle.internal.os.OperatingSystem
 
 buildscript {
     repositories {
+        mavenCentral()
         mavenLocal()
         jcenter()
         maven { url "http://repo.spring.io/plugins-release" }
@@ -51,7 +52,6 @@ defaultTasks 'bootRun'
 
 group = 'se.cm.exodus'
 version = '0.0.1-SNAPSHOT'
-
 description = ''
 
 bootRepackage {
@@ -199,7 +199,7 @@ dependencies {
     compile "org.postgresql:postgresql"
     compile "org.mapstruct:mapstruct-jdk8:${mapstruct_version}"
     compileOnly "org.projectlombok:lombok:${lombok_version}"
-
+    //compile 'org.projectlombok:lombok:1.16.18'
     apt "org.mapstruct:mapstruct-processor:${mapstruct_version}", "org.projectlombok:lombok:${lombok_version}"
 
     testCompile "com.jayway.jsonpath:json-path"

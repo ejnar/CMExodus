@@ -12,6 +12,7 @@ import { ErrorHandlerInterceptor } from './blocks/interceptor/errorhandler.inter
 import { NotificationInterceptor } from './blocks/interceptor/notification.interceptor';
 import { CmExodusSharedModule, UserRouteAccessService } from './shared';
 import { CmExodusAppRoutingModule} from './app-routing.module';
+import { CmExodusLayoutModule} from './layouts/layouts.module';
 import { CmExodusHomeModule } from './home/home.module';
 import { CmExodusAdminModule } from './admin/admin.module';
 import { CmExodusAccountModule } from './account/account.module';
@@ -36,6 +37,7 @@ import {  // AdminNavbarComponent,
         CmExodusAppRoutingModule,
         Ng2Webstorage.forRoot({ prefix: 'jhi', separator: '-'}),
         CmExodusSharedModule,
+        CmExodusLayoutModule,
         CmExodusHomeModule,
         CmExodusAdminModule,
         CmExodusAccountModule,

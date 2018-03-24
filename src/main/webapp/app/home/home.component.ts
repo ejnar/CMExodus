@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { JhiEventManager } from 'ng-jhipster';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, ActivationEnd } from '@angular/router';
 
 import { Account, LoginModalService, Principal } from '../shared';
 
@@ -16,6 +16,7 @@ import { Account, LoginModalService, Principal } from '../shared';
 export class HomeComponent implements OnInit {
     account: Account;
     modalRef: NgbModalRef;
+    pageParam: String;
 
     constructor(
         private principal: Principal,
@@ -25,7 +26,13 @@ export class HomeComponent implements OnInit {
         private router: Router
     ) {
         console.log('HomeComponent.constructor');
-        this.route.queryParams.subscribe( (params) => console.log(params));
+        router.events.subscribe((data) => {
+            if (data instanceof ActivationEnd) {
+                this.pageParam = data.snapshot.queryParams.page;
+            }
+        } );
+
+        this.route.queryParams.subscribe( (params) => console.log('Testing.queryParams: ' + params));
     }
 
     ngOnInit() {

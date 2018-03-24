@@ -31,8 +31,8 @@
                   file="config/liquibase/topics.csv"
                   separator=";"
                   tableName="cm_topic">
-            <column name="activated" type="boolean"/>
-            <column name="created_date" type="timestamp"/>
+            <column name="id" type="numeric" />
+            <column name="name" type="string"/>
         </loadData>
 
     </changeSet>

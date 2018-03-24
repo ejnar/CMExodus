@@ -10,4 +10,8 @@ export * from './profiles/profile.service';
 export * from './profiles/profile-info.model';
 export * from './adminNavbar/adminNavbar.component';
 export * from './adminNavbar/adminNavbar.route';
+export * from './menu/topic.model';
+export * from './menu/subtopic.model';
+export * from './navbar/navbar.service';
+export * from './layouts.module';
 // export * from './adminNavbar/active-menu.directive';

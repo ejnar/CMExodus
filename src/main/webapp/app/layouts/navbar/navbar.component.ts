@@ -1,12 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpResponse } from '@angular/common/http';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { JhiLanguageService } from 'ng-jhipster';
+import { JhiLanguageService, JhiAlertService } from 'ng-jhipster';
+import { Observable } from 'rxjs/Observable';
 
 import { ProfileService } from '../profiles/profile.service';
 import { JhiLanguageHelper, Principal, LoginModalService, LoginService } from '../../shared';
-
 import { VERSION } from '../../app.constants';
+
+import { NavbarService } from './navbar.service';
+import { Topic } from '../menu/topic.model';
 
 @Component({
     selector: 'jhi-navbar',
@@ -22,6 +26,7 @@ export class NavbarComponent implements OnInit {
     swaggerEnabled: boolean;
     modalRef: NgbModalRef;
     version: string;
+    menus: Topic[];
 
     constructor(
         private loginService: LoginService,
@@ -30,6 +35,8 @@ export class NavbarComponent implements OnInit {
         private principal: Principal,
         private loginModalService: LoginModalService,
         private profileService: ProfileService,
+        private navbarService: NavbarService,
+        private alertService: JhiAlertService,
         private router: Router
     ) {
         this.version = VERSION ? 'v' + VERSION : '';
@@ -45,6 +52,27 @@ export class NavbarComponent implements OnInit {
             this.inProduction = profileInfo.inProduction;
             this.swaggerEnabled = profileInfo.swaggerEnabled;
         });
+
+        console.log('NavbarComponent.ngOnInit');
+        this.loadAll();
+    }
+
+    loadAll() {
+        this.navbarService.get().subscribe(
+           (resp) => this.onSuccess(resp.body, resp.headers),
+           (error) => this.onError(error.body)
+        );
+    }
+
+    private onSuccess(data, headers) {
+        this.menus = data;
+        this.menus.forEach((item) => {
+            item.name = 'global.menu.' + item.name;
+        });
+    }
+
+    private onError(error) {
+        this.alertService.error(error.error, error.message, null);
     }
 
     changeLanguage(languageKey: string) {
@@ -76,4 +104,8 @@ export class NavbarComponent implements OnInit {
     getImageUrl() {
         return this.isAuthenticated() ? this.principal.getImageUrl() : null;
     }
+
+    // ngOnDestroy() {
+    //    this.navbarService.unsubscribe();
+    // }
 }
