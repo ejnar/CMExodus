@@ -8,9 +8,11 @@
             "otherEntityField": "id"
         },
         {
-            "relationshipType": "one-to-many",
+            "relationshipType": "one-to-one",
             "relationshipName": "page",
             "otherEntityName": "cmPage",
+            "otherEntityField": "id",
+            "ownerSide": true,
             "otherEntityRelationshipName": "cmSubTopic"
         }
     ],

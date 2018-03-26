@@ -19,7 +19,7 @@ import { CmExodusAccountModule } from './account/account.module';
 import { CmExodusEntityModule } from './entities/entity.module';
 import { PaginationConfig } from './blocks/config/uib-pagination.config';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
-import {  // AdminNavbarComponent,
+import {
     JhiMainComponent,
     NavbarComponent,
     AdminNavbarComponent,
@@ -29,6 +29,7 @@ import {  // AdminNavbarComponent,
     ActiveMenuDirective,
     ErrorComponent
 } from './layouts';
+import { CmExodusContentModule } from './content/content.module';
 // import { CmManagementModule } from './cm-management/cm-management.module';
 
 @NgModule({
@@ -42,6 +43,7 @@ import {  // AdminNavbarComponent,
         CmExodusAdminModule,
         CmExodusAccountModule,
         CmExodusEntityModule,
+        CmExodusContentModule
         // jhipster-needle-angular-add-module JHipster will add new module here
     ],
     declarations: [

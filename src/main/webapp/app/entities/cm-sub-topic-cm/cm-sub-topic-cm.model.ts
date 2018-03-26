@@ -6,7 +6,7 @@ export class CmSubTopicCm implements BaseEntity {
         public name?: string,
         public visable?: boolean,
         public cmTopicId?: number,
-        public pages?: BaseEntity[],
+        public pageId?: number,
     ) {
         this.visable = false;
     }

@@ -10,6 +10,7 @@ import { CmSubTopicCm } from './cm-sub-topic-cm.model';
 import { CmSubTopicCmPopupService } from './cm-sub-topic-cm-popup.service';
 import { CmSubTopicCmService } from './cm-sub-topic-cm.service';
 import { CmTopicCm, CmTopicCmService } from '../cm-topic-cm';
+import { CmPageCm, CmPageCmService } from '../cm-page-cm';
 
 @Component({
     selector: 'jhi-cm-sub-topic-cm-dialog',
@@ -22,11 +23,14 @@ export class CmSubTopicCmDialogComponent implements OnInit {
 
     cmtopics: CmTopicCm[];
 
+    pages: CmPageCm[];
+
     constructor(
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
         private cmSubTopicService: CmSubTopicCmService,
         private cmTopicService: CmTopicCmService,
+        private cmPageService: CmPageCmService,
         private eventManager: JhiEventManager
     ) {
     }
@@ -35,6 +39,19 @@ export class CmSubTopicCmDialogComponent implements OnInit {
         this.isSaving = false;
         this.cmTopicService.query()
             .subscribe((res: HttpResponse<CmTopicCm[]>) => { this.cmtopics = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
+        this.cmPageService
+            .query({filter: 'cmsubtopic-is-null'})
+            .subscribe((res: HttpResponse<CmPageCm[]>) => {
+                if (!this.cmSubTopic.pageId) {
+                    this.pages = res.body;
+                } else {
+                    this.cmPageService
+                        .find(this.cmSubTopic.pageId)
+                        .subscribe((subRes: HttpResponse<CmPageCm>) => {
+                            this.pages = [subRes.body].concat(res.body);
+                        }, (subRes: HttpErrorResponse) => this.onError(subRes.message));
+                }
+            }, (res: HttpErrorResponse) => this.onError(res.message));
     }
 
     clear() {
@@ -72,6 +89,10 @@ export class CmSubTopicCmDialogComponent implements OnInit {
     }
 
     trackCmTopicById(index: number, item: CmTopicCm) {
+        return item.id;
+    }
+
+    trackCmPageById(index: number, item: CmPageCm) {
         return item.id;
     }
 }

@@ -9,7 +9,6 @@ import { CmExodusTestModule } from '../../../test.module';
 import { CmPageCmDialogComponent } from '../../../../../../main/webapp/app/entities/cm-page-cm/cm-page-cm-dialog.component';
 import { CmPageCmService } from '../../../../../../main/webapp/app/entities/cm-page-cm/cm-page-cm.service';
 import { CmPageCm } from '../../../../../../main/webapp/app/entities/cm-page-cm/cm-page-cm.model';
-import { CmSubTopicCmService } from '../../../../../../main/webapp/app/entities/cm-sub-topic-cm';
 import { CmModuleCmService } from '../../../../../../main/webapp/app/entities/cm-module-cm';
 
 describe('Component Tests', () => {
@@ -26,7 +25,6 @@ describe('Component Tests', () => {
                 imports: [CmExodusTestModule],
                 declarations: [CmPageCmDialogComponent],
                 providers: [
-                    CmSubTopicCmService,
                     CmModuleCmService,
                     CmPageCmService
                 ]

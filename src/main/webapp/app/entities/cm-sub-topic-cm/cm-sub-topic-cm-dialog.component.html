@@ -36,6 +36,13 @@
                 <option [ngValue]="cmTopicOption.id" *ngFor="let cmTopicOption of cmtopics; trackBy: trackCmTopicById">{{cmTopicOption.id}}</option>
             </select>
         </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cmExodusApp.cmSubTopic.page" for="field_page">Page</label>
+            <select class="form-control" id="field_page" name="page" [(ngModel)]="cmSubTopic.pageId">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="cmPageOption.id" *ngFor="let cmPageOption of pages; trackBy: trackCmPageById">{{cmPageOption.id}}</option>
+            </select>
+        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">

@@ -7,7 +7,6 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.Objects;
 
-
 /**
  * A DTO for the CmSubTopic entity.
  */
@@ -21,6 +20,8 @@ public class CmSubTopicDTO implements Serializable {
     private Boolean visable;
 
     private Long cmTopicId;
+
+    private Long pageId;
 
     public Long getId() {
         return id;
@@ -52,6 +53,14 @@ public class CmSubTopicDTO implements Serializable {
 
     public void setCmTopicId(Long cmTopicId) {
         this.cmTopicId = cmTopicId;
+    }
+
+    public Long getPageId() {
+        return pageId;
+    }
+
+    public void setPageId(Long cmPageId) {
+        this.pageId = cmPageId;
     }
 
     @Override

@@ -30,7 +30,7 @@
                 </a>
                 <ul class="dropdown-menu" ngbDropdownMenu *ngIf="menu.subTopics.length > 0">
                     <li *ngFor="let sub of menu.subTopics">
-                        <a class="dropdown-item" [routerLink]="['/']"  [queryParams]="{ page: sub.name }"  routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                        <a class="dropdown-item" [routerLink]="['/app/content']"  [queryParams]="{ page: sub.name }"  routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
                             {{menu.name + '.' + sub.name | translate}}</a>
                     </li>
                 </ul>

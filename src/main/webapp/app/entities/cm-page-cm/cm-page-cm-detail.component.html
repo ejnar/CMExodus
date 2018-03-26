@@ -24,12 +24,6 @@
         <dd>
             <span jhiTranslate="{{'cmExodusApp.PageLayout.' + cmPage.layout}}">{{cmPage.layout}}</span>
         </dd>
-        <dt><span jhiTranslate="cmExodusApp.cmPage.cmSubTopic">Cm Sub Topic</span></dt>
-        <dd>
-            <div *ngIf="cmPage.cmSubTopicId">
-                <a [routerLink]="['/cm-sub-topic-cm', cmPage.cmSubTopicId]">{{cmPage.cmSubTopicId}}</a>
-            </div>
-        </dd>
         <dt><span jhiTranslate="cmExodusApp.cmPage.module">Module</span></dt>
         <dd>
             <span *ngFor="let module of cmPage.modules; let last = last">

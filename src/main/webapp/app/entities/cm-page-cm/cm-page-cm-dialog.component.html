@@ -47,13 +47,6 @@
         </div>
 
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="cmExodusApp.cmPage.cmSubTopic" for="field_cmSubTopic">Cm Sub Topic</label>
-            <select class="form-control" id="field_cmSubTopic" name="cmSubTopic" [(ngModel)]="cmPage.cmSubTopicId" >
-                <option [ngValue]="null"></option>
-                <option [ngValue]="cmSubTopicOption.id" *ngFor="let cmSubTopicOption of cmsubtopics; trackBy: trackCmSubTopicById">{{cmSubTopicOption.id}}</option>
-            </select>
-        </div>
-        <div class="form-group">
             <label jhiTranslate="cmExodusApp.cmPage.module" for="field_module">Module</label>
             <select class="form-control" id="field_module" multiple name="module" [(ngModel)]="cmPage.modules">
                 <option [ngValue]="getSelected(cmPage.modules, cmModuleOption)" *ngFor="let cmModuleOption of cmmodules; trackBy: trackCmModuleById">{{cmModuleOption.id}}</option>

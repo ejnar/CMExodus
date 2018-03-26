@@ -10,6 +10,7 @@ import { CmSubTopicCmDialogComponent } from '../../../../../../main/webapp/app/e
 import { CmSubTopicCmService } from '../../../../../../main/webapp/app/entities/cm-sub-topic-cm/cm-sub-topic-cm.service';
 import { CmSubTopicCm } from '../../../../../../main/webapp/app/entities/cm-sub-topic-cm/cm-sub-topic-cm.model';
 import { CmTopicCmService } from '../../../../../../main/webapp/app/entities/cm-topic-cm';
+import { CmPageCmService } from '../../../../../../main/webapp/app/entities/cm-page-cm';
 
 describe('Component Tests', () => {
 
@@ -26,6 +27,7 @@ describe('Component Tests', () => {
                 declarations: [CmSubTopicCmDialogComponent],
                 providers: [
                     CmTopicCmService,
+                    CmPageCmService,
                     CmSubTopicCmService
                 ]
             })

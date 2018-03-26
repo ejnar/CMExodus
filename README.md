@@ -43,7 +43,7 @@ and Voilà, you are done!
 
 If you work in a team, perhaps you would like to have multiple files instead of one. We added this option so that you don’t manually concatenate all the files into one, you just have to run jhipster import-jdl my_file1.jh my_file2.jh or jhipster-uml my_file1.jh my_file2.jh.
 
-    jhipster import-jdl my_file1.jh my_file2.jh
+    jhipster import-jdl cmexodus_20180324-jdl.jh my_file2.jh
 
 If you do not want to regenerate your entities, while importing a JDL, you can use the --json-only flag to skip entity creation part and create only the json files in .jhipster folder.
     

@@ -18,6 +18,12 @@
                 <a [routerLink]="['/cm-topic-cm', cmSubTopic.cmTopicId]">{{cmSubTopic.cmTopicId}}</a>
             </div>
         </dd>
+        <dt><span jhiTranslate="cmExodusApp.cmSubTopic.page">Page</span></dt>
+        <dd>
+            <div *ngIf="cmSubTopic.pageId">
+                <a [routerLink]="['/cm-page-cm', cmSubTopic.pageId]">{{cmSubTopic.pageId}}</a>
+            </div>
+        </dd>
     </dl>
 
     <button type="submit"

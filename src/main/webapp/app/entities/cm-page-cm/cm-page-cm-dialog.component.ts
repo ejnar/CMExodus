@@ -9,7 +9,6 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { CmPageCm } from './cm-page-cm.model';
 import { CmPageCmPopupService } from './cm-page-cm-popup.service';
 import { CmPageCmService } from './cm-page-cm.service';
-import { CmSubTopicCm, CmSubTopicCmService } from '../cm-sub-topic-cm';
 import { CmModuleCm, CmModuleCmService } from '../cm-module-cm';
 
 @Component({
@@ -21,15 +20,12 @@ export class CmPageCmDialogComponent implements OnInit {
     cmPage: CmPageCm;
     isSaving: boolean;
 
-    cmsubtopics: CmSubTopicCm[];
-
     cmmodules: CmModuleCm[];
 
     constructor(
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
         private cmPageService: CmPageCmService,
-        private cmSubTopicService: CmSubTopicCmService,
         private cmModuleService: CmModuleCmService,
         private eventManager: JhiEventManager
     ) {
@@ -37,8 +33,6 @@ export class CmPageCmDialogComponent implements OnInit {
 
     ngOnInit() {
         this.isSaving = false;
-        this.cmSubTopicService.query()
-            .subscribe((res: HttpResponse<CmSubTopicCm[]>) => { this.cmsubtopics = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
         this.cmModuleService.query()
             .subscribe((res: HttpResponse<CmModuleCm[]>) => { this.cmmodules = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
     }
@@ -75,10 +69,6 @@ export class CmPageCmDialogComponent implements OnInit {
 
     private onError(error: any) {
         this.jhiAlertService.error(error.message, null, null);
-    }
-
-    trackCmSubTopicById(index: number, item: CmSubTopicCm) {
-        return item.id;
     }
 
     trackCmModuleById(index: number, item: CmModuleCm) {

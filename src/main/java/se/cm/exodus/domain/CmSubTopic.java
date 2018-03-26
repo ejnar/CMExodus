@@ -1,13 +1,10 @@
 package se.cm.exodus.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -34,9 +31,9 @@ public class CmSubTopic implements Serializable {
     @ManyToOne
     private CmTopic cmTopic;
 
-    @OneToMany(mappedBy = "cmSubTopic")
-    @JsonIgnore
-    private Set<CmPage> pages = new HashSet<>();
+    @OneToOne
+    @JoinColumn(unique = true)
+    private CmPage page;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -86,29 +83,17 @@ public class CmSubTopic implements Serializable {
         this.cmTopic = cmTopic;
     }
 
-    public Set<CmPage> getPages() {
-        return pages;
+    public CmPage getPage() {
+        return page;
     }
 
-    public CmSubTopic pages(Set<CmPage> cmPages) {
-        this.pages = cmPages;
+    public CmSubTopic page(CmPage cmPage) {
+        this.page = cmPage;
         return this;
     }
 
-    public CmSubTopic addPage(CmPage cmPage) {
-        this.pages.add(cmPage);
-        cmPage.setCmSubTopic(this);
-        return this;
-    }
-
-    public CmSubTopic removePage(CmPage cmPage) {
-        this.pages.remove(cmPage);
-        cmPage.setCmSubTopic(null);
-        return this;
-    }
-
-    public void setPages(Set<CmPage> cmPages) {
-        this.pages = cmPages;
+    public void setPage(CmPage cmPage) {
+        this.page = cmPage;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

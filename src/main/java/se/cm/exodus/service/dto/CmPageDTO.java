@@ -26,8 +26,6 @@ public class CmPageDTO implements Serializable {
 
     private PageLayout layout;
 
-    private Long cmSubTopicId;
-
     private Set<CmModuleDTO> modules = new HashSet<>();
 
     public Long getId() {
@@ -76,14 +74,6 @@ public class CmPageDTO implements Serializable {
 
     public void setLayout(PageLayout layout) {
         this.layout = layout;
-    }
-
-    public Long getCmSubTopicId() {
-        return cmSubTopicId;
-    }
-
-    public void setCmSubTopicId(Long cmSubTopicId) {
-        this.cmSubTopicId = cmSubTopicId;
     }
 
     public Set<CmModuleDTO> getModules() {

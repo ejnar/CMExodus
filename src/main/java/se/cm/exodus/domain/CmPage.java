@@ -43,9 +43,6 @@ public class CmPage implements Serializable {
     @Column(name = "layout")
     private PageLayout layout;
 
-    @ManyToOne
-    private CmSubTopic cmSubTopic;
-
     @OneToMany(mappedBy = "cmPage")
     @JsonIgnore
     private Set<CmPageAuthority> authorities = new HashSet<>();
@@ -128,19 +125,6 @@ public class CmPage implements Serializable {
 
     public void setLayout(PageLayout layout) {
         this.layout = layout;
-    }
-
-    public CmSubTopic getCmSubTopic() {
-        return cmSubTopic;
-    }
-
-    public CmPage cmSubTopic(CmSubTopic cmSubTopic) {
-        this.cmSubTopic = cmSubTopic;
-        return this;
-    }
-
-    public void setCmSubTopic(CmSubTopic cmSubTopic) {
-        this.cmSubTopic = cmSubTopic;
     }
 
     public Set<CmPageAuthority> getAuthorities() {

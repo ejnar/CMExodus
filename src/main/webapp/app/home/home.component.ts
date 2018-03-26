@@ -16,7 +16,6 @@ import { Account, LoginModalService, Principal } from '../shared';
 export class HomeComponent implements OnInit {
     account: Account;
     modalRef: NgbModalRef;
-    pageParam: String;
 
     constructor(
         private principal: Principal,
@@ -25,14 +24,6 @@ export class HomeComponent implements OnInit {
         private route: ActivatedRoute,
         private router: Router
     ) {
-        console.log('HomeComponent.constructor');
-        router.events.subscribe((data) => {
-            if (data instanceof ActivationEnd) {
-                this.pageParam = data.snapshot.queryParams.page;
-            }
-        } );
-
-        this.route.queryParams.subscribe( (params) => console.log('Testing.queryParams: ' + params));
     }
 
     ngOnInit() {

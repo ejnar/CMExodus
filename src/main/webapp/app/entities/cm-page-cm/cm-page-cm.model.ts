@@ -13,7 +13,6 @@ export class CmPageCm implements BaseEntity {
         public metaDescription?: string,
         public sort?: number,
         public layout?: PageLayout,
-        public cmSubTopicId?: number,
         public authorities?: BaseEntity[],
         public modules?: BaseEntity[],
     ) {
