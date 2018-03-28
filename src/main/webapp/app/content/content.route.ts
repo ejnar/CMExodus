@@ -1,10 +1,10 @@
 import { Route } from '@angular/router';
 
-import { ContentComponent } from './';
+import { ContentEngineComponent } from './';
 
 export const contentRoute: Route = {
     path: 'content',
-    component: ContentComponent,
+    component: ContentEngineComponent,
     data: {
         authorities: [],
         pageTitle: 'content.title'

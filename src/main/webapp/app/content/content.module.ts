@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router';
 
 import { CmExodusSharedModule } from '../shared';
 
-import { contentRoute, ContentComponent } from './';
+import { contentRoute, ContentEngineComponent } from './';
 
 @NgModule({
     imports: [
@@ -11,7 +11,7 @@ import { contentRoute, ContentComponent } from './';
         RouterModule.forChild([ contentRoute ])
     ],
     declarations: [
-        ContentComponent,
+        ContentEngineComponent,
     ],
     entryComponents: [
     ],
