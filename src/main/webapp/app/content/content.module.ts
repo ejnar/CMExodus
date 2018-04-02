@@ -3,7 +3,13 @@ import { RouterModule } from '@angular/router';
 
 import { CmExodusSharedModule } from '../shared';
 
-import { contentRoute, ContentEngineComponent } from './';
+import { ContentComponent } from './content.component';
+import { ContentService } from './content.service';
+import { ContentDirective } from './content.directive';
+import { HeroJobContentComponent } from './hero-job-content.component';
+import { HeroProfileComponent } from './hero-profile.component';
+import { ContentEngineComponent } from './content-engine.component';
+import { contentRoute } from './content.route';
 
 @NgModule({
     imports: [
@@ -11,11 +17,17 @@ import { contentRoute, ContentEngineComponent } from './';
         RouterModule.forChild([ contentRoute ])
     ],
     declarations: [
+        ContentDirective,
+        ContentComponent,
+        HeroJobContentComponent,
+        HeroProfileComponent,
         ContentEngineComponent,
     ],
     entryComponents: [
+        HeroJobContentComponent, HeroProfileComponent
     ],
     providers: [
+        ContentService
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

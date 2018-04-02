@@ -2,20 +2,28 @@
 /* ==========================================================================
 Main page styles
 ========================================================================== */
-.streachCarousel{
-    width: auto !important;
+.hero-profile {
+  border: 1px solid gray;
+  padding: 5px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  border-radius: 10px;
+  background-color: lightgreen;
+  color: black;
 }
-.jh_carousel{
-    text-align: center;
-    float: none;
-    display: block;
-    margin: 0 auto;
-    border:0;
+
+.job-ad {
+  border: 1px solid gray;
+  padding: 5px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  border-radius: 10px;
+  background-color: lightblue;
+  color: black;
 }
-.jh_img{
-    object-fit: fill;
-    width: 100%;
-    height: auto;
+
+.ad-banner {
+  width: 400px;
 }
 
 .hipster {

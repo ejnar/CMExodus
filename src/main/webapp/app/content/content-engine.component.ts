@@ -1,27 +1,31 @@
 import { Component, Input, OnInit, ViewChild, ComponentFactoryResolver, OnDestroy } from '@angular/core';
 
+import { ContentItem } from './content-item';
+import { ContentService } from './content.service';
 import { ContentDirective } from './content.directive';
-import { ContentItem }      from './content-item';
-import { ContentComponent } from './content.component';
+import { ComponentInterface } from './component-interface';
 
 @Component({
-  selector: 'app-ad-banner',
-  template: `
+    selector: 'jhi-content-engine',
+    template: `
               <div class="ad-banner">
-                <h3>Advertisements</h3>
-                <ng-template content-directive></ng-template>
+                <ng-template jhiContentDirective></ng-template>
               </div>
-            `
+            `,
+    styleUrls: [
+        'content.scss'
+    ]
 })
 export class ContentEngineComponent implements OnInit, OnDestroy {
-  @Input() items: ContentItem[];
+  items: ContentItem[];
   currentAdIndex: number = -1;
   @ViewChild(ContentDirective) contentDirective: ContentDirective;
   interval: any;
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver) { }
+  constructor(private componentFactoryResolver: ComponentFactoryResolver, private contentService: ContentService) { }
 
   ngOnInit() {
+    this.items = this.contentService.getContent();
     this.loadComponent();
     this.getContentes();
   }
@@ -32,15 +36,15 @@ export class ContentEngineComponent implements OnInit, OnDestroy {
 
   loadComponent() {
     this.currentAdIndex = (this.currentAdIndex + 1) % this.items.length;
-    let item = this.items[this.currentAdIndex];
+    const item = this.items[this.currentAdIndex];
 
-    let componentFactory = this.componentFactoryResolver.resolveComponentFactory(item.component);
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(item.component);
 
-    let viewContainerRef = this.contentDirective.viewContainerRef;
-    // viewContainerRef.clear();
+    const viewContainerRef = this.contentDirective.viewContainerRef;
+    viewContainerRef.clear();
 
-    let componentRef = viewContainerRef.createComponent(componentFactory);
-    (<ContentComponent>componentRef.instance).data = item.data;
+    const componentRef = viewContainerRef.createComponent(componentFactory);
+    (<ComponentInterface>componentRef.instance).data = item.data;
   }
 
   getContentes() {
