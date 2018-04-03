@@ -53,7 +53,6 @@ export class NavbarComponent implements OnInit {
             this.swaggerEnabled = profileInfo.swaggerEnabled;
         });
 
-        console.log('NavbarComponent.ngOnInit');
         this.loadAll();
     }
 

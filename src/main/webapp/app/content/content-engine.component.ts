@@ -17,7 +17,7 @@ import { ComponentInterface } from './component-interface';
     ]
 })
 export class ContentEngineComponent implements OnInit, OnDestroy {
-  items: ContentItem[];
+  @Input() items: ContentItem[];
   currentAdIndex: number = -1;
   @ViewChild(ContentDirective) contentDirective: ContentDirective;
   interval: any;
@@ -25,9 +25,8 @@ export class ContentEngineComponent implements OnInit, OnDestroy {
   constructor(private componentFactoryResolver: ComponentFactoryResolver, private contentService: ContentService) { }
 
   ngOnInit() {
-    this.items = this.contentService.getContent();
+    // this.items = this.contentService.getContent();
     this.loadComponent();
-    this.getContentes();
   }
 
   ngOnDestroy() {
@@ -35,21 +34,13 @@ export class ContentEngineComponent implements OnInit, OnDestroy {
   }
 
   loadComponent() {
-    this.currentAdIndex = (this.currentAdIndex + 1) % this.items.length;
-    const item = this.items[this.currentAdIndex];
+    for (let i = 0; i < this.items.length; i++) {
+        const item = this.items[i];
+        const componentFactory = this.componentFactoryResolver.resolveComponentFactory(item.component);
+        const viewContainerRef = this.contentDirective.viewContainerRef;
+        const componentRef = viewContainerRef.createComponent(componentFactory);
+        (<ComponentInterface>componentRef.instance).data = item.data;
+    }
 
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(item.component);
-
-    const viewContainerRef = this.contentDirective.viewContainerRef;
-    viewContainerRef.clear();
-
-    const componentRef = viewContainerRef.createComponent(componentFactory);
-    (<ComponentInterface>componentRef.instance).data = item.data;
-  }
-
-  getContentes() {
-    this.interval = setInterval(() => {
-      this.loadComponent();
-    }, 3000);
   }
 }
