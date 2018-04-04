@@ -47,14 +47,14 @@ public class CmImageResourceIntTest {
     private static final String DEFAULT_NAME = "AAAAAAAAAA";
     private static final String UPDATED_NAME = "BBBBBBBBBB";
 
-    private static final String DEFAULT_TYPE = "AAAAAAAAAA";
-    private static final String UPDATED_TYPE = "BBBBBBBBBB";
+    private static final String DEFAULT_IMAGE_TYPE = "AAAAAAAAAA";
+    private static final String UPDATED_IMAGE_TYPE = "BBBBBBBBBB";
 
     private static final String DEFAULT_TOOL_TIP = "AAAAAAAAAA";
     private static final String UPDATED_TOOL_TIP = "BBBBBBBBBB";
 
-    private static final Integer DEFAULT_SORT = 1;
-    private static final Integer UPDATED_SORT = 2;
+    private static final Integer DEFAULT_SORTED = 1;
+    private static final Integer UPDATED_SORTED = 2;
 
     private static final LayoutType DEFAULT_LAYOUT = LayoutType.LEFT;
     private static final LayoutType UPDATED_LAYOUT = LayoutType.RIGHT;
@@ -113,9 +113,9 @@ public class CmImageResourceIntTest {
     public static CmImage createEntity(EntityManager em) {
         CmImage cmImage = new CmImage()
             .name(DEFAULT_NAME)
-            .type(DEFAULT_TYPE)
+            .imageType(DEFAULT_IMAGE_TYPE)
             .toolTip(DEFAULT_TOOL_TIP)
-            .sort(DEFAULT_SORT)
+            .sorted(DEFAULT_SORTED)
             .layout(DEFAULT_LAYOUT)
             .date(DEFAULT_DATE)
             .publishDate(DEFAULT_PUBLISH_DATE)
@@ -145,9 +145,9 @@ public class CmImageResourceIntTest {
         assertThat(cmImageList).hasSize(databaseSizeBeforeCreate + 1);
         CmImage testCmImage = cmImageList.get(cmImageList.size() - 1);
         assertThat(testCmImage.getName()).isEqualTo(DEFAULT_NAME);
-        assertThat(testCmImage.getType()).isEqualTo(DEFAULT_TYPE);
+        assertThat(testCmImage.getImageType()).isEqualTo(DEFAULT_IMAGE_TYPE);
         assertThat(testCmImage.getToolTip()).isEqualTo(DEFAULT_TOOL_TIP);
-        assertThat(testCmImage.getSort()).isEqualTo(DEFAULT_SORT);
+        assertThat(testCmImage.getSorted()).isEqualTo(DEFAULT_SORTED);
         assertThat(testCmImage.getLayout()).isEqualTo(DEFAULT_LAYOUT);
         assertThat(testCmImage.getDate()).isEqualTo(DEFAULT_DATE);
         assertThat(testCmImage.getPublishDate()).isEqualTo(DEFAULT_PUBLISH_DATE);
@@ -195,10 +195,10 @@ public class CmImageResourceIntTest {
 
     @Test
     @Transactional
-    public void checkTypeIsRequired() throws Exception {
+    public void checkImageTypeIsRequired() throws Exception {
         int databaseSizeBeforeTest = cmImageRepository.findAll().size();
         // set the field null
-        cmImage.setType(null);
+        cmImage.setImageType(null);
 
         // Create the CmImage, which fails.
         CmImageDTO cmImageDTO = cmImageMapper.toDto(cmImage);
@@ -243,9 +243,9 @@ public class CmImageResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(cmImage.getId().intValue())))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
-            .andExpect(jsonPath("$.[*].type").value(hasItem(DEFAULT_TYPE.toString())))
+            .andExpect(jsonPath("$.[*].imageType").value(hasItem(DEFAULT_IMAGE_TYPE.toString())))
             .andExpect(jsonPath("$.[*].toolTip").value(hasItem(DEFAULT_TOOL_TIP.toString())))
-            .andExpect(jsonPath("$.[*].sort").value(hasItem(DEFAULT_SORT)))
+            .andExpect(jsonPath("$.[*].sorted").value(hasItem(DEFAULT_SORTED)))
             .andExpect(jsonPath("$.[*].layout").value(hasItem(DEFAULT_LAYOUT.toString())))
             .andExpect(jsonPath("$.[*].date").value(hasItem(DEFAULT_DATE.toString())))
             .andExpect(jsonPath("$.[*].publishDate").value(hasItem(DEFAULT_PUBLISH_DATE.toString())))
@@ -264,9 +264,9 @@ public class CmImageResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(cmImage.getId().intValue()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
-            .andExpect(jsonPath("$.type").value(DEFAULT_TYPE.toString()))
+            .andExpect(jsonPath("$.imageType").value(DEFAULT_IMAGE_TYPE.toString()))
             .andExpect(jsonPath("$.toolTip").value(DEFAULT_TOOL_TIP.toString()))
-            .andExpect(jsonPath("$.sort").value(DEFAULT_SORT))
+            .andExpect(jsonPath("$.sorted").value(DEFAULT_SORTED))
             .andExpect(jsonPath("$.layout").value(DEFAULT_LAYOUT.toString()))
             .andExpect(jsonPath("$.date").value(DEFAULT_DATE.toString()))
             .andExpect(jsonPath("$.publishDate").value(DEFAULT_PUBLISH_DATE.toString()))
@@ -294,9 +294,9 @@ public class CmImageResourceIntTest {
         em.detach(updatedCmImage);
         updatedCmImage
             .name(UPDATED_NAME)
-            .type(UPDATED_TYPE)
+            .imageType(UPDATED_IMAGE_TYPE)
             .toolTip(UPDATED_TOOL_TIP)
-            .sort(UPDATED_SORT)
+            .sorted(UPDATED_SORTED)
             .layout(UPDATED_LAYOUT)
             .date(UPDATED_DATE)
             .publishDate(UPDATED_PUBLISH_DATE)
@@ -313,9 +313,9 @@ public class CmImageResourceIntTest {
         assertThat(cmImageList).hasSize(databaseSizeBeforeUpdate);
         CmImage testCmImage = cmImageList.get(cmImageList.size() - 1);
         assertThat(testCmImage.getName()).isEqualTo(UPDATED_NAME);
-        assertThat(testCmImage.getType()).isEqualTo(UPDATED_TYPE);
+        assertThat(testCmImage.getImageType()).isEqualTo(UPDATED_IMAGE_TYPE);
         assertThat(testCmImage.getToolTip()).isEqualTo(UPDATED_TOOL_TIP);
-        assertThat(testCmImage.getSort()).isEqualTo(UPDATED_SORT);
+        assertThat(testCmImage.getSorted()).isEqualTo(UPDATED_SORTED);
         assertThat(testCmImage.getLayout()).isEqualTo(UPDATED_LAYOUT);
         assertThat(testCmImage.getDate()).isEqualTo(UPDATED_DATE);
         assertThat(testCmImage.getPublishDate()).isEqualTo(UPDATED_PUBLISH_DATE);

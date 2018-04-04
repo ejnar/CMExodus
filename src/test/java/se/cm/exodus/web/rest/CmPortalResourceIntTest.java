@@ -41,8 +41,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = CmExodusApp.class)
 public class CmPortalResourceIntTest {
 
-    private static final String DEFAULT_KEY = "AAAAAAAAAA";
-    private static final String UPDATED_KEY = "BBBBBBBBBB";
+    private static final String DEFAULT_PORTAL_KEY = "AAAAAAAAAA";
+    private static final String UPDATED_PORTAL_KEY = "BBBBBBBBBB";
 
     private static final String DEFAULT_CONTENT_PATH = "AAAAAAAAAA";
     private static final String UPDATED_CONTENT_PATH = "BBBBBBBBBB";
@@ -109,7 +109,7 @@ public class CmPortalResourceIntTest {
      */
     public static CmPortal createEntity(EntityManager em) {
         CmPortal cmPortal = new CmPortal()
-            .key(DEFAULT_KEY)
+            .portalKey(DEFAULT_PORTAL_KEY)
             .contentPath(DEFAULT_CONTENT_PATH)
             .name(DEFAULT_NAME)
             .metaName(DEFAULT_META_NAME)
@@ -141,7 +141,7 @@ public class CmPortalResourceIntTest {
         List<CmPortal> cmPortalList = cmPortalRepository.findAll();
         assertThat(cmPortalList).hasSize(databaseSizeBeforeCreate + 1);
         CmPortal testCmPortal = cmPortalList.get(cmPortalList.size() - 1);
-        assertThat(testCmPortal.getKey()).isEqualTo(DEFAULT_KEY);
+        assertThat(testCmPortal.getPortalKey()).isEqualTo(DEFAULT_PORTAL_KEY);
         assertThat(testCmPortal.getContentPath()).isEqualTo(DEFAULT_CONTENT_PATH);
         assertThat(testCmPortal.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testCmPortal.getMetaName()).isEqualTo(DEFAULT_META_NAME);
@@ -173,10 +173,10 @@ public class CmPortalResourceIntTest {
 
     @Test
     @Transactional
-    public void checkKeyIsRequired() throws Exception {
+    public void checkPortalKeyIsRequired() throws Exception {
         int databaseSizeBeforeTest = cmPortalRepository.findAll().size();
         // set the field null
-        cmPortal.setKey(null);
+        cmPortal.setPortalKey(null);
 
         // Create the CmPortal, which fails.
         CmPortalDTO cmPortalDTO = cmPortalMapper.toDto(cmPortal);
@@ -296,7 +296,7 @@ public class CmPortalResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(cmPortal.getId().intValue())))
-            .andExpect(jsonPath("$.[*].key").value(hasItem(DEFAULT_KEY.toString())))
+            .andExpect(jsonPath("$.[*].portalKey").value(hasItem(DEFAULT_PORTAL_KEY.toString())))
             .andExpect(jsonPath("$.[*].contentPath").value(hasItem(DEFAULT_CONTENT_PATH.toString())))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
             .andExpect(jsonPath("$.[*].metaName").value(hasItem(DEFAULT_META_NAME.toString())))
@@ -317,7 +317,7 @@ public class CmPortalResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(cmPortal.getId().intValue()))
-            .andExpect(jsonPath("$.key").value(DEFAULT_KEY.toString()))
+            .andExpect(jsonPath("$.portalKey").value(DEFAULT_PORTAL_KEY.toString()))
             .andExpect(jsonPath("$.contentPath").value(DEFAULT_CONTENT_PATH.toString()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
             .andExpect(jsonPath("$.metaName").value(DEFAULT_META_NAME.toString()))
@@ -347,7 +347,7 @@ public class CmPortalResourceIntTest {
         // Disconnect from session so that the updates on updatedCmPortal are not directly saved in db
         em.detach(updatedCmPortal);
         updatedCmPortal
-            .key(UPDATED_KEY)
+            .portalKey(UPDATED_PORTAL_KEY)
             .contentPath(UPDATED_CONTENT_PATH)
             .name(UPDATED_NAME)
             .metaName(UPDATED_META_NAME)
@@ -366,7 +366,7 @@ public class CmPortalResourceIntTest {
         List<CmPortal> cmPortalList = cmPortalRepository.findAll();
         assertThat(cmPortalList).hasSize(databaseSizeBeforeUpdate);
         CmPortal testCmPortal = cmPortalList.get(cmPortalList.size() - 1);
-        assertThat(testCmPortal.getKey()).isEqualTo(UPDATED_KEY);
+        assertThat(testCmPortal.getPortalKey()).isEqualTo(UPDATED_PORTAL_KEY);
         assertThat(testCmPortal.getContentPath()).isEqualTo(UPDATED_CONTENT_PATH);
         assertThat(testCmPortal.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testCmPortal.getMetaName()).isEqualTo(UPDATED_META_NAME);

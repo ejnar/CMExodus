@@ -33,11 +33,11 @@
             "fieldType": "String"
         },
         {
-            "fieldName": "sort",
+            "fieldName": "sorted",
             "fieldType": "Integer"
         },
         {
-            "fieldName": "layout",
+            "fieldName": "pageLayout",
             "fieldType": "PageLayout",
             "fieldValues": "MAIN,COLUMN"
         }

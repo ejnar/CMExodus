@@ -34,13 +34,13 @@
                 [(ngModel)]="cmPage.metaDescription" />
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="cmExodusApp.cmPage.sort" for="field_sort">Sort</label>
-            <input type="number" class="form-control" name="sort" id="field_sort"
-                [(ngModel)]="cmPage.sort" />
+            <label class="form-control-label" jhiTranslate="cmExodusApp.cmPage.sorted" for="field_sorted">Sorted</label>
+            <input type="number" class="form-control" name="sorted" id="field_sorted"
+                [(ngModel)]="cmPage.sorted" />
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="cmExodusApp.cmPage.layout" for="field_layout">Layout</label>
-            <select class="form-control" name="layout" [(ngModel)]="cmPage.layout" id="field_layout" >
+            <label class="form-control-label" jhiTranslate="cmExodusApp.cmPage.pageLayout" for="field_pageLayout">Page Layout</label>
+            <select class="form-control" name="pageLayout" [(ngModel)]="cmPage.pageLayout" id="field_pageLayout" >
                 <option value="MAIN">{{'cmExodusApp.PageLayout.MAIN' | translate}}</option>
                 <option value="COLUMN">{{'cmExodusApp.PageLayout.COLUMN' | translate}}</option>
             </select>

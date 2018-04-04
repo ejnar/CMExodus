@@ -83,6 +83,7 @@ module.exports = webpackMerge(commonConfig({ env: ENV }), {
     },
     plugins: [
         new BrowserSyncPlugin({
+            browser: 'Firefox',
             host: 'localhost',
             port: 9000,
             proxy: {

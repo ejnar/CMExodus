@@ -3,7 +3,7 @@ import { BaseEntity } from './../../shared';
 export class CmPortalCm implements BaseEntity {
     constructor(
         public id?: number,
-        public key?: string,
+        public portalKey?: string,
         public contentPath?: string,
         public name?: string,
         public metaName?: string,

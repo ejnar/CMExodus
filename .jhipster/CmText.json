@@ -35,12 +35,12 @@
             "fieldType": "String"
         },
         {
-            "fieldName": "type",
+            "fieldName": "textType",
             "fieldType": "TextType",
             "fieldValues": "TITLE,INGRESS,TEXT,LIST"
         },
         {
-            "fieldName": "sort",
+            "fieldName": "sorted",
             "fieldType": "Integer"
         },
         {

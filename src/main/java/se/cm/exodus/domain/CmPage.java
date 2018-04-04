@@ -36,12 +36,12 @@ public class CmPage implements Serializable {
     @Column(name = "meta_description")
     private String metaDescription;
 
-    @Column(name = "jhi_sort")
-    private Integer sort;
+    @Column(name = "sorted")
+    private Integer sorted;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "layout")
-    private PageLayout layout;
+    @Column(name = "page_layout")
+    private PageLayout pageLayout;
 
     @OneToMany(mappedBy = "cmPage")
     @JsonIgnore
@@ -101,30 +101,30 @@ public class CmPage implements Serializable {
         this.metaDescription = metaDescription;
     }
 
-    public Integer getSort() {
-        return sort;
+    public Integer getSorted() {
+        return sorted;
     }
 
-    public CmPage sort(Integer sort) {
-        this.sort = sort;
+    public CmPage sorted(Integer sorted) {
+        this.sorted = sorted;
         return this;
     }
 
-    public void setSort(Integer sort) {
-        this.sort = sort;
+    public void setSorted(Integer sorted) {
+        this.sorted = sorted;
     }
 
-    public PageLayout getLayout() {
-        return layout;
+    public PageLayout getPageLayout() {
+        return pageLayout;
     }
 
-    public CmPage layout(PageLayout layout) {
-        this.layout = layout;
+    public CmPage pageLayout(PageLayout pageLayout) {
+        this.pageLayout = pageLayout;
         return this;
     }
 
-    public void setLayout(PageLayout layout) {
-        this.layout = layout;
+    public void setPageLayout(PageLayout pageLayout) {
+        this.pageLayout = pageLayout;
     }
 
     public Set<CmPageAuthority> getAuthorities() {
@@ -203,8 +203,8 @@ public class CmPage implements Serializable {
             ", title='" + getTitle() + "'" +
             ", metaTitle='" + getMetaTitle() + "'" +
             ", metaDescription='" + getMetaDescription() + "'" +
-            ", sort=" + getSort() +
-            ", layout='" + getLayout() + "'" +
+            ", sorted=" + getSorted() +
+            ", pageLayout='" + getPageLayout() + "'" +
             "}";
     }
 }

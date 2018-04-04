@@ -15,9 +15,9 @@ public class CmModuleDTO implements Serializable {
 
     private Long id;
 
-    private Integer sort;
+    private Integer sorted;
 
-    private ModuleType type;
+    private ModuleType moduleType;
 
     private LayoutType layout;
 
@@ -29,20 +29,20 @@ public class CmModuleDTO implements Serializable {
         this.id = id;
     }
 
-    public Integer getSort() {
-        return sort;
+    public Integer getSorted() {
+        return sorted;
     }
 
-    public void setSort(Integer sort) {
-        this.sort = sort;
+    public void setSorted(Integer sorted) {
+        this.sorted = sorted;
     }
 
-    public ModuleType getType() {
-        return type;
+    public ModuleType getModuleType() {
+        return moduleType;
     }
 
-    public void setType(ModuleType type) {
-        this.type = type;
+    public void setModuleType(ModuleType moduleType) {
+        this.moduleType = moduleType;
     }
 
     public LayoutType getLayout() {
@@ -78,8 +78,8 @@ public class CmModuleDTO implements Serializable {
     public String toString() {
         return "CmModuleDTO{" +
             "id=" + getId() +
-            ", sort=" + getSort() +
-            ", type='" + getType() + "'" +
+            ", sorted=" + getSorted() +
+            ", moduleType='" + getModuleType() + "'" +
             ", layout='" + getLayout() + "'" +
             "}";
     }

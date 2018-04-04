@@ -29,14 +29,14 @@ public class CmImage implements Serializable {
     private String name;
 
     @NotNull
-    @Column(name = "jhi_type", nullable = false)
-    private String type;
+    @Column(name = "image_type", nullable = false)
+    private String imageType;
 
     @Column(name = "tool_tip")
     private String toolTip;
 
-    @Column(name = "jhi_sort")
-    private Integer sort;
+    @Column(name = "sorted")
+    private Integer sorted;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "layout")
@@ -80,17 +80,17 @@ public class CmImage implements Serializable {
         this.name = name;
     }
 
-    public String getType() {
-        return type;
+    public String getImageType() {
+        return imageType;
     }
 
-    public CmImage type(String type) {
-        this.type = type;
+    public CmImage imageType(String imageType) {
+        this.imageType = imageType;
         return this;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setImageType(String imageType) {
+        this.imageType = imageType;
     }
 
     public String getToolTip() {
@@ -106,17 +106,17 @@ public class CmImage implements Serializable {
         this.toolTip = toolTip;
     }
 
-    public Integer getSort() {
-        return sort;
+    public Integer getSorted() {
+        return sorted;
     }
 
-    public CmImage sort(Integer sort) {
-        this.sort = sort;
+    public CmImage sorted(Integer sorted) {
+        this.sorted = sorted;
         return this;
     }
 
-    public void setSort(Integer sort) {
-        this.sort = sort;
+    public void setSorted(Integer sorted) {
+        this.sorted = sorted;
     }
 
     public LayoutType getLayout() {
@@ -223,9 +223,9 @@ public class CmImage implements Serializable {
         return "CmImage{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
-            ", type='" + getType() + "'" +
+            ", imageType='" + getImageType() + "'" +
             ", toolTip='" + getToolTip() + "'" +
-            ", sort=" + getSort() +
+            ", sorted=" + getSorted() +
             ", layout='" + getLayout() + "'" +
             ", date='" + getDate() + "'" +
             ", publishDate='" + getPublishDate() + "'" +

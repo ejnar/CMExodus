@@ -5,5 +5,6 @@ export * from './content.directive';
 export * from './content.service';
 export * from './content.route';
 export * from './content.module';
-export * from './hero-job-content.component';
-export * from './hero-profile.component';
+export * from './modules/herojob/hero-job-content.component';
+export * from './modules/heroprofile/hero-profile.component';
+export * from './modules/programList/program-list.component';

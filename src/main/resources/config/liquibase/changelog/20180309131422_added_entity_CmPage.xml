@@ -33,27 +33,16 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="jhi_sort" type="integer">
+            <column name="sorted" type="integer">
                 <constraints nullable="true" />
             </column>
 
-            <column name="layout" type="varchar(255)">
+            <column name="page_layout" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
 
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
-
-        <loadData encoding="UTF-8"
-                  file="config/liquibase/pages.csv"
-                  separator=";"
-                  tableName="cm_page">
-            <column name="id" type="numeric" />
-            <column name="title" type="string"/>
-            <column name="jhi_sort" type="numeric"/>
-            <column name="layout" type="string"/>
-        </loadData>
-
         <createTable tableName="cm_page_module">
             <column name="modules_id" type="bigint">
                 <constraints nullable="false"/>
@@ -64,15 +53,6 @@
         </createTable>
 
         <addPrimaryKey columnNames="cm_pages_id, modules_id" tableName="cm_page_module"/>
-
-        <loadData encoding="UTF-8"
-                  file="config/liquibase/pageModules.csv"
-                  separator=";"
-                  tableName="cm_page_module">
-            <column name="modules_id" type="numeric" />
-            <column name="cm_pages_id" type="numeric" />
-        </loadData>
-
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
 </databaseChangeLog>

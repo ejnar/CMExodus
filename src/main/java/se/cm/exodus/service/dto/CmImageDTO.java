@@ -20,11 +20,11 @@ public class CmImageDTO implements Serializable {
     private String name;
 
     @NotNull
-    private String type;
+    private String imageType;
 
     private String toolTip;
 
-    private Integer sort;
+    private Integer sorted;
 
     private LayoutType layout;
 
@@ -55,12 +55,12 @@ public class CmImageDTO implements Serializable {
         this.name = name;
     }
 
-    public String getType() {
-        return type;
+    public String getImageType() {
+        return imageType;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setImageType(String imageType) {
+        this.imageType = imageType;
     }
 
     public String getToolTip() {
@@ -71,12 +71,12 @@ public class CmImageDTO implements Serializable {
         this.toolTip = toolTip;
     }
 
-    public Integer getSort() {
-        return sort;
+    public Integer getSorted() {
+        return sorted;
     }
 
-    public void setSort(Integer sort) {
-        this.sort = sort;
+    public void setSorted(Integer sorted) {
+        this.sorted = sorted;
     }
 
     public LayoutType getLayout() {
@@ -153,9 +153,9 @@ public class CmImageDTO implements Serializable {
         return "CmImageDTO{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
-            ", type='" + getType() + "'" +
+            ", imageType='" + getImageType() + "'" +
             ", toolTip='" + getToolTip() + "'" +
-            ", sort=" + getSort() +
+            ", sorted=" + getSorted() +
             ", layout='" + getLayout() + "'" +
             ", date='" + getDate() + "'" +
             ", publishDate='" + getPublishDate() + "'" +

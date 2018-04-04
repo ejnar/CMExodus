@@ -11,8 +11,8 @@ export class CmPageCm implements BaseEntity {
         public title?: string,
         public metaTitle?: string,
         public metaDescription?: string,
-        public sort?: number,
-        public layout?: PageLayout,
+        public sorted?: number,
+        public pageLayout?: PageLayout,
         public authorities?: BaseEntity[],
         public modules?: BaseEntity[],
     ) {

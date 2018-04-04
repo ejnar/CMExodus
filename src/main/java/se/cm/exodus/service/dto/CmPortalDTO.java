@@ -13,7 +13,7 @@ public class CmPortalDTO implements Serializable {
     private Long id;
 
     @NotNull
-    private String key;
+    private String portalKey;
 
     @NotNull
     private String contentPath;
@@ -42,12 +42,12 @@ public class CmPortalDTO implements Serializable {
         this.id = id;
     }
 
-    public String getKey() {
-        return key;
+    public String getPortalKey() {
+        return portalKey;
     }
 
-    public void setKey(String key) {
-        this.key = key;
+    public void setPortalKey(String portalKey) {
+        this.portalKey = portalKey;
     }
 
     public String getContentPath() {
@@ -131,7 +131,7 @@ public class CmPortalDTO implements Serializable {
     public String toString() {
         return "CmPortalDTO{" +
             "id=" + getId() +
-            ", key='" + getKey() + "'" +
+            ", portalKey='" + getPortalKey() + "'" +
             ", contentPath='" + getContentPath() + "'" +
             ", name='" + getName() + "'" +
             ", metaName='" + getMetaName() + "'" +

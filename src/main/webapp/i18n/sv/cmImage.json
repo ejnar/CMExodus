@@ -17,9 +17,9 @@
                 "title": "Cm Image"
             },
             "name": "Name",
-            "type": "Type",
+            "imageType": "Image Type",
             "toolTip": "Tool Tip",
-            "sort": "Sort",
+            "sorted": "Sorted",
             "layout": "Layout",
             "date": "Date",
             "publishDate": "Publish Date",

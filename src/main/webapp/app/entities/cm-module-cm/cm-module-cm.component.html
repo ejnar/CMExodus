@@ -17,8 +17,8 @@
             <thead>
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
-            <th><span jhiTranslate="cmExodusApp.cmModule.sort">Sort</span></th>
-            <th><span jhiTranslate="cmExodusApp.cmModule.type">Type</span></th>
+            <th><span jhiTranslate="cmExodusApp.cmModule.sorted">Sorted</span></th>
+            <th><span jhiTranslate="cmExodusApp.cmModule.moduleType">Module Type</span></th>
             <th><span jhiTranslate="cmExodusApp.cmModule.layout">Layout</span></th>
             <th></th>
             </tr>
@@ -26,8 +26,8 @@
             <tbody>
             <tr *ngFor="let cmModule of cmModules ;trackBy: trackId">
                 <td><a [routerLink]="['../cm-module-cm', cmModule.id ]">{{cmModule.id}}</a></td>
-                <td>{{cmModule.sort}}</td>
-                <td jhiTranslate="{{'cmExodusApp.ModuleType.' + cmModule.type}}">{{cmModule.type}}</td>
+                <td>{{cmModule.sorted}}</td>
+                <td jhiTranslate="{{'cmExodusApp.ModuleType.' + cmModule.moduleType}}">{{cmModule.moduleType}}</td>
                 <td jhiTranslate="{{'cmExodusApp.LayoutType.' + cmModule.layout}}">{{cmModule.layout}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">

@@ -12,12 +12,8 @@ import org.mapstruct.*;
 public interface CmTopicMapper extends EntityMapper<CmTopicDTO, CmTopic> {
 
 
-
     @Mapping(target = "subTopics", ignore = true)
     CmTopic toEntity(CmTopicDTO cmTopicDTO);
-
-//    @Mapping(target = "id", source = "cmTopicId")
-//    CmTopicDTO toDto(CmTopic entity);
 
     default CmTopic fromId(Long id) {
         if (id == null) {

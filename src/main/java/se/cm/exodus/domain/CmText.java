@@ -40,11 +40,11 @@ public class CmText implements Serializable {
     private String fontWeight;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "jhi_type")
-    private TextType type;
+    @Column(name = "text_type")
+    private TextType textType;
 
-    @Column(name = "jhi_sort")
-    private Integer sort;
+    @Column(name = "sorted")
+    private Integer sorted;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "layout")
@@ -127,30 +127,30 @@ public class CmText implements Serializable {
         this.fontWeight = fontWeight;
     }
 
-    public TextType getType() {
-        return type;
+    public TextType getTextType() {
+        return textType;
     }
 
-    public CmText type(TextType type) {
-        this.type = type;
+    public CmText textType(TextType textType) {
+        this.textType = textType;
         return this;
     }
 
-    public void setType(TextType type) {
-        this.type = type;
+    public void setTextType(TextType textType) {
+        this.textType = textType;
     }
 
-    public Integer getSort() {
-        return sort;
+    public Integer getSorted() {
+        return sorted;
     }
 
-    public CmText sort(Integer sort) {
-        this.sort = sort;
+    public CmText sorted(Integer sorted) {
+        this.sorted = sorted;
         return this;
     }
 
-    public void setSort(Integer sort) {
-        this.sort = sort;
+    public void setSorted(Integer sorted) {
+        this.sorted = sorted;
     }
 
     public LayoutType getLayout() {
@@ -260,8 +260,8 @@ public class CmText implements Serializable {
             ", textEn='" + getTextEn() + "'" +
             ", fontSize='" + getFontSize() + "'" +
             ", fontWeight='" + getFontWeight() + "'" +
-            ", type='" + getType() + "'" +
-            ", sort=" + getSort() +
+            ", textType='" + getTextType() + "'" +
+            ", sorted=" + getSorted() +
             ", layout='" + getLayout() + "'" +
             ", date='" + getDate() + "'" +
             ", publishDate='" + getPublishDate() + "'" +

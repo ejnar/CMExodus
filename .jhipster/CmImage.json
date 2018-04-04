@@ -23,7 +23,7 @@
             ]
         },
         {
-            "fieldName": "type",
+            "fieldName": "imageType",
             "fieldType": "String",
             "fieldValidateRules": [
                 "required"
@@ -34,7 +34,7 @@
             "fieldType": "String"
         },
         {
-            "fieldName": "sort",
+            "fieldName": "sorted",
             "fieldType": "Integer"
         },
         {

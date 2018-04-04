@@ -22,8 +22,8 @@ public class CmPortal implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "jhi_key", nullable = false)
-    private String key;
+    @Column(name = "portal_key", nullable = false)
+    private String portalKey;
 
     @NotNull
     @Column(name = "content_path", nullable = false)
@@ -60,17 +60,17 @@ public class CmPortal implements Serializable {
         this.id = id;
     }
 
-    public String getKey() {
-        return key;
+    public String getPortalKey() {
+        return portalKey;
     }
 
-    public CmPortal key(String key) {
-        this.key = key;
+    public CmPortal portalKey(String portalKey) {
+        this.portalKey = portalKey;
         return this;
     }
 
-    public void setKey(String key) {
-        this.key = key;
+    public void setPortalKey(String portalKey) {
+        this.portalKey = portalKey;
     }
 
     public String getContentPath() {
@@ -189,7 +189,7 @@ public class CmPortal implements Serializable {
     public String toString() {
         return "CmPortal{" +
             "id=" + getId() +
-            ", key='" + getKey() + "'" +
+            ", portalKey='" + getPortalKey() + "'" +
             ", contentPath='" + getContentPath() + "'" +
             ", name='" + getName() + "'" +
             ", metaName='" + getMetaName() + "'" +

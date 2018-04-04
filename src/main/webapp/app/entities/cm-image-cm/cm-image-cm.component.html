@@ -18,9 +18,9 @@
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="name"><span jhiTranslate="cmExodusApp.cmImage.name">Name</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="type"><span jhiTranslate="cmExodusApp.cmImage.type">Type</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="imageType"><span jhiTranslate="cmExodusApp.cmImage.imageType">Image Type</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="toolTip"><span jhiTranslate="cmExodusApp.cmImage.toolTip">Tool Tip</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="sort"><span jhiTranslate="cmExodusApp.cmImage.sort">Sort</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="sorted"><span jhiTranslate="cmExodusApp.cmImage.sorted">Sorted</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="layout"><span jhiTranslate="cmExodusApp.cmImage.layout">Layout</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="date"><span jhiTranslate="cmExodusApp.cmImage.date">Date</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="publishDate"><span jhiTranslate="cmExodusApp.cmImage.publishDate">Publish Date</span> <span class="fa fa-sort"></span></th>
@@ -34,9 +34,9 @@
             <tr *ngFor="let cmImage of cmImages ;trackBy: trackId">
                 <td><a [routerLink]="['../cm-image-cm', cmImage.id ]">{{cmImage.id}}</a></td>
                 <td>{{cmImage.name}}</td>
-                <td>{{cmImage.type}}</td>
+                <td>{{cmImage.imageType}}</td>
                 <td>{{cmImage.toolTip}}</td>
-                <td>{{cmImage.sort}}</td>
+                <td>{{cmImage.sorted}}</td>
                 <td jhiTranslate="{{'cmExodusApp.LayoutType.' + cmImage.layout}}">{{cmImage.layout}}</td>
                 <td>{{cmImage.date | date:'mediumDate'}}</td>
                 <td>{{cmImage.publishDate | date:'mediumDate'}}</td>

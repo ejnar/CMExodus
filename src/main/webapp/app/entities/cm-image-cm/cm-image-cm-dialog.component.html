@@ -24,12 +24,12 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="cmExodusApp.cmImage.type" for="field_type">Type</label>
-            <input type="text" class="form-control" name="type" id="field_type"
-                [(ngModel)]="cmImage.type" required/>
-            <div [hidden]="!(editForm.controls.type?.dirty && editForm.controls.type?.invalid)">
+            <label class="form-control-label" jhiTranslate="cmExodusApp.cmImage.imageType" for="field_imageType">Image Type</label>
+            <input type="text" class="form-control" name="imageType" id="field_imageType"
+                [(ngModel)]="cmImage.imageType" required/>
+            <div [hidden]="!(editForm.controls.imageType?.dirty && editForm.controls.imageType?.invalid)">
                 <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.type?.errors?.required" jhiTranslate="entity.validation.required">
+                   [hidden]="!editForm.controls.imageType?.errors?.required" jhiTranslate="entity.validation.required">
                    This field is required.
                 </small>
             </div>
@@ -40,9 +40,9 @@
                 [(ngModel)]="cmImage.toolTip" />
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="cmExodusApp.cmImage.sort" for="field_sort">Sort</label>
-            <input type="number" class="form-control" name="sort" id="field_sort"
-                [(ngModel)]="cmImage.sort" />
+            <label class="form-control-label" jhiTranslate="cmExodusApp.cmImage.sorted" for="field_sorted">Sorted</label>
+            <input type="number" class="form-control" name="sorted" id="field_sorted"
+                [(ngModel)]="cmImage.sorted" />
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="cmExodusApp.cmImage.layout" for="field_layout">Layout</label>

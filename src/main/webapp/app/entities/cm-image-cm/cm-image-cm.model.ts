@@ -14,9 +14,9 @@ export class CmImageCm implements BaseEntity {
     constructor(
         public id?: number,
         public name?: string,
-        public type?: string,
+        public imageType?: string,
         public toolTip?: string,
-        public sort?: number,
+        public sorted?: number,
         public layout?: LayoutType,
         public date?: any,
         public publishDate?: any,

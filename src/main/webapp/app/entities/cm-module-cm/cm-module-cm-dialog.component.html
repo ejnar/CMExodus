@@ -13,13 +13,13 @@
                    [(ngModel)]="cmModule.id" readonly />
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="cmExodusApp.cmModule.sort" for="field_sort">Sort</label>
-            <input type="number" class="form-control" name="sort" id="field_sort"
-                [(ngModel)]="cmModule.sort" />
+            <label class="form-control-label" jhiTranslate="cmExodusApp.cmModule.sorted" for="field_sorted">Sorted</label>
+            <input type="number" class="form-control" name="sorted" id="field_sorted"
+                [(ngModel)]="cmModule.sorted" />
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="cmExodusApp.cmModule.type" for="field_type">Type</label>
-            <select class="form-control" name="type" [(ngModel)]="cmModule.type" id="field_type" >
+            <label class="form-control-label" jhiTranslate="cmExodusApp.cmModule.moduleType" for="field_moduleType">Module Type</label>
+            <select class="form-control" name="moduleType" [(ngModel)]="cmModule.moduleType" id="field_moduleType" >
                 <option value="TEXT">{{'cmExodusApp.ModuleType.TEXT' | translate}}</option>
                 <option value="IMAGE">{{'cmExodusApp.ModuleType.IMAGE' | translate}}</option>
                 <option value="TEXT_IMAGE">{{'cmExodusApp.ModuleType.TEXT_IMAGE' | translate}}</option>

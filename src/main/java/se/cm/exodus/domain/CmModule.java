@@ -27,12 +27,12 @@ public class CmModule implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Column(name = "jhi_sort")
-    private Integer sort;
+    @Column(name = "sorted")
+    private Integer sorted;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "jhi_type")
-    private ModuleType type;
+    @Column(name = "module_type")
+    private ModuleType moduleType;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "layout")
@@ -59,30 +59,30 @@ public class CmModule implements Serializable {
         this.id = id;
     }
 
-    public Integer getSort() {
-        return sort;
+    public Integer getSorted() {
+        return sorted;
     }
 
-    public CmModule sort(Integer sort) {
-        this.sort = sort;
+    public CmModule sorted(Integer sorted) {
+        this.sorted = sorted;
         return this;
     }
 
-    public void setSort(Integer sort) {
-        this.sort = sort;
+    public void setSorted(Integer sorted) {
+        this.sorted = sorted;
     }
 
-    public ModuleType getType() {
-        return type;
+    public ModuleType getModuleType() {
+        return moduleType;
     }
 
-    public CmModule type(ModuleType type) {
-        this.type = type;
+    public CmModule moduleType(ModuleType moduleType) {
+        this.moduleType = moduleType;
         return this;
     }
 
-    public void setType(ModuleType type) {
-        this.type = type;
+    public void setModuleType(ModuleType moduleType) {
+        this.moduleType = moduleType;
     }
 
     public LayoutType getLayout() {
@@ -198,8 +198,8 @@ public class CmModule implements Serializable {
     public String toString() {
         return "CmModule{" +
             "id=" + getId() +
-            ", sort=" + getSort() +
-            ", type='" + getType() + "'" +
+            ", sorted=" + getSorted() +
+            ", moduleType='" + getModuleType() + "'" +
             ", layout='" + getLayout() + "'" +
             "}";
     }

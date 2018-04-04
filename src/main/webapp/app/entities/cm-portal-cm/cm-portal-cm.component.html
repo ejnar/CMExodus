@@ -17,7 +17,7 @@
             <thead>
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
-            <th><span jhiTranslate="cmExodusApp.cmPortal.key">Key</span></th>
+            <th><span jhiTranslate="cmExodusApp.cmPortal.portalKey">Portal Key</span></th>
             <th><span jhiTranslate="cmExodusApp.cmPortal.contentPath">Content Path</span></th>
             <th><span jhiTranslate="cmExodusApp.cmPortal.name">Name</span></th>
             <th><span jhiTranslate="cmExodusApp.cmPortal.metaName">Meta Name</span></th>
@@ -31,7 +31,7 @@
             <tbody>
             <tr *ngFor="let cmPortal of cmPortals ;trackBy: trackId">
                 <td><a [routerLink]="['../cm-portal-cm', cmPortal.id ]">{{cmPortal.id}}</a></td>
-                <td>{{cmPortal.key}}</td>
+                <td>{{cmPortal.portalKey}}</td>
                 <td>{{cmPortal.contentPath}}</td>
                 <td>{{cmPortal.name}}</td>
                 <td>{{cmPortal.metaName}}</td>

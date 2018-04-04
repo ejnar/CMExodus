@@ -51,11 +51,11 @@ public class CmPageResourceIntTest {
     private static final String DEFAULT_META_DESCRIPTION = "AAAAAAAAAA";
     private static final String UPDATED_META_DESCRIPTION = "BBBBBBBBBB";
 
-    private static final Integer DEFAULT_SORT = 1;
-    private static final Integer UPDATED_SORT = 2;
+    private static final Integer DEFAULT_SORTED = 1;
+    private static final Integer UPDATED_SORTED = 2;
 
-    private static final PageLayout DEFAULT_LAYOUT = PageLayout.MAIN;
-    private static final PageLayout UPDATED_LAYOUT = PageLayout.COLUMN;
+    private static final PageLayout DEFAULT_PAGE_LAYOUT = PageLayout.MAIN;
+    private static final PageLayout UPDATED_PAGE_LAYOUT = PageLayout.COLUMN;
 
     @Autowired
     private CmPageRepository cmPageRepository;
@@ -104,8 +104,8 @@ public class CmPageResourceIntTest {
             .title(DEFAULT_TITLE)
             .metaTitle(DEFAULT_META_TITLE)
             .metaDescription(DEFAULT_META_DESCRIPTION)
-            .sort(DEFAULT_SORT)
-            .layout(DEFAULT_LAYOUT);
+            .sorted(DEFAULT_SORTED)
+            .pageLayout(DEFAULT_PAGE_LAYOUT);
         return cmPage;
     }
 
@@ -133,8 +133,8 @@ public class CmPageResourceIntTest {
         assertThat(testCmPage.getTitle()).isEqualTo(DEFAULT_TITLE);
         assertThat(testCmPage.getMetaTitle()).isEqualTo(DEFAULT_META_TITLE);
         assertThat(testCmPage.getMetaDescription()).isEqualTo(DEFAULT_META_DESCRIPTION);
-        assertThat(testCmPage.getSort()).isEqualTo(DEFAULT_SORT);
-        assertThat(testCmPage.getLayout()).isEqualTo(DEFAULT_LAYOUT);
+        assertThat(testCmPage.getSorted()).isEqualTo(DEFAULT_SORTED);
+        assertThat(testCmPage.getPageLayout()).isEqualTo(DEFAULT_PAGE_LAYOUT);
     }
 
     @Test
@@ -190,8 +190,8 @@ public class CmPageResourceIntTest {
             .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE.toString())))
             .andExpect(jsonPath("$.[*].metaTitle").value(hasItem(DEFAULT_META_TITLE.toString())))
             .andExpect(jsonPath("$.[*].metaDescription").value(hasItem(DEFAULT_META_DESCRIPTION.toString())))
-            .andExpect(jsonPath("$.[*].sort").value(hasItem(DEFAULT_SORT)))
-            .andExpect(jsonPath("$.[*].layout").value(hasItem(DEFAULT_LAYOUT.toString())));
+            .andExpect(jsonPath("$.[*].sorted").value(hasItem(DEFAULT_SORTED)))
+            .andExpect(jsonPath("$.[*].pageLayout").value(hasItem(DEFAULT_PAGE_LAYOUT.toString())));
     }
 
     @Test
@@ -208,8 +208,8 @@ public class CmPageResourceIntTest {
             .andExpect(jsonPath("$.title").value(DEFAULT_TITLE.toString()))
             .andExpect(jsonPath("$.metaTitle").value(DEFAULT_META_TITLE.toString()))
             .andExpect(jsonPath("$.metaDescription").value(DEFAULT_META_DESCRIPTION.toString()))
-            .andExpect(jsonPath("$.sort").value(DEFAULT_SORT))
-            .andExpect(jsonPath("$.layout").value(DEFAULT_LAYOUT.toString()));
+            .andExpect(jsonPath("$.sorted").value(DEFAULT_SORTED))
+            .andExpect(jsonPath("$.pageLayout").value(DEFAULT_PAGE_LAYOUT.toString()));
     }
 
     @Test
@@ -235,8 +235,8 @@ public class CmPageResourceIntTest {
             .title(UPDATED_TITLE)
             .metaTitle(UPDATED_META_TITLE)
             .metaDescription(UPDATED_META_DESCRIPTION)
-            .sort(UPDATED_SORT)
-            .layout(UPDATED_LAYOUT);
+            .sorted(UPDATED_SORTED)
+            .pageLayout(UPDATED_PAGE_LAYOUT);
         CmPageDTO cmPageDTO = cmPageMapper.toDto(updatedCmPage);
 
         restCmPageMockMvc.perform(put("/api/cm-pages")
@@ -251,8 +251,8 @@ public class CmPageResourceIntTest {
         assertThat(testCmPage.getTitle()).isEqualTo(UPDATED_TITLE);
         assertThat(testCmPage.getMetaTitle()).isEqualTo(UPDATED_META_TITLE);
         assertThat(testCmPage.getMetaDescription()).isEqualTo(UPDATED_META_DESCRIPTION);
-        assertThat(testCmPage.getSort()).isEqualTo(UPDATED_SORT);
-        assertThat(testCmPage.getLayout()).isEqualTo(UPDATED_LAYOUT);
+        assertThat(testCmPage.getSorted()).isEqualTo(UPDATED_SORTED);
+        assertThat(testCmPage.getPageLayout()).isEqualTo(UPDATED_PAGE_LAYOUT);
     }
 
     @Test

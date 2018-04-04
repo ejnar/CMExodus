@@ -6,10 +6,12 @@ import { CmExodusSharedModule } from '../shared';
 import { ContentComponent } from './content.component';
 import { ContentService } from './content.service';
 import { ContentDirective } from './content.directive';
-import { HeroJobContentComponent } from './hero-job-content.component';
-import { HeroProfileComponent } from './hero-profile.component';
 import { ContentEngineComponent } from './content-engine.component';
 import { contentRoute } from './content.route';
+
+import { HeroJobContentComponent } from './modules/herojob/hero-job-content.component';
+import { HeroProfileComponent } from './modules/heroprofile/hero-profile.component';
+import { ProgramListComponent } from './modules/programList/program-list.component';
 
 @NgModule({
     imports: [
@@ -21,10 +23,11 @@ import { contentRoute } from './content.route';
         ContentComponent,
         HeroJobContentComponent,
         HeroProfileComponent,
+        ProgramListComponent,
         ContentEngineComponent,
     ],
     entryComponents: [
-        HeroJobContentComponent, HeroProfileComponent
+        HeroJobContentComponent, HeroProfileComponent, ProgramListComponent
     ],
     providers: [
         ContentService

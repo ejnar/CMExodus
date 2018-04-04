@@ -21,8 +21,8 @@
             <th jhiSortBy="textEn"><span jhiTranslate="cmExodusApp.cmText.textEn">Text En</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="fontSize"><span jhiTranslate="cmExodusApp.cmText.fontSize">Font Size</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="fontWeight"><span jhiTranslate="cmExodusApp.cmText.fontWeight">Font Weight</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="type"><span jhiTranslate="cmExodusApp.cmText.type">Type</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="sort"><span jhiTranslate="cmExodusApp.cmText.sort">Sort</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="textType"><span jhiTranslate="cmExodusApp.cmText.textType">Text Type</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="sorted"><span jhiTranslate="cmExodusApp.cmText.sorted">Sorted</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="layout"><span jhiTranslate="cmExodusApp.cmText.layout">Layout</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="date"><span jhiTranslate="cmExodusApp.cmText.date">Date</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="publishDate"><span jhiTranslate="cmExodusApp.cmText.publishDate">Publish Date</span> <span class="fa fa-sort"></span></th>
@@ -39,8 +39,8 @@
                 <td>{{cmText.textEn}}</td>
                 <td>{{cmText.fontSize}}</td>
                 <td>{{cmText.fontWeight}}</td>
-                <td jhiTranslate="{{'cmExodusApp.TextType.' + cmText.type}}">{{cmText.type}}</td>
-                <td>{{cmText.sort}}</td>
+                <td jhiTranslate="{{'cmExodusApp.TextType.' + cmText.textType}}">{{cmText.textType}}</td>
+                <td>{{cmText.sorted}}</td>
                 <td jhiTranslate="{{'cmExodusApp.LayoutType.' + cmText.layout}}">{{cmText.layout}}</td>
                 <td>{{cmText.date | date:'mediumDate'}}</td>
                 <td>{{cmText.publishDate | date:'mediumDate'}}</td>

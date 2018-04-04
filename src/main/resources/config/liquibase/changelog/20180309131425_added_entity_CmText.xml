@@ -37,11 +37,11 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="jhi_type" type="varchar(255)">
+            <column name="text_type" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
 
-            <column name="jhi_sort" type="integer">
+            <column name="sorted" type="integer">
                 <constraints nullable="true" />
             </column>
 

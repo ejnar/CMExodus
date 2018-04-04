@@ -39,8 +39,8 @@
                 [(ngModel)]="cmText.fontWeight" />
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="cmExodusApp.cmText.type" for="field_type">Type</label>
-            <select class="form-control" name="type" [(ngModel)]="cmText.type" id="field_type" >
+            <label class="form-control-label" jhiTranslate="cmExodusApp.cmText.textType" for="field_textType">Text Type</label>
+            <select class="form-control" name="textType" [(ngModel)]="cmText.textType" id="field_textType" >
                 <option value="TITLE">{{'cmExodusApp.TextType.TITLE' | translate}}</option>
                 <option value="INGRESS">{{'cmExodusApp.TextType.INGRESS' | translate}}</option>
                 <option value="TEXT">{{'cmExodusApp.TextType.TEXT' | translate}}</option>
@@ -48,9 +48,9 @@
             </select>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="cmExodusApp.cmText.sort" for="field_sort">Sort</label>
-            <input type="number" class="form-control" name="sort" id="field_sort"
-                [(ngModel)]="cmText.sort" />
+            <label class="form-control-label" jhiTranslate="cmExodusApp.cmText.sorted" for="field_sorted">Sorted</label>
+            <input type="number" class="form-control" name="sorted" id="field_sorted"
+                [(ngModel)]="cmText.sorted" />
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="cmExodusApp.cmText.layout" for="field_layout">Layout</label>

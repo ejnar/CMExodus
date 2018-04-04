@@ -19,8 +19,8 @@
             "title": "Title",
             "metaTitle": "Meta Title",
             "metaDescription": "Meta Description",
-            "sort": "Sort",
-            "layout": "Layout",
+            "sorted": "Sorted",
+            "pageLayout": "Page Layout",
             "authority": "Authority",
             "module": "Module"
         }

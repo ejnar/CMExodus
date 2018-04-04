@@ -22,11 +22,11 @@
     ],
     "fields": [
         {
-            "fieldName": "sort",
+            "fieldName": "sorted",
             "fieldType": "Integer"
         },
         {
-            "fieldName": "type",
+            "fieldName": "moduleType",
             "fieldType": "ModuleType",
             "fieldValues": "TEXT,IMAGE,TEXT_IMAGE,IMAGE_LIST,PROGRAM_LIST"
         },

@@ -21,11 +21,11 @@
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="jhi_sort" type="integer">
+            <column name="sorted" type="integer">
                 <constraints nullable="true" />
             </column>
 
-            <column name="jhi_type" type="varchar(255)">
+            <column name="module_type" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
 
@@ -35,15 +35,6 @@
 
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
-        <loadData encoding="UTF-8"
-                  file="config/liquibase/modules.csv"
-                  separator=";"
-                  tableName="cm_module">
-            <column name="id" type="numeric" />
-            <column name="jhi_sort" type="numeric"/>
-            <column name="jhi_type" type="string"/>
-            <column name="layout" type="string"/>
-        </loadData>
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
 </databaseChangeLog>

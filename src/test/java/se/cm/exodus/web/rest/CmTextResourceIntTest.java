@@ -57,11 +57,11 @@ public class CmTextResourceIntTest {
     private static final String DEFAULT_FONT_WEIGHT = "AAAAAAAAAA";
     private static final String UPDATED_FONT_WEIGHT = "BBBBBBBBBB";
 
-    private static final TextType DEFAULT_TYPE = TextType.TITLE;
-    private static final TextType UPDATED_TYPE = TextType.INGRESS;
+    private static final TextType DEFAULT_TEXT_TYPE = TextType.TITLE;
+    private static final TextType UPDATED_TEXT_TYPE = TextType.INGRESS;
 
-    private static final Integer DEFAULT_SORT = 1;
-    private static final Integer UPDATED_SORT = 2;
+    private static final Integer DEFAULT_SORTED = 1;
+    private static final Integer UPDATED_SORTED = 2;
 
     private static final LayoutType DEFAULT_LAYOUT = LayoutType.LEFT;
     private static final LayoutType UPDATED_LAYOUT = LayoutType.RIGHT;
@@ -123,8 +123,8 @@ public class CmTextResourceIntTest {
             .textEn(DEFAULT_TEXT_EN)
             .fontSize(DEFAULT_FONT_SIZE)
             .fontWeight(DEFAULT_FONT_WEIGHT)
-            .type(DEFAULT_TYPE)
-            .sort(DEFAULT_SORT)
+            .textType(DEFAULT_TEXT_TYPE)
+            .sorted(DEFAULT_SORTED)
             .layout(DEFAULT_LAYOUT)
             .date(DEFAULT_DATE)
             .publishDate(DEFAULT_PUBLISH_DATE)
@@ -157,8 +157,8 @@ public class CmTextResourceIntTest {
         assertThat(testCmText.getTextEn()).isEqualTo(DEFAULT_TEXT_EN);
         assertThat(testCmText.getFontSize()).isEqualTo(DEFAULT_FONT_SIZE);
         assertThat(testCmText.getFontWeight()).isEqualTo(DEFAULT_FONT_WEIGHT);
-        assertThat(testCmText.getType()).isEqualTo(DEFAULT_TYPE);
-        assertThat(testCmText.getSort()).isEqualTo(DEFAULT_SORT);
+        assertThat(testCmText.getTextType()).isEqualTo(DEFAULT_TEXT_TYPE);
+        assertThat(testCmText.getSorted()).isEqualTo(DEFAULT_SORTED);
         assertThat(testCmText.getLayout()).isEqualTo(DEFAULT_LAYOUT);
         assertThat(testCmText.getDate()).isEqualTo(DEFAULT_DATE);
         assertThat(testCmText.getPublishDate()).isEqualTo(DEFAULT_PUBLISH_DATE);
@@ -238,8 +238,8 @@ public class CmTextResourceIntTest {
             .andExpect(jsonPath("$.[*].textEn").value(hasItem(DEFAULT_TEXT_EN.toString())))
             .andExpect(jsonPath("$.[*].fontSize").value(hasItem(DEFAULT_FONT_SIZE.toString())))
             .andExpect(jsonPath("$.[*].fontWeight").value(hasItem(DEFAULT_FONT_WEIGHT.toString())))
-            .andExpect(jsonPath("$.[*].type").value(hasItem(DEFAULT_TYPE.toString())))
-            .andExpect(jsonPath("$.[*].sort").value(hasItem(DEFAULT_SORT)))
+            .andExpect(jsonPath("$.[*].textType").value(hasItem(DEFAULT_TEXT_TYPE.toString())))
+            .andExpect(jsonPath("$.[*].sorted").value(hasItem(DEFAULT_SORTED)))
             .andExpect(jsonPath("$.[*].layout").value(hasItem(DEFAULT_LAYOUT.toString())))
             .andExpect(jsonPath("$.[*].date").value(hasItem(DEFAULT_DATE.toString())))
             .andExpect(jsonPath("$.[*].publishDate").value(hasItem(DEFAULT_PUBLISH_DATE.toString())))
@@ -261,8 +261,8 @@ public class CmTextResourceIntTest {
             .andExpect(jsonPath("$.textEn").value(DEFAULT_TEXT_EN.toString()))
             .andExpect(jsonPath("$.fontSize").value(DEFAULT_FONT_SIZE.toString()))
             .andExpect(jsonPath("$.fontWeight").value(DEFAULT_FONT_WEIGHT.toString()))
-            .andExpect(jsonPath("$.type").value(DEFAULT_TYPE.toString()))
-            .andExpect(jsonPath("$.sort").value(DEFAULT_SORT))
+            .andExpect(jsonPath("$.textType").value(DEFAULT_TEXT_TYPE.toString()))
+            .andExpect(jsonPath("$.sorted").value(DEFAULT_SORTED))
             .andExpect(jsonPath("$.layout").value(DEFAULT_LAYOUT.toString()))
             .andExpect(jsonPath("$.date").value(DEFAULT_DATE.toString()))
             .andExpect(jsonPath("$.publishDate").value(DEFAULT_PUBLISH_DATE.toString()))
@@ -293,8 +293,8 @@ public class CmTextResourceIntTest {
             .textEn(UPDATED_TEXT_EN)
             .fontSize(UPDATED_FONT_SIZE)
             .fontWeight(UPDATED_FONT_WEIGHT)
-            .type(UPDATED_TYPE)
-            .sort(UPDATED_SORT)
+            .textType(UPDATED_TEXT_TYPE)
+            .sorted(UPDATED_SORTED)
             .layout(UPDATED_LAYOUT)
             .date(UPDATED_DATE)
             .publishDate(UPDATED_PUBLISH_DATE)
@@ -314,8 +314,8 @@ public class CmTextResourceIntTest {
         assertThat(testCmText.getTextEn()).isEqualTo(UPDATED_TEXT_EN);
         assertThat(testCmText.getFontSize()).isEqualTo(UPDATED_FONT_SIZE);
         assertThat(testCmText.getFontWeight()).isEqualTo(UPDATED_FONT_WEIGHT);
-        assertThat(testCmText.getType()).isEqualTo(UPDATED_TYPE);
-        assertThat(testCmText.getSort()).isEqualTo(UPDATED_SORT);
+        assertThat(testCmText.getTextType()).isEqualTo(UPDATED_TEXT_TYPE);
+        assertThat(testCmText.getSorted()).isEqualTo(UPDATED_SORTED);
         assertThat(testCmText.getLayout()).isEqualTo(UPDATED_LAYOUT);
         assertThat(testCmText.getDate()).isEqualTo(UPDATED_DATE);
         assertThat(testCmText.getPublishDate()).isEqualTo(UPDATED_PUBLISH_DATE);

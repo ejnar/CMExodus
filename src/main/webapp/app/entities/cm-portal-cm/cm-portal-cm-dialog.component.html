@@ -13,12 +13,12 @@
                    [(ngModel)]="cmPortal.id" readonly />
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="cmExodusApp.cmPortal.key" for="field_key">Key</label>
-            <input type="text" class="form-control" name="key" id="field_key"
-                [(ngModel)]="cmPortal.key" required/>
-            <div [hidden]="!(editForm.controls.key?.dirty && editForm.controls.key?.invalid)">
+            <label class="form-control-label" jhiTranslate="cmExodusApp.cmPortal.portalKey" for="field_portalKey">Portal Key</label>
+            <input type="text" class="form-control" name="portalKey" id="field_portalKey"
+                [(ngModel)]="cmPortal.portalKey" required/>
+            <div [hidden]="!(editForm.controls.portalKey?.dirty && editForm.controls.portalKey?.invalid)">
                 <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.key?.errors?.required" jhiTranslate="entity.validation.required">
+                   [hidden]="!editForm.controls.portalKey?.errors?.required" jhiTranslate="entity.validation.required">
                    This field is required.
                 </small>
             </div>

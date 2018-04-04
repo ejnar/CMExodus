@@ -3,7 +3,7 @@
     "relationships": [],
     "fields": [
         {
-            "fieldName": "key",
+            "fieldName": "portalKey",
             "fieldType": "String",
             "fieldValidateRules": [
                 "required"

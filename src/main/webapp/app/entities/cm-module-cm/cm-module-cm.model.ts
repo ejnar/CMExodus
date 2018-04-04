@@ -21,8 +21,8 @@ export const enum LayoutType {
 export class CmModuleCm implements BaseEntity {
     constructor(
         public id?: number,
-        public sort?: number,
-        public type?: ModuleType,
+        public sorted?: number,
+        public moduleType?: ModuleType,
         public layout?: LayoutType,
         public lists?: BaseEntity[],
         public texts?: BaseEntity[],

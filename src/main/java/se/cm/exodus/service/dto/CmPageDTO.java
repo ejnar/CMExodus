@@ -22,9 +22,9 @@ public class CmPageDTO implements Serializable {
 
     private String metaDescription;
 
-    private Integer sort;
+    private Integer sorted;
 
-    private PageLayout layout;
+    private PageLayout pageLayout;
 
     private Set<CmModuleDTO> modules = new HashSet<>();
 
@@ -60,20 +60,20 @@ public class CmPageDTO implements Serializable {
         this.metaDescription = metaDescription;
     }
 
-    public Integer getSort() {
-        return sort;
+    public Integer getSorted() {
+        return sorted;
     }
 
-    public void setSort(Integer sort) {
-        this.sort = sort;
+    public void setSorted(Integer sorted) {
+        this.sorted = sorted;
     }
 
-    public PageLayout getLayout() {
-        return layout;
+    public PageLayout getPageLayout() {
+        return pageLayout;
     }
 
-    public void setLayout(PageLayout layout) {
-        this.layout = layout;
+    public void setPageLayout(PageLayout pageLayout) {
+        this.pageLayout = pageLayout;
     }
 
     public Set<CmModuleDTO> getModules() {
@@ -112,8 +112,8 @@ public class CmPageDTO implements Serializable {
             ", title='" + getTitle() + "'" +
             ", metaTitle='" + getMetaTitle() + "'" +
             ", metaDescription='" + getMetaDescription() + "'" +
-            ", sort=" + getSort() +
-            ", layout='" + getLayout() + "'" +
+            ", sorted=" + getSorted() +
+            ", pageLayout='" + getPageLayout() + "'" +
             "}";
     }
 }

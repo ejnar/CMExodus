@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <property name="now" value="now()" dbms="h2"/>
+
+    <property name="now" value="current_timestamp" dbms="postgresql"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
+
+    <!--
+        Added the entity CmTopic.
+    -->
+    <changeSet id="20180404133500" author="jhipster">
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/topics.csv"
+                  separator=";"
+                  tableName="cm_topic">
+            <column name="id" type="numeric" />
+            <column name="name" type="string"/>
+        </loadData>
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/subtopics.csv"
+                  separator=";"
+                  tableName="cm_sub_topic">
+            <column name="id" type="numeric" />
+            <column name="name" type="string"/>
+            <column name="visable" type="boolean" />
+            <column name="cm_topic_id" type="numeric"/>
+            <column name="page_id" type="numeric"/>
+        </loadData>
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/pages.csv"
+                  separator=";"
+                  tableName="cm_page">
+            <column name="id" type="numeric" />
+            <column name="title" type="string"/>
+            <column name="sorted" type="numeric"/>
+            <column name="page_layout" type="string"/>
+        </loadData>
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/pageModules.csv"
+                  separator=";"
+                  tableName="cm_page_module">
+            <column name="modules_id" type="numeric" />
+            <column name="cm_pages_id" type="numeric" />
+        </loadData>
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/modules.csv"
+                  separator=";"
+                  tableName="cm_module">
+            <column name="id" type="numeric" />
+            <column name="sorted" type="numeric"/>
+            <column name="module_type" type="string"/>
+            <column name="layout" type="string"/>
+        </loadData>
+    </changeSet>
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
+</databaseChangeLog>

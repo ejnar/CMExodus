@@ -26,9 +26,9 @@ public class CmTextDTO implements Serializable {
 
     private String fontWeight;
 
-    private TextType type;
+    private TextType textType;
 
-    private Integer sort;
+    private Integer sorted;
 
     private LayoutType layout;
 
@@ -83,20 +83,20 @@ public class CmTextDTO implements Serializable {
         this.fontWeight = fontWeight;
     }
 
-    public TextType getType() {
-        return type;
+    public TextType getTextType() {
+        return textType;
     }
 
-    public void setType(TextType type) {
-        this.type = type;
+    public void setTextType(TextType textType) {
+        this.textType = textType;
     }
 
-    public Integer getSort() {
-        return sort;
+    public Integer getSorted() {
+        return sorted;
     }
 
-    public void setSort(Integer sort) {
-        this.sort = sort;
+    public void setSorted(Integer sorted) {
+        this.sorted = sorted;
     }
 
     public LayoutType getLayout() {
@@ -176,8 +176,8 @@ public class CmTextDTO implements Serializable {
             ", textEn='" + getTextEn() + "'" +
             ", fontSize='" + getFontSize() + "'" +
             ", fontWeight='" + getFontWeight() + "'" +
-            ", type='" + getType() + "'" +
-            ", sort=" + getSort() +
+            ", textType='" + getTextType() + "'" +
+            ", sorted=" + getSorted() +
             ", layout='" + getLayout() + "'" +
             ", date='" + getDate() + "'" +
             ", publishDate='" + getPublishDate() + "'" +

@@ -16,7 +16,7 @@
             "detail": {
                 "title": "Cm Portal"
             },
-            "key": "Key",
+            "portalKey": "Portal Key",
             "contentPath": "Content Path",
             "name": "Name",
             "metaName": "Meta Name",

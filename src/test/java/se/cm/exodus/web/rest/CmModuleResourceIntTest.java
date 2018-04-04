@@ -42,11 +42,11 @@ import se.cm.exodus.domain.enumeration.LayoutType;
 @SpringBootTest(classes = CmExodusApp.class)
 public class CmModuleResourceIntTest {
 
-    private static final Integer DEFAULT_SORT = 1;
-    private static final Integer UPDATED_SORT = 2;
+    private static final Integer DEFAULT_SORTED = 1;
+    private static final Integer UPDATED_SORTED = 2;
 
-    private static final ModuleType DEFAULT_TYPE = ModuleType.TEXT;
-    private static final ModuleType UPDATED_TYPE = ModuleType.IMAGE;
+    private static final ModuleType DEFAULT_MODULE_TYPE = ModuleType.TEXT;
+    private static final ModuleType UPDATED_MODULE_TYPE = ModuleType.IMAGE;
 
     private static final LayoutType DEFAULT_LAYOUT = LayoutType.LEFT;
     private static final LayoutType UPDATED_LAYOUT = LayoutType.RIGHT;
@@ -92,8 +92,8 @@ public class CmModuleResourceIntTest {
      */
     public static CmModule createEntity(EntityManager em) {
         CmModule cmModule = new CmModule()
-            .sort(DEFAULT_SORT)
-            .type(DEFAULT_TYPE)
+            .sorted(DEFAULT_SORTED)
+            .moduleType(DEFAULT_MODULE_TYPE)
             .layout(DEFAULT_LAYOUT);
         return cmModule;
     }
@@ -119,8 +119,8 @@ public class CmModuleResourceIntTest {
         List<CmModule> cmModuleList = cmModuleRepository.findAll();
         assertThat(cmModuleList).hasSize(databaseSizeBeforeCreate + 1);
         CmModule testCmModule = cmModuleList.get(cmModuleList.size() - 1);
-        assertThat(testCmModule.getSort()).isEqualTo(DEFAULT_SORT);
-        assertThat(testCmModule.getType()).isEqualTo(DEFAULT_TYPE);
+        assertThat(testCmModule.getSorted()).isEqualTo(DEFAULT_SORTED);
+        assertThat(testCmModule.getModuleType()).isEqualTo(DEFAULT_MODULE_TYPE);
         assertThat(testCmModule.getLayout()).isEqualTo(DEFAULT_LAYOUT);
     }
 
@@ -155,8 +155,8 @@ public class CmModuleResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(cmModule.getId().intValue())))
-            .andExpect(jsonPath("$.[*].sort").value(hasItem(DEFAULT_SORT)))
-            .andExpect(jsonPath("$.[*].type").value(hasItem(DEFAULT_TYPE.toString())))
+            .andExpect(jsonPath("$.[*].sorted").value(hasItem(DEFAULT_SORTED)))
+            .andExpect(jsonPath("$.[*].moduleType").value(hasItem(DEFAULT_MODULE_TYPE.toString())))
             .andExpect(jsonPath("$.[*].layout").value(hasItem(DEFAULT_LAYOUT.toString())));
     }
 
@@ -171,8 +171,8 @@ public class CmModuleResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(cmModule.getId().intValue()))
-            .andExpect(jsonPath("$.sort").value(DEFAULT_SORT))
-            .andExpect(jsonPath("$.type").value(DEFAULT_TYPE.toString()))
+            .andExpect(jsonPath("$.sorted").value(DEFAULT_SORTED))
+            .andExpect(jsonPath("$.moduleType").value(DEFAULT_MODULE_TYPE.toString()))
             .andExpect(jsonPath("$.layout").value(DEFAULT_LAYOUT.toString()));
     }
 
@@ -196,8 +196,8 @@ public class CmModuleResourceIntTest {
         // Disconnect from session so that the updates on updatedCmModule are not directly saved in db
         em.detach(updatedCmModule);
         updatedCmModule
-            .sort(UPDATED_SORT)
-            .type(UPDATED_TYPE)
+            .sorted(UPDATED_SORTED)
+            .moduleType(UPDATED_MODULE_TYPE)
             .layout(UPDATED_LAYOUT);
         CmModuleDTO cmModuleDTO = cmModuleMapper.toDto(updatedCmModule);
 
@@ -210,8 +210,8 @@ public class CmModuleResourceIntTest {
         List<CmModule> cmModuleList = cmModuleRepository.findAll();
         assertThat(cmModuleList).hasSize(databaseSizeBeforeUpdate);
         CmModule testCmModule = cmModuleList.get(cmModuleList.size() - 1);
-        assertThat(testCmModule.getSort()).isEqualTo(UPDATED_SORT);
-        assertThat(testCmModule.getType()).isEqualTo(UPDATED_TYPE);
+        assertThat(testCmModule.getSorted()).isEqualTo(UPDATED_SORTED);
+        assertThat(testCmModule.getModuleType()).isEqualTo(UPDATED_MODULE_TYPE);
         assertThat(testCmModule.getLayout()).isEqualTo(UPDATED_LAYOUT);
     }
 

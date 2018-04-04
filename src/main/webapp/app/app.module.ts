@@ -1,6 +1,7 @@
 import './vendor.ts';
 
 import { NgModule, Injector } from '@angular/core';
+import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
 import { BrowserModule } from '@angular/platform-browser';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Ng2Webstorage, LocalStorageService, SessionStorageService  } from 'ngx-webstorage';
@@ -43,7 +44,8 @@ import { CmExodusContentModule } from './content/content.module';
         CmExodusAdminModule,
         CmExodusAccountModule,
         CmExodusEntityModule,
-        CmExodusContentModule
+        CmExodusContentModule,
+        LoggerModule.forRoot({level: NgxLoggerLevel.DEBUG})
         // jhipster-needle-angular-add-module JHipster will add new module here
     ],
     declarations: [
