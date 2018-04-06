@@ -59,9 +59,6 @@ public class CmImageResourceIntTest {
     private static final LayoutType DEFAULT_LAYOUT = LayoutType.LEFT;
     private static final LayoutType UPDATED_LAYOUT = LayoutType.RIGHT;
 
-    private static final LocalDate DEFAULT_DATE = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_DATE = LocalDate.now(ZoneId.systemDefault());
-
     private static final LocalDate DEFAULT_PUBLISH_DATE = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_PUBLISH_DATE = LocalDate.now(ZoneId.systemDefault());
 
@@ -117,7 +114,6 @@ public class CmImageResourceIntTest {
             .toolTip(DEFAULT_TOOL_TIP)
             .sorted(DEFAULT_SORTED)
             .layout(DEFAULT_LAYOUT)
-            .date(DEFAULT_DATE)
             .publishDate(DEFAULT_PUBLISH_DATE)
             .publish(DEFAULT_PUBLISH);
         return cmImage;
@@ -149,7 +145,6 @@ public class CmImageResourceIntTest {
         assertThat(testCmImage.getToolTip()).isEqualTo(DEFAULT_TOOL_TIP);
         assertThat(testCmImage.getSorted()).isEqualTo(DEFAULT_SORTED);
         assertThat(testCmImage.getLayout()).isEqualTo(DEFAULT_LAYOUT);
-        assertThat(testCmImage.getDate()).isEqualTo(DEFAULT_DATE);
         assertThat(testCmImage.getPublishDate()).isEqualTo(DEFAULT_PUBLISH_DATE);
         assertThat(testCmImage.isPublish()).isEqualTo(DEFAULT_PUBLISH);
     }
@@ -247,7 +242,6 @@ public class CmImageResourceIntTest {
             .andExpect(jsonPath("$.[*].toolTip").value(hasItem(DEFAULT_TOOL_TIP.toString())))
             .andExpect(jsonPath("$.[*].sorted").value(hasItem(DEFAULT_SORTED)))
             .andExpect(jsonPath("$.[*].layout").value(hasItem(DEFAULT_LAYOUT.toString())))
-            .andExpect(jsonPath("$.[*].date").value(hasItem(DEFAULT_DATE.toString())))
             .andExpect(jsonPath("$.[*].publishDate").value(hasItem(DEFAULT_PUBLISH_DATE.toString())))
             .andExpect(jsonPath("$.[*].publish").value(hasItem(DEFAULT_PUBLISH.booleanValue())));
     }
@@ -268,7 +262,6 @@ public class CmImageResourceIntTest {
             .andExpect(jsonPath("$.toolTip").value(DEFAULT_TOOL_TIP.toString()))
             .andExpect(jsonPath("$.sorted").value(DEFAULT_SORTED))
             .andExpect(jsonPath("$.layout").value(DEFAULT_LAYOUT.toString()))
-            .andExpect(jsonPath("$.date").value(DEFAULT_DATE.toString()))
             .andExpect(jsonPath("$.publishDate").value(DEFAULT_PUBLISH_DATE.toString()))
             .andExpect(jsonPath("$.publish").value(DEFAULT_PUBLISH.booleanValue()));
     }
@@ -298,7 +291,6 @@ public class CmImageResourceIntTest {
             .toolTip(UPDATED_TOOL_TIP)
             .sorted(UPDATED_SORTED)
             .layout(UPDATED_LAYOUT)
-            .date(UPDATED_DATE)
             .publishDate(UPDATED_PUBLISH_DATE)
             .publish(UPDATED_PUBLISH);
         CmImageDTO cmImageDTO = cmImageMapper.toDto(updatedCmImage);
@@ -317,7 +309,6 @@ public class CmImageResourceIntTest {
         assertThat(testCmImage.getToolTip()).isEqualTo(UPDATED_TOOL_TIP);
         assertThat(testCmImage.getSorted()).isEqualTo(UPDATED_SORTED);
         assertThat(testCmImage.getLayout()).isEqualTo(UPDATED_LAYOUT);
-        assertThat(testCmImage.getDate()).isEqualTo(UPDATED_DATE);
         assertThat(testCmImage.getPublishDate()).isEqualTo(UPDATED_PUBLISH_DATE);
         assertThat(testCmImage.isPublish()).isEqualTo(UPDATED_PUBLISH);
     }

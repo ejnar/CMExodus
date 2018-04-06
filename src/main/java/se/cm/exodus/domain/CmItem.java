@@ -3,9 +3,11 @@ package se.cm.exodus.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.ZonedDateTime;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Objects;
@@ -26,8 +28,11 @@ public class CmItem implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Column(name = "jhi_date")
-    private LocalDate date;
+    @Column(name = "item_date")
+    private ZonedDateTime itemDate;
+
+    @Column(name = "sorted")
+    private Integer sorted;
 
     @Column(name = "tool_tip")
     private String toolTip;
@@ -35,6 +40,13 @@ public class CmItem implements Serializable {
     @Enumerated(EnumType.STRING)
     @Column(name = "layout")
     private LayoutType layout;
+
+    @Column(name = "publish_date")
+    private LocalDate publishDate;
+
+    @NotNull
+    @Column(name = "publish", nullable = false)
+    private Boolean publish;
 
     @ManyToOne
     private CmModule cmModule;
@@ -56,17 +68,30 @@ public class CmItem implements Serializable {
         this.id = id;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public ZonedDateTime getItemDate() {
+        return itemDate;
     }
 
-    public CmItem date(LocalDate date) {
-        this.date = date;
+    public CmItem itemDate(ZonedDateTime itemDate) {
+        this.itemDate = itemDate;
         return this;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setItemDate(ZonedDateTime itemDate) {
+        this.itemDate = itemDate;
+    }
+
+    public Integer getSorted() {
+        return sorted;
+    }
+
+    public CmItem sorted(Integer sorted) {
+        this.sorted = sorted;
+        return this;
+    }
+
+    public void setSorted(Integer sorted) {
+        this.sorted = sorted;
     }
 
     public String getToolTip() {
@@ -93,6 +118,32 @@ public class CmItem implements Serializable {
 
     public void setLayout(LayoutType layout) {
         this.layout = layout;
+    }
+
+    public LocalDate getPublishDate() {
+        return publishDate;
+    }
+
+    public CmItem publishDate(LocalDate publishDate) {
+        this.publishDate = publishDate;
+        return this;
+    }
+
+    public void setPublishDate(LocalDate publishDate) {
+        this.publishDate = publishDate;
+    }
+
+    public Boolean isPublish() {
+        return publish;
+    }
+
+    public CmItem publish(Boolean publish) {
+        this.publish = publish;
+        return this;
+    }
+
+    public void setPublish(Boolean publish) {
+        this.publish = publish;
     }
 
     public CmModule getCmModule() {
@@ -183,9 +234,12 @@ public class CmItem implements Serializable {
     public String toString() {
         return "CmItem{" +
             "id=" + getId() +
-            ", date='" + getDate() + "'" +
+            ", itemDate='" + getItemDate() + "'" +
+            ", sorted=" + getSorted() +
             ", toolTip='" + getToolTip() + "'" +
             ", layout='" + getLayout() + "'" +
+            ", publishDate='" + getPublishDate() + "'" +
+            ", publish='" + isPublish() + "'" +
             "}";
     }
 }

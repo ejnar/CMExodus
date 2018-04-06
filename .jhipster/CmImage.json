@@ -43,10 +43,6 @@
             "fieldValues": "LEFT,RIGHT,MIDDLE,CENTER,TOP,BOTTOM,SIDEBYSIDE"
         },
         {
-            "fieldName": "date",
-            "fieldType": "LocalDate"
-        },
-        {
             "fieldName": "publishDate",
             "fieldType": "LocalDate"
         },

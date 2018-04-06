@@ -1,0 +1,10 @@
+{
+    "cmExodusApp": {
+        "TypeOfEvent" : {
+            "null": "",
+            "SERVICE": "SERVICE",
+            "CAFE": "CAFE",
+            "YOUTH": "YOUTH"
+        }
+    }
+}

@@ -6,6 +6,7 @@ import javax.validation.constraints.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.ZonedDateTime;
 import java.util.Objects;
 
 import se.cm.exodus.domain.enumeration.TextType;
@@ -50,8 +51,8 @@ public class CmText implements Serializable {
     @Column(name = "layout")
     private LayoutType layout;
 
-    @Column(name = "jhi_date")
-    private LocalDate date;
+    @Column(name = "text_date")
+    private ZonedDateTime textDate;
 
     @Column(name = "publish_date")
     private LocalDate publishDate;
@@ -65,6 +66,10 @@ public class CmText implements Serializable {
 
     @ManyToOne
     private CmItem cmItem;
+
+    @OneToOne
+    @JoinColumn(unique = true)
+    private CmImage image;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -166,17 +171,17 @@ public class CmText implements Serializable {
         this.layout = layout;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public ZonedDateTime getTextDate() {
+        return textDate;
     }
 
-    public CmText date(LocalDate date) {
-        this.date = date;
+    public CmText textDate(ZonedDateTime textDate) {
+        this.textDate = textDate;
         return this;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setTextDate(ZonedDateTime textDate) {
+        this.textDate = textDate;
     }
 
     public LocalDate getPublishDate() {
@@ -230,6 +235,19 @@ public class CmText implements Serializable {
     public void setCmItem(CmItem cmItem) {
         this.cmItem = cmItem;
     }
+
+    public CmImage getImage() {
+        return image;
+    }
+
+    public CmText image(CmImage cmImage) {
+        this.image = cmImage;
+        return this;
+    }
+
+    public void setImage(CmImage cmImage) {
+        this.image = cmImage;
+    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
@@ -263,7 +281,7 @@ public class CmText implements Serializable {
             ", textType='" + getTextType() + "'" +
             ", sorted=" + getSorted() +
             ", layout='" + getLayout() + "'" +
-            ", date='" + getDate() + "'" +
+            ", textDate='" + getTextDate() + "'" +
             ", publishDate='" + getPublishDate() + "'" +
             ", publish='" + isPublish() + "'" +
             "}";

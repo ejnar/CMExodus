@@ -41,10 +41,6 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="jhi_date" type="date">
-                <constraints nullable="true" />
-            </column>
-
             <column name="publish_date" type="date">
                 <constraints nullable="true" />
             </column>

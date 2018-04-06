@@ -11,6 +11,7 @@ import { CmTextCmPopupService } from './cm-text-cm-popup.service';
 import { CmTextCmService } from './cm-text-cm.service';
 import { CmModuleCm, CmModuleCmService } from '../cm-module-cm';
 import { CmItemCm, CmItemCmService } from '../cm-item-cm';
+import { CmImageCm, CmImageCmService } from '../cm-image-cm';
 
 @Component({
     selector: 'jhi-cm-text-cm-dialog',
@@ -24,7 +25,8 @@ export class CmTextCmDialogComponent implements OnInit {
     cmmodules: CmModuleCm[];
 
     cmitems: CmItemCm[];
-    dateDp: any;
+
+    images: CmImageCm[];
     publishDateDp: any;
 
     constructor(
@@ -33,6 +35,7 @@ export class CmTextCmDialogComponent implements OnInit {
         private cmTextService: CmTextCmService,
         private cmModuleService: CmModuleCmService,
         private cmItemService: CmItemCmService,
+        private cmImageService: CmImageCmService,
         private eventManager: JhiEventManager
     ) {
     }
@@ -43,6 +46,19 @@ export class CmTextCmDialogComponent implements OnInit {
             .subscribe((res: HttpResponse<CmModuleCm[]>) => { this.cmmodules = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
         this.cmItemService.query()
             .subscribe((res: HttpResponse<CmItemCm[]>) => { this.cmitems = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
+        this.cmImageService
+            .query({filter: 'cmtext-is-null'})
+            .subscribe((res: HttpResponse<CmImageCm[]>) => {
+                if (!this.cmText.imageId) {
+                    this.images = res.body;
+                } else {
+                    this.cmImageService
+                        .find(this.cmText.imageId)
+                        .subscribe((subRes: HttpResponse<CmImageCm>) => {
+                            this.images = [subRes.body].concat(res.body);
+                        }, (subRes: HttpErrorResponse) => this.onError(subRes.message));
+                }
+            }, (res: HttpErrorResponse) => this.onError(res.message));
     }
 
     clear() {
@@ -84,6 +100,10 @@ export class CmTextCmDialogComponent implements OnInit {
     }
 
     trackCmItemById(index: number, item: CmItemCm) {
+        return item.id;
+    }
+
+    trackCmImageById(index: number, item: CmImageCm) {
         return item.id;
     }
 }

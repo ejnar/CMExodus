@@ -63,8 +63,10 @@ export class CmItemCmService {
      */
     private convertItemFromServer(cmItem: CmItemCm): CmItemCm {
         const copy: CmItemCm = Object.assign({}, cmItem);
-        copy.date = this.dateUtils
-            .convertLocalDateFromServer(cmItem.date);
+        copy.itemDate = this.dateUtils
+            .convertDateTimeFromServer(cmItem.itemDate);
+        copy.publishDate = this.dateUtils
+            .convertLocalDateFromServer(cmItem.publishDate);
         return copy;
     }
 
@@ -73,8 +75,10 @@ export class CmItemCmService {
      */
     private convert(cmItem: CmItemCm): CmItemCm {
         const copy: CmItemCm = Object.assign({}, cmItem);
-        copy.date = this.dateUtils
-            .convertLocalDateToServer(cmItem.date);
+
+        copy.itemDate = this.dateUtils.toDate(cmItem.itemDate);
+        copy.publishDate = this.dateUtils
+            .convertLocalDateToServer(cmItem.publishDate);
         return copy;
     }
 }

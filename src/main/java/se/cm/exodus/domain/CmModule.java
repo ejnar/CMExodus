@@ -40,7 +40,11 @@ public class CmModule implements Serializable {
 
     @OneToMany(mappedBy = "cmModule")
     @JsonIgnore
-    private Set<CmItem> lists = new HashSet<>();
+    private Set<CmItem> items = new HashSet<>();
+
+    @OneToMany(mappedBy = "cmModule")
+    @JsonIgnore
+    private Set<CmItemList> itemLists = new HashSet<>();
 
     @OneToMany(mappedBy = "cmModule")
     @JsonIgnore
@@ -98,29 +102,54 @@ public class CmModule implements Serializable {
         this.layout = layout;
     }
 
-    public Set<CmItem> getLists() {
-        return lists;
+    public Set<CmItem> getItems() {
+        return items;
     }
 
-    public CmModule lists(Set<CmItem> cmItems) {
-        this.lists = cmItems;
+    public CmModule items(Set<CmItem> cmItems) {
+        this.items = cmItems;
         return this;
     }
 
-    public CmModule addList(CmItem cmItem) {
-        this.lists.add(cmItem);
+    public CmModule addItem(CmItem cmItem) {
+        this.items.add(cmItem);
         cmItem.setCmModule(this);
         return this;
     }
 
-    public CmModule removeList(CmItem cmItem) {
-        this.lists.remove(cmItem);
+    public CmModule removeItem(CmItem cmItem) {
+        this.items.remove(cmItem);
         cmItem.setCmModule(null);
         return this;
     }
 
-    public void setLists(Set<CmItem> cmItems) {
-        this.lists = cmItems;
+    public void setItems(Set<CmItem> cmItems) {
+        this.items = cmItems;
+    }
+
+    public Set<CmItemList> getItemLists() {
+        return itemLists;
+    }
+
+    public CmModule itemLists(Set<CmItemList> cmItemLists) {
+        this.itemLists = cmItemLists;
+        return this;
+    }
+
+    public CmModule addItemList(CmItemList cmItemList) {
+        this.itemLists.add(cmItemList);
+        cmItemList.setCmModule(this);
+        return this;
+    }
+
+    public CmModule removeItemList(CmItemList cmItemList) {
+        this.itemLists.remove(cmItemList);
+        cmItemList.setCmModule(null);
+        return this;
+    }
+
+    public void setItemLists(Set<CmItemList> cmItemLists) {
+        this.itemLists = cmItemLists;
     }
 
     public Set<CmText> getTexts() {

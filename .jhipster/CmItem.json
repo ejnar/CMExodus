@@ -22,8 +22,12 @@
     ],
     "fields": [
         {
-            "fieldName": "date",
-            "fieldType": "LocalDate"
+            "fieldName": "itemDate",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "sorted",
+            "fieldType": "Integer"
         },
         {
             "fieldName": "toolTip",
@@ -33,6 +37,17 @@
             "fieldName": "layout",
             "fieldType": "LayoutType",
             "fieldValues": "LEFT,RIGHT,MIDDLE,CENTER,TOP,BOTTOM,SIDEBYSIDE"
+        },
+        {
+            "fieldName": "publishDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "publish",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
         }
     ],
     "changelogDate": "20180309131424",

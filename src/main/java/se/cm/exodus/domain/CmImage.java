@@ -42,9 +42,6 @@ public class CmImage implements Serializable {
     @Column(name = "layout")
     private LayoutType layout;
 
-    @Column(name = "jhi_date")
-    private LocalDate date;
-
     @Column(name = "publish_date")
     private LocalDate publishDate;
 
@@ -132,19 +129,6 @@ public class CmImage implements Serializable {
         this.layout = layout;
     }
 
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public CmImage date(LocalDate date) {
-        this.date = date;
-        return this;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
-
     public LocalDate getPublishDate() {
         return publishDate;
     }
@@ -227,7 +211,6 @@ public class CmImage implements Serializable {
             ", toolTip='" + getToolTip() + "'" +
             ", sorted=" + getSorted() +
             ", layout='" + getLayout() + "'" +
-            ", date='" + getDate() + "'" +
             ", publishDate='" + getPublishDate() + "'" +
             ", publish='" + isPublish() + "'" +
             "}";

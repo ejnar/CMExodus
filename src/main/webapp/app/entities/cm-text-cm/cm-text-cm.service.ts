@@ -63,8 +63,8 @@ export class CmTextCmService {
      */
     private convertItemFromServer(cmText: CmTextCm): CmTextCm {
         const copy: CmTextCm = Object.assign({}, cmText);
-        copy.date = this.dateUtils
-            .convertLocalDateFromServer(cmText.date);
+        copy.textDate = this.dateUtils
+            .convertDateTimeFromServer(cmText.textDate);
         copy.publishDate = this.dateUtils
             .convertLocalDateFromServer(cmText.publishDate);
         return copy;
@@ -75,8 +75,8 @@ export class CmTextCmService {
      */
     private convert(cmText: CmTextCm): CmTextCm {
         const copy: CmTextCm = Object.assign({}, cmText);
-        copy.date = this.dateUtils
-            .convertLocalDateToServer(cmText.date);
+
+        copy.textDate = this.dateUtils.toDate(cmText.textDate);
         copy.publishDate = this.dateUtils
             .convertLocalDateToServer(cmText.publishDate);
         return copy;

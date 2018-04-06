@@ -23,11 +23,12 @@
             "textType": "Text Type",
             "sorted": "Sorted",
             "layout": "Layout",
-            "date": "Date",
+            "textDate": "Text Date",
             "publishDate": "Publish Date",
             "publish": "Publish",
             "cmModule": "Cm Module",
-            "cmItem": "Cm Item"
+            "cmItem": "Cm Item",
+            "image": "Image"
         }
     }
 }

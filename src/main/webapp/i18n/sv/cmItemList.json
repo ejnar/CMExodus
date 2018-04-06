@@ -1,0 +1,36 @@
+
+{
+    "cmExodusApp": {
+        "cmItemList" : {
+            "home": {
+                "title": "Cm Item Lists",
+                "createLabel": "Skapa en ny Cm Item List",
+                "createOrEditLabel": "Skapa eller ändra en Cm Item List"
+            },
+            "created": "En ny Cm Item List är skapad med id {{ param }}",
+            "updated": "En Cm Item List är uppdaterad med id  {{ param }}",
+            "deleted": "En Cm Item List är borttagen med id  {{ param }}",
+            "delete": {
+                "question": "Är du säker på att du vill ta bort Cm Item List {{ id }}?"
+            },
+            "detail": {
+                "title": "Cm Item List"
+            },
+            "textSv": "Text Sv",
+            "textEn": "Text En",
+            "titleSv": "Title Sv",
+            "titleEn": "Title En",
+            "ingressSv": "Ingress Sv",
+            "ingressEn": "Ingress En",
+            "sorted": "Sorted",
+            "toolTip": "Tool Tip",
+            "typeOfEvent": "Type Of Event",
+            "location": "Location",
+            "itemDate": "Item Date",
+            "publishDate": "Publish Date",
+            "publish": "Publish",
+            "cmModule": "Cm Module",
+            "image": "Image"
+        }
+    }
+}

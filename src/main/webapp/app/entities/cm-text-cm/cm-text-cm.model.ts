@@ -27,11 +27,12 @@ export class CmTextCm implements BaseEntity {
         public textType?: TextType,
         public sorted?: number,
         public layout?: LayoutType,
-        public date?: any,
+        public textDate?: any,
         public publishDate?: any,
         public publish?: boolean,
         public cmModuleId?: number,
         public cmItemId?: number,
+        public imageId?: number,
     ) {
         this.publish = false;
     }

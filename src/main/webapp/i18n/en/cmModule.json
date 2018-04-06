@@ -19,7 +19,8 @@
             "sorted": "Sorted",
             "moduleType": "Module Type",
             "layout": "Layout",
-            "list": "List",
+            "item": "Item",
+            "itemList": "Item List",
             "text": "Text",
             "image": "Image"
         }

@@ -8,15 +8,17 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity CmText and its DTO CmTextDTO.
  */
-@Mapper(componentModel = "spring", uses = {CmModuleMapper.class, CmItemMapper.class})
+@Mapper(componentModel = "spring", uses = {CmModuleMapper.class, CmItemMapper.class, CmImageMapper.class})
 public interface CmTextMapper extends EntityMapper<CmTextDTO, CmText> {
 
     @Mapping(source = "cmModule.id", target = "cmModuleId")
     @Mapping(source = "cmItem.id", target = "cmItemId")
+    @Mapping(source = "image.id", target = "imageId")
     CmTextDTO toDto(CmText cmText);
 
     @Mapping(source = "cmModuleId", target = "cmModule")
     @Mapping(source = "cmItemId", target = "cmItem")
+    @Mapping(source = "imageId", target = "image")
     CmText toEntity(CmTextDTO cmTextDTO);
 
     default CmText fromId(Long id) {

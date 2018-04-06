@@ -2,6 +2,7 @@ import { Injectable, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { HttpResponse } from '@angular/common/http';
+import { DatePipe } from '@angular/common';
 import { CmTextCm } from './cm-text-cm.model';
 import { CmTextCmService } from './cm-text-cm.service';
 
@@ -10,6 +11,7 @@ export class CmTextCmPopupService {
     private ngbModalRef: NgbModalRef;
 
     constructor(
+        private datePipe: DatePipe,
         private modalService: NgbModal,
         private router: Router,
         private cmTextService: CmTextCmService
@@ -29,13 +31,8 @@ export class CmTextCmPopupService {
                 this.cmTextService.find(id)
                     .subscribe((cmTextResponse: HttpResponse<CmTextCm>) => {
                         const cmText: CmTextCm = cmTextResponse.body;
-                        if (cmText.date) {
-                            cmText.date = {
-                                year: cmText.date.getFullYear(),
-                                month: cmText.date.getMonth() + 1,
-                                day: cmText.date.getDate()
-                            };
-                        }
+                        cmText.textDate = this.datePipe
+                            .transform(cmText.textDate, 'yyyy-MM-ddTHH:mm:ss');
                         if (cmText.publishDate) {
                             cmText.publishDate = {
                                 year: cmText.publishDate.getFullYear(),

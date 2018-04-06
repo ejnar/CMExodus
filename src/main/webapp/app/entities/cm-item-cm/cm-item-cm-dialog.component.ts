@@ -21,7 +21,7 @@ export class CmItemCmDialogComponent implements OnInit {
     isSaving: boolean;
 
     cmmodules: CmModuleCm[];
-    dateDp: any;
+    publishDateDp: any;
 
     constructor(
         public activeModal: NgbActiveModal,

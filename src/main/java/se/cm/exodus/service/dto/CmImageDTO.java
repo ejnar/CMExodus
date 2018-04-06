@@ -28,8 +28,6 @@ public class CmImageDTO implements Serializable {
 
     private LayoutType layout;
 
-    private LocalDate date;
-
     private LocalDate publishDate;
 
     @NotNull
@@ -85,14 +83,6 @@ public class CmImageDTO implements Serializable {
 
     public void setLayout(LayoutType layout) {
         this.layout = layout;
-    }
-
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
     }
 
     public LocalDate getPublishDate() {
@@ -157,7 +147,6 @@ public class CmImageDTO implements Serializable {
             ", toolTip='" + getToolTip() + "'" +
             ", sorted=" + getSorted() +
             ", layout='" + getLayout() + "'" +
-            ", date='" + getDate() + "'" +
             ", publishDate='" + getPublishDate() + "'" +
             ", publish='" + isPublish() + "'" +
             "}";

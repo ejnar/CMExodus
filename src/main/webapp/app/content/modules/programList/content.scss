@@ -3,12 +3,20 @@
 Main page styles
 ========================================================================== */
 .program_list{
-  border: 1px solid gray;
   margin: 0.2em 0;
-  padding: 5px;
-  padding-bottom: 10px;
-  padding-left: 20px;
-  border-radius: 10px;
-  background-color: lightgreen;
+  padding-bottom: 0.2em;
+  padding-left: 0.1em;
   color: black;
+}
+.row-striped:nth-of-type(odd){
+  border-left: 4px #000000 solid;
+}
+
+.row-striped:nth-of-type(even){
+  // background-color: #ffffff;
+  border-left: 4px #efefef solid;
+}
+
+.row-striped {
+    padding: 15px 0;
 }

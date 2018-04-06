@@ -2,6 +2,7 @@ package se.cm.exodus.service.dto;
 
 
 import java.time.LocalDate;
+import java.time.ZonedDateTime;
 import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -32,7 +33,7 @@ public class CmTextDTO implements Serializable {
 
     private LayoutType layout;
 
-    private LocalDate date;
+    private ZonedDateTime textDate;
 
     private LocalDate publishDate;
 
@@ -42,6 +43,8 @@ public class CmTextDTO implements Serializable {
     private Long cmModuleId;
 
     private Long cmItemId;
+
+    private Long imageId;
 
     public Long getId() {
         return id;
@@ -107,12 +110,12 @@ public class CmTextDTO implements Serializable {
         this.layout = layout;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public ZonedDateTime getTextDate() {
+        return textDate;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setTextDate(ZonedDateTime textDate) {
+        this.textDate = textDate;
     }
 
     public LocalDate getPublishDate() {
@@ -147,6 +150,14 @@ public class CmTextDTO implements Serializable {
         this.cmItemId = cmItemId;
     }
 
+    public Long getImageId() {
+        return imageId;
+    }
+
+    public void setImageId(Long cmImageId) {
+        this.imageId = cmImageId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -179,7 +190,7 @@ public class CmTextDTO implements Serializable {
             ", textType='" + getTextType() + "'" +
             ", sorted=" + getSorted() +
             ", layout='" + getLayout() + "'" +
-            ", date='" + getDate() + "'" +
+            ", textDate='" + getTextDate() + "'" +
             ", publishDate='" + getPublishDate() + "'" +
             ", publish='" + isPublish() + "'" +
             "}";

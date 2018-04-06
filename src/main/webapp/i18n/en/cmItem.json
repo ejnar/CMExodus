@@ -16,9 +16,12 @@
             "detail": {
                 "title": "Cm Item"
             },
-            "date": "Date",
+            "itemDate": "Item Date",
+            "sorted": "Sorted",
             "toolTip": "Tool Tip",
             "layout": "Layout",
+            "publishDate": "Publish Date",
+            "publish": "Publish",
             "cmModule": "Cm Module",
             "text": "Text",
             "image": "Image"

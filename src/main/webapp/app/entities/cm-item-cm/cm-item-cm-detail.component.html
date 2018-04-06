@@ -4,9 +4,13 @@
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="cmExodusApp.cmItem.date">Date</span></dt>
+        <dt><span jhiTranslate="cmExodusApp.cmItem.itemDate">Item Date</span></dt>
         <dd>
-            <span>{{cmItem.date | date:'mediumDate'}}</span>
+            <span>{{cmItem.itemDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="cmExodusApp.cmItem.sorted">Sorted</span></dt>
+        <dd>
+            <span>{{cmItem.sorted}}</span>
         </dd>
         <dt><span jhiTranslate="cmExodusApp.cmItem.toolTip">Tool Tip</span></dt>
         <dd>
@@ -15,6 +19,14 @@
         <dt><span jhiTranslate="cmExodusApp.cmItem.layout">Layout</span></dt>
         <dd>
             <span jhiTranslate="{{'cmExodusApp.LayoutType.' + cmItem.layout}}">{{cmItem.layout}}</span>
+        </dd>
+        <dt><span jhiTranslate="cmExodusApp.cmItem.publishDate">Publish Date</span></dt>
+        <dd>
+            <span>{{cmItem.publishDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="cmExodusApp.cmItem.publish">Publish</span></dt>
+        <dd>
+            <span>{{cmItem.publish}}</span>
         </dd>
         <dt><span jhiTranslate="cmExodusApp.cmItem.cmModule">Cm Module</span></dt>
         <dd>

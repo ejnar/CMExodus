@@ -20,5 +20,11 @@
                                  referencedColumnNames="id"
                                  referencedTableName="cm_item"/>
 
+        <addForeignKeyConstraint baseColumnNames="image_id"
+                                 baseTableName="cm_text"
+                                 constraintName="fk_cm_text_image_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="cm_image"/>
+
     </changeSet>
 </databaseChangeLog>

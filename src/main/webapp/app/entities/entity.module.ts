@@ -9,6 +9,7 @@ import { CmExodusCmModuleCmModule } from './cm-module-cm/cm-module-cm.module';
 import { CmExodusCmItemCmModule } from './cm-item-cm/cm-item-cm.module';
 import { CmExodusCmTextCmModule } from './cm-text-cm/cm-text-cm.module';
 import { CmExodusCmImageCmModule } from './cm-image-cm/cm-image-cm.module';
+import { CmExodusCmItemListCmModule } from './cm-item-list-cm/cm-item-list-cm.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
@@ -22,6 +23,7 @@ import { CmExodusCmImageCmModule } from './cm-image-cm/cm-image-cm.module';
         CmExodusCmItemCmModule,
         CmExodusCmTextCmModule,
         CmExodusCmImageCmModule,
+        CmExodusCmItemListCmModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],

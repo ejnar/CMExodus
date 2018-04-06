@@ -11,6 +11,7 @@ import { CmTextCmService } from '../../../../../../main/webapp/app/entities/cm-t
 import { CmTextCm } from '../../../../../../main/webapp/app/entities/cm-text-cm/cm-text-cm.model';
 import { CmModuleCmService } from '../../../../../../main/webapp/app/entities/cm-module-cm';
 import { CmItemCmService } from '../../../../../../main/webapp/app/entities/cm-item-cm';
+import { CmImageCmService } from '../../../../../../main/webapp/app/entities/cm-image-cm';
 
 describe('Component Tests', () => {
 
@@ -28,6 +29,7 @@ describe('Component Tests', () => {
                 providers: [
                     CmModuleCmService,
                     CmItemCmService,
+                    CmImageCmService,
                     CmTextCmService
                 ]
             })

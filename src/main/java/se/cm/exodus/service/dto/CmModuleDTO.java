@@ -21,6 +21,10 @@ public class CmModuleDTO implements Serializable {
 
     private LayoutType layout;
 
+    private Set<CmItemListDTO> itemLists = new HashSet<>();
+
+    private Set<CmItemDTO> items = new HashSet<>();
+
     public Long getId() {
         return id;
     }
@@ -51,6 +55,22 @@ public class CmModuleDTO implements Serializable {
 
     public void setLayout(LayoutType layout) {
         this.layout = layout;
+    }
+
+    public Set<CmItemListDTO> getItemLists() {
+        return itemLists;
+    }
+
+    public void setItemLists(Set<CmItemListDTO> itemLists) {
+        this.itemLists = itemLists;
+    }
+
+    public Set<CmItemDTO> getItems() {
+        return items;
+    }
+
+    public void setItems(Set<CmItemDTO> items) {
+        this.items = items;
     }
 
     @Override

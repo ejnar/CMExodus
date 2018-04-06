@@ -1,19 +1,19 @@
-import { Component, Input } from '@angular/core';
-
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { NGXLogger } from 'ngx-logger';
 import { ComponentInterface } from './../../component-interface';
 
 @Component({
-    template: `
-    <div class="program_list">
-      <h3>Program</h3>
-      <h4>{{data.name}}</h4>
-    </div>
-    `,
+    templateUrl: './program-list.component.html',
     styleUrls: [
         'content.scss'
     ]
-
 })
-export class ProgramListComponent implements ComponentInterface {
+export class ProgramListComponent implements OnInit, ComponentInterface {
   @Input() data: any;
+
+  constructor(private logger: NGXLogger ) {}
+
+  ngOnInit() {
+
+  }
 }

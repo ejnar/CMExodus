@@ -24,7 +24,6 @@ export class CmImageCmDialogComponent implements OnInit {
     cmmodules: CmModuleCm[];
 
     cmitems: CmItemCm[];
-    dateDp: any;
     publishDateDp: any;
 
     constructor(

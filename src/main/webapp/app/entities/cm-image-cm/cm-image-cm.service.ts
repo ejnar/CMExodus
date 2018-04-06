@@ -63,8 +63,6 @@ export class CmImageCmService {
      */
     private convertItemFromServer(cmImage: CmImageCm): CmImageCm {
         const copy: CmImageCm = Object.assign({}, cmImage);
-        copy.date = this.dateUtils
-            .convertLocalDateFromServer(cmImage.date);
         copy.publishDate = this.dateUtils
             .convertLocalDateFromServer(cmImage.publishDate);
         return copy;
@@ -75,8 +73,6 @@ export class CmImageCmService {
      */
     private convert(cmImage: CmImageCm): CmImageCm {
         const copy: CmImageCm = Object.assign({}, cmImage);
-        copy.date = this.dateUtils
-            .convertLocalDateToServer(cmImage.date);
         copy.publishDate = this.dateUtils
             .convertLocalDateToServer(cmImage.publishDate);
         return copy;

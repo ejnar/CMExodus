@@ -1,0 +1,126 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myCmItemListLabel" jhiTranslate="cmExodusApp.cmItemList.home.createOrEditLabel">Create or edit a Cm Item List</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!cmItemList.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="cmItemList.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cmExodusApp.cmItemList.textSv" for="field_textSv">Text Sv</label>
+            <input type="text" class="form-control" name="textSv" id="field_textSv"
+                [(ngModel)]="cmItemList.textSv" required/>
+            <div [hidden]="!(editForm.controls.textSv?.dirty && editForm.controls.textSv?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.textSv?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cmExodusApp.cmItemList.textEn" for="field_textEn">Text En</label>
+            <input type="text" class="form-control" name="textEn" id="field_textEn"
+                [(ngModel)]="cmItemList.textEn" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cmExodusApp.cmItemList.titleSv" for="field_titleSv">Title Sv</label>
+            <input type="text" class="form-control" name="titleSv" id="field_titleSv"
+                [(ngModel)]="cmItemList.titleSv" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cmExodusApp.cmItemList.titleEn" for="field_titleEn">Title En</label>
+            <input type="text" class="form-control" name="titleEn" id="field_titleEn"
+                [(ngModel)]="cmItemList.titleEn" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cmExodusApp.cmItemList.ingressSv" for="field_ingressSv">Ingress Sv</label>
+            <input type="text" class="form-control" name="ingressSv" id="field_ingressSv"
+                [(ngModel)]="cmItemList.ingressSv" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cmExodusApp.cmItemList.ingressEn" for="field_ingressEn">Ingress En</label>
+            <input type="text" class="form-control" name="ingressEn" id="field_ingressEn"
+                [(ngModel)]="cmItemList.ingressEn" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cmExodusApp.cmItemList.sorted" for="field_sorted">Sorted</label>
+            <input type="number" class="form-control" name="sorted" id="field_sorted"
+                [(ngModel)]="cmItemList.sorted" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cmExodusApp.cmItemList.toolTip" for="field_toolTip">Tool Tip</label>
+            <input type="text" class="form-control" name="toolTip" id="field_toolTip"
+                [(ngModel)]="cmItemList.toolTip" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cmExodusApp.cmItemList.typeOfEvent" for="field_typeOfEvent">Type Of Event</label>
+            <select class="form-control" name="typeOfEvent" [(ngModel)]="cmItemList.typeOfEvent" id="field_typeOfEvent" >
+                <option value="SERVICE">{{'cmExodusApp.TypeOfEvent.SERVICE' | translate}}</option>
+                <option value="CAFE">{{'cmExodusApp.TypeOfEvent.CAFE' | translate}}</option>
+                <option value="YOUTH">{{'cmExodusApp.TypeOfEvent.YOUTH' | translate}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cmExodusApp.cmItemList.location" for="field_location">Location</label>
+            <input type="text" class="form-control" name="location" id="field_location"
+                [(ngModel)]="cmItemList.location" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cmExodusApp.cmItemList.itemDate" for="field_itemDate">Item Date</label>
+            <div class="d-flex">
+                <input id="field_itemDate" type="datetime-local" class="form-control" name="itemDate" [(ngModel)]="cmItemList.itemDate"
+                />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cmExodusApp.cmItemList.publishDate" for="field_publishDate">Publish Date</label>
+            <div class="input-group">
+                <input id="field_publishDate" type="text" class="form-control" name="publishDate" ngbDatepicker  #publishDateDp="ngbDatepicker" [(ngModel)]="cmItemList.publishDate"
+                />
+                <span class="input-group-append">
+                    <button type="button" class="btn btn-secondary" (click)="publishDateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cmExodusApp.cmItemList.publish" for="field_publish">Publish</label>
+            <input type="checkbox" class="form-control" name="publish" id="field_publish"
+                [(ngModel)]="cmItemList.publish" />
+            <div [hidden]="!(editForm.controls.publish?.dirty && editForm.controls.publish?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.publish?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cmExodusApp.cmItemList.cmModule" for="field_cmModule">Cm Module</label>
+            <select class="form-control" id="field_cmModule" name="cmModule" [(ngModel)]="cmItemList.cmModuleId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="cmModuleOption.id" *ngFor="let cmModuleOption of cmmodules; trackBy: trackCmModuleById">{{cmModuleOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cmExodusApp.cmItemList.image" for="field_image">Image</label>
+            <select class="form-control" id="field_image" name="image" [(ngModel)]="cmItemList.imageId">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="cmImageOption.id" *ngFor="let cmImageOption of images; trackBy: trackCmImageById">{{cmImageOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

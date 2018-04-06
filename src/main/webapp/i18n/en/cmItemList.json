@@ -1,0 +1,36 @@
+
+{
+    "cmExodusApp": {
+        "cmItemList" : {
+            "home": {
+                "title": "Cm Item Lists",
+                "createLabel": "Create a new Cm Item List",
+                "createOrEditLabel": "Create or edit a Cm Item List"
+            },
+            "created": "A new Cm Item List is created with identifier {{ param }}",
+            "updated": "A Cm Item List is updated with identifier {{ param }}",
+            "deleted": "A Cm Item List is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Cm Item List {{ id }}?"
+            },
+            "detail": {
+                "title": "Cm Item List"
+            },
+            "textSv": "Text Sv",
+            "textEn": "Text En",
+            "titleSv": "Title Sv",
+            "titleEn": "Title En",
+            "ingressSv": "Ingress Sv",
+            "ingressEn": "Ingress En",
+            "sorted": "Sorted",
+            "toolTip": "Tool Tip",
+            "typeOfEvent": "Type Of Event",
+            "location": "Location",
+            "itemDate": "Item Date",
+            "publishDate": "Publish Date",
+            "publish": "Publish",
+            "cmModule": "Cm Module",
+            "image": "Image"
+        }
+    }
+}

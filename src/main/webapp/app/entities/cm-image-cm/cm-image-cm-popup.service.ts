@@ -29,13 +29,6 @@ export class CmImageCmPopupService {
                 this.cmImageService.find(id)
                     .subscribe((cmImageResponse: HttpResponse<CmImageCm>) => {
                         const cmImage: CmImageCm = cmImageResponse.body;
-                        if (cmImage.date) {
-                            cmImage.date = {
-                                year: cmImage.date.getFullYear(),
-                                month: cmImage.date.getMonth() + 1,
-                                day: cmImage.date.getDate()
-                            };
-                        }
                         if (cmImage.publishDate) {
                             cmImage.publishDate = {
                                 year: cmImage.publishDate.getFullYear(),

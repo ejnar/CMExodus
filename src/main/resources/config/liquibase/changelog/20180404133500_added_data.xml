@@ -16,23 +16,13 @@
     <!--
         Added the entity CmTopic.
     -->
-    <changeSet id="20180404133500" author="jhipster">
+    <changeSet id="20180404133500_1" author="jhipster">
         <loadData encoding="UTF-8"
                   file="config/liquibase/topics.csv"
                   separator=";"
                   tableName="cm_topic">
             <column name="id" type="numeric" />
             <column name="name" type="string"/>
-        </loadData>
-        <loadData encoding="UTF-8"
-                  file="config/liquibase/subtopics.csv"
-                  separator=";"
-                  tableName="cm_sub_topic">
-            <column name="id" type="numeric" />
-            <column name="name" type="string"/>
-            <column name="visable" type="boolean" />
-            <column name="cm_topic_id" type="numeric"/>
-            <column name="page_id" type="numeric"/>
         </loadData>
         <loadData encoding="UTF-8"
                   file="config/liquibase/pages.csv"
@@ -44,13 +34,6 @@
             <column name="page_layout" type="string"/>
         </loadData>
         <loadData encoding="UTF-8"
-                  file="config/liquibase/pageModules.csv"
-                  separator=";"
-                  tableName="cm_page_module">
-            <column name="modules_id" type="numeric" />
-            <column name="cm_pages_id" type="numeric" />
-        </loadData>
-        <loadData encoding="UTF-8"
                   file="config/liquibase/modules.csv"
                   separator=";"
                   tableName="cm_module">
@@ -60,5 +43,68 @@
             <column name="layout" type="string"/>
         </loadData>
     </changeSet>
+    <changeSet id="20180404133500_2" author="jhipster">
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/subtopics.csv"
+                  separator=";"
+                  tableName="cm_sub_topic">
+            <column name="id" type="numeric" />
+            <column name="name" type="string"/>
+            <column name="visable" type="boolean" />
+            <column name="cm_topic_id" type="numeric"/>
+            <column name="page_id" type="numeric"/>
+        </loadData>
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/pageModules.csv"
+                  separator=";"
+                  tableName="cm_page_module">
+            <column name="modules_id" type="numeric" />
+            <column name="cm_pages_id" type="numeric" />
+        </loadData>
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/cmItem.csv"
+                  separator=";"
+                  tableName="cm_item">
+            <column name="id" type="numeric" />
+            <column name="tool_tip" type="string"/>
+            <column name="sorted" type="numeric"/>
+            <column name="layout" type="string"/>
+            <column name="publish" type="boolean"/>
+            <column name="cm_module_id" type="numeric" />
+        </loadData>
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/cmItemList.csv"
+                  separator=";"
+                  tableName="cm_item_list">
+            <column name="id" type="numeric" />
+            <column name="text_sv" type="string"/>
+            <column name="text_en" type="string"/>
+            <column name="title_sv" type="string"/>
+            <column name="title_en" type="string"/>
+            <column name="sorted" type="numeric"/>
+            <column name="tool_tip" type="string"/>
+            <column name="type_of_event" type="string"/>
+            <column name="location" type="string"/>
+            <column name="item_date" type="date"/>
+            <column name="publish" type="boolean"/>
+            <column name="cm_module_id" type="numeric" />
+        </loadData>
+    </changeSet>
+    <changeSet id="20180404133500_3" author="jhipster">
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/cmText.csv"
+                  separator=";"
+                  tableName="cm_text">
+            <column name="id" type="numeric" />
+            <column name="text_sv" type="string"/>
+            <column name="text_en" type="string"/>
+            <column name="text_type" type="string"/>
+            <column name="sorted" type="numeric"/>
+            <column name="layout" type="string"/>
+            <column name="publish" type="boolean"/>
+            <column name="cm_item_id" type="numeric" />
+        </loadData>
+    </changeSet>
+
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
 </databaseChangeLog>

@@ -1,0 +1,87 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "cmModule",
+            "otherEntityName": "cmModule",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "image",
+            "otherEntityName": "cmImage",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "cmItemList"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "textSv",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "textEn",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "titleSv",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "titleEn",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "ingressSv",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "ingressEn",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "sorted",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "toolTip",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "typeOfEvent",
+            "fieldType": "TypeOfEvent",
+            "fieldValues": "SERVICE,CAFE,YOUTH"
+        },
+        {
+            "fieldName": "location",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "itemDate",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "publishDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "publish",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20180405074225",
+    "entityTableName": "cm_item_list",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "angularJSSuffix": "cm"
+}

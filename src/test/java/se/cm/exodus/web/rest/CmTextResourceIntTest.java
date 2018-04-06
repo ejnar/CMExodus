@@ -25,9 +25,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import java.time.LocalDate;
+import java.time.Instant;
+import java.time.ZonedDateTime;
+import java.time.ZoneOffset;
 import java.time.ZoneId;
 import java.util.List;
 
+import static se.cm.exodus.web.rest.TestUtil.sameInstant;
 import static se.cm.exodus.web.rest.TestUtil.createFormattingConversionService;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
@@ -66,8 +70,8 @@ public class CmTextResourceIntTest {
     private static final LayoutType DEFAULT_LAYOUT = LayoutType.LEFT;
     private static final LayoutType UPDATED_LAYOUT = LayoutType.RIGHT;
 
-    private static final LocalDate DEFAULT_DATE = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_DATE = LocalDate.now(ZoneId.systemDefault());
+    private static final ZonedDateTime DEFAULT_TEXT_DATE = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
+    private static final ZonedDateTime UPDATED_TEXT_DATE = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
 
     private static final LocalDate DEFAULT_PUBLISH_DATE = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_PUBLISH_DATE = LocalDate.now(ZoneId.systemDefault());
@@ -126,7 +130,7 @@ public class CmTextResourceIntTest {
             .textType(DEFAULT_TEXT_TYPE)
             .sorted(DEFAULT_SORTED)
             .layout(DEFAULT_LAYOUT)
-            .date(DEFAULT_DATE)
+            .textDate(DEFAULT_TEXT_DATE)
             .publishDate(DEFAULT_PUBLISH_DATE)
             .publish(DEFAULT_PUBLISH);
         return cmText;
@@ -160,7 +164,7 @@ public class CmTextResourceIntTest {
         assertThat(testCmText.getTextType()).isEqualTo(DEFAULT_TEXT_TYPE);
         assertThat(testCmText.getSorted()).isEqualTo(DEFAULT_SORTED);
         assertThat(testCmText.getLayout()).isEqualTo(DEFAULT_LAYOUT);
-        assertThat(testCmText.getDate()).isEqualTo(DEFAULT_DATE);
+        assertThat(testCmText.getTextDate()).isEqualTo(DEFAULT_TEXT_DATE);
         assertThat(testCmText.getPublishDate()).isEqualTo(DEFAULT_PUBLISH_DATE);
         assertThat(testCmText.isPublish()).isEqualTo(DEFAULT_PUBLISH);
     }
@@ -241,7 +245,7 @@ public class CmTextResourceIntTest {
             .andExpect(jsonPath("$.[*].textType").value(hasItem(DEFAULT_TEXT_TYPE.toString())))
             .andExpect(jsonPath("$.[*].sorted").value(hasItem(DEFAULT_SORTED)))
             .andExpect(jsonPath("$.[*].layout").value(hasItem(DEFAULT_LAYOUT.toString())))
-            .andExpect(jsonPath("$.[*].date").value(hasItem(DEFAULT_DATE.toString())))
+            .andExpect(jsonPath("$.[*].textDate").value(hasItem(sameInstant(DEFAULT_TEXT_DATE))))
             .andExpect(jsonPath("$.[*].publishDate").value(hasItem(DEFAULT_PUBLISH_DATE.toString())))
             .andExpect(jsonPath("$.[*].publish").value(hasItem(DEFAULT_PUBLISH.booleanValue())));
     }
@@ -264,7 +268,7 @@ public class CmTextResourceIntTest {
             .andExpect(jsonPath("$.textType").value(DEFAULT_TEXT_TYPE.toString()))
             .andExpect(jsonPath("$.sorted").value(DEFAULT_SORTED))
             .andExpect(jsonPath("$.layout").value(DEFAULT_LAYOUT.toString()))
-            .andExpect(jsonPath("$.date").value(DEFAULT_DATE.toString()))
+            .andExpect(jsonPath("$.textDate").value(sameInstant(DEFAULT_TEXT_DATE)))
             .andExpect(jsonPath("$.publishDate").value(DEFAULT_PUBLISH_DATE.toString()))
             .andExpect(jsonPath("$.publish").value(DEFAULT_PUBLISH.booleanValue()));
     }
@@ -296,7 +300,7 @@ public class CmTextResourceIntTest {
             .textType(UPDATED_TEXT_TYPE)
             .sorted(UPDATED_SORTED)
             .layout(UPDATED_LAYOUT)
-            .date(UPDATED_DATE)
+            .textDate(UPDATED_TEXT_DATE)
             .publishDate(UPDATED_PUBLISH_DATE)
             .publish(UPDATED_PUBLISH);
         CmTextDTO cmTextDTO = cmTextMapper.toDto(updatedCmText);
@@ -317,7 +321,7 @@ public class CmTextResourceIntTest {
         assertThat(testCmText.getTextType()).isEqualTo(UPDATED_TEXT_TYPE);
         assertThat(testCmText.getSorted()).isEqualTo(UPDATED_SORTED);
         assertThat(testCmText.getLayout()).isEqualTo(UPDATED_LAYOUT);
-        assertThat(testCmText.getDate()).isEqualTo(UPDATED_DATE);
+        assertThat(testCmText.getTextDate()).isEqualTo(UPDATED_TEXT_DATE);
         assertThat(testCmText.getPublishDate()).isEqualTo(UPDATED_PUBLISH_DATE);
         assertThat(testCmText.isPublish()).isEqualTo(UPDATED_PUBLISH);
     }

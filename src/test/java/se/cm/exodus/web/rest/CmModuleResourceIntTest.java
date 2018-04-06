@@ -4,6 +4,7 @@ import se.cm.exodus.CmExodusApp;
 
 import se.cm.exodus.domain.CmModule;
 import se.cm.exodus.repository.CmModuleRepository;
+import se.cm.exodus.service.CmModuleService;
 import se.cm.exodus.service.dto.CmModuleDTO;
 import se.cm.exodus.service.mapper.CmModuleMapper;
 import se.cm.exodus.web.rest.errors.ExceptionTranslator;
@@ -58,6 +59,9 @@ public class CmModuleResourceIntTest {
     private CmModuleMapper cmModuleMapper;
 
     @Autowired
+    private CmModuleService cmModuleService;
+
+    @Autowired
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
 
     @Autowired
@@ -76,7 +80,7 @@ public class CmModuleResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final CmModuleResource cmModuleResource = new CmModuleResource(cmModuleRepository, cmModuleMapper);
+        final CmModuleResource cmModuleResource = new CmModuleResource(cmModuleService);
         this.restCmModuleMockMvc = MockMvcBuilders.standaloneSetup(cmModuleResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)

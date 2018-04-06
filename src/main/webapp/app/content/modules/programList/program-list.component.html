@@ -1,0 +1,21 @@
+<div class="program_list">
+    <h3>Program</h3>
+    <h4>{{data.type}}</h4>
+    <div *ngFor="let item of data.itemList" class="container">
+        <div class="row row-striped">
+            <div class="col-2 text-right">
+                <h1 class="display-4"><span class="badge badge-secondary">{{item.itemDate | date: 'd'}}</span></h1>
+                <h2>{{item.itemDate | date: 'MMM'}}</h2>
+            </div>
+            <div class="col-10">
+                <h3 class="text-uppercase"><strong>{{item.titleSv}}</strong></h3>
+                <ul class="list-inline">
+                    <li class="list-inline-item"><i class="fa fa-calendar-o" aria-hidden="true"></i> {{item.itemDate | date: 'EEEE'}}</li>
+                    <li class="list-inline-item"><i class="fa fa-clock-o" aria-hidden="true"></i> {{item.itemDate | date: 'shortTime'}}</li>
+                    <li class="list-inline-item"><i class="fa fa-location-arrow" aria-hidden="true"></i> {{item.location}}</li>
+                </ul>
+                <p>{{item.textSv}}</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -2,6 +2,8 @@ package se.cm.exodus.service.dto;
 
 
 import java.time.LocalDate;
+import java.time.ZonedDateTime;
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -15,11 +17,18 @@ public class CmItemDTO implements Serializable {
 
     private Long id;
 
-    private LocalDate date;
+    private ZonedDateTime itemDate;
+
+    private Integer sorted;
 
     private String toolTip;
 
     private LayoutType layout;
+
+    private LocalDate publishDate;
+
+    @NotNull
+    private Boolean publish;
 
     private Long cmModuleId;
 
@@ -31,12 +40,20 @@ public class CmItemDTO implements Serializable {
         this.id = id;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public ZonedDateTime getItemDate() {
+        return itemDate;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setItemDate(ZonedDateTime itemDate) {
+        this.itemDate = itemDate;
+    }
+
+    public Integer getSorted() {
+        return sorted;
+    }
+
+    public void setSorted(Integer sorted) {
+        this.sorted = sorted;
     }
 
     public String getToolTip() {
@@ -53,6 +70,22 @@ public class CmItemDTO implements Serializable {
 
     public void setLayout(LayoutType layout) {
         this.layout = layout;
+    }
+
+    public LocalDate getPublishDate() {
+        return publishDate;
+    }
+
+    public void setPublishDate(LocalDate publishDate) {
+        this.publishDate = publishDate;
+    }
+
+    public Boolean isPublish() {
+        return publish;
+    }
+
+    public void setPublish(Boolean publish) {
+        this.publish = publish;
     }
 
     public Long getCmModuleId() {
@@ -88,9 +121,12 @@ public class CmItemDTO implements Serializable {
     public String toString() {
         return "CmItemDTO{" +
             "id=" + getId() +
-            ", date='" + getDate() + "'" +
+            ", itemDate='" + getItemDate() + "'" +
+            ", sorted=" + getSorted() +
             ", toolTip='" + getToolTip() + "'" +
             ", layout='" + getLayout() + "'" +
+            ", publishDate='" + getPublishDate() + "'" +
+            ", publish='" + isPublish() + "'" +
             "}";
     }
 }

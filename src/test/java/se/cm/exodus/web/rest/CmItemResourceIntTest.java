@@ -25,9 +25,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import java.time.LocalDate;
+import java.time.Instant;
+import java.time.ZonedDateTime;
+import java.time.ZoneOffset;
 import java.time.ZoneId;
 import java.util.List;
 
+import static se.cm.exodus.web.rest.TestUtil.sameInstant;
 import static se.cm.exodus.web.rest.TestUtil.createFormattingConversionService;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
@@ -44,14 +48,23 @@ import se.cm.exodus.domain.enumeration.LayoutType;
 @SpringBootTest(classes = CmExodusApp.class)
 public class CmItemResourceIntTest {
 
-    private static final LocalDate DEFAULT_DATE = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_DATE = LocalDate.now(ZoneId.systemDefault());
+    private static final ZonedDateTime DEFAULT_ITEM_DATE = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
+    private static final ZonedDateTime UPDATED_ITEM_DATE = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+
+    private static final Integer DEFAULT_SORTED = 1;
+    private static final Integer UPDATED_SORTED = 2;
 
     private static final String DEFAULT_TOOL_TIP = "AAAAAAAAAA";
     private static final String UPDATED_TOOL_TIP = "BBBBBBBBBB";
 
     private static final LayoutType DEFAULT_LAYOUT = LayoutType.LEFT;
     private static final LayoutType UPDATED_LAYOUT = LayoutType.RIGHT;
+
+    private static final LocalDate DEFAULT_PUBLISH_DATE = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_PUBLISH_DATE = LocalDate.now(ZoneId.systemDefault());
+
+    private static final Boolean DEFAULT_PUBLISH = false;
+    private static final Boolean UPDATED_PUBLISH = true;
 
     @Autowired
     private CmItemRepository cmItemRepository;
@@ -97,9 +110,12 @@ public class CmItemResourceIntTest {
      */
     public static CmItem createEntity(EntityManager em) {
         CmItem cmItem = new CmItem()
-            .date(DEFAULT_DATE)
+            .itemDate(DEFAULT_ITEM_DATE)
+            .sorted(DEFAULT_SORTED)
             .toolTip(DEFAULT_TOOL_TIP)
-            .layout(DEFAULT_LAYOUT);
+            .layout(DEFAULT_LAYOUT)
+            .publishDate(DEFAULT_PUBLISH_DATE)
+            .publish(DEFAULT_PUBLISH);
         return cmItem;
     }
 
@@ -124,9 +140,12 @@ public class CmItemResourceIntTest {
         List<CmItem> cmItemList = cmItemRepository.findAll();
         assertThat(cmItemList).hasSize(databaseSizeBeforeCreate + 1);
         CmItem testCmItem = cmItemList.get(cmItemList.size() - 1);
-        assertThat(testCmItem.getDate()).isEqualTo(DEFAULT_DATE);
+        assertThat(testCmItem.getItemDate()).isEqualTo(DEFAULT_ITEM_DATE);
+        assertThat(testCmItem.getSorted()).isEqualTo(DEFAULT_SORTED);
         assertThat(testCmItem.getToolTip()).isEqualTo(DEFAULT_TOOL_TIP);
         assertThat(testCmItem.getLayout()).isEqualTo(DEFAULT_LAYOUT);
+        assertThat(testCmItem.getPublishDate()).isEqualTo(DEFAULT_PUBLISH_DATE);
+        assertThat(testCmItem.isPublish()).isEqualTo(DEFAULT_PUBLISH);
     }
 
     @Test
@@ -151,6 +170,25 @@ public class CmItemResourceIntTest {
 
     @Test
     @Transactional
+    public void checkPublishIsRequired() throws Exception {
+        int databaseSizeBeforeTest = cmItemRepository.findAll().size();
+        // set the field null
+        cmItem.setPublish(null);
+
+        // Create the CmItem, which fails.
+        CmItemDTO cmItemDTO = cmItemMapper.toDto(cmItem);
+
+        restCmItemMockMvc.perform(post("/api/cm-items")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(cmItemDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<CmItem> cmItemList = cmItemRepository.findAll();
+        assertThat(cmItemList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllCmItems() throws Exception {
         // Initialize the database
         cmItemRepository.saveAndFlush(cmItem);
@@ -160,9 +198,12 @@ public class CmItemResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(cmItem.getId().intValue())))
-            .andExpect(jsonPath("$.[*].date").value(hasItem(DEFAULT_DATE.toString())))
+            .andExpect(jsonPath("$.[*].itemDate").value(hasItem(sameInstant(DEFAULT_ITEM_DATE))))
+            .andExpect(jsonPath("$.[*].sorted").value(hasItem(DEFAULT_SORTED)))
             .andExpect(jsonPath("$.[*].toolTip").value(hasItem(DEFAULT_TOOL_TIP.toString())))
-            .andExpect(jsonPath("$.[*].layout").value(hasItem(DEFAULT_LAYOUT.toString())));
+            .andExpect(jsonPath("$.[*].layout").value(hasItem(DEFAULT_LAYOUT.toString())))
+            .andExpect(jsonPath("$.[*].publishDate").value(hasItem(DEFAULT_PUBLISH_DATE.toString())))
+            .andExpect(jsonPath("$.[*].publish").value(hasItem(DEFAULT_PUBLISH.booleanValue())));
     }
 
     @Test
@@ -176,9 +217,12 @@ public class CmItemResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(cmItem.getId().intValue()))
-            .andExpect(jsonPath("$.date").value(DEFAULT_DATE.toString()))
+            .andExpect(jsonPath("$.itemDate").value(sameInstant(DEFAULT_ITEM_DATE)))
+            .andExpect(jsonPath("$.sorted").value(DEFAULT_SORTED))
             .andExpect(jsonPath("$.toolTip").value(DEFAULT_TOOL_TIP.toString()))
-            .andExpect(jsonPath("$.layout").value(DEFAULT_LAYOUT.toString()));
+            .andExpect(jsonPath("$.layout").value(DEFAULT_LAYOUT.toString()))
+            .andExpect(jsonPath("$.publishDate").value(DEFAULT_PUBLISH_DATE.toString()))
+            .andExpect(jsonPath("$.publish").value(DEFAULT_PUBLISH.booleanValue()));
     }
 
     @Test
@@ -201,9 +245,12 @@ public class CmItemResourceIntTest {
         // Disconnect from session so that the updates on updatedCmItem are not directly saved in db
         em.detach(updatedCmItem);
         updatedCmItem
-            .date(UPDATED_DATE)
+            .itemDate(UPDATED_ITEM_DATE)
+            .sorted(UPDATED_SORTED)
             .toolTip(UPDATED_TOOL_TIP)
-            .layout(UPDATED_LAYOUT);
+            .layout(UPDATED_LAYOUT)
+            .publishDate(UPDATED_PUBLISH_DATE)
+            .publish(UPDATED_PUBLISH);
         CmItemDTO cmItemDTO = cmItemMapper.toDto(updatedCmItem);
 
         restCmItemMockMvc.perform(put("/api/cm-items")
@@ -215,9 +262,12 @@ public class CmItemResourceIntTest {
         List<CmItem> cmItemList = cmItemRepository.findAll();
         assertThat(cmItemList).hasSize(databaseSizeBeforeUpdate);
         CmItem testCmItem = cmItemList.get(cmItemList.size() - 1);
-        assertThat(testCmItem.getDate()).isEqualTo(UPDATED_DATE);
+        assertThat(testCmItem.getItemDate()).isEqualTo(UPDATED_ITEM_DATE);
+        assertThat(testCmItem.getSorted()).isEqualTo(UPDATED_SORTED);
         assertThat(testCmItem.getToolTip()).isEqualTo(UPDATED_TOOL_TIP);
         assertThat(testCmItem.getLayout()).isEqualTo(UPDATED_LAYOUT);
+        assertThat(testCmItem.getPublishDate()).isEqualTo(UPDATED_PUBLISH_DATE);
+        assertThat(testCmItem.isPublish()).isEqualTo(UPDATED_PUBLISH);
     }
 
     @Test

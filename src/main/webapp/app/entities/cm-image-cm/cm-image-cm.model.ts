@@ -18,7 +18,6 @@ export class CmImageCm implements BaseEntity {
         public toolTip?: string,
         public sorted?: number,
         public layout?: LayoutType,
-        public date?: any,
         public publishDate?: any,
         public publish?: boolean,
         public cmModuleId?: number,

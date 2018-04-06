@@ -65,13 +65,10 @@
             </select>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="cmExodusApp.cmText.date" for="field_date">Date</label>
-            <div class="input-group">
-                <input id="field_date" type="text" class="form-control" name="date" ngbDatepicker  #dateDp="ngbDatepicker" [(ngModel)]="cmText.date"
+            <label class="form-control-label" jhiTranslate="cmExodusApp.cmText.textDate" for="field_textDate">Text Date</label>
+            <div class="d-flex">
+                <input id="field_textDate" type="datetime-local" class="form-control" name="textDate" [(ngModel)]="cmText.textDate"
                 />
-                <span class="input-group-append">
-                    <button type="button" class="btn btn-secondary" (click)="dateDp.toggle()"><i class="fa fa-calendar"></i></button>
-                </span>
             </div>
         </div>
         <div class="form-group">
@@ -108,6 +105,13 @@
             <select class="form-control" id="field_cmItem" name="cmItem" [(ngModel)]="cmText.cmItemId" >
                 <option [ngValue]="null"></option>
                 <option [ngValue]="cmItemOption.id" *ngFor="let cmItemOption of cmitems; trackBy: trackCmItemById">{{cmItemOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cmExodusApp.cmText.image" for="field_image">Image</label>
+            <select class="form-control" id="field_image" name="image" [(ngModel)]="cmText.imageId">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="cmImageOption.id" *ngFor="let cmImageOption of images; trackBy: trackCmImageById">{{cmImageOption.id}}</option>
             </select>
         </div>
     </div>

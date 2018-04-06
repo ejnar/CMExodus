@@ -37,6 +37,7 @@ entity CmModule{
 }
 entity CmItem{
 	itemDate ZonedDateTime
+    sorted Integer
     toolTip String
     layout LayoutType
     publishDate LocalDate

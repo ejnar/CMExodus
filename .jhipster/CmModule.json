@@ -3,8 +3,14 @@
     "relationships": [
         {
             "relationshipType": "one-to-many",
-            "relationshipName": "list",
+            "relationshipName": "item",
             "otherEntityName": "cmItem",
+            "otherEntityRelationshipName": "cmModule"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "itemList",
+            "otherEntityName": "cmItemList",
             "otherEntityRelationshipName": "cmModule"
         },
         {
@@ -40,7 +46,7 @@
     "entityTableName": "cm_module",
     "dto": "mapstruct",
     "pagination": "no",
-    "service": "no",
+    "service": "serviceImpl",
     "jpaMetamodelFiltering": false,
     "angularJSSuffix": "cm"
 }

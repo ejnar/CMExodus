@@ -24,7 +24,8 @@ export class CmModuleCm implements BaseEntity {
         public sorted?: number,
         public moduleType?: ModuleType,
         public layout?: LayoutType,
-        public lists?: BaseEntity[],
+        public items?: BaseEntity[],
+        public itemLists?: BaseEntity[],
         public texts?: BaseEntity[],
         public images?: BaseEntity[],
     ) {

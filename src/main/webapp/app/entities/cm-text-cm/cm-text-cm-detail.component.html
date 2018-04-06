@@ -32,9 +32,9 @@
         <dd>
             <span jhiTranslate="{{'cmExodusApp.LayoutType.' + cmText.layout}}">{{cmText.layout}}</span>
         </dd>
-        <dt><span jhiTranslate="cmExodusApp.cmText.date">Date</span></dt>
+        <dt><span jhiTranslate="cmExodusApp.cmText.textDate">Text Date</span></dt>
         <dd>
-            <span>{{cmText.date | date:'mediumDate'}}</span>
+            <span>{{cmText.textDate | date:'medium'}}</span>
         </dd>
         <dt><span jhiTranslate="cmExodusApp.cmText.publishDate">Publish Date</span></dt>
         <dd>
@@ -54,6 +54,12 @@
         <dd>
             <div *ngIf="cmText.cmItemId">
                 <a [routerLink]="['/cm-item-cm', cmText.cmItemId]">{{cmText.cmItemId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="cmExodusApp.cmText.image">Image</span></dt>
+        <dd>
+            <div *ngIf="cmText.imageId">
+                <a [routerLink]="['/cm-image-cm', cmText.imageId]">{{cmText.imageId}}</a>
             </div>
         </dd>
     </dl>

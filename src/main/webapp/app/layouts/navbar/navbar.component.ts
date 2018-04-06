@@ -10,7 +10,7 @@ import { JhiLanguageHelper, Principal, LoginModalService, LoginService } from '.
 import { VERSION } from '../../app.constants';
 
 import { NavbarService } from './navbar.service';
-import { Topic } from '../menu/topic.model';
+import { Topic } from '../model/topic.model';
 
 @Component({
     selector: 'jhi-navbar',

@@ -2,6 +2,7 @@ import { Injectable, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { HttpResponse } from '@angular/common/http';
+import { DatePipe } from '@angular/common';
 import { CmItemCm } from './cm-item-cm.model';
 import { CmItemCmService } from './cm-item-cm.service';
 
@@ -10,6 +11,7 @@ export class CmItemCmPopupService {
     private ngbModalRef: NgbModalRef;
 
     constructor(
+        private datePipe: DatePipe,
         private modalService: NgbModal,
         private router: Router,
         private cmItemService: CmItemCmService
@@ -29,11 +31,13 @@ export class CmItemCmPopupService {
                 this.cmItemService.find(id)
                     .subscribe((cmItemResponse: HttpResponse<CmItemCm>) => {
                         const cmItem: CmItemCm = cmItemResponse.body;
-                        if (cmItem.date) {
-                            cmItem.date = {
-                                year: cmItem.date.getFullYear(),
-                                month: cmItem.date.getMonth() + 1,
-                                day: cmItem.date.getDate()
+                        cmItem.itemDate = this.datePipe
+                            .transform(cmItem.itemDate, 'yyyy-MM-ddTHH:mm:ss');
+                        if (cmItem.publishDate) {
+                            cmItem.publishDate = {
+                                year: cmItem.publishDate.getFullYear(),
+                                month: cmItem.publishDate.getMonth() + 1,
+                                day: cmItem.publishDate.getDate()
                             };
                         }
                         this.ngbModalRef = this.cmItemModalRef(component, cmItem);

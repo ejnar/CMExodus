@@ -1,0 +1,94 @@
+<div>
+    <h2>
+        <span jhiTranslate="cmExodusApp.cmItemList.home.title">Cm Item Lists</span>
+        <button class="btn btn-primary float-right jh-create-entity create-cm-item-list-cm" [routerLink]="['/', { outlets: { popup: ['cm-item-list-cm-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="cmExodusApp.cmItemList.home.createLabel">
+            Create new Cm Item List
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="cmItemLists">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="cmExodusApp.cmItemList.textSv">Text Sv</span></th>
+            <th><span jhiTranslate="cmExodusApp.cmItemList.textEn">Text En</span></th>
+            <th><span jhiTranslate="cmExodusApp.cmItemList.titleSv">Title Sv</span></th>
+            <th><span jhiTranslate="cmExodusApp.cmItemList.titleEn">Title En</span></th>
+            <th><span jhiTranslate="cmExodusApp.cmItemList.ingressSv">Ingress Sv</span></th>
+            <th><span jhiTranslate="cmExodusApp.cmItemList.ingressEn">Ingress En</span></th>
+            <th><span jhiTranslate="cmExodusApp.cmItemList.sorted">Sorted</span></th>
+            <th><span jhiTranslate="cmExodusApp.cmItemList.toolTip">Tool Tip</span></th>
+            <th><span jhiTranslate="cmExodusApp.cmItemList.typeOfEvent">Type Of Event</span></th>
+            <th><span jhiTranslate="cmExodusApp.cmItemList.location">Location</span></th>
+            <th><span jhiTranslate="cmExodusApp.cmItemList.itemDate">Item Date</span></th>
+            <th><span jhiTranslate="cmExodusApp.cmItemList.publishDate">Publish Date</span></th>
+            <th><span jhiTranslate="cmExodusApp.cmItemList.publish">Publish</span></th>
+            <th><span jhiTranslate="cmExodusApp.cmItemList.cmModule">Cm Module</span></th>
+            <th><span jhiTranslate="cmExodusApp.cmItemList.image">Image</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let cmItemList of cmItemLists ;trackBy: trackId">
+                <td><a [routerLink]="['../cm-item-list-cm', cmItemList.id ]">{{cmItemList.id}}</a></td>
+                <td>{{cmItemList.textSv}}</td>
+                <td>{{cmItemList.textEn}}</td>
+                <td>{{cmItemList.titleSv}}</td>
+                <td>{{cmItemList.titleEn}}</td>
+                <td>{{cmItemList.ingressSv}}</td>
+                <td>{{cmItemList.ingressEn}}</td>
+                <td>{{cmItemList.sorted}}</td>
+                <td>{{cmItemList.toolTip}}</td>
+                <td jhiTranslate="{{'cmExodusApp.TypeOfEvent.' + cmItemList.typeOfEvent}}">{{cmItemList.typeOfEvent}}</td>
+                <td>{{cmItemList.location}}</td>
+                <td>{{cmItemList.itemDate | date:'medium'}}</td>
+                <td>{{cmItemList.publishDate | date:'mediumDate'}}</td>
+                <td>{{cmItemList.publish}}</td>
+                <td>
+                    <div *ngIf="cmItemList.cmModuleId">
+                        <a [routerLink]="['../cm-module-cm', cmItemList.cmModuleId  ]" >{{cmItemList.cmModuleId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="cmItemList.imageId">
+                        <a [routerLink]="['../cm-image-cm', cmItemList.imageId  ]" >{{cmItemList.imageId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../cm-item-list-cm', cmItemList.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'cm-item-list-cm/'+ cmItemList.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'cm-item-list-cm/'+ cmItemList.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

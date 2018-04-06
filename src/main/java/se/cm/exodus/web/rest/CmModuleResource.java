@@ -1,13 +1,10 @@
 package se.cm.exodus.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
-import se.cm.exodus.domain.CmModule;
-
-import se.cm.exodus.repository.CmModuleRepository;
+import se.cm.exodus.service.CmModuleService;
 import se.cm.exodus.web.rest.errors.BadRequestAlertException;
 import se.cm.exodus.web.rest.util.HeaderUtil;
 import se.cm.exodus.service.dto.CmModuleDTO;
-import se.cm.exodus.service.mapper.CmModuleMapper;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,13 +28,10 @@ public class CmModuleResource {
 
     private static final String ENTITY_NAME = "cmModule";
 
-    private final CmModuleRepository cmModuleRepository;
+    private final CmModuleService cmModuleService;
 
-    private final CmModuleMapper cmModuleMapper;
-
-    public CmModuleResource(CmModuleRepository cmModuleRepository, CmModuleMapper cmModuleMapper) {
-        this.cmModuleRepository = cmModuleRepository;
-        this.cmModuleMapper = cmModuleMapper;
+    public CmModuleResource(CmModuleService cmModuleService) {
+        this.cmModuleService = cmModuleService;
     }
 
     /**
@@ -54,9 +48,7 @@ public class CmModuleResource {
         if (cmModuleDTO.getId() != null) {
             throw new BadRequestAlertException("A new cmModule cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        CmModule cmModule = cmModuleMapper.toEntity(cmModuleDTO);
-        cmModule = cmModuleRepository.save(cmModule);
-        CmModuleDTO result = cmModuleMapper.toDto(cmModule);
+        CmModuleDTO result = cmModuleService.save(cmModuleDTO);
         return ResponseEntity.created(new URI("/api/cm-modules/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
@@ -78,9 +70,7 @@ public class CmModuleResource {
         if (cmModuleDTO.getId() == null) {
             return createCmModule(cmModuleDTO);
         }
-        CmModule cmModule = cmModuleMapper.toEntity(cmModuleDTO);
-        cmModule = cmModuleRepository.save(cmModule);
-        CmModuleDTO result = cmModuleMapper.toDto(cmModule);
+        CmModuleDTO result = cmModuleService.save(cmModuleDTO);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, cmModuleDTO.getId().toString()))
             .body(result);
@@ -95,8 +85,7 @@ public class CmModuleResource {
     @Timed
     public List<CmModuleDTO> getAllCmModules() {
         log.debug("REST request to get all CmModules");
-        List<CmModule> cmModules = cmModuleRepository.findAll();
-        return cmModuleMapper.toDto(cmModules);
+        return cmModuleService.findAll();
         }
 
     /**
@@ -109,8 +98,7 @@ public class CmModuleResource {
     @Timed
     public ResponseEntity<CmModuleDTO> getCmModule(@PathVariable Long id) {
         log.debug("REST request to get CmModule : {}", id);
-        CmModule cmModule = cmModuleRepository.findOne(id);
-        CmModuleDTO cmModuleDTO = cmModuleMapper.toDto(cmModule);
+        CmModuleDTO cmModuleDTO = cmModuleService.findOne(id);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(cmModuleDTO));
     }
 
@@ -124,7 +112,7 @@ public class CmModuleResource {
     @Timed
     public ResponseEntity<Void> deleteCmModule(@PathVariable Long id) {
         log.debug("REST request to delete CmModule : {}", id);
-        cmModuleRepository.delete(id);
+        cmModuleService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
 }

@@ -24,11 +24,12 @@
             <th jhiSortBy="textType"><span jhiTranslate="cmExodusApp.cmText.textType">Text Type</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="sorted"><span jhiTranslate="cmExodusApp.cmText.sorted">Sorted</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="layout"><span jhiTranslate="cmExodusApp.cmText.layout">Layout</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="date"><span jhiTranslate="cmExodusApp.cmText.date">Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="textDate"><span jhiTranslate="cmExodusApp.cmText.textDate">Text Date</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="publishDate"><span jhiTranslate="cmExodusApp.cmText.publishDate">Publish Date</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="publish"><span jhiTranslate="cmExodusApp.cmText.publish">Publish</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="cmModuleId"><span jhiTranslate="cmExodusApp.cmText.cmModule">Cm Module</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="cmItemId"><span jhiTranslate="cmExodusApp.cmText.cmItem">Cm Item</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="imageId"><span jhiTranslate="cmExodusApp.cmText.image">Image</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -42,7 +43,7 @@
                 <td jhiTranslate="{{'cmExodusApp.TextType.' + cmText.textType}}">{{cmText.textType}}</td>
                 <td>{{cmText.sorted}}</td>
                 <td jhiTranslate="{{'cmExodusApp.LayoutType.' + cmText.layout}}">{{cmText.layout}}</td>
-                <td>{{cmText.date | date:'mediumDate'}}</td>
+                <td>{{cmText.textDate | date:'medium'}}</td>
                 <td>{{cmText.publishDate | date:'mediumDate'}}</td>
                 <td>{{cmText.publish}}</td>
                 <td>
@@ -53,6 +54,11 @@
                 <td>
                     <div *ngIf="cmText.cmItemId">
                         <a [routerLink]="['../cm-item-cm', cmText.cmItemId  ]" >{{cmText.cmItemId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="cmText.imageId">
+                        <a [routerLink]="['../cm-image-cm', cmText.imageId  ]" >{{cmText.imageId}}</a>
                     </div>
                 </td>
                 <td class="text-right">

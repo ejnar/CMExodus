@@ -21,7 +21,11 @@
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="jhi_date" type="date">
+            <column name="item_date" type="timestamp">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="sorted" type="integer">
                 <constraints nullable="true" />
             </column>
 
@@ -33,12 +37,21 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="publish_date" type="date">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="publish" type="boolean">
+                <constraints nullable="false" />
+            </column>
+
             <column name="cm_module_id" type="bigint">
                 <constraints nullable="true" />
             </column>
 
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
+        <dropDefaultValue tableName="cm_item" columnName="item_date" columnDataType="datetime"/>
         
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->

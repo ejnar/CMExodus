@@ -22,7 +22,6 @@
             <th jhiSortBy="toolTip"><span jhiTranslate="cmExodusApp.cmImage.toolTip">Tool Tip</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="sorted"><span jhiTranslate="cmExodusApp.cmImage.sorted">Sorted</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="layout"><span jhiTranslate="cmExodusApp.cmImage.layout">Layout</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="date"><span jhiTranslate="cmExodusApp.cmImage.date">Date</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="publishDate"><span jhiTranslate="cmExodusApp.cmImage.publishDate">Publish Date</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="publish"><span jhiTranslate="cmExodusApp.cmImage.publish">Publish</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="cmModuleId"><span jhiTranslate="cmExodusApp.cmImage.cmModule">Cm Module</span> <span class="fa fa-sort"></span></th>
@@ -38,7 +37,6 @@
                 <td>{{cmImage.toolTip}}</td>
                 <td>{{cmImage.sorted}}</td>
                 <td jhiTranslate="{{'cmExodusApp.LayoutType.' + cmImage.layout}}">{{cmImage.layout}}</td>
-                <td>{{cmImage.date | date:'mediumDate'}}</td>
                 <td>{{cmImage.publishDate | date:'mediumDate'}}</td>
                 <td>{{cmImage.publish}}</td>
                 <td>
