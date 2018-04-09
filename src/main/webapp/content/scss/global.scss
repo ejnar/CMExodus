@@ -3,12 +3,13 @@
 /* ==============================================================
 Bootstrap tweaks
 ===============================================================*/
-
+body{
+    margin: 0;
+    padding: 0;
+}
 body, h1, h2, h3, h4 {
     font-weight: 300;
     color: #000;
-    // width: 100%;
-    // margin: 0%;
 }
 
 a {
@@ -59,7 +60,7 @@ Generic styles
 }
 
 .pad {
-    padding: 10px;
+    padding: 0.8em;
 }
 
 .w-40 {
@@ -136,6 +137,13 @@ Custom alerts for notification
         width: 50%;
     }
 }
+@media (max-width: 480px) {
+    body, h1, h2, h3, h4 {
+        font-size: 90%;
+    }
+}
+
+
 
 /* ==========================================================================
 entity tables helpers

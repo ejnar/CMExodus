@@ -4,19 +4,32 @@ Main page styles
 ========================================================================== */
 .program_list{
   margin: 0.2em 0;
-  padding-bottom: 0.2em;
-  padding-left: 0.1em;
   color: black;
 }
+.display-date{
+    font-size: 8.0vh;
+}
+.display-month{
+    font-size: 3.6vh;
+}
 .row-striped:nth-of-type(odd){
-  border-left: 4px #000000 solid;
+  // background-color: #efefef;
+  // border-left: 4px #000000 solid;
 }
-
 .row-striped:nth-of-type(even){
-  // background-color: #ffffff;
-  border-left: 4px #efefef solid;
+  background-color: #fff;
+  // border-left: 4px #efefef solid;
 }
-
 .row-striped {
-    padding: 15px 0;
+    padding: 0.2em 0;
+    border-bottom: 1px #ccc dashed;
+}
+@media (max-width: 480px) {
+    .display-date{
+        font-size: 2.2em;
+    }
+    .display-month{
+        font-size: 1.0em;
+        white-space: nowrap;
+    }
 }

@@ -1,0 +1,150 @@
+
+entity CmTopic {
+	nameSV String required
+    nameEn String required
+}
+entity CmSubTopic{
+	nameEn String required
+    nameSV String required
+    visable Boolean
+}
+relationship OneToMany {
+	CmTopic{subTopic} to CmSubTopic
+}
+entity CmPortal{
+	portalKey String required
+	contentPath String required
+    name String required
+    metaName String required
+    metaTitle String
+    metaApplicationName String required
+    metaKeywords String required
+    metaDescription String
+}
+entity CmPageAuthority{
+	user String required
+    role String required
+}
+entity CmPage{
+	title String required
+    metaTitle String
+    metaDescription String
+    sorted Integer
+    pageLayout PageLayout
+}
+entity CmModule{ 
+    sorted Integer
+    moduleType ModuleType
+    layout LayoutType
+}
+entity CmItem{
+	itemDate ZonedDateTime
+    sorted Integer
+    toolTip String
+    layout LayoutType
+    publishDate LocalDate
+    publish Boolean required
+}
+entity CmItemList{
+    textSv String required
+  	textEn String
+    titleSv String 
+  	titleEn String
+    ingressSv String 
+  	ingressEn String
+    sorted Integer
+    toolTip String
+    typeOfEvent TypeOfEvent
+    location String
+    itemDate ZonedDateTime
+    publishDate LocalDate
+    publish Boolean required
+}
+entity CmText{
+  	textSv String required
+  	textEn String
+    fontSize String
+    fontWeight String
+    textType TextType 
+    sorted Integer
+    layout LayoutType
+    textDate ZonedDateTime
+    publishDate LocalDate
+    publish Boolean required
+}
+entity CmImage{
+	name String required
+    imageType String required
+    toolTip String
+    sorted Integer
+    layout LayoutType
+    publishDate LocalDate
+    publish Boolean required
+}
+enum ModuleType {
+    TEXT, IMAGE, 
+    TEXT_IMAGE, 
+    IMAGE_LIST, 
+    PROGRAM_LIST
+}
+enum LayoutType {
+	LEFT, RIGHT,
+    MIDDLE, CENTER,
+    TOP, BOTTOM,
+    SIDEBYSIDE
+}
+enum TextType {
+	TITLE,
+    INGRESS,
+    TEXT,
+    LIST
+}
+enum TypeOfEvent {
+    SERVICE, CAFE, YOUTH
+}
+enum PageLayout{
+	MAIN, COLUMN
+}
+relationship OneToMany {
+	CmPage{authority} to CmPageAuthority
+}
+relationship OneToOne {
+	CmSubTopic{page} to CmPage
+}
+relationship ManyToMany {
+	CmPage{module} to CmModule
+}
+relationship OneToMany {
+	CmModule{item} to CmItem
+}
+relationship OneToMany {
+	CmModule{itemList} to CmItemList
+}
+relationship OneToMany{
+	CmModule{text} to CmText
+}
+relationship OneToMany{
+	CmItem{text} to CmText
+}
+relationship OneToMany{
+	CmModule{image} to CmImage
+}
+relationship OneToMany{
+	CmItem{image} to CmImage
+}
+relationship OneToOne{
+	CmText{image} to CmImage
+}
+relationship OneToOne{
+	CmItemList{image} to CmImage
+}
+// Set pagination options
+//paginate JobHistory, Employee with infinite-scroll
+paginate CmPage, CmImage, CmText with pagination
+
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl except CmSubTopic, CmPageAuthority
+// Set an angular suffix
+angularSuffix * with cm
