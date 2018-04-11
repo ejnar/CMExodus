@@ -22,8 +22,12 @@ public class CmSubTopic implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "name", nullable = false)
-    private String name;
+    @Column(name = "name_en", nullable = false)
+    private String nameEn;
+
+    @NotNull
+    @Column(name = "name_sv", nullable = false)
+    private String nameSv;
 
     @Column(name = "visable")
     private Boolean visable;
@@ -44,17 +48,30 @@ public class CmSubTopic implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getNameEn() {
+        return nameEn;
     }
 
-    public CmSubTopic name(String name) {
-        this.name = name;
+    public CmSubTopic nameEn(String nameEn) {
+        this.nameEn = nameEn;
         return this;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNameEn(String nameEn) {
+        this.nameEn = nameEn;
+    }
+
+    public String getNameSv() {
+        return nameSv;
+    }
+
+    public CmSubTopic nameSv(String nameSv) {
+        this.nameSv = nameSv;
+        return this;
+    }
+
+    public void setNameSv(String nameSv) {
+        this.nameSv = nameSv;
     }
 
     public Boolean isVisable() {
@@ -121,7 +138,8 @@ public class CmSubTopic implements Serializable {
     public String toString() {
         return "CmSubTopic{" +
             "id=" + getId() +
-            ", name='" + getName() + "'" +
+            ", nameEn='" + getNameEn() + "'" +
+            ", nameSv='" + getNameSv() + "'" +
             ", visable='" + isVisable() + "'" +
             "}";
     }

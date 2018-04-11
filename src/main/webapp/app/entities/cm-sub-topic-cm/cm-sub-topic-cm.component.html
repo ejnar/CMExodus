@@ -17,7 +17,8 @@
             <thead>
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
-            <th><span jhiTranslate="cmExodusApp.cmSubTopic.name">Name</span></th>
+            <th><span jhiTranslate="cmExodusApp.cmSubTopic.nameEn">Name En</span></th>
+            <th><span jhiTranslate="cmExodusApp.cmSubTopic.nameSv">Name Sv</span></th>
             <th><span jhiTranslate="cmExodusApp.cmSubTopic.visable">Visable</span></th>
             <th><span jhiTranslate="cmExodusApp.cmSubTopic.cmTopic">Cm Topic</span></th>
             <th><span jhiTranslate="cmExodusApp.cmSubTopic.page">Page</span></th>
@@ -27,7 +28,8 @@
             <tbody>
             <tr *ngFor="let cmSubTopic of cmSubTopics ;trackBy: trackId">
                 <td><a [routerLink]="['../cm-sub-topic-cm', cmSubTopic.id ]">{{cmSubTopic.id}}</a></td>
-                <td>{{cmSubTopic.name}}</td>
+                <td>{{cmSubTopic.nameEn}}</td>
+                <td>{{cmSubTopic.nameSv}}</td>
                 <td>{{cmSubTopic.visable}}</td>
                 <td>
                     <div *ngIf="cmSubTopic.cmTopicId">

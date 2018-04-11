@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, ViewChild, ComponentFactoryResolver, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Router, ActivationEnd } from '@angular/router';
+import { ActivatedRoute, Router, ActivationEnd, NavigationEnd } from '@angular/router';
 import { HttpResponse } from '@angular/common/http';
 import { NGXLogger } from 'ngx-logger';
 
@@ -25,8 +25,9 @@ export class ContentComponent implements OnInit, OnDestroy {
     items: Promise<ContentItem[]>;
     currentAdIndex: number = -1;
     @ViewChild(ContentDirective) contentDirective: ContentDirective;
-    interval: any;
 
+    routerEventSubscribe: any;
+    interval: any;
     pageId: number;
 
     constructor(
@@ -37,20 +38,25 @@ export class ContentComponent implements OnInit, OnDestroy {
         private logger: NGXLogger) {
         this.logger.debug('ContentComponent.constructor');
 
-        router.events.subscribe((data) => {
+        this.routerEventSubscribe = this.router.events.subscribe((data) => {
             if (data instanceof ActivationEnd) {
                 this.pageId = data.snapshot.queryParams.page;
+            }else if (data instanceof NavigationEnd) {
+                if ( (!this.pageId || this.pageId > 0)) {
+                    this.items = this.contentService.getContent(this.pageId);
+                    this.loadComponent();
+                }
             }
         } );
     }
 
     ngOnInit() {
         this.logger.debug('ContentComponent.ngOnInit');
-        this.items = this.contentService.getContent(this.pageId);
-        this.loadComponent();
     }
 
     loadComponent() {
+        this.logger.debug('ContentComponent.loadComponent');
+        this.contentDirective.viewContainerRef.clear();
         this.items.then((items) => {
             for (let i = 0; i < items.length; i++) {
                 const item = items[i];
@@ -64,5 +70,7 @@ export class ContentComponent implements OnInit, OnDestroy {
 
     ngOnDestroy() {
         clearInterval(this.interval);
+        this.contentDirective.viewContainerRef.clear();
+        this.routerEventSubscribe.unsubscribe();
     }
 }

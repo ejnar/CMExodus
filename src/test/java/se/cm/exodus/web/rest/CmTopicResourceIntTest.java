@@ -41,8 +41,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = CmExodusApp.class)
 public class CmTopicResourceIntTest {
 
-    private static final String DEFAULT_NAME = "AAAAAAAAAA";
-    private static final String UPDATED_NAME = "BBBBBBBBBB";
+    private static final String DEFAULT_NAME_EN = "AAAAAAAAAA";
+    private static final String UPDATED_NAME_EN = "BBBBBBBBBB";
+
+    private static final String DEFAULT_NAME_SV = "AAAAAAAAAA";
+    private static final String UPDATED_NAME_SV = "BBBBBBBBBB";
 
     @Autowired
     private CmTopicRepository cmTopicRepository;
@@ -88,7 +91,8 @@ public class CmTopicResourceIntTest {
      */
     public static CmTopic createEntity(EntityManager em) {
         CmTopic cmTopic = new CmTopic()
-            .name(DEFAULT_NAME);
+            .nameEn(DEFAULT_NAME_EN)
+            .nameSv(DEFAULT_NAME_SV);
         return cmTopic;
     }
 
@@ -113,7 +117,8 @@ public class CmTopicResourceIntTest {
         List<CmTopic> cmTopicList = cmTopicRepository.findAll();
         assertThat(cmTopicList).hasSize(databaseSizeBeforeCreate + 1);
         CmTopic testCmTopic = cmTopicList.get(cmTopicList.size() - 1);
-        assertThat(testCmTopic.getName()).isEqualTo(DEFAULT_NAME);
+        assertThat(testCmTopic.getNameEn()).isEqualTo(DEFAULT_NAME_EN);
+        assertThat(testCmTopic.getNameSv()).isEqualTo(DEFAULT_NAME_SV);
     }
 
     @Test
@@ -138,10 +143,29 @@ public class CmTopicResourceIntTest {
 
     @Test
     @Transactional
-    public void checkNameIsRequired() throws Exception {
+    public void checkNameEnIsRequired() throws Exception {
         int databaseSizeBeforeTest = cmTopicRepository.findAll().size();
         // set the field null
-        cmTopic.setName(null);
+        cmTopic.setNameEn(null);
+
+        // Create the CmTopic, which fails.
+        CmTopicDTO cmTopicDTO = cmTopicMapper.toDto(cmTopic);
+
+        restCmTopicMockMvc.perform(post("/api/cm-topics")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(cmTopicDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<CmTopic> cmTopicList = cmTopicRepository.findAll();
+        assertThat(cmTopicList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkNameSvIsRequired() throws Exception {
+        int databaseSizeBeforeTest = cmTopicRepository.findAll().size();
+        // set the field null
+        cmTopic.setNameSv(null);
 
         // Create the CmTopic, which fails.
         CmTopicDTO cmTopicDTO = cmTopicMapper.toDto(cmTopic);
@@ -166,7 +190,8 @@ public class CmTopicResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(cmTopic.getId().intValue())))
-            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())));
+            .andExpect(jsonPath("$.[*].nameEn").value(hasItem(DEFAULT_NAME_EN.toString())))
+            .andExpect(jsonPath("$.[*].nameSv").value(hasItem(DEFAULT_NAME_SV.toString())));
     }
 
     @Test
@@ -180,7 +205,8 @@ public class CmTopicResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(cmTopic.getId().intValue()))
-            .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()));
+            .andExpect(jsonPath("$.nameEn").value(DEFAULT_NAME_EN.toString()))
+            .andExpect(jsonPath("$.nameSv").value(DEFAULT_NAME_SV.toString()));
     }
 
     @Test
@@ -203,7 +229,8 @@ public class CmTopicResourceIntTest {
         // Disconnect from session so that the updates on updatedCmTopic are not directly saved in db
         em.detach(updatedCmTopic);
         updatedCmTopic
-            .name(UPDATED_NAME);
+            .nameEn(UPDATED_NAME_EN)
+            .nameSv(UPDATED_NAME_SV);
         CmTopicDTO cmTopicDTO = cmTopicMapper.toDto(updatedCmTopic);
 
         restCmTopicMockMvc.perform(put("/api/cm-topics")
@@ -215,7 +242,8 @@ public class CmTopicResourceIntTest {
         List<CmTopic> cmTopicList = cmTopicRepository.findAll();
         assertThat(cmTopicList).hasSize(databaseSizeBeforeUpdate);
         CmTopic testCmTopic = cmTopicList.get(cmTopicList.size() - 1);
-        assertThat(testCmTopic.getName()).isEqualTo(UPDATED_NAME);
+        assertThat(testCmTopic.getNameEn()).isEqualTo(UPDATED_NAME_EN);
+        assertThat(testCmTopic.getNameSv()).isEqualTo(UPDATED_NAME_SV);
     }
 
     @Test

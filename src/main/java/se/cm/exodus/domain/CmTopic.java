@@ -25,10 +25,14 @@ public class CmTopic implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "name", nullable = false)
-    private String name;
+    @Column(name = "name_en", nullable = false)
+    private String nameEn;
 
-    @OneToMany(mappedBy = "cmTopic", fetch=FetchType.LAZY)
+    @NotNull
+    @Column(name = "name_sv", nullable = false)
+    private String nameSv;
+
+    @OneToMany(mappedBy = "cmTopic")
     @JsonIgnore
     private Set<CmSubTopic> subTopics = new HashSet<>();
 
@@ -41,17 +45,30 @@ public class CmTopic implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getNameEn() {
+        return nameEn;
     }
 
-    public CmTopic name(String name) {
-        this.name = name;
+    public CmTopic nameEn(String nameEn) {
+        this.nameEn = nameEn;
         return this;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNameEn(String nameEn) {
+        this.nameEn = nameEn;
+    }
+
+    public String getNameSv() {
+        return nameSv;
+    }
+
+    public CmTopic nameSv(String nameSv) {
+        this.nameSv = nameSv;
+        return this;
+    }
+
+    public void setNameSv(String nameSv) {
+        this.nameSv = nameSv;
     }
 
     public Set<CmSubTopic> getSubTopics() {
@@ -104,7 +121,8 @@ public class CmTopic implements Serializable {
     public String toString() {
         return "CmTopic{" +
             "id=" + getId() +
-            ", name='" + getName() + "'" +
+            ", nameEn='" + getNameEn() + "'" +
+            ", nameSv='" + getNameSv() + "'" +
             "}";
     }
 }

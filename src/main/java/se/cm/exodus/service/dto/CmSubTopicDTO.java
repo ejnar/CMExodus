@@ -15,7 +15,10 @@ public class CmSubTopicDTO implements Serializable {
     private Long id;
 
     @NotNull
-    private String name;
+    private String nameEn;
+
+    @NotNull
+    private String nameSv;
 
     private Boolean visable;
 
@@ -31,12 +34,20 @@ public class CmSubTopicDTO implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getNameEn() {
+        return nameEn;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNameEn(String nameEn) {
+        this.nameEn = nameEn;
+    }
+
+    public String getNameSv() {
+        return nameSv;
+    }
+
+    public void setNameSv(String nameSv) {
+        this.nameSv = nameSv;
     }
 
     public Boolean isVisable() {
@@ -88,7 +99,8 @@ public class CmSubTopicDTO implements Serializable {
     public String toString() {
         return "CmSubTopicDTO{" +
             "id=" + getId() +
-            ", name='" + getName() + "'" +
+            ", nameEn='" + getNameEn() + "'" +
+            ", nameSv='" + getNameSv() + "'" +
             ", visable='" + isVisable() + "'" +
             "}";
     }

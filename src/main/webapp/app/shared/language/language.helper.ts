@@ -8,6 +8,7 @@ import { LANGUAGES } from './language.constants';
 @Injectable()
 export class JhiLanguageHelper {
     renderer: Renderer2 = null;
+    lang: string;
 
     constructor(
         private translateService: TranslateService,
@@ -42,9 +43,11 @@ export class JhiLanguageHelper {
     }
 
     private init() {
+        this.lang = this.translateService.currentLang;
         this.translateService.onLangChange.subscribe((event: LangChangeEvent) => {
             this.renderer.setAttribute(document.querySelector('html'), 'lang', this.translateService.currentLang);
             this.updateTitle();
+            this.lang = this.translateService.currentLang;
         });
     }
 

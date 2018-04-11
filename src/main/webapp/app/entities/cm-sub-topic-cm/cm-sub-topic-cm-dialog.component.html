@@ -13,12 +13,23 @@
                    [(ngModel)]="cmSubTopic.id" readonly />
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="cmExodusApp.cmSubTopic.name" for="field_name">Name</label>
-            <input type="text" class="form-control" name="name" id="field_name"
-                [(ngModel)]="cmSubTopic.name" required/>
-            <div [hidden]="!(editForm.controls.name?.dirty && editForm.controls.name?.invalid)">
+            <label class="form-control-label" jhiTranslate="cmExodusApp.cmSubTopic.nameEn" for="field_nameEn">Name En</label>
+            <input type="text" class="form-control" name="nameEn" id="field_nameEn"
+                [(ngModel)]="cmSubTopic.nameEn" required/>
+            <div [hidden]="!(editForm.controls.nameEn?.dirty && editForm.controls.nameEn?.invalid)">
                 <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.name?.errors?.required" jhiTranslate="entity.validation.required">
+                   [hidden]="!editForm.controls.nameEn?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cmExodusApp.cmSubTopic.nameSv" for="field_nameSv">Name Sv</label>
+            <input type="text" class="form-control" name="nameSv" id="field_nameSv"
+                [(ngModel)]="cmSubTopic.nameSv" required/>
+            <div [hidden]="!(editForm.controls.nameSv?.dirty && editForm.controls.nameSv?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.nameSv?.errors?.required" jhiTranslate="entity.validation.required">
                    This field is required.
                 </small>
             </div>

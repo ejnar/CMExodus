@@ -12,11 +12,11 @@ import { ContentItem } from './content-item';
 import { HeroJobContentComponent } from './modules/herojob/hero-job-content.component';
 import { HeroProfileComponent } from './modules/heroprofile/hero-profile.component';
 import { ProgramListComponent } from './modules/programList/program-list.component';
+import { TextComponent } from './modules/text/text.component';
 
 @Injectable()
 export class ContentService {
     private resourceUrl =  SERVER_API_URL + 'api/cm-pages';
-    private results: ContentItem[];
 
     constructor(private http: HttpClient, private logger: NGXLogger, private cmPageService: CmPageCmService ) {}
 
@@ -26,8 +26,7 @@ export class ContentService {
             this.http.get(`${this.resourceUrl}/${pageId}`)
               .toPromise()
               .then( (res) => { // Success
-                    this.onSuccess(res);
-                    resolve(this.results);
+                    resolve(this.onSuccess(res));
               },
                   (msg) => { // Error
                     reject(msg);
@@ -38,14 +37,15 @@ export class ContentService {
     }
 
     private onSuccess(data) {
-        this.logger.debug(data);
-        this.results = new Array<ContentItem>();
+        this.logger.debug(' onSuccess ');
+        const results = new Array<ContentItem>();
         data.modules.forEach((module) => {
             if (module.moduleType === 'PROGRAM_LIST') {
-                this.results.push(new ContentItem(ProgramListComponent, {type: module.moduleType, layout: module.layout, itemList: module.itemLists} ));
+                results.push(new ContentItem(ProgramListComponent, {type: module.moduleType, layout: module.layout, itemList: module.itemLists} ));
             } else if (module.moduleType === 'TEXT') {
-                this.logger.debug(module);
+                results.push(new ContentItem(TextComponent, {type: module.moduleType, layout: module.layout, texts: module.texts} ));
             }
         });
+        return results;
     }
 }

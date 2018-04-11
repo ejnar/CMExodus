@@ -1,2 +1,5 @@
-id;text_sv;text_en;text_type;sorted;layout;publish;cm_item_id
-1;Swedish;English;TEXT;1;CENTER;true;1
+id;text_sv;text_en;text_type;sorted;layout;publish;cm_item_id;cm_module_id
+1;Svensk text;English text;TEXT;1;CENTER;true;1;null
+2;Svensk title;English title;TITLE;1;CENTER;true;1;null
+3;Svensk text;English text;TEXT;1;CENTER;true;null;1
+4;Svensk title;English title;TITLE;1;CENTER;true;null;1

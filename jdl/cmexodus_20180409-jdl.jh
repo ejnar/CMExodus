@@ -1,11 +1,11 @@
 
 entity CmTopic {
-	nameSV String required
-    nameEn String required
+	nameEn String required
+	nameSv String required
 }
 entity CmSubTopic{
 	nameEn String required
-    nameSV String required
+    nameSv String required
     visable Boolean
 }
 relationship OneToMany {

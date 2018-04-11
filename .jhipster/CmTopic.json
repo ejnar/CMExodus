@@ -10,7 +10,14 @@
     ],
     "fields": [
         {
-            "fieldName": "name",
+            "fieldName": "nameEn",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "nameSv",
             "fieldType": "String",
             "fieldValidateRules": [
                 "required"

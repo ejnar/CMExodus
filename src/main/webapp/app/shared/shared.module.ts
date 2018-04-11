@@ -15,6 +15,7 @@ import {
     Principal,
     JhiTrackerService,
     HasAnyAuthorityDirective,
+    JhiLanguageComponent
 } from './';
 
 @NgModule({
@@ -24,7 +25,8 @@ import {
     ],
     declarations: [
         JhiLoginModalComponent,
-        HasAnyAuthorityDirective
+        HasAnyAuthorityDirective,
+        JhiLanguageComponent
     ],
     providers: [
         LoginService,
@@ -43,7 +45,8 @@ import {
         CmExodusSharedCommonModule,
         JhiLoginModalComponent,
         HasAnyAuthorityDirective,
-        DatePipe
+        DatePipe,
+        JhiLanguageComponent
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 

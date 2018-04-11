@@ -15,7 +15,10 @@ public class CmTopicDTO implements Serializable {
     private Long id;
 
     @NotNull
-    private String name;
+    private String nameEn;
+
+    @NotNull
+    private String nameSv;
 
     private Set<CmSubTopicDTO> subTopics = new HashSet<>();
 
@@ -27,12 +30,20 @@ public class CmTopicDTO implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getNameEn() {
+        return nameEn;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNameEn(String nameEn) {
+        this.nameEn = nameEn;
+    }
+
+    public String getNameSv() {
+        return nameSv;
+    }
+
+    public void setNameSv(String nameSv) {
+        this.nameSv = nameSv;
     }
 
     public Set<CmSubTopicDTO> getSubTopics() {
@@ -68,7 +79,8 @@ public class CmTopicDTO implements Serializable {
     public String toString() {
         return "CmTopicDTO{" +
             "id=" + getId() +
-            ", name='" + getName() + "'" +
+            ", nameEn='" + getNameEn() + "'" +
+            ", nameSv='" + getNameSv() + "'" +
             "}";
     }
 }

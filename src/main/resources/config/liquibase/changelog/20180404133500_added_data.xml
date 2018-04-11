@@ -22,7 +22,8 @@
                   separator=";"
                   tableName="cm_topic">
             <column name="id" type="numeric" />
-            <column name="name" type="string"/>
+            <column name="name_sv" type="string"/>
+            <column name="name_en" type="string"/>
         </loadData>
         <loadData encoding="UTF-8"
                   file="config/liquibase/pages.csv"
@@ -49,7 +50,8 @@
                   separator=";"
                   tableName="cm_sub_topic">
             <column name="id" type="numeric" />
-            <column name="name" type="string"/>
+            <column name="name_en" type="string"/>
+            <column name="name_sv" type="string"/>
             <column name="visable" type="boolean" />
             <column name="cm_topic_id" type="numeric"/>
             <column name="page_id" type="numeric"/>
@@ -103,6 +105,7 @@
             <column name="layout" type="string"/>
             <column name="publish" type="boolean"/>
             <column name="cm_item_id" type="numeric" />
+            <column name="cm_module_id" type="numeric" />
         </loadData>
     </changeSet>
 

@@ -25,6 +25,8 @@ public class CmModuleDTO implements Serializable {
 
     private Set<CmItemDTO> items = new HashSet<>();
 
+    private Set<CmTextDTO> texts = new HashSet<>();
+
     public Long getId() {
         return id;
     }
@@ -72,6 +74,10 @@ public class CmModuleDTO implements Serializable {
     public void setItems(Set<CmItemDTO> items) {
         this.items = items;
     }
+
+    public Set<CmTextDTO> getTexts() { return texts; }
+
+    public void setTexts(Set<CmTextDTO> texts) { this.texts = texts; }
 
     @Override
     public boolean equals(Object o) {

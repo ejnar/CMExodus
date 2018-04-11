@@ -32,6 +32,10 @@ public class CmItemDTO implements Serializable {
 
     private Long cmModuleId;
 
+    private Set<CmTextDTO> texts = new HashSet<>();
+
+    private Set<CmImageDTO> images = new HashSet<>();
+
     public Long getId() {
         return id;
     }
@@ -94,6 +98,22 @@ public class CmItemDTO implements Serializable {
 
     public void setCmModuleId(Long cmModuleId) {
         this.cmModuleId = cmModuleId;
+    }
+
+    public Set<CmTextDTO> getTexts() {
+        return texts;
+    }
+
+    public void setTexts(Set<CmTextDTO> texts) {
+        this.texts = texts;
+    }
+
+    public Set<CmImageDTO> getImages() {
+        return images;
+    }
+
+    public void setImages(Set<CmImageDTO> images) {
+        this.images = images;
     }
 
     @Override

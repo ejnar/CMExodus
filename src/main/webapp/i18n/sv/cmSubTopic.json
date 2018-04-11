@@ -16,7 +16,8 @@
             "detail": {
                 "title": "Cm Sub Topic"
             },
-            "name": "Name",
+            "nameEn": "Name En",
+            "nameSv": "Name Sv",
             "visable": "Visable",
             "cmTopic": "Cm Topic",
             "page": "Page"

@@ -4,6 +4,7 @@ import { HttpResponse } from '@angular/common/http';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { JhiLanguageService, JhiAlertService } from 'ng-jhipster';
 import { Observable } from 'rxjs/Observable';
+import { NGXLogger } from 'ngx-logger';
 
 import { ProfileService } from '../profiles/profile.service';
 import { JhiLanguageHelper, Principal, LoginModalService, LoginService } from '../../shared';
@@ -27,6 +28,7 @@ export class NavbarComponent implements OnInit {
     modalRef: NgbModalRef;
     version: string;
     menus: Topic[];
+    lang: string;
 
     constructor(
         private loginService: LoginService,
@@ -37,6 +39,7 @@ export class NavbarComponent implements OnInit {
         private profileService: ProfileService,
         private navbarService: NavbarService,
         private alertService: JhiAlertService,
+        private logger: NGXLogger,
         private router: Router
     ) {
         this.version = VERSION ? 'v' + VERSION : '';
@@ -48,12 +51,24 @@ export class NavbarComponent implements OnInit {
             this.languages = languages;
         });
 
+        this.languageService.getCurrent().then((current) => {
+            this.lang = current;
+        });
+
         this.profileService.getProfileInfo().then((profileInfo) => {
             this.inProduction = profileInfo.inProduction;
             this.swaggerEnabled = profileInfo.swaggerEnabled;
         });
 
         this.loadAll();
+    }
+
+    translate(data) {
+        if (this.lang === 'sv') {
+            return data.nameSv;
+        } else {
+            return data.nameEn;
+        }
     }
 
     loadAll() {

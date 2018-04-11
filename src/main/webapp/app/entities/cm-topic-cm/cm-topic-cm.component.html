@@ -17,14 +17,16 @@
             <thead>
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
-            <th><span jhiTranslate="cmExodusApp.cmTopic.name">Name</span></th>
+            <th><span jhiTranslate="cmExodusApp.cmTopic.nameEn">Name En</span></th>
+            <th><span jhiTranslate="cmExodusApp.cmTopic.nameSv">Name Sv</span></th>
             <th></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let cmTopic of cmTopics ;trackBy: trackId">
                 <td><a [routerLink]="['../cm-topic-cm', cmTopic.id ]">{{cmTopic.id}}</a></td>
-                <td>{{cmTopic.name}}</td>
+                <td>{{cmTopic.nameEn}}</td>
+                <td>{{cmTopic.nameSv}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
