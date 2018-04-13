@@ -9,10 +9,9 @@ import { ContentDirective } from './content.directive';
 import { ContentEngineComponent } from './content-engine.component';
 import { contentRoute } from './content.route';
 
-import { HeroJobContentComponent } from './modules/herojob/hero-job-content.component';
-import { HeroProfileComponent } from './modules/heroprofile/hero-profile.component';
 import { ProgramListComponent } from './modules/programList/program-list.component';
 import { TextComponent } from './modules/text/text.component';
+import { TextImageComponent } from './modules/textImage/text-image.component';
 
 @NgModule({
     imports: [
@@ -22,14 +21,13 @@ import { TextComponent } from './modules/text/text.component';
     declarations: [
         ContentDirective,
         ContentComponent,
-        HeroJobContentComponent,
-        HeroProfileComponent,
         ProgramListComponent,
         TextComponent,
+        TextImageComponent,
         ContentEngineComponent,
     ],
     entryComponents: [
-        HeroJobContentComponent, HeroProfileComponent, ProgramListComponent, TextComponent
+        ProgramListComponent, TextComponent, TextImageComponent
     ],
     providers: [
         ContentService

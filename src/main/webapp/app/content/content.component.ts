@@ -1,17 +1,16 @@
-import { Component, Input, OnInit, ViewChild, ComponentFactoryResolver, OnDestroy } from '@angular/core';
+import { Component, Input, ViewChild, ComponentFactoryResolver, OnInit, OnDestroy, ElementRef } from '@angular/core';
 import { ActivatedRoute, Router, ActivationEnd, NavigationEnd } from '@angular/router';
 import { HttpResponse } from '@angular/common/http';
 import { NGXLogger } from 'ngx-logger';
+import { Title, Meta } from '@angular/platform-browser';
 
 import { CmPageCm } from '../entities/cm-page-cm/cm-page-cm.model';
 import { CmPageCmService } from '../entities/cm-page-cm/cm-page-cm.service';
 
-import { ProgramListComponent } from './modules/programList/program-list.component';
-
-import { ContentItem } from './content-item';
 import { ContentService } from './content.service';
 import { ContentDirective } from './content.directive';
 import { ComponentInterface } from './component-interface';
+import { Page } from './modules/model/page.model';
 
 @Component({
     selector: 'jhi-content',
@@ -22,28 +21,29 @@ import { ComponentInterface } from './component-interface';
     // providers: [NGXLogger]
 })
 export class ContentComponent implements OnInit, OnDestroy {
-    items: Promise<ContentItem[]>;
-    currentAdIndex: number = -1;
     @ViewChild(ContentDirective) contentDirective: ContentDirective;
-
+    currentAdIndex: number = -1;
     routerEventSubscribe: any;
-    interval: any;
+    page: Promise<Page>;
+    // interval: any;
     pageId: number;
+    pageLayout: string;
 
     constructor(
         private contentService: ContentService,
         private cmPageService: CmPageCmService,
         private componentFactoryResolver: ComponentFactoryResolver,
         private router: Router,
+        private titleService: Title,
+        private metaService: Meta,
         private logger: NGXLogger) {
-        this.logger.debug('ContentComponent.constructor');
 
         this.routerEventSubscribe = this.router.events.subscribe((data) => {
             if (data instanceof ActivationEnd) {
                 this.pageId = data.snapshot.queryParams.page;
             }else if (data instanceof NavigationEnd) {
                 if ( (!this.pageId || this.pageId > 0)) {
-                    this.items = this.contentService.getContent(this.pageId);
+                    this.page = this.contentService.getContent(this.pageId);
                     this.loadComponent();
                 }
             }
@@ -57,9 +57,12 @@ export class ContentComponent implements OnInit, OnDestroy {
     loadComponent() {
         this.logger.debug('ContentComponent.loadComponent');
         this.contentDirective.viewContainerRef.clear();
-        this.items.then((items) => {
-            for (let i = 0; i < items.length; i++) {
-                const item = items[i];
+        this.page.then((page) => {
+            this.pageLayout = page.pageLayout;
+            this.titleService.setTitle(page.title);
+            // this.metaService.addTag({ name: page.metaTitle, content: page.metaDescription });
+            for (let i = 0; i < page.items.length; i++) {
+                const item = page.items[i];
                 const componentFactory = this.componentFactoryResolver.resolveComponentFactory(item.component);
                 const viewContainerRef = this.contentDirective.viewContainerRef;
                 const componentRef = viewContainerRef.createComponent(componentFactory);
@@ -69,7 +72,7 @@ export class ContentComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        clearInterval(this.interval);
+        // clearInterval(this.interval);
         this.contentDirective.viewContainerRef.clear();
         this.routerEventSubscribe.unsubscribe();
     }

@@ -1,0 +1,37 @@
+<div class="textModule">
+    <div class="row">
+        <h4 *ngIf="title" ><jhi-language [model]="title" property='text'></jhi-language></h4>
+    </div>
+    <div *ngIf="image.layout=='TOP'">
+        <div *ngIf="image" class="row imageTopDownText">
+            <img class="imageResponsive" src="../../../../content/images/lorempixel_1200_800_forest.jpeg" alt="Image" title="{{image.toolTip}}">
+        </div>
+        <div *ngIf="text" class="row text">
+            <jhi-language [model]="text" property='text'></jhi-language>
+        </div>
+    </div>
+    <div *ngIf="image.layout=='RIGHT'" class="row">
+        <div *ngIf="text" class="col-12 col-sm-12 col-md-6 col-xl-6 text">
+            <jhi-language [model]="text" property='text'></jhi-language>
+        </div>
+        <div *ngIf="image" class="col imageSideByText">
+            <img class="imageResponsive" src="../../../../content/images/lorempixel_1200_800_forest.jpeg" alt="Image" title="{{image.toolTip}}">
+        </div>
+    </div>
+    <div *ngIf="image.layout=='LEFT'" class="row">
+        <div *ngIf="image" class="col-12 col-sm-12 col-md-6 col-xl-6 imageSideByText">
+            <img class="imageResponsive" src="../../../../content/images/lorempixel_1200_800_forest.jpeg" alt="Image" title="{{image.toolTip}}">
+        </div>
+        <div *ngIf="text" class="text">
+            <jhi-language [model]="text" property='text'></jhi-language>
+        </div>
+    </div>
+    <div *ngIf="image.layout=='BOTTOM'">
+        <div *ngIf="text" class="row text">
+            <jhi-language [model]="text" property='text'></jhi-language>
+        </div>
+        <div *ngIf="image" class="row imageTopDownText">
+            <img class="imageResponsive" src="../../../../content/images/lorempixel_1200_800_forest.jpeg" alt="Image" title="{{image.toolTip}}">
+        </div>
+    </div>
+</div>

@@ -2,7 +2,7 @@ import './vendor.ts';
 
 import { NgModule, Injector } from '@angular/core';
 import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Ng2Webstorage, LocalStorageService, SessionStorageService  } from 'ngx-webstorage';
 import { JhiEventManager } from 'ng-jhipster';
@@ -58,6 +58,7 @@ import { CmExodusContentModule } from './content/content.module';
         FooterComponent
     ],
     providers: [
+        Title,
         ProfileService,
         PaginationConfig,
         UserRouteAccessService,

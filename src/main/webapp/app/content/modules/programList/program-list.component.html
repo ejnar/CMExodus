@@ -1,19 +1,18 @@
-<div class="program_list">
-    <div *ngFor="let item of data.itemList" class="table table-striped">
-        <div class="row row-striped">
-            <div class="col-2 text-right">
-                <h1 class="display-date"><span class="badge badge-secondary">{{item.itemDate | date: 'd'}}</span></h1>
-                <h4 class="display-month">{{item.itemDate | date: 'MMM'|uppercase}}</h4>
-            </div>
-            <div class="col-10">
-                <h4 class="text-uppercase"><strong>{{item.titleSv}}</strong></h4>
-                <ul class="list-inline">
-                    <li class="list-inline-item"><i class="fa fa-calendar-o" aria-hidden="true"></i> {{item.itemDate | date: 'EEEE'}}</li>
-                    <li class="list-inline-item"><i class="fa fa-clock-o" aria-hidden="true"></i> {{item.itemDate | date: 'shortTime'}}</li>
-                    <li class="list-inline-item"><i class="fa fa-location-arrow" aria-hidden="true"></i> {{item.location}}</li>
-                </ul>
-                <p>{{item.textSv}}</p>
-            </div>
+<div *ngFor="let item of data.itemList" class="program_list table table-striped">
+    <div class="row row-striped">
+        <div class="col-2 text-left">
+            <h1 class="display-date"><span class="badge badge-secondary">{{item.itemDate | date: 'd'}}</span></h1>
+            <h4 class="display-month">{{item.itemDate | date: 'MMM'|uppercase}}</h4>
+        </div>
+        <div class="col-10">
+            <h4 class="text-uppercase"><strong><jhi-language [model]="item" property='title'></jhi-language></strong></h4>
+            <ul class="list-inline">
+                <li class="list-inline-item"><i class="fa fa-calendar-o" aria-hidden="true"></i> {{item.itemDate | date: 'EEEE'}}</li>
+                <li class="list-inline-item"><i class="fa fa-clock-o" aria-hidden="true"></i> {{item.itemDate | date: 'shortTime'}}</li>
+                <li class="list-inline-item"><i class="fa fa-location-arrow" aria-hidden="true"></i> {{item.location}}</li>
+            </ul>
+            <p><jhi-language [model]="item" property='text'></jhi-language></p>
         </div>
     </div>
 </div>
+

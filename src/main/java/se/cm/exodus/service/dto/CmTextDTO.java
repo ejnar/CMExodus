@@ -46,6 +46,8 @@ public class CmTextDTO implements Serializable {
 
     private Long imageId;
 
+    private CmImageDTO image;
+
     public Long getId() {
         return id;
     }
@@ -157,6 +159,10 @@ public class CmTextDTO implements Serializable {
     public void setImageId(Long cmImageId) {
         this.imageId = cmImageId;
     }
+
+    public CmImageDTO getImage() { return image; }
+
+    public void setImage(CmImageDTO image) { this.image = image; }
 
     @Override
     public boolean equals(Object o) {

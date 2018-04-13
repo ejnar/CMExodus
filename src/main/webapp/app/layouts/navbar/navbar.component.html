@@ -1,16 +1,21 @@
-<nav class="navbar navbar-expand-md jh-navbar">
-    <div class="jh-logo-container mt-1">
+<div class="float-right language_flags">
+    <span *ngFor="let language of languages">
+        <a class="" [jhiActiveMenu]="language" href="javascript:void(0);" (click)="changeLanguage(language);collapseNavbar();"> {{language | uppercase}}</a>
+    </span>
+</div>
+<nav class="row navbar navbar-expand-md jh-navbar">
+    <div class="col-12 col-sm-8 col-md-5 col-xl-3 jh-logo-container">
         <a class="jh-navbar-toggler d-lg-none float-right" href="javascript:void(0);" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" (click)="toggleNavbar()">
             <i class="fa fa-bars"></i>
         </a>
-        <div class="ml-5 mr-5">
+        <div>
             <a class="logo" routerLink="/" (click)="collapseNavbar()">
-                <span jhiTranslate="global.navbar.title" class="navbar-title">Pingst</span>
-                <span jhiTranslate="global.navbar.sub" class="navbar-sub">{{version}}</span>
+                <span jhiTranslate="global.navbar.title" class="navbar-title align-text-bottom">Pingst</span>
+                <span jhiTranslate="global.navbar.sub" class="navbar-sub align-text-top">{{version}}</span>
             </a>
         </div>
     </div>
-    <div class="navbar-collapse collapse jh-navbar-menu" id="navbarResponsive" [ngbCollapse]="isNavbarCollapsed" [ngSwitch]="isAuthenticated()">
+    <div class="col navbar-collapse collapse jh-navbar-menu" id="navbarResponsive" [ngbCollapse]="isNavbarCollapsed" [ngSwitch]="isAuthenticated()">
         <ul class="navbar-nav">
             <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link" [routerLink]="['/']"  [queryParams]="{ page: 0 }"   (click)="collapseNavbar()">
@@ -25,7 +30,7 @@
                 <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="navBarDropdown">
                     <span>
                         <i class="fa fa-calendar" aria-hidden="true"></i>
-                        <span>{{translate(menu)}}</span>   <!-- + '.main' | translate -->
+                        <span>{{translate(menu)}}</span>
                     </span>
                 </a>
                 <ul class="dropdown-menu" ngbDropdownMenu *ngIf="menu.subTopics.length > 0">
@@ -36,7 +41,7 @@
                 </ul>
             </li>
             <!-- Language -->
-            <li ngbDropdown class="nav-item dropdown pointer" *ngIf="languages">
+            <!-- li ngbDropdown class="nav-item dropdown pointer" *ngIf="languages">
                 <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="languagesnavBarDropdown" *ngIf="languages.length > 1">
                     <span>
                         <i class="fa fa-flag" aria-hidden="true"></i>
@@ -48,7 +53,8 @@
                         <a class="dropdown-item" [jhiActiveMenu]="language" href="javascript:void(0);" (click)="changeLanguage(language);collapseNavbar();">{{language | findLanguageFromKey}}</a>
                     </li>
                 </ul>
-            </li>
+            </li -->
         </ul>
     </div>
 </nav>
+</br>

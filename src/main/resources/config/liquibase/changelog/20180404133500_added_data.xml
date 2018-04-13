@@ -91,6 +91,20 @@
             <column name="publish" type="boolean"/>
             <column name="cm_module_id" type="numeric" />
         </loadData>
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/cmImage.csv"
+                  separator=";"
+                  tableName="cm_image">
+            <column name="id" type="numeric" />
+            <column name="name" type="string"/>
+            <column name="image_type" type="string"/>
+            <column name="tool_tip" type="string"/>
+            <column name="sorted" type="numeric"/>
+            <column name="layout" type="string"/>
+            <column name="publish" type="boolean"/>
+            <column name="cm_item_id" type="numeric" />
+            <column name="cm_module_id" type="numeric" />
+        </loadData>
     </changeSet>
     <changeSet id="20180404133500_3" author="jhipster">
         <loadData encoding="UTF-8"
@@ -106,8 +120,8 @@
             <column name="publish" type="boolean"/>
             <column name="cm_item_id" type="numeric" />
             <column name="cm_module_id" type="numeric" />
+            <column name="image_id" type="numeric" />
         </loadData>
     </changeSet>
-
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
 </databaseChangeLog>

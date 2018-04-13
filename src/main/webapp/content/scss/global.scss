@@ -6,10 +6,11 @@ Bootstrap tweaks
 body{
     margin: 0;
     padding: 0;
-}
-body, h1, h2, h3, h4 {
     font-weight: 300;
     color: #000;
+}
+h1, h2, h3, h4 {
+    font-weight: 320;
 }
 
 a {
@@ -18,7 +19,7 @@ a {
 }
 
 a:hover {
-    color: #533f03;
+    color: #533f88;
     font-weight: bold;
     text-decoration: none;
 }
@@ -83,6 +84,7 @@ Generic styles
 
 .footer {
     border-top: 1px solid rgba(0,0,0,.125);
+    padding: 10px 2px;
 }
 
 /* ==========================================================================
@@ -139,7 +141,10 @@ Custom alerts for notification
 }
 @media (max-width: 480px) {
     body, h1, h2, h3, h4 {
-        font-size: 90%;
+        font-size: 92%;
+    }
+    h1, h2, h3, h4 {
+        font-weight: 400;
     }
 }
 

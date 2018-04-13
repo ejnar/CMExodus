@@ -5,7 +5,7 @@ import { ComponentInterface } from './../../component-interface';
 @Component({
     templateUrl: './program-list.component.html',
     styleUrls: [
-        'content.scss'
+        'program-list.scss'
     ]
 })
 export class ProgramListComponent implements OnInit, ComponentInterface {

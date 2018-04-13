@@ -3,17 +3,25 @@
 Navbar
 ========================================================================== */
 .navbar-title {
-    display: block;
-    vertical-align: middle;
+    display: inline-block;
+    vertical-align: text-bottom;
     color: #f2b752;
-    font-size: 4em;
+    font-size: 6.8vh;
+    padding:0;
+    margin:0;
 }
 .navbar-sub {
     display: block;
-    font-size: 1em;
+    font-size: 2.2vh;
     color: #f2b752;
+    padding: 0 0 0 40px
 }
-
+.language_flags{
+    margin: 0.6em 1.6em 0 0;
+}
+.jh-navbar-menu{
+    background-color: #fff;
+}
 
 .jh-navbar {
     background-color: #fff;
@@ -43,7 +51,7 @@ Navbar
     .jh-navbar-toggler {
         color: #222;
         font-size: 2.0em;
-        padding: 10px;
+        padding: 10px 0 0 0.4vh;
         &:hover {
             color: #aaa;
         }
@@ -54,11 +62,10 @@ Navbar
 @media (min-width: 992px) {
     .jh-navbar-menu{
         // margin: 6em 4em 0em 1em;
-        margin: 100em;
-        background-color: #eee;
+        // margin: 400em;
+        background-color: #fff;
     }
 }
-
 
 @media screen and (min-width: 768px) {
     .jh-navbar-toggler {
@@ -73,17 +80,19 @@ Navbar
     .jh-logo-container {
         width: 100%;
     }
-    .jh-navbar-menu{
+    ._jh-navbar-menu{
         margin: 0 4em 0 0;
     }
+    .language_flags{
+        margin: 0.6em 1.0em 0 0;
+    }
 }
-
 /* ==========================================================================
 Logo styles
 ========================================================================== */
 .navbar-brand {
     &.logo {
-        padding: 5px 15px;
+        padding: 0;
         .logo-img {
             height: 45px;
             width: 70px;
