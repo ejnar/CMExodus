@@ -9,6 +9,8 @@ import { ContentDirective } from './content.directive';
 import { ContentEngineComponent } from './content-engine.component';
 import { contentRoute } from './content.route';
 
+import { MainComponent } from './main.component';
+
 import { ProgramListComponent } from './modules/programList/program-list.component';
 import { TextComponent } from './modules/text/text.component';
 import { TextImageComponent } from './modules/textImage/text-image.component';
@@ -21,13 +23,14 @@ import { TextImageComponent } from './modules/textImage/text-image.component';
     declarations: [
         ContentDirective,
         ContentComponent,
+        MainComponent,
         ProgramListComponent,
         TextComponent,
         TextImageComponent,
         ContentEngineComponent,
     ],
     entryComponents: [
-        ProgramListComponent, TextComponent, TextImageComponent
+        MainComponent, ProgramListComponent, TextComponent, TextImageComponent
     ],
     providers: [
         ContentService
