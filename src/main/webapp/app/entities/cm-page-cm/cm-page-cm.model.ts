@@ -2,13 +2,14 @@ import { BaseEntity } from './../../shared';
 
 export const enum PageLayout {
     'MAIN',
-    'COLUMN'
+    'COLUMN_RIGHT'
 }
 
 export class CmPageCm implements BaseEntity {
     constructor(
         public id?: number,
-        public title?: string,
+        public titleSv?: string,
+        public titleEn?: string,
         public metaTitle?: string,
         public metaDescription?: string,
         public sorted?: number,

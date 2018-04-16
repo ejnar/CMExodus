@@ -40,6 +40,11 @@
             "fieldName": "layout",
             "fieldType": "LayoutType",
             "fieldValues": "LEFT,RIGHT,MIDDLE,CENTER,TOP,BOTTOM,SIDEBYSIDE"
+        },
+        {
+            "fieldName": "columnLayout",
+            "fieldType": "ColumnLayout",
+            "fieldValues": "MAIN,COLUMN1,COLUMN2"
         }
     ],
     "changelogDate": "20180309131423",

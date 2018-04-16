@@ -21,7 +21,11 @@
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="title" type="varchar(255)">
+            <column name="title_sv" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="title_en" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
 
@@ -43,6 +47,7 @@
 
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
+        
         <createTable tableName="cm_page_module">
             <column name="modules_id" type="bigint">
                 <constraints nullable="false"/>
@@ -53,6 +58,7 @@
         </createTable>
 
         <addPrimaryKey columnNames="cm_pages_id, modules_id" tableName="cm_page_module"/>
+        
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
 </databaseChangeLog>

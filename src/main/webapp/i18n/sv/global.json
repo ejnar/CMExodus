@@ -2,8 +2,8 @@
     "global": {
         "title": "CMExodus",
         "navbar": {
-            "title": "Test Site",
-            "sub": "Trelleborg"
+            "title": "Test",
+            "sub": "Trelleborgs församling"
         },
         "browsehappy": "Du använder en <strong>gammal webbläsare</strong>. <a href=\"http://browsehappy.com/?locale=en\">Uppgradera din webbläsare</a> för bästa upplevelse.",
         "menu": {

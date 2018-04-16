@@ -32,6 +32,9 @@ public class CmTopic implements Serializable {
     @Column(name = "name_sv", nullable = false)
     private String nameSv;
 
+    @Column(name = "icon")
+    private String icon;
+
     @OneToMany(mappedBy = "cmTopic")
     @JsonIgnore
     private Set<CmSubTopic> subTopics = new HashSet<>();
@@ -69,6 +72,19 @@ public class CmTopic implements Serializable {
 
     public void setNameSv(String nameSv) {
         this.nameSv = nameSv;
+    }
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public CmTopic icon(String icon) {
+        this.icon = icon;
+        return this;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
     }
 
     public Set<CmSubTopic> getSubTopics() {
@@ -123,6 +139,7 @@ public class CmTopic implements Serializable {
             "id=" + getId() +
             ", nameEn='" + getNameEn() + "'" +
             ", nameSv='" + getNameSv() + "'" +
+            ", icon='" + getIcon() + "'" +
             "}";
     }
 }

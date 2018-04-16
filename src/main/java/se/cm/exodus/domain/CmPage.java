@@ -27,8 +27,12 @@ public class CmPage implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "title", nullable = false)
-    private String title;
+    @Column(name = "title_sv", nullable = false)
+    private String titleSv;
+
+    @NotNull
+    @Column(name = "title_en", nullable = false)
+    private String titleEn;
 
     @Column(name = "meta_title")
     private String metaTitle;
@@ -62,17 +66,30 @@ public class CmPage implements Serializable {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getTitleSv() {
+        return titleSv;
     }
 
-    public CmPage title(String title) {
-        this.title = title;
+    public CmPage titleSv(String titleSv) {
+        this.titleSv = titleSv;
         return this;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setTitleSv(String titleSv) {
+        this.titleSv = titleSv;
+    }
+
+    public String getTitleEn() {
+        return titleEn;
+    }
+
+    public CmPage titleEn(String titleEn) {
+        this.titleEn = titleEn;
+        return this;
+    }
+
+    public void setTitleEn(String titleEn) {
+        this.titleEn = titleEn;
     }
 
     public String getMetaTitle() {
@@ -200,7 +217,8 @@ public class CmPage implements Serializable {
     public String toString() {
         return "CmPage{" +
             "id=" + getId() +
-            ", title='" + getTitle() + "'" +
+            ", titleSv='" + getTitleSv() + "'" +
+            ", titleEn='" + getTitleEn() + "'" +
             ", metaTitle='" + getMetaTitle() + "'" +
             ", metaDescription='" + getMetaDescription() + "'" +
             ", sorted=" + getSorted() +

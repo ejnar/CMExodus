@@ -1,5 +1,4 @@
 export * from './component-interface';
-export * from './content-engine.component';
 export * from './content.component';
 export * from './content.directive';
 export * from './content.service';

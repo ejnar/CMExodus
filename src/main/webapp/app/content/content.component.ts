@@ -1,5 +1,6 @@
 import { Component, Input, ViewChild, ComponentFactoryResolver, OnInit, OnDestroy, AfterViewInit, Injector, ApplicationRef, ViewContainerRef } from '@angular/core';
 import { ActivatedRoute, Router, ActivationEnd, NavigationEnd } from '@angular/router';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 import { HttpResponse } from '@angular/common/http';
 import { NGXLogger } from 'ngx-logger';
 import { Title, Meta } from '@angular/platform-browser';
@@ -11,7 +12,9 @@ import { ContentService } from './content.service';
 import { ContentDirective } from './content.directive';
 import { ComponentInterface } from './component-interface';
 import { Page } from './modules/model/page.model';
-import { MainComponent } from './main.component';
+
+import { MainComponent } from './modules/main/main.component';
+import { ColumnRightComponent } from './modules/columnRight/column.component';
 
 @Component({
     selector: 'jhi-content',
@@ -22,15 +25,14 @@ import { MainComponent } from './main.component';
     // providers: [NGXLogger]
 })
 export class ContentComponent implements OnInit, OnDestroy, AfterViewInit {
-    @ViewChild('parent', {read: ViewContainerRef}) parent: ViewContainerRef;
-    // @ViewChild(ContentDirective) contentDirective: ContentDirective;
+    @ViewChild(ContentDirective) contentDirective: ContentDirective;
     currentAdIndex: number = -1;
     routerEventSubscribe: any;
-    page: Promise<Page>;
-    // interval: any;
+    translateServiceSubscribe: any;
+    promise: Promise<Page>;
     pageId: number;
     pageLayout: string;
-    // mainComponent: MainComponent;
+    page: Page;
 
     constructor(
         private contentService: ContentService,
@@ -39,67 +41,69 @@ export class ContentComponent implements OnInit, OnDestroy, AfterViewInit {
         private router: Router,
         private titleService: Title,
         private metaService: Meta,
+        private translateService: TranslateService,
         private injector: Injector,
         private appRef: ApplicationRef,
         private logger: NGXLogger) {
-
-        // const mainComponent = this.componentFactoryResolver.resolveComponentFactory(MainComponent);
-        // this.parent.createComponent(mainComponent);
-        // const mainComponentRef = this.parent.createComponent(mainComponent).instance.create(this.injector, null, '#parent');
-        // var mainComponentRef = mainComponent.create(this.injector, null, '#parent');
-        // (this.appRef)._loadComponent(mainComponentRef);
 
         this.routerEventSubscribe = this.router.events.subscribe((data) => {
             if (data instanceof ActivationEnd) {
                 this.pageId = data.snapshot.queryParams.page;
             }else if (data instanceof NavigationEnd) {
                 if ( (!this.pageId || this.pageId > 0)) {
-                    this.page = this.contentService.getContent(this.pageId);
+                    this.promise = this.contentService.getContent(this.pageId);
                     this.loadComponent();
                 }
             }
         } );
+        this.translateServiceSubscribe = this.translateService.onLangChange.subscribe((event: LangChangeEvent) => {
+           if (this.page) {
+                this.titleService.setTitle(this.page[this.titleName(this.translateService.currentLang)]);
+           }
+        });
     }
 
-    ngAfterViewInit() {
-        const factory = this.componentFactoryResolver.resolveComponentFactory(MainComponent);
-        const componentRef = this.parent.createComponent(factory);
-        console.log(componentRef);
+    private titleName(token) {
+        return 'title' + token.charAt(0).toUpperCase() + token.slice(1);
     }
 
     ngOnInit() {
         this.logger.debug('ContentComponent.ngOnInit');
+        console.log(this.page);
+    }
+    ngAfterViewInit() {
+        this.logger.debug('ContentComponent.ngAfterViewInit');
+        console.log(this.page);
     }
 
     loadComponent() {
         this.logger.debug('ContentComponent.loadComponent');
-        // this.contentDirective.viewContainerRef.clear();
-        this.parent.clear();
+        this.contentDirective.viewContainerRef.clear();
 
-        // const mainFactory = this.componentFactoryResolver.resolveComponentFactory(MainComponent);
-        // const mainComponentRef = this.parent.createComponent(mainFactory);
+        const viewContainerRef = this.contentDirective.viewContainerRef;
+        const mainFactory = this.componentFactoryResolver.resolveComponentFactory(MainComponent);
+        const columnRightFactory = this.componentFactoryResolver.resolveComponentFactory(ColumnRightComponent);
 
-        this.page.then((page) => {
-            this.pageLayout = page.pageLayout;
-            this.titleService.setTitle(page.title);
+        let structureComponent;
+        this.promise.then((page) => {
+            this.page = page;
+            this.titleService.setTitle(page.titleSv);
             // this.metaService.addTag({ name: page.metaTitle, content: page.metaDescription });
+            if (page.pageLayout === 'COLUMN_RIGHT') {
+                structureComponent = viewContainerRef.createComponent(columnRightFactory);
+            } else {
+                structureComponent = viewContainerRef.createComponent(mainFactory);
+            }
             for (let i = 0; i < page.items.length; i++) {
                 const item = page.items[i];
-                const componentFactory = this.componentFactoryResolver.resolveComponentFactory(item.component);
-
-                // const viewContainerRef = this.contentDirective.viewContainerRef;
-                // const componentRef = viewContainerRef.createComponent(componentFactory);
-
-                const mainComponentRef = this.parent.createComponent(componentFactory);
-
-                (<ComponentInterface>mainComponentRef.instance).data = item.data;
+                const itemFactory = this.componentFactoryResolver.resolveComponentFactory(item.component);
+                const itemRef = structureComponent.instance.mainContainerRef.createComponent(itemFactory);
+                (<ComponentInterface>itemRef.instance).data = item.data;
             }
         });
     }
     ngOnDestroy() {
-        // clearInterval(this.interval);
-         this.parent.clear();
-        // this.contentDirective.viewContainerRef.clear();
         this.routerEventSubscribe.unsubscribe();
+        this.contentDirective.viewContainerRef.clear();
     }
 }

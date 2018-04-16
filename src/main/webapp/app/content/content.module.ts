@@ -6,10 +6,10 @@ import { CmExodusSharedModule } from '../shared';
 import { ContentComponent } from './content.component';
 import { ContentService } from './content.service';
 import { ContentDirective } from './content.directive';
-import { ContentEngineComponent } from './content-engine.component';
 import { contentRoute } from './content.route';
 
-import { MainComponent } from './main.component';
+import { MainComponent } from './modules/main/main.component';
+import { ColumnRightComponent } from './modules/columnRight/column.component';
 
 import { ProgramListComponent } from './modules/programList/program-list.component';
 import { TextComponent } from './modules/text/text.component';
@@ -24,13 +24,14 @@ import { TextImageComponent } from './modules/textImage/text-image.component';
         ContentDirective,
         ContentComponent,
         MainComponent,
+        ColumnRightComponent,
         ProgramListComponent,
         TextComponent,
         TextImageComponent,
-        ContentEngineComponent,
     ],
     entryComponents: [
-        MainComponent, ProgramListComponent, TextComponent, TextImageComponent
+        MainComponent, ColumnRightComponent,
+        ProgramListComponent, TextComponent, TextImageComponent
     ],
     providers: [
         ContentService

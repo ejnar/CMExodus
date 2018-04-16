@@ -5,6 +5,7 @@
             "TITLE": "TITLE",
             "INGRESS": "INGRESS",
             "TEXT": "TEXT",
+            "TEXT_IMAGE": "TEXT_IMAGE",
             "LIST": "LIST"
         }
     }

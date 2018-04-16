@@ -29,6 +29,10 @@
                 <constraints nullable="false" />
             </column>
 
+            <column name="icon" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
             <column name="visable" type="boolean">
                 <constraints nullable="true" />
             </column>

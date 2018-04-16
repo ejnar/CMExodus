@@ -18,12 +18,19 @@ export const enum LayoutType {
     'SIDEBYSIDE'
 }
 
+export const enum ColumnLayout {
+    'MAIN',
+    'COLUMN1',
+    'COLUMN2'
+}
+
 export class CmModuleCm implements BaseEntity {
     constructor(
         public id?: number,
         public sorted?: number,
         public moduleType?: ModuleType,
         public layout?: LayoutType,
+        public columnLayout?: ColumnLayout,
         public items?: BaseEntity[],
         public itemLists?: BaseEntity[],
         public texts?: BaseEntity[],

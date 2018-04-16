@@ -19,6 +19,7 @@
             <th><span jhiTranslate="global.field.id">ID</span></th>
             <th><span jhiTranslate="cmExodusApp.cmSubTopic.nameEn">Name En</span></th>
             <th><span jhiTranslate="cmExodusApp.cmSubTopic.nameSv">Name Sv</span></th>
+            <th><span jhiTranslate="cmExodusApp.cmSubTopic.icon">Icon</span></th>
             <th><span jhiTranslate="cmExodusApp.cmSubTopic.visable">Visable</span></th>
             <th><span jhiTranslate="cmExodusApp.cmSubTopic.cmTopic">Cm Topic</span></th>
             <th><span jhiTranslate="cmExodusApp.cmSubTopic.page">Page</span></th>
@@ -30,6 +31,7 @@
                 <td><a [routerLink]="['../cm-sub-topic-cm', cmSubTopic.id ]">{{cmSubTopic.id}}</a></td>
                 <td>{{cmSubTopic.nameEn}}</td>
                 <td>{{cmSubTopic.nameSv}}</td>
+                <td>{{cmSubTopic.icon}}</td>
                 <td>{{cmSubTopic.visable}}</td>
                 <td>
                     <div *ngIf="cmSubTopic.cmTopicId">

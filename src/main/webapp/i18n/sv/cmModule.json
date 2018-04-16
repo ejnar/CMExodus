@@ -19,6 +19,7 @@
             "sorted": "Sorted",
             "moduleType": "Module Type",
             "layout": "Layout",
+            "columnLayout": "Column Layout",
             "item": "Item",
             "itemList": "Item List",
             "text": "Text",

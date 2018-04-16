@@ -19,6 +19,7 @@
             <th><span jhiTranslate="global.field.id">ID</span></th>
             <th><span jhiTranslate="cmExodusApp.cmTopic.nameEn">Name En</span></th>
             <th><span jhiTranslate="cmExodusApp.cmTopic.nameSv">Name Sv</span></th>
+            <th><span jhiTranslate="cmExodusApp.cmTopic.icon">Icon</span></th>
             <th></th>
             </tr>
             </thead>
@@ -27,6 +28,7 @@
                 <td><a [routerLink]="['../cm-topic-cm', cmTopic.id ]">{{cmTopic.id}}</a></td>
                 <td>{{cmTopic.nameEn}}</td>
                 <td>{{cmTopic.nameSv}}</td>
+                <td>{{cmTopic.icon}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

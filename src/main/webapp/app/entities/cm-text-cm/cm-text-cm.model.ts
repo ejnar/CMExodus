@@ -4,6 +4,7 @@ export const enum TextType {
     'TITLE',
     'INGRESS',
     'TEXT',
+    'TEXT_IMAGE',
     'LIST'
 }
 

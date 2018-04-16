@@ -5,6 +5,7 @@ export class CmSubTopicCm implements BaseEntity {
         public id?: number,
         public nameEn?: string,
         public nameSv?: string,
+        public icon?: string,
         public visable?: boolean,
         public cmTopicId?: number,
         public pageId?: number,

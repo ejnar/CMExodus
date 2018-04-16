@@ -3,7 +3,7 @@
         "PageLayout" : {
             "null": "",
             "MAIN": "MAIN",
-            "COLUMN": "COLUMN"
+            "COLUMN_RIGHT": "COLUMN_RIGHT"
         }
     }
 }

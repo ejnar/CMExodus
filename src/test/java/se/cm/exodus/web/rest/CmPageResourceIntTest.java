@@ -42,8 +42,11 @@ import se.cm.exodus.domain.enumeration.PageLayout;
 @SpringBootTest(classes = CmExodusApp.class)
 public class CmPageResourceIntTest {
 
-    private static final String DEFAULT_TITLE = "AAAAAAAAAA";
-    private static final String UPDATED_TITLE = "BBBBBBBBBB";
+    private static final String DEFAULT_TITLE_SV = "AAAAAAAAAA";
+    private static final String UPDATED_TITLE_SV = "BBBBBBBBBB";
+
+    private static final String DEFAULT_TITLE_EN = "AAAAAAAAAA";
+    private static final String UPDATED_TITLE_EN = "BBBBBBBBBB";
 
     private static final String DEFAULT_META_TITLE = "AAAAAAAAAA";
     private static final String UPDATED_META_TITLE = "BBBBBBBBBB";
@@ -55,7 +58,7 @@ public class CmPageResourceIntTest {
     private static final Integer UPDATED_SORTED = 2;
 
     private static final PageLayout DEFAULT_PAGE_LAYOUT = PageLayout.MAIN;
-    private static final PageLayout UPDATED_PAGE_LAYOUT = PageLayout.COLUMN;
+    private static final PageLayout UPDATED_PAGE_LAYOUT = PageLayout.COLUMN_RIGHT;
 
     @Autowired
     private CmPageRepository cmPageRepository;
@@ -101,7 +104,8 @@ public class CmPageResourceIntTest {
      */
     public static CmPage createEntity(EntityManager em) {
         CmPage cmPage = new CmPage()
-            .title(DEFAULT_TITLE)
+            .titleSv(DEFAULT_TITLE_SV)
+            .titleEn(DEFAULT_TITLE_EN)
             .metaTitle(DEFAULT_META_TITLE)
             .metaDescription(DEFAULT_META_DESCRIPTION)
             .sorted(DEFAULT_SORTED)
@@ -130,7 +134,8 @@ public class CmPageResourceIntTest {
         List<CmPage> cmPageList = cmPageRepository.findAll();
         assertThat(cmPageList).hasSize(databaseSizeBeforeCreate + 1);
         CmPage testCmPage = cmPageList.get(cmPageList.size() - 1);
-        assertThat(testCmPage.getTitle()).isEqualTo(DEFAULT_TITLE);
+        assertThat(testCmPage.getTitleSv()).isEqualTo(DEFAULT_TITLE_SV);
+        assertThat(testCmPage.getTitleEn()).isEqualTo(DEFAULT_TITLE_EN);
         assertThat(testCmPage.getMetaTitle()).isEqualTo(DEFAULT_META_TITLE);
         assertThat(testCmPage.getMetaDescription()).isEqualTo(DEFAULT_META_DESCRIPTION);
         assertThat(testCmPage.getSorted()).isEqualTo(DEFAULT_SORTED);
@@ -159,10 +164,29 @@ public class CmPageResourceIntTest {
 
     @Test
     @Transactional
-    public void checkTitleIsRequired() throws Exception {
+    public void checkTitleSvIsRequired() throws Exception {
         int databaseSizeBeforeTest = cmPageRepository.findAll().size();
         // set the field null
-        cmPage.setTitle(null);
+        cmPage.setTitleSv(null);
+
+        // Create the CmPage, which fails.
+        CmPageDTO cmPageDTO = cmPageMapper.toDto(cmPage);
+
+        restCmPageMockMvc.perform(post("/api/cm-pages")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(cmPageDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<CmPage> cmPageList = cmPageRepository.findAll();
+        assertThat(cmPageList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkTitleEnIsRequired() throws Exception {
+        int databaseSizeBeforeTest = cmPageRepository.findAll().size();
+        // set the field null
+        cmPage.setTitleEn(null);
 
         // Create the CmPage, which fails.
         CmPageDTO cmPageDTO = cmPageMapper.toDto(cmPage);
@@ -187,7 +211,8 @@ public class CmPageResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(cmPage.getId().intValue())))
-            .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE.toString())))
+            .andExpect(jsonPath("$.[*].titleSv").value(hasItem(DEFAULT_TITLE_SV.toString())))
+            .andExpect(jsonPath("$.[*].titleEn").value(hasItem(DEFAULT_TITLE_EN.toString())))
             .andExpect(jsonPath("$.[*].metaTitle").value(hasItem(DEFAULT_META_TITLE.toString())))
             .andExpect(jsonPath("$.[*].metaDescription").value(hasItem(DEFAULT_META_DESCRIPTION.toString())))
             .andExpect(jsonPath("$.[*].sorted").value(hasItem(DEFAULT_SORTED)))
@@ -205,7 +230,8 @@ public class CmPageResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(cmPage.getId().intValue()))
-            .andExpect(jsonPath("$.title").value(DEFAULT_TITLE.toString()))
+            .andExpect(jsonPath("$.titleSv").value(DEFAULT_TITLE_SV.toString()))
+            .andExpect(jsonPath("$.titleEn").value(DEFAULT_TITLE_EN.toString()))
             .andExpect(jsonPath("$.metaTitle").value(DEFAULT_META_TITLE.toString()))
             .andExpect(jsonPath("$.metaDescription").value(DEFAULT_META_DESCRIPTION.toString()))
             .andExpect(jsonPath("$.sorted").value(DEFAULT_SORTED))
@@ -232,7 +258,8 @@ public class CmPageResourceIntTest {
         // Disconnect from session so that the updates on updatedCmPage are not directly saved in db
         em.detach(updatedCmPage);
         updatedCmPage
-            .title(UPDATED_TITLE)
+            .titleSv(UPDATED_TITLE_SV)
+            .titleEn(UPDATED_TITLE_EN)
             .metaTitle(UPDATED_META_TITLE)
             .metaDescription(UPDATED_META_DESCRIPTION)
             .sorted(UPDATED_SORTED)
@@ -248,7 +275,8 @@ public class CmPageResourceIntTest {
         List<CmPage> cmPageList = cmPageRepository.findAll();
         assertThat(cmPageList).hasSize(databaseSizeBeforeUpdate);
         CmPage testCmPage = cmPageList.get(cmPageList.size() - 1);
-        assertThat(testCmPage.getTitle()).isEqualTo(UPDATED_TITLE);
+        assertThat(testCmPage.getTitleSv()).isEqualTo(UPDATED_TITLE_SV);
+        assertThat(testCmPage.getTitleEn()).isEqualTo(UPDATED_TITLE_EN);
         assertThat(testCmPage.getMetaTitle()).isEqualTo(UPDATED_META_TITLE);
         assertThat(testCmPage.getMetaDescription()).isEqualTo(UPDATED_META_DESCRIPTION);
         assertThat(testCmPage.getSorted()).isEqualTo(UPDATED_SORTED);

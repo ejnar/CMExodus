@@ -35,6 +35,11 @@
             </div>
         </div>
         <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cmExodusApp.cmSubTopic.icon" for="field_icon">Icon</label>
+            <input type="text" class="form-control" name="icon" id="field_icon"
+                [(ngModel)]="cmSubTopic.icon" />
+        </div>
+        <div class="form-group">
             <label class="form-control-label" jhiTranslate="cmExodusApp.cmSubTopic.visable" for="field_visable">Visable</label>
             <input type="checkbox" class="form-control" name="visable" id="field_visable"
                 [(ngModel)]="cmSubTopic.visable" />

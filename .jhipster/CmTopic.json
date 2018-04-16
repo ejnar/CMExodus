@@ -22,6 +22,10 @@
             "fieldValidateRules": [
                 "required"
             ]
+        },
+        {
+            "fieldName": "icon",
+            "fieldType": "String"
         }
     ],
     "changelogDate": "20180309131418",

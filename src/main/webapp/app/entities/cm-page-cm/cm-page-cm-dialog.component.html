@@ -13,12 +13,23 @@
                    [(ngModel)]="cmPage.id" readonly />
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="cmExodusApp.cmPage.title" for="field_title">Title</label>
-            <input type="text" class="form-control" name="title" id="field_title"
-                [(ngModel)]="cmPage.title" required/>
-            <div [hidden]="!(editForm.controls.title?.dirty && editForm.controls.title?.invalid)">
+            <label class="form-control-label" jhiTranslate="cmExodusApp.cmPage.titleSv" for="field_titleSv">Title Sv</label>
+            <input type="text" class="form-control" name="titleSv" id="field_titleSv"
+                [(ngModel)]="cmPage.titleSv" required/>
+            <div [hidden]="!(editForm.controls.titleSv?.dirty && editForm.controls.titleSv?.invalid)">
                 <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.title?.errors?.required" jhiTranslate="entity.validation.required">
+                   [hidden]="!editForm.controls.titleSv?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cmExodusApp.cmPage.titleEn" for="field_titleEn">Title En</label>
+            <input type="text" class="form-control" name="titleEn" id="field_titleEn"
+                [(ngModel)]="cmPage.titleEn" required/>
+            <div [hidden]="!(editForm.controls.titleEn?.dirty && editForm.controls.titleEn?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.titleEn?.errors?.required" jhiTranslate="entity.validation.required">
                    This field is required.
                 </small>
             </div>
@@ -42,7 +53,7 @@
             <label class="form-control-label" jhiTranslate="cmExodusApp.cmPage.pageLayout" for="field_pageLayout">Page Layout</label>
             <select class="form-control" name="pageLayout" [(ngModel)]="cmPage.pageLayout" id="field_pageLayout" >
                 <option value="MAIN">{{'cmExodusApp.PageLayout.MAIN' | translate}}</option>
-                <option value="COLUMN">{{'cmExodusApp.PageLayout.COLUMN' | translate}}</option>
+                <option value="COLUMN_RIGHT">{{'cmExodusApp.PageLayout.COLUMN_RIGHT' | translate}}</option>
             </select>
         </div>
 

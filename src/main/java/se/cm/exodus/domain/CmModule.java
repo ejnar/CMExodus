@@ -13,6 +13,8 @@ import se.cm.exodus.domain.enumeration.ModuleType;
 
 import se.cm.exodus.domain.enumeration.LayoutType;
 
+import se.cm.exodus.domain.enumeration.ColumnLayout;
+
 /**
  * A CmModule.
  */
@@ -37,6 +39,10 @@ public class CmModule implements Serializable {
     @Enumerated(EnumType.STRING)
     @Column(name = "layout")
     private LayoutType layout;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "column_layout")
+    private ColumnLayout columnLayout;
 
     @OneToMany(mappedBy = "cmModule")
     @JsonIgnore
@@ -100,6 +106,19 @@ public class CmModule implements Serializable {
 
     public void setLayout(LayoutType layout) {
         this.layout = layout;
+    }
+
+    public ColumnLayout getColumnLayout() {
+        return columnLayout;
+    }
+
+    public CmModule columnLayout(ColumnLayout columnLayout) {
+        this.columnLayout = columnLayout;
+        return this;
+    }
+
+    public void setColumnLayout(ColumnLayout columnLayout) {
+        this.columnLayout = columnLayout;
     }
 
     public Set<CmItem> getItems() {
@@ -230,6 +249,7 @@ public class CmModule implements Serializable {
             ", sorted=" + getSorted() +
             ", moduleType='" + getModuleType() + "'" +
             ", layout='" + getLayout() + "'" +
+            ", columnLayout='" + getColumnLayout() + "'" +
             "}";
     }
 }

@@ -32,6 +32,10 @@
             ]
         },
         {
+            "fieldName": "icon",
+            "fieldType": "String"
+        },
+        {
             "fieldName": "visable",
             "fieldType": "Boolean"
         }

@@ -24,13 +24,15 @@
             <column name="id" type="numeric" />
             <column name="name_sv" type="string"/>
             <column name="name_en" type="string"/>
+            <column name="icon" type="string"/>
         </loadData>
         <loadData encoding="UTF-8"
                   file="config/liquibase/pages.csv"
                   separator=";"
                   tableName="cm_page">
             <column name="id" type="numeric" />
-            <column name="title" type="string"/>
+            <column name="title_en" type="string"/>
+            <column name="title_sv" type="string"/>
             <column name="sorted" type="numeric"/>
             <column name="page_layout" type="string"/>
         </loadData>
@@ -55,6 +57,7 @@
             <column name="visable" type="boolean" />
             <column name="cm_topic_id" type="numeric"/>
             <column name="page_id" type="numeric"/>
+            <column name="icon" type="string"/>
         </loadData>
         <loadData encoding="UTF-8"
                   file="config/liquibase/pageModules.csv"

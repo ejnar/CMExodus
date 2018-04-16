@@ -37,7 +37,7 @@ export class ContentService {
 
     private onSuccess(data) {
         this.logger.debug(' onSuccess ');
-        const page = new Page(data.title, data.pageLayout, new Array<ContentItem>());
+        const page = new Page(data.titleSv, data.titleEn, data.pageLayout, new Array<ContentItem>());
         page.metaTitle = data.metaTitle;
         page.metaDescription = data.metaDescription;
         data.modules.forEach((module) => {

@@ -1,0 +1,10 @@
+{
+    "cmExodusApp": {
+        "ColumnLayout" : {
+            "null": "",
+            "MAIN": "MAIN",
+            "COLUMN1": "COLUMN1",
+            "COLUMN2": "COLUMN2"
+        }
+    }
+}

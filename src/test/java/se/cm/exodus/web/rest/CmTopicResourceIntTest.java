@@ -47,6 +47,9 @@ public class CmTopicResourceIntTest {
     private static final String DEFAULT_NAME_SV = "AAAAAAAAAA";
     private static final String UPDATED_NAME_SV = "BBBBBBBBBB";
 
+    private static final String DEFAULT_ICON = "AAAAAAAAAA";
+    private static final String UPDATED_ICON = "BBBBBBBBBB";
+
     @Autowired
     private CmTopicRepository cmTopicRepository;
 
@@ -92,7 +95,8 @@ public class CmTopicResourceIntTest {
     public static CmTopic createEntity(EntityManager em) {
         CmTopic cmTopic = new CmTopic()
             .nameEn(DEFAULT_NAME_EN)
-            .nameSv(DEFAULT_NAME_SV);
+            .nameSv(DEFAULT_NAME_SV)
+            .icon(DEFAULT_ICON);
         return cmTopic;
     }
 
@@ -119,6 +123,7 @@ public class CmTopicResourceIntTest {
         CmTopic testCmTopic = cmTopicList.get(cmTopicList.size() - 1);
         assertThat(testCmTopic.getNameEn()).isEqualTo(DEFAULT_NAME_EN);
         assertThat(testCmTopic.getNameSv()).isEqualTo(DEFAULT_NAME_SV);
+        assertThat(testCmTopic.getIcon()).isEqualTo(DEFAULT_ICON);
     }
 
     @Test
@@ -191,7 +196,8 @@ public class CmTopicResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(cmTopic.getId().intValue())))
             .andExpect(jsonPath("$.[*].nameEn").value(hasItem(DEFAULT_NAME_EN.toString())))
-            .andExpect(jsonPath("$.[*].nameSv").value(hasItem(DEFAULT_NAME_SV.toString())));
+            .andExpect(jsonPath("$.[*].nameSv").value(hasItem(DEFAULT_NAME_SV.toString())))
+            .andExpect(jsonPath("$.[*].icon").value(hasItem(DEFAULT_ICON.toString())));
     }
 
     @Test
@@ -206,7 +212,8 @@ public class CmTopicResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(cmTopic.getId().intValue()))
             .andExpect(jsonPath("$.nameEn").value(DEFAULT_NAME_EN.toString()))
-            .andExpect(jsonPath("$.nameSv").value(DEFAULT_NAME_SV.toString()));
+            .andExpect(jsonPath("$.nameSv").value(DEFAULT_NAME_SV.toString()))
+            .andExpect(jsonPath("$.icon").value(DEFAULT_ICON.toString()));
     }
 
     @Test
@@ -230,7 +237,8 @@ public class CmTopicResourceIntTest {
         em.detach(updatedCmTopic);
         updatedCmTopic
             .nameEn(UPDATED_NAME_EN)
-            .nameSv(UPDATED_NAME_SV);
+            .nameSv(UPDATED_NAME_SV)
+            .icon(UPDATED_ICON);
         CmTopicDTO cmTopicDTO = cmTopicMapper.toDto(updatedCmTopic);
 
         restCmTopicMockMvc.perform(put("/api/cm-topics")
@@ -244,6 +252,7 @@ public class CmTopicResourceIntTest {
         CmTopic testCmTopic = cmTopicList.get(cmTopicList.size() - 1);
         assertThat(testCmTopic.getNameEn()).isEqualTo(UPDATED_NAME_EN);
         assertThat(testCmTopic.getNameSv()).isEqualTo(UPDATED_NAME_SV);
+        assertThat(testCmTopic.getIcon()).isEqualTo(UPDATED_ICON);
     }
 
     @Test

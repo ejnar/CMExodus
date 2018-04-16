@@ -45,7 +45,7 @@
         {
             "fieldName": "textType",
             "fieldType": "TextType",
-            "fieldValues": "TITLE,INGRESS,TEXT,LIST"
+            "fieldValues": "TITLE,INGRESS,TEXT,TEXT_IMAGE,LIST"
         },
         {
             "fieldName": "sorted",

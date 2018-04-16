@@ -5,6 +5,8 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Objects;
+
+import se.cm.exodus.domain.enumeration.ColumnLayout;
 import se.cm.exodus.domain.enumeration.ModuleType;
 import se.cm.exodus.domain.enumeration.LayoutType;
 
@@ -20,6 +22,8 @@ public class CmModuleDTO implements Serializable {
     private ModuleType moduleType;
 
     private LayoutType layout;
+
+    private ColumnLayout columnLayout;
 
     private Set<CmItemListDTO> itemLists = new HashSet<>();
 
@@ -58,6 +62,10 @@ public class CmModuleDTO implements Serializable {
     public void setLayout(LayoutType layout) {
         this.layout = layout;
     }
+
+    public ColumnLayout getColumnLayout() { return columnLayout; }
+
+    public void setColumnLayout(ColumnLayout columnLayout) { this.columnLayout = columnLayout; }
 
     public Set<CmItemListDTO> getItemLists() {
         return itemLists;

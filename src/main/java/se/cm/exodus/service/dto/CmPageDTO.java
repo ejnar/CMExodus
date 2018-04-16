@@ -16,7 +16,10 @@ public class CmPageDTO implements Serializable {
     private Long id;
 
     @NotNull
-    private String title;
+    private String titleSv;
+
+    @NotNull
+    private String titleEn;
 
     private String metaTitle;
 
@@ -36,12 +39,20 @@ public class CmPageDTO implements Serializable {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getTitleSv() {
+        return titleSv;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setTitleSv(String titleSv) {
+        this.titleSv = titleSv;
+    }
+
+    public String getTitleEn() {
+        return titleEn;
+    }
+
+    public void setTitleEn(String titleEn) {
+        this.titleEn = titleEn;
     }
 
     public String getMetaTitle() {
@@ -109,7 +120,8 @@ public class CmPageDTO implements Serializable {
     public String toString() {
         return "CmPageDTO{" +
             "id=" + getId() +
-            ", title='" + getTitle() + "'" +
+            ", titleSv='" + getTitleSv() + "'" +
+            ", titleEn='" + getTitleEn() + "'" +
             ", metaTitle='" + getMetaTitle() + "'" +
             ", metaDescription='" + getMetaDescription() + "'" +
             ", sorted=" + getSorted() +

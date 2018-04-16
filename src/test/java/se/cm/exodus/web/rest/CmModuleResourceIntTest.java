@@ -34,6 +34,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import se.cm.exodus.domain.enumeration.ModuleType;
 import se.cm.exodus.domain.enumeration.LayoutType;
+import se.cm.exodus.domain.enumeration.ColumnLayout;
 /**
  * Test class for the CmModuleResource REST controller.
  *
@@ -51,6 +52,9 @@ public class CmModuleResourceIntTest {
 
     private static final LayoutType DEFAULT_LAYOUT = LayoutType.LEFT;
     private static final LayoutType UPDATED_LAYOUT = LayoutType.RIGHT;
+
+    private static final ColumnLayout DEFAULT_COLUMN_LAYOUT = ColumnLayout.MAIN;
+    private static final ColumnLayout UPDATED_COLUMN_LAYOUT = ColumnLayout.COLUMN1;
 
     @Autowired
     private CmModuleRepository cmModuleRepository;
@@ -98,7 +102,8 @@ public class CmModuleResourceIntTest {
         CmModule cmModule = new CmModule()
             .sorted(DEFAULT_SORTED)
             .moduleType(DEFAULT_MODULE_TYPE)
-            .layout(DEFAULT_LAYOUT);
+            .layout(DEFAULT_LAYOUT)
+            .columnLayout(DEFAULT_COLUMN_LAYOUT);
         return cmModule;
     }
 
@@ -126,6 +131,7 @@ public class CmModuleResourceIntTest {
         assertThat(testCmModule.getSorted()).isEqualTo(DEFAULT_SORTED);
         assertThat(testCmModule.getModuleType()).isEqualTo(DEFAULT_MODULE_TYPE);
         assertThat(testCmModule.getLayout()).isEqualTo(DEFAULT_LAYOUT);
+        assertThat(testCmModule.getColumnLayout()).isEqualTo(DEFAULT_COLUMN_LAYOUT);
     }
 
     @Test
@@ -161,7 +167,8 @@ public class CmModuleResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(cmModule.getId().intValue())))
             .andExpect(jsonPath("$.[*].sorted").value(hasItem(DEFAULT_SORTED)))
             .andExpect(jsonPath("$.[*].moduleType").value(hasItem(DEFAULT_MODULE_TYPE.toString())))
-            .andExpect(jsonPath("$.[*].layout").value(hasItem(DEFAULT_LAYOUT.toString())));
+            .andExpect(jsonPath("$.[*].layout").value(hasItem(DEFAULT_LAYOUT.toString())))
+            .andExpect(jsonPath("$.[*].columnLayout").value(hasItem(DEFAULT_COLUMN_LAYOUT.toString())));
     }
 
     @Test
@@ -177,7 +184,8 @@ public class CmModuleResourceIntTest {
             .andExpect(jsonPath("$.id").value(cmModule.getId().intValue()))
             .andExpect(jsonPath("$.sorted").value(DEFAULT_SORTED))
             .andExpect(jsonPath("$.moduleType").value(DEFAULT_MODULE_TYPE.toString()))
-            .andExpect(jsonPath("$.layout").value(DEFAULT_LAYOUT.toString()));
+            .andExpect(jsonPath("$.layout").value(DEFAULT_LAYOUT.toString()))
+            .andExpect(jsonPath("$.columnLayout").value(DEFAULT_COLUMN_LAYOUT.toString()));
     }
 
     @Test
@@ -202,7 +210,8 @@ public class CmModuleResourceIntTest {
         updatedCmModule
             .sorted(UPDATED_SORTED)
             .moduleType(UPDATED_MODULE_TYPE)
-            .layout(UPDATED_LAYOUT);
+            .layout(UPDATED_LAYOUT)
+            .columnLayout(UPDATED_COLUMN_LAYOUT);
         CmModuleDTO cmModuleDTO = cmModuleMapper.toDto(updatedCmModule);
 
         restCmModuleMockMvc.perform(put("/api/cm-modules")
@@ -217,6 +226,7 @@ public class CmModuleResourceIntTest {
         assertThat(testCmModule.getSorted()).isEqualTo(UPDATED_SORTED);
         assertThat(testCmModule.getModuleType()).isEqualTo(UPDATED_MODULE_TYPE);
         assertThat(testCmModule.getLayout()).isEqualTo(UPDATED_LAYOUT);
+        assertThat(testCmModule.getColumnLayout()).isEqualTo(UPDATED_COLUMN_LAYOUT);
     }
 
     @Test

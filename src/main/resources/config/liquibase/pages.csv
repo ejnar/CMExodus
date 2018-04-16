@@ -1,3 +1,3 @@
-id;title;sorted;page_layout
-1;My Calendar page;1;MAIN
-2;Mission page;1;MAIN
+id;title_en;title_sv;sorted;page_layout
+1;My Calendar page;Kalender;1;MAIN
+2;Mission page;Mission;1;MAIN

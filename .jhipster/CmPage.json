@@ -18,7 +18,14 @@
     ],
     "fields": [
         {
-            "fieldName": "title",
+            "fieldName": "titleSv",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "titleEn",
             "fieldType": "String",
             "fieldValidateRules": [
                 "required"
@@ -39,7 +46,7 @@
         {
             "fieldName": "pageLayout",
             "fieldType": "PageLayout",
-            "fieldValues": "MAIN,COLUMN"
+            "fieldValues": "MAIN,COLUMN_RIGHT"
         }
     ],
     "changelogDate": "20180309131422",

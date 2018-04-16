@@ -16,7 +16,8 @@
             "detail": {
                 "title": "Cm Page"
             },
-            "title": "Title",
+            "titleSv": "Title Sv",
+            "titleEn": "Title En",
             "metaTitle": "Meta Title",
             "metaDescription": "Meta Description",
             "sorted": "Sorted",

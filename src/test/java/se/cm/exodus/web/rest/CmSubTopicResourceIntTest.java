@@ -46,6 +46,9 @@ public class CmSubTopicResourceIntTest {
     private static final String DEFAULT_NAME_SV = "AAAAAAAAAA";
     private static final String UPDATED_NAME_SV = "BBBBBBBBBB";
 
+    private static final String DEFAULT_ICON = "AAAAAAAAAA";
+    private static final String UPDATED_ICON = "BBBBBBBBBB";
+
     private static final Boolean DEFAULT_VISABLE = false;
     private static final Boolean UPDATED_VISABLE = true;
 
@@ -92,6 +95,7 @@ public class CmSubTopicResourceIntTest {
         CmSubTopic cmSubTopic = new CmSubTopic()
             .nameEn(DEFAULT_NAME_EN)
             .nameSv(DEFAULT_NAME_SV)
+            .icon(DEFAULT_ICON)
             .visable(DEFAULT_VISABLE);
         return cmSubTopic;
     }
@@ -119,6 +123,7 @@ public class CmSubTopicResourceIntTest {
         CmSubTopic testCmSubTopic = cmSubTopicList.get(cmSubTopicList.size() - 1);
         assertThat(testCmSubTopic.getNameEn()).isEqualTo(DEFAULT_NAME_EN);
         assertThat(testCmSubTopic.getNameSv()).isEqualTo(DEFAULT_NAME_SV);
+        assertThat(testCmSubTopic.getIcon()).isEqualTo(DEFAULT_ICON);
         assertThat(testCmSubTopic.isVisable()).isEqualTo(DEFAULT_VISABLE);
     }
 
@@ -193,6 +198,7 @@ public class CmSubTopicResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(cmSubTopic.getId().intValue())))
             .andExpect(jsonPath("$.[*].nameEn").value(hasItem(DEFAULT_NAME_EN.toString())))
             .andExpect(jsonPath("$.[*].nameSv").value(hasItem(DEFAULT_NAME_SV.toString())))
+            .andExpect(jsonPath("$.[*].icon").value(hasItem(DEFAULT_ICON.toString())))
             .andExpect(jsonPath("$.[*].visable").value(hasItem(DEFAULT_VISABLE.booleanValue())));
     }
 
@@ -209,6 +215,7 @@ public class CmSubTopicResourceIntTest {
             .andExpect(jsonPath("$.id").value(cmSubTopic.getId().intValue()))
             .andExpect(jsonPath("$.nameEn").value(DEFAULT_NAME_EN.toString()))
             .andExpect(jsonPath("$.nameSv").value(DEFAULT_NAME_SV.toString()))
+            .andExpect(jsonPath("$.icon").value(DEFAULT_ICON.toString()))
             .andExpect(jsonPath("$.visable").value(DEFAULT_VISABLE.booleanValue()));
     }
 
@@ -234,6 +241,7 @@ public class CmSubTopicResourceIntTest {
         updatedCmSubTopic
             .nameEn(UPDATED_NAME_EN)
             .nameSv(UPDATED_NAME_SV)
+            .icon(UPDATED_ICON)
             .visable(UPDATED_VISABLE);
         CmSubTopicDTO cmSubTopicDTO = cmSubTopicMapper.toDto(updatedCmSubTopic);
 
@@ -248,6 +256,7 @@ public class CmSubTopicResourceIntTest {
         CmSubTopic testCmSubTopic = cmSubTopicList.get(cmSubTopicList.size() - 1);
         assertThat(testCmSubTopic.getNameEn()).isEqualTo(UPDATED_NAME_EN);
         assertThat(testCmSubTopic.getNameSv()).isEqualTo(UPDATED_NAME_SV);
+        assertThat(testCmSubTopic.getIcon()).isEqualTo(UPDATED_ICON);
         assertThat(testCmSubTopic.isVisable()).isEqualTo(UPDATED_VISABLE);
     }
 

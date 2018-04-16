@@ -39,6 +39,14 @@
                 <option value="SIDEBYSIDE">{{'cmExodusApp.LayoutType.SIDEBYSIDE' | translate}}</option>
             </select>
         </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="cmExodusApp.cmModule.columnLayout" for="field_columnLayout">Column Layout</label>
+            <select class="form-control" name="columnLayout" [(ngModel)]="cmModule.columnLayout" id="field_columnLayout" >
+                <option value="MAIN">{{'cmExodusApp.ColumnLayout.MAIN' | translate}}</option>
+                <option value="COLUMN1">{{'cmExodusApp.ColumnLayout.COLUMN1' | translate}}</option>
+                <option value="COLUMN2">{{'cmExodusApp.ColumnLayout.COLUMN2' | translate}}</option>
+            </select>
+        </div>
 
     </div>
     <div class="modal-footer">

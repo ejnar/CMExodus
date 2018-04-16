@@ -5,6 +5,7 @@ export class CmTopicCm implements BaseEntity {
         public id?: number,
         public nameEn?: string,
         public nameSv?: string,
+        public icon?: string,
         public subTopics?: BaseEntity[],
     ) {
     }

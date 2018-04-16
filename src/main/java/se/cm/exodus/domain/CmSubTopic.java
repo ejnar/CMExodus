@@ -29,6 +29,9 @@ public class CmSubTopic implements Serializable {
     @Column(name = "name_sv", nullable = false)
     private String nameSv;
 
+    @Column(name = "icon")
+    private String icon;
+
     @Column(name = "visable")
     private Boolean visable;
 
@@ -72,6 +75,19 @@ public class CmSubTopic implements Serializable {
 
     public void setNameSv(String nameSv) {
         this.nameSv = nameSv;
+    }
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public CmSubTopic icon(String icon) {
+        this.icon = icon;
+        return this;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
     }
 
     public Boolean isVisable() {
@@ -140,6 +156,7 @@ public class CmSubTopic implements Serializable {
             "id=" + getId() +
             ", nameEn='" + getNameEn() + "'" +
             ", nameSv='" + getNameSv() + "'" +
+            ", icon='" + getIcon() + "'" +
             ", visable='" + isVisable() + "'" +
             "}";
     }
