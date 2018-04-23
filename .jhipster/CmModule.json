@@ -34,7 +34,7 @@
         {
             "fieldName": "moduleType",
             "fieldType": "ModuleType",
-            "fieldValues": "TEXT,IMAGE,TEXT_IMAGE,IMAGE_LIST,PROGRAM_LIST"
+            "fieldValues": "TEXT,IMAGE,TEXT_IMAGE,TEXT_LIST,IMAGE_LIST,PROGRAM_LIST"
         },
         {
             "fieldName": "layout",
@@ -52,6 +52,5 @@
     "dto": "mapstruct",
     "pagination": "no",
     "service": "serviceImpl",
-    "jpaMetamodelFiltering": false,
-    "angularJSSuffix": "cm"
+    "jpaMetamodelFiltering": false
 }

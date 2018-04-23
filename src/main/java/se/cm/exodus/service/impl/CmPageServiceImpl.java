@@ -1,16 +1,23 @@
 package se.cm.exodus.service.impl;
 
-import se.cm.exodus.service.CmPageService;
-import se.cm.exodus.domain.CmPage;
-import se.cm.exodus.repository.CmPageRepository;
-import se.cm.exodus.service.dto.CmPageDTO;
-import se.cm.exodus.service.mapper.CmPageMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import se.cm.exodus.domain.CmPage;
+import se.cm.exodus.domain.User;
+import se.cm.exodus.repository.CmPageRepository;
+import se.cm.exodus.service.CmPageService;
+import se.cm.exodus.service.UserService;
+import se.cm.exodus.service.dto.CmPageDTO;
+import se.cm.exodus.service.mapper.CmPageMapper;
+import java.util.Optional;
+
+import java.util.LinkedList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 /**
@@ -24,10 +31,13 @@ public class CmPageServiceImpl implements CmPageService {
 
     private final CmPageRepository cmPageRepository;
 
+    private final UserService userService;
+
     private final CmPageMapper cmPageMapper;
 
-    public CmPageServiceImpl(CmPageRepository cmPageRepository, CmPageMapper cmPageMapper) {
+    public CmPageServiceImpl(CmPageRepository cmPageRepository, UserService userService, CmPageMapper cmPageMapper) {
         this.cmPageRepository = cmPageRepository;
+        this.userService = userService;
         this.cmPageMapper = cmPageMapper;
     }
 
@@ -57,6 +67,27 @@ public class CmPageServiceImpl implements CmPageService {
         log.debug("Request to get all CmPages");
         return cmPageRepository.findAll(pageable)
             .map(cmPageMapper::toDto);
+    }
+
+    /**
+     * Get all the cmPages by user.
+     *
+     * @return
+     */
+    @Override
+    @Transactional(readOnly = true)
+    public List<CmPageDTO> findByLoggedInUser() {
+        log.debug("Request to get all CmPages");
+
+        final Optional<User> isUser = userService.getUserWithAuthorities();
+        if(!isUser.isPresent()) {
+            log.error("User is not logged in");
+        }
+        final User user = isUser.get();
+
+        return cmPageRepository.findByUserWithEagerRelationships(user.getLogin()).stream()
+            .map(cmPageMapper::toDto)
+            .collect(Collectors.toCollection(LinkedList::new));
     }
 
     /**

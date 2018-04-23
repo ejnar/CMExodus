@@ -1,11 +1,12 @@
-<div>
+<div class="header-bar">
     <router-outlet name="navbar"></router-outlet>
+    <div class="hr-bar"></div>
 </div> <!-- class="container-fluid" -->
 <div class="container-fluid">
     <div class="card jh-card">
         <router-outlet></router-outlet>
         <router-outlet name="popup"></router-outlet>
     </div>
-    <jhi-footer></jhi-footer>
 </div>
+<jhi-footer></jhi-footer>
 <jhi-page-ribbon></jhi-page-ribbon>

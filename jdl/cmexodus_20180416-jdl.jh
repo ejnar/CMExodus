@@ -35,7 +35,7 @@ entity CmPage{
     sorted Integer
     pageLayout PageLayout
 }
-entity CmModule{ 
+entity CmModule{
     sorted Integer
     moduleType ModuleType
     layout LayoutType
@@ -52,9 +52,9 @@ entity CmItem{
 entity CmItemList{
     textSv String required
   	textEn String
-    titleSv String 
+    titleSv String
   	titleEn String
-    ingressSv String 
+    ingressSv String
   	ingressEn String
     sorted Integer
     toolTip String
@@ -69,7 +69,7 @@ entity CmText{
   	textEn String
     fontSize String
     fontWeight String
-    textType TextType 
+    textType TextType
     sorted Integer
     layout LayoutType
     textDate ZonedDateTime
@@ -86,9 +86,10 @@ entity CmImage{
     publish Boolean required
 }
 enum ModuleType {
-    TEXT, IMAGE, 
-    TEXT_IMAGE, 
-    IMAGE_LIST, 
+    TEXT, IMAGE,
+    TEXT_IMAGE,
+    TEXT_LIST,
+    IMAGE_LIST,
     PROGRAM_LIST
 }
 enum LayoutType {
@@ -155,4 +156,4 @@ dto * with mapstruct
 // Set service options to all except few
 service all with serviceImpl except CmSubTopic, CmPageAuthority
 // Set an angular suffix
-angularSuffix * with cm
+// angularSuffix * with cm

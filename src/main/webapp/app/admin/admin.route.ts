@@ -19,6 +19,7 @@ import {
 
 import { ACCOUNT_ROUTES } from '../account';
 import { ENTITIES_ROUTES } from '../entities';
+import { CM_ADMIN_ROUTES } from '../cm-admin';
 
 export const ADMIN_ROUTES = [
     auditsRoute,
@@ -50,6 +51,7 @@ export const cmExodusAdminRoute: Routes = [
         ...ADMIN_ROUTES,
         ...ACCOUNT_ROUTES,
         ...ENTITIES_ROUTES,
+        ...CM_ADMIN_ROUTES,
         ...errorRoute
     ]
 },

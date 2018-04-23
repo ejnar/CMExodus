@@ -4,6 +4,8 @@ import se.cm.exodus.service.dto.CmPageDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
+
 /**
  * Service Interface for managing CmPage.
  */
@@ -24,6 +26,13 @@ public interface CmPageService {
      * @return the list of entities
      */
     Page<CmPageDTO> findAll(Pageable pageable);
+
+    /**
+     * Get all the cmPages by user.
+     *
+     * @return
+     */
+    List<CmPageDTO> findByLoggedInUser();
 
     /**
      * Get the "id" cmPage.

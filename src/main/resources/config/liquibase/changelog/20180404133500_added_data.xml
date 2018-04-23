@@ -111,6 +111,15 @@
     </changeSet>
     <changeSet id="20180404133500_3" author="jhipster">
         <loadData encoding="UTF-8"
+                  file="config/liquibase/pageAuthority.csv"
+                  separator=";"
+                  tableName="cm_page_authority">
+            <column name="id" type="numeric" />
+            <column name="cm_page_id" type="numeric" />
+            <column name="jhi_user" type="string"/>
+            <column name="jhi_role" type="string"/>
+        </loadData>
+        <loadData encoding="UTF-8"
                   file="config/liquibase/cmText.csv"
                   separator=";"
                   tableName="cm_text">

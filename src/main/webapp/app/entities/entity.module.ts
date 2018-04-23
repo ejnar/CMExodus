@@ -1,29 +1,29 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
-import { CmExodusCmTopicCmModule } from './cm-topic-cm/cm-topic-cm.module';
-import { CmExodusCmSubTopicCmModule } from './cm-sub-topic-cm/cm-sub-topic-cm.module';
-import { CmExodusCmPortalCmModule } from './cm-portal-cm/cm-portal-cm.module';
-import { CmExodusCmPageAuthorityCmModule } from './cm-page-authority-cm/cm-page-authority-cm.module';
-import { CmExodusCmPageCmModule } from './cm-page-cm/cm-page-cm.module';
-import { CmExodusCmModuleCmModule } from './cm-module-cm/cm-module-cm.module';
-import { CmExodusCmItemCmModule } from './cm-item-cm/cm-item-cm.module';
-import { CmExodusCmTextCmModule } from './cm-text-cm/cm-text-cm.module';
-import { CmExodusCmImageCmModule } from './cm-image-cm/cm-image-cm.module';
-import { CmExodusCmItemListCmModule } from './cm-item-list-cm/cm-item-list-cm.module';
+import { CmExodusCmTopicModule } from './cm-topic/cm-topic.module';
+import { CmExodusCmSubTopicModule } from './cm-sub-topic/cm-sub-topic.module';
+import { CmExodusCmPortalModule } from './cm-portal/cm-portal.module';
+import { CmExodusCmPageAuthorityModule } from './cm-page-authority/cm-page-authority.module';
+import { CmExodusCmPageModule } from './cm-page/cm-page.module';
+import { CmExodusCmModuleModule } from './cm-module/cm-module.module';
+import { CmExodusCmItemModule } from './cm-item/cm-item.module';
+import { CmExodusCmItemListModule } from './cm-item-list/cm-item-list.module';
+import { CmExodusCmTextModule } from './cm-text/cm-text.module';
+import { CmExodusCmImageModule } from './cm-image/cm-image.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
     imports: [
-        CmExodusCmTopicCmModule,
-        CmExodusCmSubTopicCmModule,
-        CmExodusCmPortalCmModule,
-        CmExodusCmPageAuthorityCmModule,
-        CmExodusCmPageCmModule,
-        CmExodusCmModuleCmModule,
-        CmExodusCmItemCmModule,
-        CmExodusCmTextCmModule,
-        CmExodusCmImageCmModule,
-        CmExodusCmItemListCmModule,
+        CmExodusCmTopicModule,
+        CmExodusCmSubTopicModule,
+        CmExodusCmPortalModule,
+        CmExodusCmPageAuthorityModule,
+        CmExodusCmPageModule,
+        CmExodusCmModuleModule,
+        CmExodusCmItemModule,
+        CmExodusCmItemListModule,
+        CmExodusCmTextModule,
+        CmExodusCmImageModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],

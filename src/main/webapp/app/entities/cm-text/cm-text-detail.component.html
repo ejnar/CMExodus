@@ -1,0 +1,80 @@
+
+<div *ngIf="cmText">
+    <h2><span jhiTranslate="cmExodusApp.cmText.detail.title">Cm Text</span> {{cmText.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="cmExodusApp.cmText.textSv">Text Sv</span></dt>
+        <dd>
+            <span>{{cmText.textSv}}</span>
+        </dd>
+        <dt><span jhiTranslate="cmExodusApp.cmText.textEn">Text En</span></dt>
+        <dd>
+            <span>{{cmText.textEn}}</span>
+        </dd>
+        <dt><span jhiTranslate="cmExodusApp.cmText.fontSize">Font Size</span></dt>
+        <dd>
+            <span>{{cmText.fontSize}}</span>
+        </dd>
+        <dt><span jhiTranslate="cmExodusApp.cmText.fontWeight">Font Weight</span></dt>
+        <dd>
+            <span>{{cmText.fontWeight}}</span>
+        </dd>
+        <dt><span jhiTranslate="cmExodusApp.cmText.textType">Text Type</span></dt>
+        <dd>
+            <span jhiTranslate="{{'cmExodusApp.TextType.' + cmText.textType}}">{{cmText.textType}}</span>
+        </dd>
+        <dt><span jhiTranslate="cmExodusApp.cmText.sorted">Sorted</span></dt>
+        <dd>
+            <span>{{cmText.sorted}}</span>
+        </dd>
+        <dt><span jhiTranslate="cmExodusApp.cmText.layout">Layout</span></dt>
+        <dd>
+            <span jhiTranslate="{{'cmExodusApp.LayoutType.' + cmText.layout}}">{{cmText.layout}}</span>
+        </dd>
+        <dt><span jhiTranslate="cmExodusApp.cmText.textDate">Text Date</span></dt>
+        <dd>
+            <span>{{cmText.textDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="cmExodusApp.cmText.publishDate">Publish Date</span></dt>
+        <dd>
+            <span>{{cmText.publishDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="cmExodusApp.cmText.publish">Publish</span></dt>
+        <dd>
+            <span>{{cmText.publish}}</span>
+        </dd>
+        <dt><span jhiTranslate="cmExodusApp.cmText.cmModule">Cm Module</span></dt>
+        <dd>
+            <div *ngIf="cmText.cmModuleId">
+                <a [routerLink]="['/cm-module', cmText.cmModuleId]">{{cmText.cmModuleId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="cmExodusApp.cmText.cmItem">Cm Item</span></dt>
+        <dd>
+            <div *ngIf="cmText.cmItemId">
+                <a [routerLink]="['/cm-item', cmText.cmItemId]">{{cmText.cmItemId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="cmExodusApp.cmText.image">Image</span></dt>
+        <dd>
+            <div *ngIf="cmText.imageId">
+                <a [routerLink]="['/cm-image', cmText.imageId]">{{cmText.imageId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'cm-text/'+ cmText.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

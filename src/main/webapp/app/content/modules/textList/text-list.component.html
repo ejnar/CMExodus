@@ -1,0 +1,10 @@
+<div class="textModule">
+    <div class="row">
+        <h4 *ngIf="title" ><jhi-language [model]="title" property='text'></jhi-language></h4>
+    </div>
+    <ul *ngFor="let text of texts" class="row text">
+        <li>
+            <jhi-language [model]="text" property='text'></jhi-language>
+        </li>
+    </ul>
+</div>

@@ -1,23 +1,20 @@
 
 /* ==========================================================================
-Main page styles
+Home page styles
 ========================================================================== */
-.streachCarousel{
-    width: auto !important;
-}
 .jh_carousel{
-    text-align: center;
+    text-align: top;
     float: none;
     display: block;
-    margin: 0 auto;
+    margin: -12px -20px 0 -20px;
     border:0;
 }
 .jh_img{
     object-fit: fill;
-    width: 100%;
+    width: 100% !important; // 100% !important
     height: auto;
+    max-height: 600px;
 }
-
 .hipster {
     display: inline-block;
     width: 347px;
@@ -25,7 +22,41 @@ Main page styles
     background: url("../../content/images/hipster.png") no-repeat center top;
     background-size: contain;
 }
+.slide_header{
+    color: #fff;
+    font-weight: 600;
+    font-size: 5.0vh;
+}
+.slide_text{
+    color: #fff;
+    font-size: 3.6vh;
+}
 
+@media (min-width: 768px) {
+    .carousel-caption {
+        display: block;
+        text-align: left;
+        position: absolute;
+        top: 0;
+        left: 10%;
+        width: 600px;
+        bottom: auto;
+    }
+}
+@media (max-width: 768px) {
+    .carousel-caption {
+        text-align: left;
+    }
+    .slide_header{
+        color: #fff;
+        font-weight: 600;
+        font-size: 3.4vh;
+    }
+    .slide_text{
+        color: #fff;
+        font-size: 2.6vh;
+    }
+}
 /* wait autoprefixer update to allow simple generation of high pixel density media query */
 @media
 only screen and (-webkit-min-device-pixel-ratio: 2),

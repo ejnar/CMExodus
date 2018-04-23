@@ -1,0 +1,86 @@
+
+<div *ngIf="cmItemList">
+    <h2><span jhiTranslate="cmExodusApp.cmItemList.detail.title">Cm Item List</span> {{cmItemList.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="cmExodusApp.cmItemList.textSv">Text Sv</span></dt>
+        <dd>
+            <span>{{cmItemList.textSv}}</span>
+        </dd>
+        <dt><span jhiTranslate="cmExodusApp.cmItemList.textEn">Text En</span></dt>
+        <dd>
+            <span>{{cmItemList.textEn}}</span>
+        </dd>
+        <dt><span jhiTranslate="cmExodusApp.cmItemList.titleSv">Title Sv</span></dt>
+        <dd>
+            <span>{{cmItemList.titleSv}}</span>
+        </dd>
+        <dt><span jhiTranslate="cmExodusApp.cmItemList.titleEn">Title En</span></dt>
+        <dd>
+            <span>{{cmItemList.titleEn}}</span>
+        </dd>
+        <dt><span jhiTranslate="cmExodusApp.cmItemList.ingressSv">Ingress Sv</span></dt>
+        <dd>
+            <span>{{cmItemList.ingressSv}}</span>
+        </dd>
+        <dt><span jhiTranslate="cmExodusApp.cmItemList.ingressEn">Ingress En</span></dt>
+        <dd>
+            <span>{{cmItemList.ingressEn}}</span>
+        </dd>
+        <dt><span jhiTranslate="cmExodusApp.cmItemList.sorted">Sorted</span></dt>
+        <dd>
+            <span>{{cmItemList.sorted}}</span>
+        </dd>
+        <dt><span jhiTranslate="cmExodusApp.cmItemList.toolTip">Tool Tip</span></dt>
+        <dd>
+            <span>{{cmItemList.toolTip}}</span>
+        </dd>
+        <dt><span jhiTranslate="cmExodusApp.cmItemList.typeOfEvent">Type Of Event</span></dt>
+        <dd>
+            <span jhiTranslate="{{'cmExodusApp.TypeOfEvent.' + cmItemList.typeOfEvent}}">{{cmItemList.typeOfEvent}}</span>
+        </dd>
+        <dt><span jhiTranslate="cmExodusApp.cmItemList.location">Location</span></dt>
+        <dd>
+            <span>{{cmItemList.location}}</span>
+        </dd>
+        <dt><span jhiTranslate="cmExodusApp.cmItemList.itemDate">Item Date</span></dt>
+        <dd>
+            <span>{{cmItemList.itemDate | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="cmExodusApp.cmItemList.publishDate">Publish Date</span></dt>
+        <dd>
+            <span>{{cmItemList.publishDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="cmExodusApp.cmItemList.publish">Publish</span></dt>
+        <dd>
+            <span>{{cmItemList.publish}}</span>
+        </dd>
+        <dt><span jhiTranslate="cmExodusApp.cmItemList.cmModule">Cm Module</span></dt>
+        <dd>
+            <div *ngIf="cmItemList.cmModuleId">
+                <a [routerLink]="['/cm-module', cmItemList.cmModuleId]">{{cmItemList.cmModuleId}}</a>
+            </div>
+        </dd>
+        <dt><span jhiTranslate="cmExodusApp.cmItemList.image">Image</span></dt>
+        <dd>
+            <div *ngIf="cmItemList.imageId">
+                <a [routerLink]="['/cm-image', cmItemList.imageId]">{{cmItemList.imageId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'cm-item-list/'+ cmItemList.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

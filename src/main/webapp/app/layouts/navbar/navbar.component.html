@@ -1,10 +1,10 @@
-<div class="float-right language_flags">
+<div class="language_flags float-right">
     <span *ngFor="let language of languages">
         <a class="" [jhiActiveMenu]="language" href="javascript:void(0);" (click)="changeLanguage(language);collapseNavbar();"> {{language | uppercase}}</a>
     </span>
 </div>
 <nav class="row navbar navbar-expand-md jh-navbar">
-    <div class="col-12 col-sm-8 col-md-5 col-xl-3 jh-logo-container">
+    <div class="col-12 col-sm-8 col-md-5 col-xl-3">
         <a class="jh-navbar-toggler d-lg-none float-right" href="javascript:void(0);" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" (click)="toggleNavbar()">
             <i class="fa fa-bars"></i>
         </a>
@@ -14,10 +14,9 @@
             </a>
         </div>
         <div jhiTranslate="global.navbar.sub" class="navbar-sub align-text-top">{{version}}</div>
-
     </div>
-    <div class="col navbar-collapse collapse jh-navbar-menu" id="navbarResponsive" [ngbCollapse]="isNavbarCollapsed" [ngSwitch]="isAuthenticated()">
-        <ul class="navbar-nav">
+    <div class="col navbar-collapse collapse jh-navbar-menu p-0 m-0" id="navbarResponsive" [ngbCollapse]="isNavbarCollapsed" [ngSwitch]="isAuthenticated()">
+        <ul class="navbar-nav p-0 m-0">
             <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link" [routerLink]="['/']"  [queryParams]="{ page: 0 }"   (click)="collapseNavbar()">
                     <span>

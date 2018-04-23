@@ -45,6 +45,12 @@
                 "database": "Database",
                 "jhipster-needle-menu-add-admin-element": "JHipster will add additional menu entries here (do not translate!)"
             },
+            "cm.admin":{
+                "main": "CM-Management",
+                "page":{
+                    "management": "CM-page management"
+                }
+            },
             "language": "Language"
         },
         "form": {

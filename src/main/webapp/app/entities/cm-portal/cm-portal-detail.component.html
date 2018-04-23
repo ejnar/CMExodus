@@ -1,0 +1,54 @@
+
+<div *ngIf="cmPortal">
+    <h2><span jhiTranslate="cmExodusApp.cmPortal.detail.title">Cm Portal</span> {{cmPortal.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="cmExodusApp.cmPortal.portalKey">Portal Key</span></dt>
+        <dd>
+            <span>{{cmPortal.portalKey}}</span>
+        </dd>
+        <dt><span jhiTranslate="cmExodusApp.cmPortal.contentPath">Content Path</span></dt>
+        <dd>
+            <span>{{cmPortal.contentPath}}</span>
+        </dd>
+        <dt><span jhiTranslate="cmExodusApp.cmPortal.name">Name</span></dt>
+        <dd>
+            <span>{{cmPortal.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="cmExodusApp.cmPortal.metaName">Meta Name</span></dt>
+        <dd>
+            <span>{{cmPortal.metaName}}</span>
+        </dd>
+        <dt><span jhiTranslate="cmExodusApp.cmPortal.metaTitle">Meta Title</span></dt>
+        <dd>
+            <span>{{cmPortal.metaTitle}}</span>
+        </dd>
+        <dt><span jhiTranslate="cmExodusApp.cmPortal.metaApplicationName">Meta Application Name</span></dt>
+        <dd>
+            <span>{{cmPortal.metaApplicationName}}</span>
+        </dd>
+        <dt><span jhiTranslate="cmExodusApp.cmPortal.metaKeywords">Meta Keywords</span></dt>
+        <dd>
+            <span>{{cmPortal.metaKeywords}}</span>
+        </dd>
+        <dt><span jhiTranslate="cmExodusApp.cmPortal.metaDescription">Meta Description</span></dt>
+        <dd>
+            <span>{{cmPortal.metaDescription}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'cm-portal/'+ cmPortal.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

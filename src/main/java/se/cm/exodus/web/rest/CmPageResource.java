@@ -98,6 +98,17 @@ public class CmPageResource {
     }
 
     /**
+     *
+     * @return
+     */
+    @GetMapping("/cm-pages/user")
+    @Timed
+    public List<CmPageDTO> getCmPagesByUser() {
+        log.debug("REST request to get a page of CmPages");
+        return cmPageService.findByLoggedInUser();
+    }
+
+    /**
      * GET  /cm-pages/:id : get the "id" cmPage.
      *
      * @param id the id of the cmPageDTO to retrieve

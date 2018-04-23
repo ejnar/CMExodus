@@ -4,20 +4,18 @@ import { Observable } from 'rxjs/Observable';
 import { SERVER_API_URL } from '../app.constants';
 import { NGXLogger } from 'ngx-logger';
 
-import { CmPageCm } from '../entities/cm-page-cm/cm-page-cm.model';
-import { CmPageCmService } from '../entities/cm-page-cm/cm-page-cm.service';
-
 import { ContentItem } from './content-item';
 import { Page } from './modules/model/page.model';
 
 import { ProgramListComponent } from './modules/programList/program-list.component';
 import { TextComponent } from './modules/text/text.component';
 import { TextImageComponent } from './modules/textImage/text-image.component';
+import { TextListComponent } from './modules/textList/text-list.component';
 
 @Injectable()
 export class ContentService {
     private resourceUrl =  SERVER_API_URL + 'api/cm-pages';
-    constructor(private http: HttpClient, private logger: NGXLogger, private cmPageService: CmPageCmService ) {}
+    constructor(private http: HttpClient, private logger: NGXLogger ) {}
 
     getContent(pageId: number): Promise<Page> {
         this.logger.debug(' --- ContentService.getContent: pageId=' + pageId);
@@ -47,6 +45,8 @@ export class ContentService {
                 page.items.push(new ContentItem(TextComponent, {type: module.moduleType, layout: module.layout, texts: module.texts} ));
             } else if (module.moduleType === 'TEXT_IMAGE') {
                 page.items.push(new ContentItem(TextImageComponent, {type: module.moduleType, layout: module.layout, texts: module.texts} ));
+            } else if (module.moduleType === 'TEXT_LIST') {
+                page.items.push(new ContentItem(TextListComponent, {type: module.moduleType, layout: module.layout, texts: module.texts} ));
             }
         });
         return page;

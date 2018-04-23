@@ -1,7 +1,9 @@
 id;text_sv;text_en;text_type;sorted;layout;publish;cm_item_id;cm_module_id;image_id
 1;Svensk text;English text;TEXT;1;CENTER;true;1;null;null
 2;Svensk title;English title;TITLE;1;CENTER;true;1;null;null
-3;Svensk text 2;English text 2;TEXT;1;CENTER;true;null;1;null
+3;Svensk <b>text</b>;English text 2;TEXT;1;CENTER;true;null;1;null
 4;Svensk title 2;English title 2;TITLE;1;CENTER;true;null;1;null
 5;Svensk bild title;English image title;TITLE;1;CENTER;true;null;3;null
 6;Svensk text med bild;English text with image;TEXT_IMAGE;1;CENTER;true;null;3;1
+7;Text list ett;List text one;TEXT;1;LEFT;true;null;4;null
+8;Text list två;List text two;TEXT;2;LEFT;true;null;4;null

@@ -19,4 +19,7 @@ public interface CmPageRepository extends JpaRepository<CmPage, Long> {
     @Query("select cm_page from CmPage cm_page left join fetch cm_page.modules where cm_page.id =:id")
     CmPage findOneWithEagerRelationships(@Param("id") Long id);
 
+    @Query("SELECT DISTINCT cm_page FROM CmPage cm_page LEFT JOIN FETCH cm_page.modules m LEFT JOIN FETCH cm_page.authorities a WHERE a.user = :user")
+    List<CmPage> findByUserWithEagerRelationships(@Param("user") String user);
+
 }

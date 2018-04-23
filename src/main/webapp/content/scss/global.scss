@@ -7,10 +7,11 @@ body{
     margin: 0;
     padding: 0;
     font-weight: 300;
-    color: #000;
+    color: #222;
 }
 h1, h2, h3, h4 {
-    font-weight: 320;
+    color: #666;
+    font-weight: 600;
 }
 
 a {
@@ -141,10 +142,11 @@ Custom alerts for notification
 }
 @media (max-width: 480px) {
     body, h1, h2, h3, h4 {
+        color: #111;
         font-size: 92%;
     }
     h1, h2, h3, h4 {
-        font-weight: 400;
+        font-weight: 500;
     }
 }
 

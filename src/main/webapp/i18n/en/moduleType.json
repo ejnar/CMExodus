@@ -5,6 +5,7 @@
             "TEXT": "TEXT",
             "IMAGE": "IMAGE",
             "TEXT_IMAGE": "TEXT_IMAGE",
+            "TEXT_LIST": "TEXT_LIST",
             "IMAGE_LIST": "IMAGE_LIST",
             "PROGRAM_LIST": "PROGRAM_LIST"
         }

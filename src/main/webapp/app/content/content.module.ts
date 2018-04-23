@@ -14,6 +14,7 @@ import { ColumnRightComponent } from './modules/columnRight/column.component';
 import { ProgramListComponent } from './modules/programList/program-list.component';
 import { TextComponent } from './modules/text/text.component';
 import { TextImageComponent } from './modules/textImage/text-image.component';
+import { TextListComponent } from './modules/textList/text-list.component';
 
 @NgModule({
     imports: [
@@ -28,10 +29,11 @@ import { TextImageComponent } from './modules/textImage/text-image.component';
         ProgramListComponent,
         TextComponent,
         TextImageComponent,
+        TextListComponent,
     ],
     entryComponents: [
         MainComponent, ColumnRightComponent,
-        ProgramListComponent, TextComponent, TextImageComponent
+        ProgramListComponent, TextComponent, TextImageComponent, TextListComponent
     ],
     providers: [
         ContentService

@@ -5,8 +5,8 @@ import { HttpResponse } from '@angular/common/http';
 import { NGXLogger } from 'ngx-logger';
 import { Title, Meta } from '@angular/platform-browser';
 
-import { CmPageCm } from '../entities/cm-page-cm/cm-page-cm.model';
-import { CmPageCmService } from '../entities/cm-page-cm/cm-page-cm.service';
+import { CmPage } from '../entities/cm-page/cm-page.model';
+import { CmPageService } from '../entities/cm-page/cm-page.service';
 
 import { ContentService } from './content.service';
 import { ContentDirective } from './content.directive';
@@ -36,7 +36,7 @@ export class ContentComponent implements OnInit, OnDestroy, AfterViewInit {
 
     constructor(
         private contentService: ContentService,
-        private cmPageService: CmPageCmService,
+        private cmPageService: CmPageService,
         private componentFactoryResolver: ComponentFactoryResolver,
         private router: Router,
         private titleService: Title,
@@ -69,11 +69,9 @@ export class ContentComponent implements OnInit, OnDestroy, AfterViewInit {
 
     ngOnInit() {
         this.logger.debug('ContentComponent.ngOnInit');
-        console.log(this.page);
     }
     ngAfterViewInit() {
         this.logger.debug('ContentComponent.ngAfterViewInit');
-        console.log(this.page);
     }
 
     loadComponent() {
