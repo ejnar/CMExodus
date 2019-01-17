@@ -37,11 +37,11 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="jhi_type" type="varchar(255)">
+            <column name="text_type" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
 
-            <column name="jhi_sort" type="integer">
+            <column name="sorted" type="integer">
                 <constraints nullable="true" />
             </column>
 
@@ -49,7 +49,7 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="jhi_date" type="date">
+            <column name="text_date" type="timestamp">
                 <constraints nullable="true" />
             </column>
 
@@ -68,10 +68,14 @@
             <column name="cm_item_id" type="bigint">
                 <constraints nullable="true" />
             </column>
-
+            <column name="image_id" type="bigint">
+                <constraints unique="true" nullable="true" />
+            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
-        
+
+        <dropDefaultValue tableName="cm_text" columnName="text_date" columnDataType="datetime"/>
+
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
 </databaseChangeLog>

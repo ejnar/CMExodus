@@ -3,8 +3,10 @@ package se.cm.exodus.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Objects;
@@ -29,34 +31,27 @@ public class CmModule implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Column(name = "sorted")
-    private Integer sorted;
-
     @Enumerated(EnumType.STRING)
     @Column(name = "module_type")
     private ModuleType moduleType;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "layout")
-    private LayoutType layout;
+    @OneToMany(mappedBy = "cmModule", cascade=CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
+    private Set<CmModuleConfig> moduleConfigs = new HashSet<>();
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "column_layout")
-    private ColumnLayout columnLayout;
-
-    @OneToMany(mappedBy = "cmModule")
+    @OneToMany(mappedBy = "cmModule", cascade=CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     private Set<CmItem> items = new HashSet<>();
 
-    @OneToMany(mappedBy = "cmModule")
+    @OneToMany(mappedBy = "cmModule", cascade=CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     private Set<CmItemList> itemLists = new HashSet<>();
 
-    @OneToMany(mappedBy = "cmModule")
+    @OneToMany(mappedBy="cmModule", cascade=CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     private Set<CmText> texts = new HashSet<>();
 
-    @OneToMany(mappedBy = "cmModule")
+    @OneToMany(mappedBy = "cmModule", cascade=CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     private Set<CmImage> images = new HashSet<>();
 
@@ -67,19 +62,6 @@ public class CmModule implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Integer getSorted() {
-        return sorted;
-    }
-
-    public CmModule sorted(Integer sorted) {
-        this.sorted = sorted;
-        return this;
-    }
-
-    public void setSorted(Integer sorted) {
-        this.sorted = sorted;
     }
 
     public ModuleType getModuleType() {
@@ -95,30 +77,29 @@ public class CmModule implements Serializable {
         this.moduleType = moduleType;
     }
 
-    public LayoutType getLayout() {
-        return layout;
+    public Set<CmModuleConfig> getModuleConfigs() {
+        return moduleConfigs;
     }
 
-    public CmModule layout(LayoutType layout) {
-        this.layout = layout;
+    public CmModule moduleConfigs(Set<CmModuleConfig> moduleConfigs) {
+        this.moduleConfigs = moduleConfigs;
         return this;
     }
 
-    public void setLayout(LayoutType layout) {
-        this.layout = layout;
-    }
-
-    public ColumnLayout getColumnLayout() {
-        return columnLayout;
-    }
-
-    public CmModule columnLayout(ColumnLayout columnLayout) {
-        this.columnLayout = columnLayout;
+    public CmModule addModuleConfig(CmModuleConfig cmModuleConfig) {
+        this.moduleConfigs.add(cmModuleConfig);
+        cmModuleConfig.setCmModule(this);
         return this;
     }
 
-    public void setColumnLayout(ColumnLayout columnLayout) {
-        this.columnLayout = columnLayout;
+    public CmModule removeModuleConfig(CmModuleConfig cmModuleConfig) {
+        this.moduleConfigs.remove(cmModuleConfig);
+        cmModuleConfig.setCmModule(null);
+        return this;
+    }
+
+    public void setModuleConfigs(Set<CmModuleConfig> moduleConfigs) {
+        this.moduleConfigs = moduleConfigs;
     }
 
     public Set<CmItem> getItems() {
@@ -246,10 +227,7 @@ public class CmModule implements Serializable {
     public String toString() {
         return "CmModule{" +
             "id=" + getId() +
-            ", sorted=" + getSorted() +
-            ", moduleType='" + getModuleType() + "'" +
-            ", layout='" + getLayout() + "'" +
-            ", columnLayout='" + getColumnLayout() + "'" +
+            ", moduleType=" + moduleType +
             "}";
     }
 }

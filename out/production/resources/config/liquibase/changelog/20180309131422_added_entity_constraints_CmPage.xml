@@ -8,12 +8,6 @@
     -->
     <changeSet id="20180309131422-2" author="jhipster">
         
-        <addForeignKeyConstraint baseColumnNames="cm_sub_topic_id"
-                                 baseTableName="cm_page"
-                                 constraintName="fk_cm_page_cm_sub_topic_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="cm_sub_topic"/>
-
         <addForeignKeyConstraint baseColumnNames="cm_pages_id"
                                  baseTableName="cm_page_module"
                                  constraintName="fk_cm_page_module_cm_pages_id"

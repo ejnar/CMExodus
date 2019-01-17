@@ -10,6 +10,7 @@ import { CmExodusCmItemModule } from './cm-item/cm-item.module';
 import { CmExodusCmItemListModule } from './cm-item-list/cm-item-list.module';
 import { CmExodusCmTextModule } from './cm-text/cm-text.module';
 import { CmExodusCmImageModule } from './cm-image/cm-image.module';
+import { CmExodusCmUploadModule } from './cm-upload/cm-upload.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
@@ -24,6 +25,7 @@ import { CmExodusCmImageModule } from './cm-image/cm-image.module';
         CmExodusCmItemListModule,
         CmExodusCmTextModule,
         CmExodusCmImageModule,
+        CmExodusCmUploadModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],

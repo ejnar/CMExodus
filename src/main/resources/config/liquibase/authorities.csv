@@ -1,3 +1,10 @@
-name
-ROLE_ADMIN
-ROLE_USER
+name;module_authority
+ROLE_ADMIN;false
+ROLE_MANAGER;false
+ROLE_PUBLISHER;false
+ROLE_EDITOR;false
+ROLE_USER;false
+M_ROLE_MISSION;true
+M_ROLE_PROGLIST;true
+M_ROLE_NEWS;true
+M_ROLE_DIRECTOR;true

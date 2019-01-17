@@ -12,6 +12,7 @@ import org.mapstruct.*;
 public interface CmItemMapper extends EntityMapper<CmItemDTO, CmItem> {
 
     @Mapping(source = "cmModule.id", target = "cmModuleId")
+    @Mapping(target = "publishDate", ignore = true)
     CmItemDTO toDto(CmItem cmItem);
 
     @Mapping(source = "cmModuleId", target = "cmModule")

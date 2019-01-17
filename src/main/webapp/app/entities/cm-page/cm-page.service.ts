@@ -3,6 +3,7 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { SERVER_API_URL } from '../../app.constants';
 
+import { CmModule } from '../cm-module/cm-module.model';
 import { CmPage } from './cm-page.model';
 import { createRequestOption } from '../../shared';
 
@@ -12,6 +13,7 @@ export type EntityResponseType = HttpResponse<CmPage>;
 export class CmPageService {
 
     private resourceUrl =  SERVER_API_URL + 'api/cm-pages';
+    private resourceModuleUrl =  SERVER_API_URL + 'api/cm-modules';
 
     constructor(private http: HttpClient) { }
 

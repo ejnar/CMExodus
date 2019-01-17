@@ -1,0 +1,69 @@
+<div class="textModule moduleFram">
+    <div class="row">
+        <div class="col-3 form-group">Text-Image module</div>
+        <div class="col-3">
+            <div class="control-group">
+                <label class="control-label" jhiTranslate="cmExodusApp.cmText.publish" for="field_publish">Publish</label>
+                <input type="checkbox" class="controls" name="publish" id="field_publish"
+                       [(ngModel)]="data.module.publish" (change)="onChange(text.publish)" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6 form-group">
+            <input type="text" class="form-control" name="titleSv" id="titleSv"
+                   [(ngModel)]="title.textSv" placeholder="Svenska" />
+        </div>
+        <div class="col-6 form-group">
+            <input type="text" class="form-control" name="titleEn" id="titleEn"
+                   [(ngModel)]="title.textEn" placeholder="English"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6 form-group">
+            <textarea rows="3" class="form-control" name="textSv" id="textSv"
+                      [(ngModel)]="text.textSv" placeholder="Svenska"></textarea>
+        </div>
+        <div class="col-6 form-group">
+            <textarea rows="3" class="form-control" name="textEn" id="textEn"
+                      [(ngModel)]="text.textEn" placeholder="English"></textarea>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6 form-group">
+            <label class="form-control-label" jhiTranslate="cmExodusApp.cmText.layout" for="field_layout">Layout</label>
+            <select class="form-control" name="layout" [(ngModel)]="text.layout" id="field_layout" >
+                <option value="LEFT">{{'cmExodusApp.LayoutType.LEFT' | translate}}</option>
+                <option value="RIGHT">{{'cmExodusApp.LayoutType.RIGHT' | translate}}</option>
+                <option value="MIDDLE">{{'cmExodusApp.LayoutType.MIDDLE' | translate}}</option>
+                <option value="CENTER">{{'cmExodusApp.LayoutType.CENTER' | translate}}</option>
+                <option value="TOP">{{'cmExodusApp.LayoutType.TOP' | translate}}</option>
+                <option value="BOTTOM">{{'cmExodusApp.LayoutType.BOTTOM' | translate}}</option>
+                <option value="SIDEBYSIDE">{{'cmExodusApp.LayoutType.SIDEBYSIDE' | translate}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4 form-group">
+            <label class="form-control-label" jhiTranslate="cmExodusApp.cmText.image" for="field_image">Image</label>
+            <select class="form-control" id="field_image" name="image" (change)="selectImage()" [(ngModel)]="image.id">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="cmImageOption.id" *ngFor="let cmImageOption of images; trackBy: trackCmImageById">{{cmImageOption.name}}</option>
+            </select>
+        </div>
+        <div class="col-2 form-group">
+            <label class="form-control-label"  for="field_upload">Upload Image</label><br/>
+            <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal" id="field_upload"
+                    [routerLink]="['/', { outlets: { popup: 'data/upload-file'} }]">
+                <span class="fa fa-pencil"></span>&nbsp;<span >Upload</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="row imageTopDownText" *ngIf="profileImage" >
+        <img class="imageResponsive" [src]="profileImage" />
+    </div>
+    <!-- div *ngIf="image" class="row imageTopDownText">
+        <img class="imageResponsive" src="../../../../../../../content/internal/imageNAme.jpeg">
+    </div -->
+</div>

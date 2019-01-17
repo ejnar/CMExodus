@@ -1,2 +1,4 @@
-id;name
-1;program
+id;name_sv;name_en;icon
+1;Program;Program;fa-calendar
+2;Mission;Mission;fa-user
+3;Test;Test;fa-user

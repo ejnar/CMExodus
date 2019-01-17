@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { SERVER_API_URL } from '../../app.constants';
-
+import { NGXLogger } from 'ngx-logger';
 import { JhiDateUtils } from 'ng-jhipster';
 
 import { CmItemList } from './cm-item-list.model';
@@ -15,7 +15,7 @@ export class CmItemListService {
 
     private resourceUrl =  SERVER_API_URL + 'api/cm-item-lists';
 
-    constructor(private http: HttpClient, private dateUtils: JhiDateUtils) { }
+    constructor(private http: HttpClient, private dateUtils: JhiDateUtils, private logger: NGXLogger) { }
 
     create(cmItemList: CmItemList): Observable<EntityResponseType> {
         const copy = this.convert(cmItemList);
@@ -79,6 +79,8 @@ export class CmItemListService {
         copy.itemDate = this.dateUtils.toDate(cmItemList.itemDate);
         copy.publishDate = this.dateUtils
             .convertLocalDateToServer(cmItemList.publishDate);
+
+        this.logger.debug(copy);
         return copy;
     }
 }

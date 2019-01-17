@@ -8,11 +8,15 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity CmPage and its DTO CmPageDTO.
  */
-@Mapper(componentModel = "spring", uses = {CmModuleMapper.class})
+@Mapper(componentModel = "spring", uses = {CmModuleConfigMapper.class, CmPageAuthorityReducedMapper.class})
 public interface CmPageMapper extends EntityMapper<CmPageDTO, CmPage> {
 
 
+    @Mapping(target = "publishDate", ignore = true)
+    CmPageDTO toDto(CmPage cmPage);
+
     @Mapping(target = "authorities", ignore = true)
+    @Mapping(target = "moduleConfigs", ignore = true)
     CmPage toEntity(CmPageDTO cmPageDTO);
 
     default CmPage fromId(Long id) {

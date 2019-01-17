@@ -24,6 +24,16 @@ public class Authority implements Serializable {
     @Column(length = 50)
     private String name;
 
+    @NotNull
+    @Column(name = "module_authority", nullable = false)
+    private Boolean moduleAuthority;
+
+    public Authority() { }
+
+    public Authority(String name){
+        this.name = name;
+    }
+
     public String getName() {
         return name;
     }
@@ -31,6 +41,10 @@ public class Authority implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
+
+    public Boolean getModuleAuthority() { return moduleAuthority; }
+
+    public void setModuleAuthority(Boolean moduleAuthority) { this.moduleAuthority = moduleAuthority; }
 
     @Override
     public boolean equals(Object o) {

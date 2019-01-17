@@ -4,6 +4,7 @@ import com.codahale.metrics.annotation.Timed;
 import se.cm.exodus.domain.CmPageAuthority;
 
 import se.cm.exodus.repository.CmPageAuthorityRepository;
+import se.cm.exodus.repository.UserRepository;
 import se.cm.exodus.web.rest.errors.BadRequestAlertException;
 import se.cm.exodus.web.rest.util.HeaderUtil;
 import se.cm.exodus.service.dto.CmPageAuthorityDTO;
@@ -36,9 +37,12 @@ public class CmPageAuthorityResource {
 
     private final CmPageAuthorityMapper cmPageAuthorityMapper;
 
-    public CmPageAuthorityResource(CmPageAuthorityRepository cmPageAuthorityRepository, CmPageAuthorityMapper cmPageAuthorityMapper) {
+    private final UserRepository userRepository;
+
+    public CmPageAuthorityResource(CmPageAuthorityRepository cmPageAuthorityRepository, CmPageAuthorityMapper cmPageAuthorityMapper, UserRepository userRepository) {
         this.cmPageAuthorityRepository = cmPageAuthorityRepository;
         this.cmPageAuthorityMapper = cmPageAuthorityMapper;
+        this.userRepository = userRepository;
     }
 
     /**

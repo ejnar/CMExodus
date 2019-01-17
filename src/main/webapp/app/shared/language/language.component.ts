@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { NGXLogger } from 'ngx-logger';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 @Component({
@@ -10,16 +11,20 @@ export class JhiLanguageComponent implements OnInit {
     @Input() property = 'text';
     value: string;
     defaulLang: 'sv';
-    constructor(private translateService: TranslateService) {}
+    constructor(private translateService: TranslateService, private logger: NGXLogger) {}
 
     ngOnInit() {
         this.value =  this.model[this.propertyName(this.translateService.currentLang) ];
         this.translateService.onLangChange.subscribe((event: LangChangeEvent) => {
-            const value = this.model[this.propertyName(this.translateService.currentLang)];
-            if (value) {
-                this.value = value;
-            } else {
-                this.value = this.model[this.propertyName(this.defaulLang)];
+            try {
+                const value = this.model[this.propertyName(this.translateService.currentLang)];
+                if (value) {
+                    this.value = value;
+                } else {
+                    this.value = this.model[this.propertyName(this.defaulLang)];
+                }
+            } catch (e) {
+                this.logger.debug(e);
             }
         });
     }

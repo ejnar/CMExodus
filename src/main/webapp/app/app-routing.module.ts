@@ -5,6 +5,7 @@ import { DEBUG_INFO_ENABLED } from './app.constants';
 
 import { homeRoute } from './home';
 import { contentRoute } from './content';
+import { dataRoute } from './cm-data';
 import { auditsRoute, logsRoute } from './admin';
 
 import { ADMIN_HOME_ROUTE, cmExodusAdminRoute } from './admin';
@@ -26,6 +27,7 @@ const LAYOUT_ROUTES = [
     {
         path: 'admin', children: [
             adminNavbarRoute,
+            dataRoute,
             ADMIN_HOME_ROUTE,
             ...errorRoute
         ]

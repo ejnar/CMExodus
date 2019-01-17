@@ -14,5 +14,11 @@
                                  referencedColumnNames="id"
                                  referencedTableName="cm_topic"/>
 
+        <addForeignKeyConstraint baseColumnNames="page_id"
+                                 baseTableName="cm_sub_topic"
+                                 constraintName="fk_cm_sub_topic_page_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="cm_page"/>
+
     </changeSet>
 </databaseChangeLog>

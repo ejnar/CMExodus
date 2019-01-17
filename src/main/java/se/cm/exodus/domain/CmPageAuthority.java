@@ -1,6 +1,8 @@
 package se.cm.exodus.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
@@ -22,7 +24,11 @@ public class CmPageAuthority implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "jhi_user", nullable = false)
+    @Column(name = "jhi_user_id", nullable = false)
+    private Long userId;
+
+    // @JsonIgnore
+    @Column(name = "jhi_user", nullable = true)
     private String user;
 
     @NotNull
@@ -39,6 +45,15 @@ public class CmPageAuthority implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getUserId() { return userId; }
+
+    public void setUserId(Long userId) { this.userId = userId; }
+
+    public CmPageAuthority userId(Long userId) {
+        this.userId = userId;
+        return this;
     }
 
     public String getUser() {
@@ -93,7 +108,13 @@ public class CmPageAuthority implements Serializable {
         if (cmPageAuthority.getId() == null || getId() == null) {
             return false;
         }
-        return Objects.equals(getId(), cmPageAuthority.getId());
+
+        if(Objects.equals(getUser(), cmPageAuthority.getUser())
+            && Objects.equals(getRole(), cmPageAuthority.getRole())
+                && getCmPage().equals(cmPageAuthority.getCmPage())){
+            return true;
+        }
+        return false;
     }
 
     @Override

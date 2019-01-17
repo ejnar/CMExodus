@@ -28,14 +28,15 @@ public class CmImageDTO implements Serializable {
 
     private LayoutType layout;
 
-    private LocalDate publishDate;
-
-    @NotNull
     private Boolean publish;
 
     private Long cmModuleId;
 
     private Long cmItemId;
+
+    private String uploadStatus;
+
+    private byte[] data;
 
     public Long getId() {
         return id;
@@ -85,14 +86,6 @@ public class CmImageDTO implements Serializable {
         this.layout = layout;
     }
 
-    public LocalDate getPublishDate() {
-        return publishDate;
-    }
-
-    public void setPublishDate(LocalDate publishDate) {
-        this.publishDate = publishDate;
-    }
-
     public Boolean isPublish() {
         return publish;
     }
@@ -115,6 +108,18 @@ public class CmImageDTO implements Serializable {
 
     public void setCmItemId(Long cmItemId) {
         this.cmItemId = cmItemId;
+    }
+
+    public String getUploadStatus() { return uploadStatus; }
+
+    public void setUploadStatus(String uploadStatus) { this.uploadStatus = uploadStatus; }
+
+    public byte[] getData() {
+        return data;
+    }
+
+    public void setData(byte[] data) {
+        this.data = data;
     }
 
     @Override
@@ -147,7 +152,6 @@ public class CmImageDTO implements Serializable {
             ", toolTip='" + getToolTip() + "'" +
             ", sorted=" + getSorted() +
             ", layout='" + getLayout() + "'" +
-            ", publishDate='" + getPublishDate() + "'" +
             ", publish='" + isPublish() + "'" +
             "}";
     }

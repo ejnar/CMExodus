@@ -1,0 +1,34 @@
+<div class="textModule moduleFram">
+    <div class="row">
+        <div class="col-3 form-group">Image module</div>
+        <div class="col-3">
+            <div class="control-group">
+                <label class="control-label" jhiTranslate="cmExodusApp.cmText.publish" for="field_publish">Publish</label>
+                <input type="checkbox" class="controls" name="publish" id="field_publish"
+                       [(ngModel)]="data.module.publish" (change)="onChange(text.publish)" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4 form-group">
+            <label class="form-control-label" jhiTranslate="cmExodusApp.cmText.image" for="field_image">Image</label>
+            <select class="form-control" id="field_image" name="image" (change)="selectImage()" [(ngModel)]="image.id">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="cmImageOption.id" *ngFor="let cmImageOption of images; trackBy: trackCmImageById">{{cmImageOption.name}}</option>
+            </select>
+        </div>
+        <div class="col-2 form-group">
+
+        </div>
+        <div class="col-3 form-group">
+            <label class="form-control-label"  for="field_upload">Upload Image</label><br/>
+            <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal" id="field_upload"
+                    [routerLink]="['/', { outlets: { popup: 'data/upload-file'} }]">
+                <span class="fa fa-pencil"></span>&nbsp;<span >Upload</span>
+            </button>
+        </div>
+    </div>
+    <div class="row" *ngIf="profileImage" >
+        <img [src]="profileImage" />
+    </div>
+</div>

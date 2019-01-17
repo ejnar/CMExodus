@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Objects;
@@ -43,19 +44,28 @@ public class CmPage implements Serializable {
     @Column(name = "sorted")
     private Integer sorted;
 
+    @Column(name = "publish_date")
+    private LocalDate publishDate;
+
+    @NotNull
+    @Column(name = "publish", nullable = false)
+    private Boolean publish;
+
     @Enumerated(EnumType.STRING)
     @Column(name = "page_layout")
     private PageLayout pageLayout;
 
     @OneToMany(mappedBy = "cmPage")
-    @JsonIgnore
     private Set<CmPageAuthority> authorities = new HashSet<>();
 
-    @ManyToMany
-    @JoinTable(name = "cm_page_module",
-               joinColumns = @JoinColumn(name="cm_pages_id", referencedColumnName="id"),
-               inverseJoinColumns = @JoinColumn(name="modules_id", referencedColumnName="id"))
-    private Set<CmModule> modules = new HashSet<>();
+    @OneToMany(mappedBy = "cmPage", cascade=CascadeType.ALL, orphanRemoval = true)
+    private Set<CmModuleConfig> moduleConfigs = new HashSet<>();
+
+//    @ManyToMany
+//    @JoinTable(name = "cm_page_module",
+//               joinColumns = @JoinColumn(name="cm_pages_id", referencedColumnName="id"),
+//               inverseJoinColumns = @JoinColumn(name="modules_id", referencedColumnName="id"))
+//    private Set<CmModule> modules = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -131,6 +141,24 @@ public class CmPage implements Serializable {
         this.sorted = sorted;
     }
 
+    public LocalDate getPublishDate() { return publishDate; }
+
+    public void setPublishDate(LocalDate publishDate) { this.publishDate = publishDate; }
+
+    public CmPage publishDate(LocalDate publishDate) {
+        this.publishDate = publishDate;
+        return this;
+    }
+
+    public Boolean getPublish() { return publish; }
+
+    public void setPublish(Boolean publish) { this.publish = publish; }
+
+    public CmPage publish(Boolean publish) {
+        this.publish = publish;
+        return this;
+    }
+
     public PageLayout getPageLayout() {
         return pageLayout;
     }
@@ -169,28 +197,54 @@ public class CmPage implements Serializable {
         this.authorities = cmPageAuthorities;
     }
 
-    public Set<CmModule> getModules() {
-        return modules;
+    public Set<CmModuleConfig> getModuleConfigs() {
+        return moduleConfigs;
     }
 
-    public CmPage modules(Set<CmModule> cmModules) {
-        this.modules = cmModules;
+    public CmPage moduleConfigs(Set<CmModuleConfig> moduleConfigs) {
+        this.moduleConfigs = moduleConfigs;
         return this;
     }
 
-    public CmPage addModule(CmModule cmModule) {
-        this.modules.add(cmModule);
+    public CmPage addModuleConfig(CmModuleConfig cmModuleConfig) {
+        this.moduleConfigs.add(cmModuleConfig);
+        cmModuleConfig.setCmPage(this);
         return this;
     }
 
-    public CmPage removeModule(CmModule cmModule) {
-        this.modules.remove(cmModule);
+    public CmPage removeModuleConfig(CmModuleConfig cmModuleConfig) {
+        this.moduleConfigs.remove(cmModuleConfig);
+        cmModuleConfig.setCmPage(null);
         return this;
     }
 
-    public void setModules(Set<CmModule> cmModules) {
-        this.modules = cmModules;
+    public void setModuleConfigs(Set<CmModuleConfig> moduleConfigs) {
+        this.moduleConfigs = moduleConfigs;
     }
+
+
+//    public Set<CmModule> getModules() {
+//        return modules;
+//    }
+//
+//    public CmPage modules(Set<CmModule> cmModules) {
+//        this.modules = cmModules;
+//        return this;
+//    }
+//
+//    public CmPage addModule(CmModule cmModule) {
+//        this.modules.add(cmModule);
+//        return this;
+//    }
+//
+//    public CmPage removeModule(CmModule cmModule) {
+//        this.modules.remove(cmModule);
+//        return this;
+//    }
+//
+//    public void setModules(Set<CmModule> cmModules) {
+//        this.modules = cmModules;
+//    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override

@@ -1,0 +1,165 @@
+<div class="my-modal">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+    <div class="modal-header">
+        <div class="row">
+            <div class="col-8">
+                <h4 class="modal-title" id="myCmPageLabel" jhiTranslate="cmExodusApp.cmPage.home.createOrEditLabel">Create or edit a Cm Page</h4>
+            </div>
+            <div class="col-2">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+                    <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+            </div>
+            <div class="col-2">
+                <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="row">
+            <div class="col-6 form-group">
+                <label class="form-control-label" jhiTranslate="cmExodusApp.cmPage.titleSv" for="field_titleSv">Title Sv</label>
+                <input type="text" class="form-control" name="titleSv" id="field_titleSv"
+                    [(ngModel)]="cmPage.titleSv" required/>
+                <div [hidden]="!(editForm.controls.titleSv?.dirty && editForm.controls.titleSv?.invalid)">
+                    <small class="form-text text-danger"
+                       [hidden]="!editForm.controls.titleSv?.errors?.required" jhiTranslate="entity.validation.required">
+                       This field is required.
+                    </small>
+                </div>
+            </div>
+            <div class="col-6 form-group">
+                <label class="form-control-label" jhiTranslate="cmExodusApp.cmPage.titleEn" for="field_titleEn">Title En</label>
+                <input type="text" class="form-control" name="titleEn" id="field_titleEn"
+                    [(ngModel)]="cmPage.titleEn" required/>
+                <div [hidden]="!(editForm.controls.titleEn?.dirty && editForm.controls.titleEn?.invalid)">
+                    <small class="form-text text-danger"
+                       [hidden]="!editForm.controls.titleEn?.errors?.required" jhiTranslate="entity.validation.required">
+                       This field is required.
+                    </small>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 form-group">
+                <label class="form-control-label" jhiTranslate="cmExodusApp.cmPage.metaTitle" for="field_metaTitle">Meta Title</label>
+                <input type="text" class="form-control" name="metaTitle" id="field_metaTitle"
+                       [(ngModel)]="cmPage.metaTitle" />
+            </div>
+            <div class="col-3 form-group">
+                <label class="form-control-label" jhiTranslate="cmExodusApp.cmPage.pageLayout" for="field_pageLayout">Page Layout</label>
+                <select class="form-control" name="pageLayout" [(ngModel)]="cmPage.pageLayout" id="field_pageLayout" >
+                    <option value="MAIN">{{'cmExodusApp.PageLayout.MAIN' | translate}}</option>
+                    <option value="COLUMN_RIGHT">{{'cmExodusApp.PageLayout.COLUMN_RIGHT' | translate}}</option>
+                </select>
+            </div>
+            <div class="col-2 form-group">
+                <label class="form-control-label" jhiTranslate="cmExodusApp.cmPage.sorted" for="field_sorted">Sorted</label>
+                <input type="number" class="form-control" name="sorted" id="field_sorted"
+                       [(ngModel)]="cmPage.sorted" />
+            </div>
+            <div class="col-1 form-group">
+                <label class="form-control-label" jhiTranslate="cmExodusApp.cmText.publish" for="field_publish">Publish</label>
+                <input type="checkbox" class="form-control" name="publish" id="field_publish"
+                       [(ngModel)]="cmPage.publish" />
+                <div [hidden]="!(editForm.controls.publish?.dirty && editForm.controls.publish?.invalid)">
+                    <small class="form-text text-danger"
+                           [hidden]="!editForm.controls.publish?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 form-group">
+                <label class="form-control-label" jhiTranslate="cmExodusApp.cmPage.metaDescription" for="field_metaDescription">Meta Description</label>
+                <textarea rows="2" class="form-control" name="metaDescription" id="field_metaDescription"
+                          [(ngModel)]="cmPage.metaDescription"></textarea>
+            </div>
+
+            <!-- div class="col-4 form-group">
+                <label class="form-control-label" jhiTranslate="cmExodusApp.cmText.publishDate" for="field_publishDate">Publish Date</label>
+                <div class="input-group">
+                    <input id="field_publishDate" type="text" class="form-control" name="publishDate" ngbDatepicker  #publishDateDp="ngbDatepicker" [(ngModel)]="cmPage.publishDate"
+                    />
+                    <span class="input-group-append">
+                    <button type="button" class="btn btn-secondary" (click)="publishDateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+                </div>
+            </div -->
+        </div>
+    </div>
+    </form>
+
+    <div class="modal-body" *ngIf="cmPage">
+        <div class="row">
+            <div class="col-7">
+                <table class="table table-striped">
+                    <thead>
+                    <tr><th>Module type</th><th>Layout</th><th>Sort</th><th></th></tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let module of cmPage.modules">
+                            <!-- td>
+                                <input [checked]="module.checked === true" type="checkbox"
+                                       (change)="$event.target.checked? (module.checked = true) : (module.checked = false)"/>
+                            </td -->
+                            <td>{{module.moduleType}}</td>
+                            <td>{{module.layout}}</td>
+                            <td>{{module.sorted}}</td>
+                            <td>
+                                <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal"
+                                        [routerLink]="['/', { outlets: { popup: 'edit-module/'+ cmPage.id + '/module/' + module.id} }]">
+                                    <span class="fa fa-pencil"></span>&nbsp;<span >Edit</span>
+                                </button>
+                                <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal" (click)="removeModule(module)">
+                                    <span class="fa fa-ban"></span>&nbsp;<span >Remove</span>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-5">
+                <table class="table table-striped">
+                    <thead>
+                    <tr><th>Role type</th><th>User</th><th></th></tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let auth of cmPage.authorities">
+                        <td>{{auth.role}}</td>
+                        <td>{{auth.user}}</td>
+                        <td>
+                            <!-- button type="button" class="btn btn-primary btn-sm" data-dismiss="modal"
+                                    [routerLink]="['/', { outlets: { popup: 'edit-module/'+ cmPage.id + '/module/' + module.id} }]">
+                                <span class="fa fa-pencil"></span>&nbsp;<span >Edit</span>
+                            </button>
+                            <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal" (click)="removeModule(module)">
+                                <span class="fa fa-ban"></span>&nbsp;<span >Remove</span>
+                            </button -->
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-7">
+                <button class="btn btn-primary btn-sm pull-right" [routerLink]="['/', { outlets: { popup: 'add-module/'+ cmPage.id } }]">
+                    <span class="fa fa-plus"></span>
+                    <span>Add Module</span>
+                </button>
+            </div>
+            <div class="col-5">
+                <button class="btn btn-primary btn-sm pull-right" [routerLink]="['/', { outlets: { popup: 'page-authority/'+ cmPage.id } }]">
+                    <span class="fa fa-plus"></span>
+                    <span>Add Role</span>
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -54,21 +54,19 @@ public class CmText implements Serializable {
     @Column(name = "text_date")
     private ZonedDateTime textDate;
 
-    @Column(name = "publish_date")
-    private LocalDate publishDate;
-
     @NotNull
     @Column(name = "publish", nullable = false)
     private Boolean publish;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "CM_MODULE_ID")
     private CmModule cmModule;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private CmItem cmItem;
 
     @OneToOne
-    @JoinColumn(unique = true)
+    @JoinColumn(unique = false)
     private CmImage image;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
@@ -184,19 +182,6 @@ public class CmText implements Serializable {
         this.textDate = textDate;
     }
 
-    public LocalDate getPublishDate() {
-        return publishDate;
-    }
-
-    public CmText publishDate(LocalDate publishDate) {
-        this.publishDate = publishDate;
-        return this;
-    }
-
-    public void setPublishDate(LocalDate publishDate) {
-        this.publishDate = publishDate;
-    }
-
     public Boolean isPublish() {
         return publish;
     }
@@ -282,7 +267,6 @@ public class CmText implements Serializable {
             ", sorted=" + getSorted() +
             ", layout='" + getLayout() + "'" +
             ", textDate='" + getTextDate() + "'" +
-            ", publishDate='" + getPublishDate() + "'" +
             ", publish='" + isPublish() + "'" +
             "}";
     }

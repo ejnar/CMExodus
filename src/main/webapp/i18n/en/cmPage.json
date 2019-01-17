@@ -3,7 +3,7 @@
     "cmExodusApp": {
         "cmPage" : {
             "home": {
-                "title": "Cm Pages",
+                "title": "Pages",
                 "createLabel": "Create a new Cm Page",
                 "createOrEditLabel": "Create or edit a Cm Page"
             },
@@ -26,4 +26,5 @@
             "module": "Module"
         }
     }
+
 }

@@ -1,8 +1,9 @@
 # CMExodus
 This application was generated using JHipster 4.14.1, you can find documentation and help at [http://www.jhipster.tech/documentation-archive/v4.14.1](http://www.jhipster.tech/documentation-archive/v4.14.1).
 
-## Development
+Get version: jhipster --version
 
+## Development
 Before you can build this project, you must install and configure the following dependencies on your machine:
 
 1. [Node.js][]: We use Node to run a development web server and build the project.
@@ -31,7 +32,6 @@ Add the `help` flag on any command to see how you can use it. For example, `yarn
 The `yarn run` command will list all of the scripts available to run for this project.
 
 ### Generate Entity JDL 
-
 If you want to use JHipster UML instead of the import-jdl sub-generator you need to install it by running npm install -g jhipster-uml.
 
 You can then use JDL files to generate entities:
@@ -55,7 +55,6 @@ By default import-jdl regenerates only entities which have changed, if you want 
     
 
 ### Service workers
-
 Service workers are commented by default, to enable them please uncomment the following code.
 
 * The service worker registering script in index.html
@@ -73,7 +72,6 @@ Service workers are commented by default, to enable them please uncomment the fo
 Note: workbox creates the respective service worker and dynamically generate the `sw.js`
 
 ### Managing dependencies
-
 For example, to add [Leaflet][] library as a runtime dependency of your application, you would run following command:
 
     yarn add --exact leaflet
@@ -97,7 +95,6 @@ Note: there are still few other things remaining to do for Leaflet that we won't
 For further instructions on how to develop with JHipster, have a look at [Using JHipster in development][].
 
 ### Using angular-cli
-
 You can also use [Angular CLI][] to generate some custom client code.
 
 For example, the following command:
@@ -112,7 +109,6 @@ will generate few files:
 
 
 ## Building for production
-
 To optimize the CMExodus application for production, run:
 
     ./gradlew -Pprod clean bootRepackage
@@ -127,13 +123,11 @@ Then navigate to [http://localhost:8080](http://localhost:8080) in your browser.
 Refer to [Using JHipster in production][] for more details.
 
 ## Testing
-
 To launch your application's tests, run:
 
     ./gradlew test
 
 ### Client tests
-
 Unit tests are run by [Karma][] and written with [Jasmine][]. They're located in [src/test/javascript/](src/test/javascript/) and can be run with:
 
     yarn test
@@ -143,7 +137,6 @@ Unit tests are run by [Karma][] and written with [Jasmine][]. They're located in
 For more information, refer to the [Running tests page][].
 
 ## Using Docker to simplify development (optional)
-
 You can use Docker to improve your JHipster development experience. A number of docker-compose configuration are available in the [src/main/docker](src/main/docker) folder to launch required third party services.
 
 For example, to start a postgresql database in a docker container, run:
@@ -164,6 +157,43 @@ Then run:
     docker-compose -f src/main/docker/app.yml up -d
 
 For more information refer to [Using Docker and Docker-Compose][], this page also contains information on the docker-compose sub-generator (`jhipster docker-compose`), which is able to generate docker configurations for one or several JHipster applications.
+
+### Liquibase
+| DBC Type    |  Java Type |
+| --- | --- |
+CHAR          | String |
+VARCHAR       | String
+LONGVARCHAR   | String
+NUMERIC       | java.math.BigDecimal
+DECIMAL       | java.math.BigDecimal
+BIT           | boolean
+BOOLEAN       | boolean
+TINYINT       | byte
+SMALLINT      | short
+INTEGER       | int
+BIGINT        | long
+REAL          | float
+FLOAT         | double
+DOUBLE        | double
+BINARY        | byte[]
+VARBINARY     | byte[]
+LONGVARBINARY | byte[]
+DATE          | java.sql.Date
+TIME          | java.sql.Time
+TIMESTAMP     | java.sql.Timestamp
+CLOB          | Clob
+BLOB          | Blob
+ARRAY         | Array
+DISTINCT      | mapping of underlying type
+STRUCT        | Struct
+REF           | Ref
+DATALINK      | java.net.URL
+JAVA_OBJECT   | underlying Java class
+
+
+### Markdown
+https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
+
 
 ## Continuous Integration (optional)
 
@@ -189,3 +219,7 @@ To configure CI for your project, run the ci-cd sub-generator (`jhipster ci-cd`)
 [Protractor]: https://angular.github.io/protractor/
 [Leaflet]: http://leafletjs.com/
 [DefinitelyTyped]: http://definitelytyped.org/
+
+CONSTRAINT_INDEX_6 
+ALTER TABLE CM_TEXT DROP CONSTRAINT CONSTRAINT_6;
+SELECT * FROM INFORMATION_SCHEMA.CONSTRAINTS 

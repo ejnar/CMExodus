@@ -1,4 +1,5 @@
 import { BaseEntity } from './../../shared';
+import { CmImage } from '../cm-image/cm-image.model';
 
 export const enum TextType {
     'TITLE',
@@ -18,6 +19,11 @@ export const enum LayoutType {
     'SIDEBYSIDE'
 }
 
+export const enum FontWeight {
+    'NORMAL',
+    'BOLD'
+}
+
 export class CmText implements BaseEntity {
     constructor(
         public id?: number,
@@ -34,7 +40,28 @@ export class CmText implements BaseEntity {
         public cmModuleId?: number,
         public cmItemId?: number,
         public imageId?: number,
+        public image?: any,
     ) {
+        this.sorted = 0;
         this.publish = false;
+    }
+
+    initTitle() {
+        this.textSv = '';
+        this.textType = TextType.TITLE;
+        this.layout = LayoutType.CENTER;
+    }
+
+    initText() {
+        this.textSv = '';
+        this.textType = TextType.TEXT;
+        this.layout = LayoutType.CENTER;
+    }
+
+    initTextImage() {
+        this.textSv = '';
+        this.image = new CmImage();
+        this.textType = TextType.TEXT_IMAGE;
+        this.layout = LayoutType.CENTER;
     }
 }

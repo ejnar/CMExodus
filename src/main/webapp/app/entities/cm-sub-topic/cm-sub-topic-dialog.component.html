@@ -34,30 +34,33 @@
                 </small>
             </div>
         </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="cmExodusApp.cmSubTopic.icon" for="field_icon">Icon</label>
-            <input type="text" class="form-control" name="icon" id="field_icon"
-                [(ngModel)]="cmSubTopic.icon" />
+        <div class="row">
+            <div class="col-6 form-group">
+                <label class="form-control-label" jhiTranslate="cmExodusApp.cmSubTopic.icon" for="field_icon">Icon</label>
+                <input type="text" class="form-control" name="icon" id="field_icon"
+                    [(ngModel)]="cmSubTopic.icon" />
+            </div>
+            <div class="col-6 form-group">
+                <label class="form-control-label" jhiTranslate="cmExodusApp.cmSubTopic.visable" for="field_visable">Visable</label>
+                <input type="checkbox" class="form-control" name="visable" id="field_visable"
+                    [(ngModel)]="cmSubTopic.visable" />
+            </div>
         </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="cmExodusApp.cmSubTopic.visable" for="field_visable">Visable</label>
-            <input type="checkbox" class="form-control" name="visable" id="field_visable"
-                [(ngModel)]="cmSubTopic.visable" />
-        </div>
-
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="cmExodusApp.cmSubTopic.cmTopic" for="field_cmTopic">Cm Topic</label>
-            <select class="form-control" id="field_cmTopic" name="cmTopic" [(ngModel)]="cmSubTopic.cmTopicId" >
-                <option [ngValue]="null"></option>
-                <option [ngValue]="cmTopicOption.id" *ngFor="let cmTopicOption of cmtopics; trackBy: trackCmTopicById">{{cmTopicOption.id}}</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label class="form-control-label" jhiTranslate="cmExodusApp.cmSubTopic.page" for="field_page">Page</label>
-            <select class="form-control" id="field_page" name="page" [(ngModel)]="cmSubTopic.pageId">
-                <option [ngValue]="null"></option>
-                <option [ngValue]="cmPageOption.id" *ngFor="let cmPageOption of pages; trackBy: trackCmPageById">{{cmPageOption.id}}</option>
-            </select>
+        <div class="row">
+            <div class="col-6 form-group">
+                <label class="form-control-label" jhiTranslate="cmExodusApp.cmSubTopic.cmTopic" for="field_cmTopic">Cm Topic</label>
+                <select class="form-control" id="field_cmTopic" name="cmTopic" [(ngModel)]="cmSubTopic.cmTopicId" >
+                    <option [ngValue]="null"></option>
+                    <option [ngValue]="cmTopicOption.id" *ngFor="let cmTopicOption of cmtopics; trackBy: trackCmTopicById">{{cmTopicOption.nameEn}}</option>
+                </select>
+            </div>
+            <div class="col-6 form-group">
+                <label class="form-control-label" jhiTranslate="cmExodusApp.cmSubTopic.page" for="field_page">Page</label>
+                <select class="form-control" id="field_page" name="page" [(ngModel)]="cmSubTopic.pageId">
+                    <option [ngValue]="null"></option>
+                    <option [ngValue]="cmPageOption.id" *ngFor="let cmPageOption of pages; trackBy: trackCmPageById">{{cmPageOption.titleEn}}</option>
+                </select>
+            </div>
         </div>
     </div>
     <div class="modal-footer">

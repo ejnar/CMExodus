@@ -1,0 +1,28 @@
+
+/* ==========================================================================
+Main page styles
+========================================================================== */
+.text {
+  font-size: 1.0em;
+  margin: 0.2em 0;
+  padding: 5px;
+}
+.imageSideByText {
+    max-width: 580px;
+    height: auto;
+    padding: 8px 12px;
+}
+.imageTopDownText{
+    max-width: 760px;
+    height: auto;
+    padding: 8px 12px;
+}
+.imageResponsive {
+    width: 100%;
+    height: auto;
+}
+.moduleFram {
+    border: 2px dotted blue;
+    padding: 0.2em 1.0em;
+    margin: 0.1em;
+}

@@ -2,6 +2,7 @@ package se.cm.exodus.service.dto;
 
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Objects;
@@ -10,6 +11,8 @@ import se.cm.exodus.domain.enumeration.ColumnLayout;
 import se.cm.exodus.domain.enumeration.ModuleType;
 import se.cm.exodus.domain.enumeration.LayoutType;
 
+import javax.validation.constraints.NotNull;
+
 /**
  * A DTO for the CmModule entity.
  */
@@ -17,13 +20,9 @@ public class CmModuleDTO implements Serializable {
 
     private Long id;
 
-    private Integer sorted;
-
     private ModuleType moduleType;
 
-    private LayoutType layout;
-
-    private ColumnLayout columnLayout;
+    private Set<CmModuleConfigDTO> moduleConfigs = new HashSet<>();
 
     private Set<CmItemListDTO> itemLists = new HashSet<>();
 
@@ -31,20 +30,14 @@ public class CmModuleDTO implements Serializable {
 
     private Set<CmTextDTO> texts = new HashSet<>();
 
+    private Set<CmImageDTO> images = new HashSet<>();
+
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Integer getSorted() {
-        return sorted;
-    }
-
-    public void setSorted(Integer sorted) {
-        this.sorted = sorted;
     }
 
     public ModuleType getModuleType() {
@@ -55,17 +48,9 @@ public class CmModuleDTO implements Serializable {
         this.moduleType = moduleType;
     }
 
-    public LayoutType getLayout() {
-        return layout;
-    }
+    public Set<CmModuleConfigDTO> getModuleConfigs() { return moduleConfigs; }
 
-    public void setLayout(LayoutType layout) {
-        this.layout = layout;
-    }
-
-    public ColumnLayout getColumnLayout() { return columnLayout; }
-
-    public void setColumnLayout(ColumnLayout columnLayout) { this.columnLayout = columnLayout; }
+    public void setModuleConfigs(Set<CmModuleConfigDTO> moduleConfigs) { this.moduleConfigs = moduleConfigs; }
 
     public Set<CmItemListDTO> getItemLists() {
         return itemLists;
@@ -86,6 +71,10 @@ public class CmModuleDTO implements Serializable {
     public Set<CmTextDTO> getTexts() { return texts; }
 
     public void setTexts(Set<CmTextDTO> texts) { this.texts = texts; }
+
+    public Set<CmImageDTO> getImages() { return images; }
+
+    public void setImages(Set<CmImageDTO> images) { this.images = images; }
 
     @Override
     public boolean equals(Object o) {
@@ -112,9 +101,7 @@ public class CmModuleDTO implements Serializable {
     public String toString() {
         return "CmModuleDTO{" +
             "id=" + getId() +
-            ", sorted=" + getSorted() +
             ", moduleType='" + getModuleType() + "'" +
-            ", layout='" + getLayout() + "'" +
             "}";
     }
 }

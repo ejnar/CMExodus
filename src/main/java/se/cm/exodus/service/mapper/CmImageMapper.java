@@ -13,8 +13,10 @@ public interface CmImageMapper extends EntityMapper<CmImageDTO, CmImage> {
 
     @Mapping(source = "cmModule.id", target = "cmModuleId")
     @Mapping(source = "cmItem.id", target = "cmItemId")
+    @Mapping(target = "uploadStatus", ignore = true)
     CmImageDTO toDto(CmImage cmImage);
 
+    @Mapping(target = "dataSaved", ignore = true)
     @Mapping(source = "cmModuleId", target = "cmModule")
     @Mapping(source = "cmItemId", target = "cmItem")
     CmImage toEntity(CmImageDTO cmImageDTO);

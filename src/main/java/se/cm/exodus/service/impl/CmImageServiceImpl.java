@@ -41,6 +41,11 @@ public class CmImageServiceImpl implements CmImageService {
     public CmImageDTO save(CmImageDTO cmImageDTO) {
         log.debug("Request to save CmImage : {}", cmImageDTO);
         CmImage cmImage = cmImageMapper.toEntity(cmImageDTO);
+
+        if(cmImage.getData().length > 0){
+            cmImage.setDataSaved(true);
+        }
+
         cmImage = cmImageRepository.save(cmImage);
         return cmImageMapper.toDto(cmImage);
     }

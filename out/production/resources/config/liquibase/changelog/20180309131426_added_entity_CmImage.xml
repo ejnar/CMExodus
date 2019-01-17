@@ -25,7 +25,7 @@
                 <constraints nullable="false" />
             </column>
 
-            <column name="jhi_type" type="varchar(255)">
+            <column name="image_type" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
 
@@ -33,15 +33,11 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="jhi_sort" type="integer">
+            <column name="sorted" type="integer">
                 <constraints nullable="true" />
             </column>
 
             <column name="layout" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="jhi_date" type="date">
                 <constraints nullable="true" />
             </column>
 

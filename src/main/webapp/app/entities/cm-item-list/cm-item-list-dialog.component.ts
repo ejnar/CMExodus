@@ -5,6 +5,7 @@ import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
+import { NGXLogger } from 'ngx-logger';
 
 import { CmItemList } from './cm-item-list.model';
 import { CmItemListPopupService } from './cm-item-list-popup.service';
@@ -32,7 +33,8 @@ export class CmItemListDialogComponent implements OnInit {
         private cmItemListService: CmItemListService,
         private cmModuleService: CmModuleService,
         private cmImageService: CmImageService,
-        private eventManager: JhiEventManager
+        private eventManager: JhiEventManager,
+        private logger: NGXLogger
     ) {
     }
 
@@ -60,6 +62,7 @@ export class CmItemListDialogComponent implements OnInit {
     }
 
     save() {
+        this.logger.debug(this.cmItemList);
         this.isSaving = true;
         if (this.cmItemList.id !== undefined) {
             this.subscribeToSaveResponse(

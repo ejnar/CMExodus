@@ -1,3 +1,4 @@
-id;cm_page_id;jhi_user;jhi_role
-1;2;admin;ROLE_ADMIN
+id;cm_page_id;jhi_user_id;jhi_user;jhi_role
+1;2;3;admin;ROLE_ADMIN
+2;3;3;admin;ROLE_ADMIN
 

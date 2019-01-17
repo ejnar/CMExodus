@@ -7,7 +7,8 @@ export const enum LayoutType {
     'CENTER',
     'TOP',
     'BOTTOM',
-    'SIDEBYSIDE'
+    'SIDEBYSIDE',
+    'DEFAULT'
 }
 
 export class CmImage implements BaseEntity {
@@ -22,6 +23,9 @@ export class CmImage implements BaseEntity {
         public publish?: boolean,
         public cmModuleId?: number,
         public cmItemId?: number,
+        public uploadStatus?: string,
+        public base64?: string,
+        public data?: any
     ) {
         this.publish = false;
     }

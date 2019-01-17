@@ -41,9 +41,7 @@
                   separator=";"
                   tableName="cm_module">
             <column name="id" type="numeric" />
-            <column name="sorted" type="numeric"/>
             <column name="module_type" type="string"/>
-            <column name="layout" type="string"/>
         </loadData>
     </changeSet>
     <changeSet id="20180404133500_2" author="jhipster">
@@ -60,12 +58,23 @@
             <column name="icon" type="string"/>
         </loadData>
         <loadData encoding="UTF-8"
+                  file="config/liquibase/moduleConfigs.csv"
+                  separator=";"
+                  tableName="cm_module_config">
+            <column name="id" type="numeric" />
+            <column name="sorted" type="numeric"/>
+            <column name="publish" type="boolean"/>
+            <column name="layout" type="string"/>
+            <column name="cm_page_id" type="numeric"/>
+            <column name="cm_module_id" type="numeric" />
+        </loadData>
+        <!-- loadData encoding="UTF-8"
                   file="config/liquibase/pageModules.csv"
                   separator=";"
                   tableName="cm_page_module">
             <column name="modules_id" type="numeric" />
             <column name="cm_pages_id" type="numeric" />
-        </loadData>
+        </loadData -->
         <loadData encoding="UTF-8"
                   file="config/liquibase/cmItem.csv"
                   separator=";"

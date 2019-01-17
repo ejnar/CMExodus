@@ -67,7 +67,8 @@ public class CmItemList implements Serializable {
     @Column(name = "publish", nullable = false)
     private Boolean publish;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "CM_MODULE_ID")
     private CmModule cmModule;
 
     @OneToOne

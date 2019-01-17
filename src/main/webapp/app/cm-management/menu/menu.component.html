@@ -1,0 +1,73 @@
+<div>
+    <h2>
+        <span jhiTranslate="cmManagement.cmMenu.home.title">Cm Menus</span>
+        <button class="btn btn-primary float-right jh-create-entity create-cm-topic" [routerLink]="['/', { outlets: { popup: ['cm-topic-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="cmManagement.cmMenu.home.createLabel">
+            Create new Cm Topic
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="cmTopics">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th><span jhiTranslate="global.field.id">ID</span></th>
+                <th><span jhiTranslate="cmManagement.cmMenu.nameEn">Name En</span></th>
+                <th><span jhiTranslate="cmManagement.cmMenu.nameSv">Name Sv</span></th>
+                <th><span jhiTranslate="cmManagement.cmMenu.icon">Icon</span></th>
+                <th class="text-right"><span jhiTranslate="cmManagement.cmMenu.subMenu">Sub Menu</span></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let cmTopic of cmTopics ;trackBy: trackId">
+                <td><a [routerLink]="['../cm-topic', cmTopic.id ]">{{cmTopic.id}}</a></td>
+                <td>{{cmTopic.nameEn}}</td>
+                <td>{{cmTopic.nameSv}}</td>
+                <td>{{cmTopic.icon}}</td>
+                <td>
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../sub-menu', cmTopic.id  ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../cm-topic', cmTopic.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'cm-topic/'+ cmTopic.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'cm-topic/'+ cmTopic.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -15,6 +15,8 @@ public class CmPageAuthorityDTO implements Serializable {
     private Long id;
 
     @NotNull
+    private Long userId;
+
     private String user;
 
     @NotNull
@@ -29,6 +31,10 @@ public class CmPageAuthorityDTO implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public Long getUserId() { return userId; }
+
+    public void setUserId(Long userId) { this.userId = userId; }
 
     public String getUser() {
         return user;
@@ -67,7 +73,12 @@ public class CmPageAuthorityDTO implements Serializable {
         if(cmPageAuthorityDTO.getId() == null || getId() == null) {
             return false;
         }
-        return Objects.equals(getId(), cmPageAuthorityDTO.getId());
+        if(Objects.equals(getUser(), cmPageAuthorityDTO.getUser())
+            && Objects.equals(getRole(), cmPageAuthorityDTO.getRole())
+            && Objects.equals(getCmPageId(), cmPageAuthorityDTO.getCmPageId())){
+            return true;
+        }
+        return false;
     }
 
     @Override

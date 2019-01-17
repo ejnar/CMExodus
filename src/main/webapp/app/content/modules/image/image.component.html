@@ -1,0 +1,9 @@
+<div class="textModule">
+    <div class="row">
+        image
+        <h4 *ngIf="title" ><jhi-language [model]="title" property='text'></jhi-language></h4>
+    </div>
+    <div *ngIf="text" class="row text">
+        <jhi-language [model]="text" property='text'></jhi-language>
+    </div>
+</div>

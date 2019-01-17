@@ -31,7 +31,8 @@ import {
     ErrorComponent
 } from './layouts';
 import { CmExodusContentModule } from './content/content.module';
-import { CmExodusAdministrationModule } from './cm-admin/cm-admin.module';
+import { CmExodusAdministrationModule } from './cm-management/cm-management.module';
+import { CmExodusDateModule } from './cm-data/data.module';
 // import { CmManagementModule } from './cm-management/cm-management.module';
 
 @NgModule({
@@ -46,6 +47,7 @@ import { CmExodusAdministrationModule } from './cm-admin/cm-admin.module';
         CmExodusAccountModule,
         CmExodusEntityModule,
         CmExodusContentModule,
+        CmExodusDateModule,
         CmExodusAdministrationModule,
         LoggerModule.forRoot({level: NgxLoggerLevel.DEBUG})
         // jhipster-needle-angular-add-module JHipster will add new module here

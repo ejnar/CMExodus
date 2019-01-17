@@ -35,9 +35,6 @@ public class CmTextDTO implements Serializable {
 
     private ZonedDateTime textDate;
 
-    private LocalDate publishDate;
-
-    @NotNull
     private Boolean publish;
 
     private Long cmModuleId;
@@ -120,14 +117,6 @@ public class CmTextDTO implements Serializable {
         this.textDate = textDate;
     }
 
-    public LocalDate getPublishDate() {
-        return publishDate;
-    }
-
-    public void setPublishDate(LocalDate publishDate) {
-        this.publishDate = publishDate;
-    }
-
     public Boolean isPublish() {
         return publish;
     }
@@ -197,7 +186,6 @@ public class CmTextDTO implements Serializable {
             ", sorted=" + getSorted() +
             ", layout='" + getLayout() + "'" +
             ", textDate='" + getTextDate() + "'" +
-            ", publishDate='" + getPublishDate() + "'" +
             ", publish='" + isPublish() + "'" +
             "}";
     }

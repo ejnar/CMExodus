@@ -2,10 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { SERVER_API_URL } from '../../app.constants';
-
+import { JhiDateUtils } from 'ng-jhipster';
+import { NGXLogger } from 'ngx-logger';
 import { CmModule } from './cm-module.model';
 import { createRequestOption } from '../../shared';
-
+import { CmItemList } from '../cm-item-list/cm-item-list.model';
 export type EntityResponseType = HttpResponse<CmModule>;
 
 @Injectable()
@@ -13,7 +14,7 @@ export class CmModuleService {
 
     private resourceUrl =  SERVER_API_URL + 'api/cm-modules';
 
-    constructor(private http: HttpClient) { }
+    constructor(private dateUtils: JhiDateUtils, private http: HttpClient, private logger: NGXLogger) { }
 
     create(cmModule: CmModule): Observable<EntityResponseType> {
         const copy = this.convert(cmModule);
@@ -69,6 +70,25 @@ export class CmModuleService {
      */
     private convert(cmModule: CmModule): CmModule {
         const copy: CmModule = Object.assign({}, cmModule);
+
+        copy.itemLists = [];
+        for (let i = 0; i < cmModule.itemLists.length; i++) {
+            const cmItemList = this.convertItemList(cmModule.itemLists[i]);
+            copy.itemLists.push(cmItemList);
+        }
+        this.logger.debug(copy);
+        return copy;
+    }
+
+    /**
+     * Convert a CmItemList to a JSON which can be sent to the server.
+     */
+    private convertItemList(cmItemList: CmItemList): CmItemList {
+        const copy: CmItemList = Object.assign({}, cmItemList);
+
+        copy.itemDate = this.dateUtils.toDate(cmItemList.itemDate);
+        copy.publishDate = this.dateUtils
+            .convertLocalDateToServer(cmItemList.publishDate);
         return copy;
     }
 }

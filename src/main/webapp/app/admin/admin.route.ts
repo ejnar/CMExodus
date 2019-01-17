@@ -19,7 +19,7 @@ import {
 
 import { ACCOUNT_ROUTES } from '../account';
 import { ENTITIES_ROUTES } from '../entities';
-import { CM_ADMIN_ROUTES } from '../cm-admin';
+import { CM_ADMIN_ROUTES } from '../cm-management';
 
 export const ADMIN_ROUTES = [
     auditsRoute,
@@ -44,7 +44,7 @@ export const ADMIN_HOME_ROUTE: Route = {
 export const cmExodusAdminRoute: Routes = [
 {
     path: 'admin',
-    data: { authorities: ['ROLE_ADMIN'], },
+    data: { authorities: ['ROLE_ADMIN', 'ROLE_MANAGER'], },
     canActivate: [UserRouteAccessService],
     children: [
         adminNavbarRoute,

@@ -1,0 +1,49 @@
+<div class="textModule moduleFram">
+    <div class="row">
+        <div class="col-3 form-group">Text-List module</div>
+        <div class="col-3">
+            <div class="control-group">
+                <label class="control-label" jhiTranslate="cmExodusApp.cmText.publish" for="field_publish">Publish</label>
+                <input type="checkbox" class="controls" name="publish" id="field_publish"
+                       [(ngModel)]="data.module.publish" (change)="onChange(text.publish)" />
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="title">
+        <div class="col-6 form-group">
+            <input type="text" class="form-control" name="titleSv" id="titleSv" [(ngModel)]="title.textSv" placeholder="Svenska" />
+        </div>
+        <div class="col-6 form-group">
+            <input type="text" class="form-control" name="titleEn" id="titleEn" [(ngModel)]="title.textEn" placeholder="English" />
+        </div>
+    </div>
+    <div class="text">
+        <div class="row form-group">
+            <table class="table">
+                <tbody>
+                <tr *ngFor="let text of texts;let index = index;">
+                    <td><i class="fa fa-fw fa-asterisk" aria-hidden="true"></i></td>
+                    <td>
+                        <input type="text" class="form-control" name="textSv" id="textSv"
+                               [(ngModel)]="texts[index].textSv" placeholder="Svenska" />
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" name="textEn" id="textEn"
+                               [(ngModel)]="texts[index].textEn" placeholder="English" />
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-danger btn-sm" (click)="removeRow(index)">
+                            <span class="fa fa-ban"></span>&nbsp;<span >Remove</span>
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <button type="button" class="btn btn-primary btn-sm" (click)="addRow()">
+            <span class="fa fa-pencil"></span>&nbsp;<span >Add Row</span>
+        </button>
+    </div>
+</div>

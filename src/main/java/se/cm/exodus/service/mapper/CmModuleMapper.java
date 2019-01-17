@@ -8,13 +8,14 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity CmModule and its DTO CmModuleDTO.
  */
-@Mapper(componentModel = "spring", uses = {CmItemListMapper.class, CmItemMapper.class, CmTextMapper.class})
+@Mapper(componentModel = "spring", uses = {CmItemListMapper.class, CmItemMapper.class, CmTextMapper.class, CmImageMapper.class, CmModuleConfigMapper.class})
 public interface CmModuleMapper extends EntityMapper<CmModuleDTO, CmModule> {
 
     @Mapping(target = "items", ignore = true)
-    @Mapping(target = "itemLists", ignore = true)
-    @Mapping(target = "texts", ignore = true)
-    @Mapping(target = "images", ignore = true)
+    @Mapping(target = "moduleConfigs", ignore = true)
+    @Mapping(target = "itemLists", ignore = false)
+    @Mapping(target = "texts", ignore = false)
+    @Mapping(target = "images", ignore = false)
     CmModule toEntity(CmModuleDTO cmModuleDTO);
 
     default CmModule fromId(Long id) {

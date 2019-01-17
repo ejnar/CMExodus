@@ -1,0 +1,48 @@
+{
+    "cmManagement": {
+        "cmPage" : {
+            "home": {
+                "title": "Pages",
+                "createLabel": "Create a new Cm Page",
+                "createOrEditLabel": "Create or edit a Cm Page"
+            },
+            "created": "A new Cm Page is created with identifier {{ param }}",
+            "updated": "A Cm Page is updated with identifier {{ param }}",
+            "deleted": "A Cm Page is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Cm Page {{ id }}?"
+            },
+            "detail": {
+                "title": "Cm Page"
+            },
+            "titleSv": "Title Sv",
+            "titleEn": "Title En",
+            "metaTitle": "Meta Title",
+            "metaDescription": "Meta Description",
+            "sorted": "Sorted",
+            "pageLayout": "Page Layout",
+            "authority": "Authority",
+            "module": "Module"
+        },
+        "cmMenu" : {
+            "home": {
+                "title": "Menu",
+                "createLabel": "Create a new Menu",
+                "createOrEditLabel": "Create or edit a Menu"
+            },
+            "created": "A new Cm Topic is created with identifier {{ param }}",
+            "updated": "A Cm Topic is updated with identifier {{ param }}",
+            "deleted": "A Cm Topic is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Cm Topic {{ id }}?"
+            },
+            "detail": {
+                "title": "Cm Topic"
+            },
+            "nameEn": "Name En",
+            "nameSv": "Name Sv",
+            "icon": "Icon",
+            "subMenu": "Sub Menu"
+        }
+    }
+}

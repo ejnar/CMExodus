@@ -25,7 +25,7 @@ public class CmImage implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "name", nullable = false)
+    @Column(name = "name", unique = true, nullable = false)
     private String name;
 
     @NotNull
@@ -42,9 +42,6 @@ public class CmImage implements Serializable {
     @Column(name = "layout")
     private LayoutType layout;
 
-    @Column(name = "publish_date")
-    private LocalDate publishDate;
-
     @NotNull
     @Column(name = "publish", nullable = false)
     private Boolean publish;
@@ -54,6 +51,12 @@ public class CmImage implements Serializable {
 
     @ManyToOne
     private CmItem cmItem;
+
+    @Column(name = "data_saved")
+    private Boolean dataSaved;
+
+    @Column(name = "data")
+    private byte[] data;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -129,19 +132,6 @@ public class CmImage implements Serializable {
         this.layout = layout;
     }
 
-    public LocalDate getPublishDate() {
-        return publishDate;
-    }
-
-    public CmImage publishDate(LocalDate publishDate) {
-        this.publishDate = publishDate;
-        return this;
-    }
-
-    public void setPublishDate(LocalDate publishDate) {
-        this.publishDate = publishDate;
-    }
-
     public Boolean isPublish() {
         return publish;
     }
@@ -180,6 +170,26 @@ public class CmImage implements Serializable {
     public void setCmItem(CmItem cmItem) {
         this.cmItem = cmItem;
     }
+
+    public byte[] getData() {
+        return data;
+    }
+
+    public void setData(byte[] data) {
+        this.data = data;
+    }
+
+    public Boolean isDataSaved() {
+        return dataSaved;
+    }
+
+    public Boolean getDataSaved() {
+        return dataSaved;
+    }
+
+    public void setDataSaved(Boolean dataSaved) {
+        this.dataSaved = dataSaved;
+    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
@@ -211,7 +221,6 @@ public class CmImage implements Serializable {
             ", toolTip='" + getToolTip() + "'" +
             ", sorted=" + getSorted() +
             ", layout='" + getLayout() + "'" +
-            ", publishDate='" + getPublishDate() + "'" +
             ", publish='" + isPublish() + "'" +
             "}";
     }

@@ -21,8 +21,16 @@
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="name" type="varchar(255)">
+            <column name="name_en" type="varchar(255)">
                 <constraints nullable="false" />
+            </column>
+
+            <column name="name_sv" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="icon" type="varchar(255)">
+                <constraints nullable="true" />
             </column>
 
             <column name="visable" type="boolean">
@@ -32,10 +40,12 @@
             <column name="cm_topic_id" type="bigint">
                 <constraints nullable="true" />
             </column>
-
+            <column name="page_id" type="bigint">
+                <constraints unique="true" nullable="true" />
+            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
-
+        
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
 </databaseChangeLog>

@@ -1,0 +1,151 @@
+<div class="row" *ngIf="!cmItemList">
+    <div class="col-2">
+        Progam-List Module
+    </div>
+    <div class="col-4">
+        <button type="button" class="btn btn-secondary btn-sm" (click)="addRow()">
+            <span class="fa fa-plus"></span>&nbsp;Add row
+        </button>
+    </div>
+</div>
+<form name="editItemListForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+    <div class="row row-striped" *ngIf="cmItemList">
+        <div class="col-12">
+            <div class="row">
+                <div class="col-6 form-group">
+                    <input type="text" class="form-control" name="titleSv" id="titleSv"
+                           [(ngModel)]="cmItemList.titleSv" placeholder="Svensk titel" />
+                </div>
+                <div class="col-6 form-group">
+                    <input type="text" class="form-control" name="titleEn" id="titleEn"
+                           [(ngModel)]="cmItemList.titleEn" placeholder="English title"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 form-group">
+                    <input type="text" class="form-control" name="ingressSv" id="ingressSv"
+                           [(ngModel)]="cmItemList.ingressSv" placeholder="Svensk ingress" />
+                </div>
+                <div class="col-6 form-group">
+                    <input type="text" class="form-control" name="ingressEn" id="ingressEn"
+                           [(ngModel)]="cmItemList.ingressEn" placeholder="English ingress"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 form-group">
+                    <input type="text" class="form-control" name="textSv" id="textSv"
+                           [(ngModel)]="cmItemList.textSv" placeholder="Svensk text" />
+                </div>
+                <div class="col-6 form-group">
+                    <input type="text" class="form-control" name="textEn" id="textEn"
+                           [(ngModel)]="cmItemList.textEn" placeholder="English text"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="cmExodusApp.cmItemList.itemDate" for="field_itemDate">Item Date</label>
+                        <div class="input-group">
+                            <input id="field_itemDate" type="text" class="form-control" name="itemDate" ngbDatepicker  #itemDateDp="ngbDatepicker"
+                                   [(ngModel)]="itemDate"
+                            />
+                            <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="itemDateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                        </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <ngb-timepicker [(ngModel)]="itemTime" name="itemTime"></ngb-timepicker>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="cmExodusApp.cmItemList.publishDate" for="field_publishDate">Publish Date</label>
+                        <div class="input-group">
+                            <input id="field_publishDate" type="text" class="form-control" name="publishDate" ngbDatepicker  #publishDateDp="ngbDatepicker"
+                                   [(ngModel)]="publishDate"
+                            />
+                            <span class="input-group-append">
+                                <button type="button" class="btn btn-secondary" (click)="publishDateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-3">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="cmExodusApp.cmItemList.location" for="field_location">Location</label>
+                        <input type="text" class="form-control" name="location" id="field_location"
+                               [(ngModel)]="cmItemList.location" />
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="cmExodusApp.cmItemList.typeOfEvent" for="field_typeOfEvent">Type Of Event</label>
+                        <select class="form-control" name="typeOfEvent" [(ngModel)]="cmItemList.typeOfEvent" id="field_typeOfEvent" >
+                            <option value="SERVICE">{{'cmExodusApp.TypeOfEvent.SERVICE' | translate}}</option>
+                            <option value="CAFE">{{'cmExodusApp.TypeOfEvent.CAFE' | translate}}</option>
+                            <option value="YOUTH">{{'cmExodusApp.TypeOfEvent.YOUTH' | translate}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-1">
+                    <div class="form-group">
+                        <label class="form-control-label" jhiTranslate="cmExodusApp.cmText.publish" for="field_publish">Publish</label>
+                        <input type="checkbox" class="form-control" name="publish" id="field_publish"
+                               [(ngModel)]="cmItemList.publish"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-6" *ngIf="cmItemList == undefined" >
+                    <button type="button" class="btn btn-primary btn-sm" (click)="addRow()">
+                        <span class="fa fa-pencil"></span>&nbsp;<span >Add Row</span>
+                    </button>
+                </div>
+
+                <div class="col-6" *ngIf="cmItemList">
+
+                </div>
+
+                <div class="col-4" *ngIf="cmItemList">
+                    <button type="button" class="btn btn-secondary" (click)="cancel()">
+                        <span class="fa fa-ban"></span>&nbsp;Cancel
+                    </button>
+                    <button type="submit" [disabled]="isSaving" class="btn btn-primary">
+                        <span class="fa fa-save"></span>&nbsp;Save
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<br/>
+<hr/>
+<br/>
+<div class="row">
+    <div *ngFor="let item of data.module.itemLists;let index = index;" class="program_list table table-striped">
+        <div class="row row-striped" [ngClass]="{'overlay': item.active}" >
+            <div class="col-2 text-left">
+                <h1 class="display-date"><span class="badge badge-secondary">{{item.itemDate | date: 'd'}}</span></h1>
+                <h4 class="display-month">{{item.itemDate | date: 'MMM'|uppercase}}</h4>
+            </div>
+            <div class="col-10">
+                <h4 class="text-uppercase"><strong><jhi-language [model]="item" property='title'></jhi-language></strong></h4>
+                <p *ngIf="item.ingressSv" ><jhi-language [model]="item" property='ingress'></jhi-language></p>
+                <ul class="list-inline">
+                    <li class="list-inline-item"><i class="fa fa-calendar-o" aria-hidden="true"></i> {{item.itemDate | date: 'EEEE'}}</li>
+                    <li class="list-inline-item"><i class="fa fa-clock-o" aria-hidden="true"></i> {{item.itemDate | date: 'shortTime'}}</li>
+                    <li class="list-inline-item"><i class="fa fa-location-arrow" aria-hidden="true"></i> {{item.location}}</li>
+                </ul>
+                <p *ngIf="item.textSv" ><jhi-language [model]="item" property='text'></jhi-language></p>
+                <button type="button" [disabled]="isEdit" class="btn btn-primary btn-sm float-right" (click)="editablyItem(index)">
+                    <span class="fa fa-pencil"></span>&nbsp;<span >Edit</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

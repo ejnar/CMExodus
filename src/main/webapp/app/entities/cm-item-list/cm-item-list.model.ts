@@ -24,7 +24,9 @@ export class CmItemList implements BaseEntity {
         public publish?: boolean,
         public cmModuleId?: number,
         public imageId?: number,
+        public active?: boolean
     ) {
         this.publish = false;
+        this.sorted = 0;
     }
 }

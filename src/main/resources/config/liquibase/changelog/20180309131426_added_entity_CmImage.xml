@@ -22,7 +22,7 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="name" type="varchar(255)">
-                <constraints nullable="false" />
+                <constraints unique="true" nullable="false" />
             </column>
 
             <column name="image_type" type="varchar(255)">
@@ -41,10 +41,6 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="publish_date" type="date">
-                <constraints nullable="true" />
-            </column>
-
             <column name="publish" type="boolean">
                 <constraints nullable="false" />
             </column>
@@ -57,9 +53,17 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="data_saved" type="boolean">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="data" type="VARBINARY">
+                <constraints nullable="true" />
+            </column>
+
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
-        
+
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
 </databaseChangeLog>

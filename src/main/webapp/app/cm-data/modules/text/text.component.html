@@ -1,0 +1,32 @@
+<div class="textModule moduleFram">
+    <div class="row">
+        <div class="col-3 form-group">Text module</div>
+        <div class="col-3">
+            <div class="control-group">
+                <label class="control-label" jhiTranslate="cmExodusApp.cmText.publish" for="field_publish">Publish</label>
+                <input type="checkbox" class="controls" name="publish" id="field_publish"
+                       [(ngModel)]="data.module.publish" (change)="onChange(text.publish)" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6 form-group"> <!-- [(ngModel)]="cmText.textSv" -->
+            <input type="text" class="form-control" name="titleSv" id="titleSv"
+                   [(ngModel)]="title.textSv" placeholder="Svenska" />
+        </div>
+        <div class="col-6 form-group">
+            <input type="text" class="form-control" name="titleEn" id="titleEn"
+                   [(ngModel)]="title.textEn" placeholder="English"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6 form-group">
+            <textarea rows="3" class="form-control" name="textSv" id="textSv"
+                      [(ngModel)]="text.textSv" placeholder="Svenska"></textarea>
+        </div>
+        <div class="col-6 form-group">
+            <textarea rows="3" class="form-control" name="textEn" id="textEn"
+                   [(ngModel)]="text.textEn" placeholder="English"></textarea>
+        </div>
+    </div>
+</div>

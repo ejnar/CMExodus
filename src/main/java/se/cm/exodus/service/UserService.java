@@ -266,4 +266,11 @@ public class UserService {
         return authorityRepository.findAll().stream().map(Authority::getName).collect(Collectors.toList());
     }
 
+    /**
+     * @return a list of all the authorities
+     */
+    public List<String> getAuthoritiesByModuleAuthority() {
+        return authorityRepository.findByModuleAuthority().stream().map(Authority::getName).collect(Collectors.toList());
+    }
+
 }

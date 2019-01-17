@@ -1,0 +1,82 @@
+<div>
+    <h2>
+        <span jhiTranslate="cmExodusApp.cmSubTopic.home.title">Cm Sub Topics</span>
+        <button class="btn btn-primary float-right jh-create-entity create-cm-sub-topic" [routerLink]="['/', { outlets: { popup: ['cm-sub-topic-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="cmExodusApp.cmSubTopic.home.createLabel">
+            Create new Cm Sub Topic
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="cmSubTopics">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="cmExodusApp.cmSubTopic.nameEn">Name En</span></th>
+            <th><span jhiTranslate="cmExodusApp.cmSubTopic.nameSv">Name Sv</span></th>
+            <th><span jhiTranslate="cmExodusApp.cmSubTopic.icon">Icon</span></th>
+            <th><span jhiTranslate="cmExodusApp.cmSubTopic.visable">Visable</span></th>
+            <th><span jhiTranslate="cmExodusApp.cmSubTopic.cmTopic">Cm Topic</span></th>
+            <th><span jhiTranslate="cmExodusApp.cmSubTopic.page">Page</span></th>
+            <th class="text-right">
+                <button type="submit"
+                        (click)="previousState()"
+                        class="btn btn-info">
+                    <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+                </button>
+            </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let cmSubTopic of cmSubTopics ;trackBy: trackId">
+                <td><a [routerLink]="['../cm-sub-topic', cmSubTopic.id ]">{{cmSubTopic.id}}</a></td>
+                <td>{{cmSubTopic.nameEn}}</td>
+                <td>{{cmSubTopic.nameSv}}</td>
+                <td>{{cmSubTopic.icon}}</td>
+                <td>{{cmSubTopic.visable}}</td>
+                <td>
+                    <div *ngIf="cmSubTopic.cmTopicId">
+                        <a [routerLink]="['../cm-topic', cmSubTopic.cmTopicId  ]" >{{cmSubTopic.cmTopicId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="cmSubTopic.pageId">
+                        <a [routerLink]="['../cm-page', cmSubTopic.pageId  ]" >{{cmSubTopic.pageId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../cm-sub-topic', cmSubTopic.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'cm-sub-topic/'+ cmSubTopic.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'cm-sub-topic/'+ cmSubTopic.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

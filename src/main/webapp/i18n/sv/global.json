@@ -50,9 +50,12 @@
                 "jhipster-needle-menu-add-admin-element": "JHipster will add additional menu entries here (do not translate!)"
             },
             "cm.admin":{
-                "main": "CM-Management",
+                "main": "Management",
                 "page":{
-                    "management": "CM-sid hantering"
+                    "management": "Sid hantering"
+                },
+                "menu":{
+                    "management": "Meny hantering"
                 }
             },
             "language": "Språk"

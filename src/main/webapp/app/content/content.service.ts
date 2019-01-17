@@ -11,6 +11,7 @@ import { ProgramListComponent } from './modules/programList/program-list.compone
 import { TextComponent } from './modules/text/text.component';
 import { TextImageComponent } from './modules/textImage/text-image.component';
 import { TextListComponent } from './modules/textList/text-list.component';
+import { ImageComponent } from './modules/image/image.component';
 
 @Injectable()
 export class ContentService {
@@ -47,6 +48,8 @@ export class ContentService {
                 page.items.push(new ContentItem(TextImageComponent, {type: module.moduleType, layout: module.layout, texts: module.texts} ));
             } else if (module.moduleType === 'TEXT_LIST') {
                 page.items.push(new ContentItem(TextListComponent, {type: module.moduleType, layout: module.layout, texts: module.texts} ));
+            } else if (module.moduleType === 'IMAGE') {
+                page.items.push(new ContentItem(ImageComponent, {type: module.moduleType, layout: module.layout, items: module.items} ));
             }
         });
         return page;

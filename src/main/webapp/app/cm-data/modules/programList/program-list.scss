@@ -1,0 +1,39 @@
+
+/* ==========================================================================
+Main page styles
+========================================================================== */
+.program_list{
+  margin: 0.0em 0 0.4em 0;
+  color: black;
+}
+.display-date{
+    font-size: 7.4vh;
+}
+.display-month{
+    font-size: 3.4vh;
+}
+.row-striped:nth-of-type(odd){
+  // background-color: #efefef;
+  // border-left: 4px #000000 solid;
+}
+.row-striped:nth-of-type(even){
+  background-color: #fff;
+  // border-left: 4px #efefef solid;
+}
+.row-striped {
+    padding: 0.1em 0;
+    border-bottom: 1px #ccc dashed;
+}
+@media (max-width: 480px) {
+    .display-date{
+        font-size: 2.2em;
+    }
+    .display-month{
+        font-size: 1.0em;
+        white-space: nowrap;
+    }
+}
+.overlay{
+  z-index: 10;
+  background-color:rgba(200,100,100,0.1); /*dim the background*/
+}

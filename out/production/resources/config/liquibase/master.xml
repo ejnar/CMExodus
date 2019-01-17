@@ -14,6 +14,7 @@
     <include file="config/liquibase/changelog/20180309131424_added_entity_CmItem.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180309131425_added_entity_CmText.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180309131426_added_entity_CmImage.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180405074225_added_entity_CmItemList.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20180309131419_added_entity_constraints_CmSubTopic.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180309131421_added_entity_constraints_CmPageAuthority.xml" relativeToChangelogFile="false"/>
@@ -21,5 +22,7 @@
     <include file="config/liquibase/changelog/20180309131424_added_entity_constraints_CmItem.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180309131425_added_entity_constraints_CmText.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180309131426_added_entity_constraints_CmImage.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180404133500_added_data.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180405074225_added_entity_constraints_CmItemList.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

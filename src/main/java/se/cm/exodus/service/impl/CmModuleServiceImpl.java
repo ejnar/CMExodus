@@ -41,8 +41,11 @@ public class CmModuleServiceImpl implements CmModuleService {
     @Override
     public CmModuleDTO save(CmModuleDTO cmModuleDTO) {
         log.debug("Request to save CmModule : {}", cmModuleDTO);
-        CmModule cmModule = cmModuleMapper.toEntity(cmModuleDTO);
-        cmModule = cmModuleRepository.save(cmModule);
+        final CmModule cmModuleEntity = cmModuleMapper.toEntity(cmModuleDTO);
+        cmModuleEntity.getTexts().forEach((t) -> { t.setCmModule(cmModuleEntity);} );
+        cmModuleEntity.getImages().forEach((t) -> { t.setCmModule(cmModuleEntity);} );
+        cmModuleEntity.getItemLists().forEach((t) -> { t.setCmModule(cmModuleEntity);} );
+        CmModule cmModule = cmModuleRepository.save(cmModuleEntity);
         return cmModuleMapper.toDto(cmModule);
     }
 

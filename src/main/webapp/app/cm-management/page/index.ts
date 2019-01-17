@@ -1,0 +1,10 @@
+export * from './page.module';
+export * from './page.component';
+export * from './page-edit.component';
+export * from './extended-page.service';
+export * from './page-popup.service';
+export * from './page-dialog.component';
+export * from './page-delete-dialog.component';
+export * from './module-dialog.component';
+export * from './page.route';
+// export * from './page-detail.component';

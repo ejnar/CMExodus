@@ -2,6 +2,7 @@ package se.cm.exodus.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import se.cm.exodus.service.CmPageService;
+import se.cm.exodus.service.dto.CmModuleDTO;
 import se.cm.exodus.web.rest.errors.BadRequestAlertException;
 import se.cm.exodus.web.rest.util.HeaderUtil;
 import se.cm.exodus.web.rest.util.PaginationUtil;

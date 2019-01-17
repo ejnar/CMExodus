@@ -5,23 +5,35 @@ Navbar
 .navbar-title {
     display: inline-block;
     color: #f2b752;
-    font-size: 6.8vh;
-    line-height: 0.8;
-    padding: 0 4vw 0 0;
+    font-size: 4.8vw;
+    line-height: 1.0;
+    padding: 0.6vw 0 0 0;
 }
-.navbar-sub {
-    // display: inline-block;
-    vertical-align: text-bottom;
-    font-size: 2.2vh;
+.navbar-title-sub {
+    display: inline-block;
+    font-size: 1.4vw;
     font-weight: 600;
     color: #f2b752;
-    padding: 0 0 0 2em;
+    padding: 0;
+    margin: 0;
+    white-space: nowrap;
+}
+.navbar-title-sub:after {
+    content: '\A';
+    white-space: pre;
 }
 .language_flags{
     margin: 0.6em 1.2em 0 0;
 }
+.flag{
+    padding: 0 0.4em;
+}
+
 
 .jh-navbar {
+    display: flex;
+    margin: 0;
+    padding: 0;
     background-color: #fff;
     .profile-image {
         margin: -10px 0px;
@@ -37,9 +49,12 @@ Navbar
     }
     ul.navbar-nav {
         padding: 0;
-
+        margin: 0;
+        font-size: 0.95em;
+        vertical-align: bottom;
+        /* height: 20px; */
         .nav-item {
-            margin-left: 1.5rem;
+            margin: 0 0.3rem;
         }
     }
     a.nav-link {
@@ -55,18 +70,121 @@ Navbar
     }
 }
 
-@media screen and (min-width: 768px) and (max-width: 992px) {
+@media (max-width: 768px) {
+    .navbar-title {
+        font-size: 4.8vh;
+    }
+    .navbar-title-sub {
+        font-size: 1.6vh;
+    }
+    .jh-navbar {
+        background-color: #fff;
+        padding: 0;
+        .profile-image {
+            margin: -10px 0px;
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+        }
+        .dropdown-item.active, .dropdown-item.active:focus, .dropdown-item.active:hover {
+            background-color: #353d47;
+        }
+        .dropdown-toggle::after {
+            margin-left: 0.15em;
+        }
+        ul.navbar-nav {
+            padding: 0.5em;
+            .nav-item {
+                margin: 0.2rem 0 0.3rem 2.5rem;
+            }
+        }
+        a.nav-link {
+            font-weight: 400;
+        }
+        .jh-navbar-toggler {
+            color: #222;
+            font-size: 2.2em;
+            margin: 0.6vh 0;
+            padding: 0;
+            &:hover {
+                color: #aaa;
+            }
+        }
+    }
     .jh-navbar-menu{
-        position: absolute;
-        bottom: 0;
-        left: 40vh;
+    }
+    .flag{
+        padding: 0 0.95em 0 0;
+        font-size: 1.1em;
+    }
+    .sub-menu-item{
+        padding: 0 0 0 0.8em;
+    }
+}
+@media screen and (min-width: 768px) and (max-width: 992px) {
+    .navbar-title {
+        font-size: 3.6vh;
+        padding: 0.1vw 0 0 0;
+    }
+    .navbar-title-sub {
+        font-size: 1.1vh;
+    }
+    .jh-navbar {
+        display: flex;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        .profile-image {
+            margin: -10px 0px;
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+        }
+        .dropdown-item.active, .dropdown-item.active:focus, .dropdown-item.active:hover {
+            background-color: #353d47;
+        }
+        .dropdown-toggle::after {
+            margin-left: 0.15em;
+        }
+        ul.navbar-nav {
+            padding: 0;
+            margin: 0;
+            font-size: 0.90em;
+            vertical-align: bottom;
+            .nav-item {
+                margin: 0 0.1rem;
+            }
+        }
+        a.nav-link {
+            font-weight: 400;
+        }
+        .jh-navbar-toggler {
+            color: #222;
+            font-size: 2.0em;
+            padding: 10px 0 0 0.4vh;
+            &:hover {
+                color: #aaa;
+            }
+        }
+    }
+    .jh-navbar-menu{
+        display: inline-block;
+        align-self: flex-end;
+        height: 20px;
+        left: 40px;
+        background-color: #fff;
+    }
+    .flag{
+        padding: 0 0.8em 0 0;
+        font-size: 1.0em;
     }
 }
 @media (min-width: 992px) {
     .jh-navbar-menu{
-        position: absolute;
-        bottom: 0;
-        left: 18em;
+        display: inline-block;
+        align-self: flex-end;
+        top: 8px;
+        background-color: #fff;
     }
 }
 @media screen and (min-width: 768px) {

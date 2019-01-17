@@ -3,6 +3,7 @@ import { Route } from '@angular/router';
 
 import { cmImageRoute, cmImagePopupRoute } from './cm-image/cm-image.route';
 import { cmItemRoute, cmItemPopupRoute } from './cm-item/cm-item.route';
+import { cmItemListRoute, cmItemListPopupRoute } from './cm-item-list/cm-item-list.route';
 import { cmModuleRoute, cmModulePopupRoute } from './cm-module/cm-module.route';
 import { cmPageAuthorityRoute, cmPageAuthorityPopupRoute } from './cm-page-authority/cm-page-authority.route';
 import { cmPageRoute, cmPagePopupRoute } from './cm-page/cm-page.route';
@@ -14,6 +15,7 @@ import { cmTopicRoute, cmTopicPopupRoute } from './cm-topic/cm-topic.route';
 export const ENTITIES_ROUTES = [
     ...cmImageRoute, ...cmImagePopupRoute,
     ...cmItemRoute, ...cmItemPopupRoute,
+    ...cmItemListRoute, ...cmItemListPopupRoute,
     ...cmModuleRoute, ...cmModulePopupRoute,
     ...cmPageAuthorityRoute, ...cmPageAuthorityPopupRoute,
     ...cmPageRoute, ...cmPageRoute,

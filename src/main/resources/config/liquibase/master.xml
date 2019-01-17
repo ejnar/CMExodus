@@ -10,6 +10,7 @@
     <include file="config/liquibase/changelog/20180309131420_added_entity_CmPortal.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180309131421_added_entity_CmPageAuthority.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180309131422_added_entity_CmPage.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180309131423-0_added_entity_CmModuleConfig.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180309131423_added_entity_CmModule.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180309131424_added_entity_CmItem.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180309131425_added_entity_CmText.xml" relativeToChangelogFile="false"/>
@@ -18,7 +19,8 @@
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20180309131419_added_entity_constraints_CmSubTopic.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180309131421_added_entity_constraints_CmPageAuthority.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20180309131422_added_entity_constraints_CmPage.xml" relativeToChangelogFile="false"/>
+    <!-- include file="config/liquibase/changelog/20180309131422_added_entity_constraints_CmPage.xml" relativeToChangelogFile="false"/ -->
+    <include file="config/liquibase/changelog/20180309131423-0_added_entity_constraints_CmModuleConfig.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180309131424_added_entity_constraints_CmItem.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180309131425_added_entity_constraints_CmText.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180309131426_added_entity_constraints_CmImage.xml" relativeToChangelogFile="false"/>

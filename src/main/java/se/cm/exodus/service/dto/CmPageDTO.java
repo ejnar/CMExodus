@@ -3,6 +3,7 @@ package se.cm.exodus.service.dto;
 
 import javax.validation.constraints.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Objects;
@@ -27,9 +28,18 @@ public class CmPageDTO implements Serializable {
 
     private Integer sorted;
 
+    private LocalDate publishDate;
+
+    @NotNull
+    private Boolean publish;
+
     private PageLayout pageLayout;
 
     private Set<CmModuleDTO> modules = new HashSet<>();
+
+    private Set<CmPageAuthorityDTO> authorities = new HashSet<>();
+
+    private Set<CmModuleConfigDTO> moduleConfigs = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -79,6 +89,14 @@ public class CmPageDTO implements Serializable {
         this.sorted = sorted;
     }
 
+    public LocalDate getPublishDate() { return publishDate; }
+
+    public void setPublishDate(LocalDate publishDate) { this.publishDate = publishDate; }
+
+    public Boolean getPublish() { return publish; }
+
+    public void setPublish(Boolean publish) { this.publish = publish; }
+
     public PageLayout getPageLayout() {
         return pageLayout;
     }
@@ -94,6 +112,14 @@ public class CmPageDTO implements Serializable {
     public void setModules(Set<CmModuleDTO> cmModules) {
         this.modules = cmModules;
     }
+
+    public Set<CmPageAuthorityDTO> getAuthorities() { return authorities; }
+
+    public void setAuthorities(Set<CmPageAuthorityDTO> authorities) { this.authorities = authorities; }
+
+    public Set<CmModuleConfigDTO> getModuleConfigs() { return moduleConfigs; }
+
+    public void setModuleConfigs(Set<CmModuleConfigDTO> moduleConfigs) { this.moduleConfigs = moduleConfigs; }
 
     @Override
     public boolean equals(Object o) {

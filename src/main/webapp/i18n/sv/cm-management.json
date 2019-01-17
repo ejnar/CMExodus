@@ -1,0 +1,49 @@
+
+{
+    "cmManagement": {
+        "cmPage" : {
+            "home": {
+                "title": "Cm Pages",
+                "createLabel": "Skapa en ny Cm Page",
+                "createOrEditLabel": "Skapa eller ändra en Cm Page"
+            },
+            "created": "En ny Cm Page är skapad med id {{ param }}",
+            "updated": "En Cm Page är uppdaterad med id  {{ param }}",
+            "deleted": "En Cm Page är borttagen med id  {{ param }}",
+            "delete": {
+                "question": "Är du säker på att du vill ta bort Cm Page {{ id }}?"
+            },
+            "detail": {
+                "title": "Cm Page"
+            },
+            "titleSv": "Title Sv",
+            "titleEn": "Title En",
+            "metaTitle": "Meta Title",
+            "metaDescription": "Meta Description",
+            "sorted": "Sorted",
+            "pageLayout": "Page Layout",
+            "authority": "Authority",
+            "module": "Module"
+        },
+        "cmMenu" : {
+            "home": {
+                "title": "Meny",
+                "createLabel": "Skapa en ny Meny",
+                "createOrEditLabel": "Skapa eller ändra en Meny"
+            },
+            "created": "En ny Cm Topic är skapad med id {{ param }}",
+            "updated": "En Cm Topic är uppdaterad med id  {{ param }}",
+            "deleted": "En Cm Topic är borttagen med id  {{ param }}",
+            "delete": {
+                "question": "Är du säker på att du vill ta bort Cm Topic {{ id }}?"
+            },
+            "detail": {
+                "title": "Cm Topic"
+            },
+            "nameEn": "Name En",
+            "nameSv": "Name Sv",
+            "icon": "Icon",
+            "subMenu": "Under Meny"
+        }
+    }
+}

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity CmPage.
+    -->
+    <changeSet id="20180309131423-0-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="cm_page_id"
+                                 baseTableName="cm_module_config"
+                                 constraintName="fk_cm_module_config_cm_page_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="cm_page"/>
+
+        <addForeignKeyConstraint baseColumnNames="cm_module_id"
+                                 baseTableName="cm_module_config"
+                                 constraintName="fk_cm_module_config_cm_module_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="cm_module"/>
+    </changeSet>
+</databaseChangeLog>

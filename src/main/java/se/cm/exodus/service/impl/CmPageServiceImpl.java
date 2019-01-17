@@ -6,8 +6,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import se.cm.exodus.domain.Authority;
 import se.cm.exodus.domain.CmPage;
+import se.cm.exodus.domain.CmPageAuthority;
 import se.cm.exodus.domain.User;
+import se.cm.exodus.repository.CmPageAuthorityRepository;
 import se.cm.exodus.repository.CmPageRepository;
 import se.cm.exodus.service.CmPageService;
 import se.cm.exodus.service.UserService;
@@ -30,13 +33,15 @@ public class CmPageServiceImpl implements CmPageService {
     private final Logger log = LoggerFactory.getLogger(CmPageServiceImpl.class);
 
     private final CmPageRepository cmPageRepository;
+    private final CmPageAuthorityRepository cmPageAuthorityRepository;
 
     private final UserService userService;
 
     private final CmPageMapper cmPageMapper;
 
-    public CmPageServiceImpl(CmPageRepository cmPageRepository, UserService userService, CmPageMapper cmPageMapper) {
+    public CmPageServiceImpl(CmPageRepository cmPageRepository, CmPageAuthorityRepository cmPageAuthorityRepository, UserService userService, CmPageMapper cmPageMapper) {
         this.cmPageRepository = cmPageRepository;
+        this.cmPageAuthorityRepository = cmPageAuthorityRepository;
         this.userService = userService;
         this.cmPageMapper = cmPageMapper;
     }
@@ -50,8 +55,22 @@ public class CmPageServiceImpl implements CmPageService {
     @Override
     public CmPageDTO save(CmPageDTO cmPageDTO) {
         log.debug("Request to save CmPage : {}", cmPageDTO);
+
+        final User user = getUser();
+        if(user.getAuthorities().stream().anyMatch(p -> p.getName().equals("ROLE_USER"))){
+            cmPageDTO.setPublish(false);
+        }
+
         CmPage cmPage = cmPageMapper.toEntity(cmPageDTO);
         cmPage = cmPageRepository.save(cmPage);
+
+//        final User user = getUser();
+//        CmPageAuthority cmPageAuthority = new CmPageAuthority();
+//        cmPageAuthority.setUser(user.getLogin());
+//        cmPageAuthority.setRole("ROLE_ADMIN");
+//        cmPageAuthority.setCmPage(cmPage);
+//        cmPageAuthorityRepository.save(cmPageAuthority);
+
         return cmPageMapper.toDto(cmPage);
     }
 
@@ -79,13 +98,12 @@ public class CmPageServiceImpl implements CmPageService {
     public List<CmPageDTO> findByLoggedInUser() {
         log.debug("Request to get all CmPages");
 
-        final Optional<User> isUser = userService.getUserWithAuthorities();
-        if(!isUser.isPresent()) {
-            log.error("User is not logged in");
-        }
-        final User user = isUser.get();
-
-        return cmPageRepository.findByUserWithEagerRelationships(user.getLogin()).stream()
+        // final Optional<User> isUser = userService.getUserWithAuthorities();
+        // if(!isUser.isPresent()) {
+        //    log.error("User is not logged in");
+        // }
+        final User user = getUser();
+        return cmPageRepository.findByUserWithEagerRelationships(user.getId()).stream()
             .map(cmPageMapper::toDto)
             .collect(Collectors.toCollection(LinkedList::new));
     }
@@ -114,4 +132,15 @@ public class CmPageServiceImpl implements CmPageService {
         log.debug("Request to delete CmPage : {}", id);
         cmPageRepository.delete(id);
     }
+
+    private User getUser(){
+        final Optional<User> isUser = userService.getUserWithAuthorities();
+        if(!isUser.isPresent()) {
+            log.error("User is not logged in");
+        }
+        return isUser.get();
+    }
 }
+
+
+

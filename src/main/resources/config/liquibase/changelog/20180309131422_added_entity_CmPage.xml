@@ -41,24 +41,32 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="publish_date" type="date">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="publish" type="boolean">
+                <constraints nullable="false" />
+            </column>
+
             <column name="page_layout" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
 
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
-        
-        <createTable tableName="cm_page_module">
+
+        <!-- createTable tableName="cm_page_module">
             <column name="modules_id" type="bigint">
                 <constraints nullable="false"/>
             </column>
             <column name="cm_pages_id" type="bigint">
                 <constraints nullable="false"/>
             </column>
-        </createTable>
+        </createTable -->
 
-        <addPrimaryKey columnNames="cm_pages_id, modules_id" tableName="cm_page_module"/>
-        
+        <!-- addPrimaryKey columnNames="cm_pages_id, modules_id" tableName="cm_page_module"/ -->
+
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
 </databaseChangeLog>

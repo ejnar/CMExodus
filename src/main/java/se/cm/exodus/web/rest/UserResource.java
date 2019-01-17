@@ -159,6 +159,16 @@ public class UserResource {
     }
 
     /**
+     * @return a string list of the all of the roles
+     */
+    @GetMapping("/users/authorities/module")
+    @Timed
+    @Secured(AuthoritiesConstants.ADMIN)
+    public List<String> getAuthoritiesByModuleAuthority() {
+        return userService.getAuthoritiesByModuleAuthority();
+    }
+
+    /**
      * GET /users/:login : get the "login" user.
      *
      * @param login the login of the user to find
